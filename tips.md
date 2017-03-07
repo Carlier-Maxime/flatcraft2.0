@@ -45,6 +45,28 @@
     }
 ```
 
+## Configuration git sur votre poste
+
+La première fois que vous utilisez git, il faut vous identifier auprès du client git en fournissant une adresse email et un nom :
+
+```
+$ git config --global user.email prenom_nom@ens.univ-artois.fr
+$ git config --global user.name "Prenom Nom"
+```
+
+De plus, comme nous utilisons une connexion https, il faut augmenter la taille des messages HTTP :
+
+```
+$ git config --global http.postBuffer 524288000
+```
+
+Enfin, pour éviter de taper trop souvent votre mot de passe, vous pouvez indiquer à git de garder
+vos identifiants dans un cache (pendant 15 minutes).
+
+```
+$ git config --global credential.helper cache
+```
+
 ## Synchronisation des dépôts
 
 Déclarer le dépot commun à tous les étudiants de DUT2 :
