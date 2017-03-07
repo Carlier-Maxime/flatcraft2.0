@@ -34,7 +34,7 @@
         try {
             Image foreground = ImageIO.read(MineUtils.class.getResource(imageName)).getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE,
                     Image.SCALE_DEFAULT);
-            BufferedImage merged = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
+            BufferedImage merged = new BufferedImage(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, BufferedImage.TYPE_INT_ARGB);
             Graphics g = merged.getGraphics();
             g.drawImage(background.getImage(), 0, 0, null);
             g.drawImage(foreground, 0, 0, null);
