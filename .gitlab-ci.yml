@@ -1,5 +1,5 @@
 sonar:
-    script: "sonar-scanner -Dsonar.projectKey=$CI_PROJECT_ID"
+    script: sonar-scanner -Dsonar.projectKey=$CI_PROJECT_ID
     stage: build
     tags:
      - sonar
