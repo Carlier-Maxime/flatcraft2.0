@@ -13,7 +13,7 @@
      */
     public static ImageIcon scaled(String imageName) {
         try {
-            return new ImageIcon(ImageIO.read(MineUtils.class.getResource(imageName)).getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE,
+            return new ImageIcon(ImageIO.read(Resources.class.getResource(imageName)).getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE,
                     Image.SCALE_DEFAULT));
         } catch (IOException e) {
             return new ImageIcon();
@@ -32,7 +32,7 @@
      */
     public static ImageIcon overlay(ImageIcon background, String imageName) {
         try {
-            Image foreground = ImageIO.read(MineUtils.class.getResource(imageName)).getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE,
+            Image foreground = ImageIO.read(Resources.class.getResource(imageName)).getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE,
                     Image.SCALE_DEFAULT);
             BufferedImage merged = new BufferedImage(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, BufferedImage.TYPE_INT_ARGB);
             Graphics g = merged.getGraphics();
