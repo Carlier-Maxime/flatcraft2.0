@@ -13,7 +13,7 @@ public class Resource implements MineElement {
     public Resource(String name, ImageIcon appearance, int hardness, ToolType toolType) {
         this.name = name;
         this.blockAppearance = appearance;
-        this.setHardness(hardness);
+        this.hardness = hardness;
         this.toolType = toolType;
     }
 

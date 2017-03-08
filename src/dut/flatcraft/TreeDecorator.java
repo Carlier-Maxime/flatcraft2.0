@@ -1,7 +1,5 @@
 package dut.flatcraft;
 
-import java.util.Random;
-
 public class TreeDecorator implements MapGenerator {
 
 	private int nbTree;

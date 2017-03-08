@@ -3,10 +3,8 @@ package dut.flatcraft;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.datatransfer.Transferable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -53,9 +51,9 @@ public class CraftTable extends JPanel {
     private JPanel craftPanel;
     private JPanel result;
 
-    private TransferHandler from;
+    TransferHandler from;
     private TransferHandler fromResult;
-    private MouseListener mouselistener;
+    MouseListener mouselistener;
 
     /**
      * Build an empty craft table.
@@ -65,8 +63,8 @@ public class CraftTable extends JPanel {
         craftPanel = new JPanel();
         craftPanel.setLayout(new GridLayout(3, 3));
 
-        from = createTransfertFrom();
-        fromResult = createTransfertFromResult();
+        from = new AllowCopyOrMoveResource(this);
+        fromResult = new MoveResultingResourceFromCraftTable(this);
 
         mouselistener = new MouseAdapter() {
             public void mousePressed(MouseEvent me) {
@@ -94,7 +92,7 @@ public class CraftTable extends JPanel {
     }
 
     private void createGrid() {
-        TransferHandler to = createTransfertTo();
+        TransferHandler to = new AcceptResourceTransfert(this);
         JPanel tableCell;
         for (int i = 0; i < 9; i++) {
             craftPanel.add(tableCell = new JPanel());
@@ -105,7 +103,7 @@ public class CraftTable extends JPanel {
         add(BorderLayout.CENTER, craftPanel);
     }
 
-    private void processCrafting() {
+    void processCrafting() {
         String key = buildCraftingKey();
         String value = RULES.get(key);
         AbstractButton crafted = null;
@@ -135,7 +133,7 @@ public class CraftTable extends JPanel {
         result.repaint();
     }
 
-    private void consumeOneItem() {
+    void consumeOneItem() {
         JPanel panel;
         Component[] comps = craftPanel.getComponents();
         assert comps.length == 9;
@@ -176,121 +174,5 @@ public class CraftTable extends JPanel {
             }
         }
         return stb.toString();
-    }
-
-    private TransferHandler createTransfertTo() {
-        return new TransferHandler() {
-
-            /**
-             * 
-             */
-            private static final long serialVersionUID = 1L;
-
-            // partie to
-            @Override
-            public boolean canImport(TransferSupport support) {
-                return support.isDataFlavorSupported(ResourceContainer.RESOURCE_FLAVOR);
-            }
-
-            @Override
-            public boolean importData(TransferSupport support) {
-                System.err.println("Importing data");
-                if (support.isDrop()) {
-                    JPanel source = (JPanel) support.getComponent();
-                    try {
-                        ResourceContainerUI comp;
-                        ResourceContainer rc = (ResourceContainer) support.getTransferable()
-                                .getTransferData(ResourceContainer.RESOURCE_FLAVOR);
-                        if (support.getDropAction() == MOVE || rc.getQuantity() == 1) {
-                            comp = new ResourceContainerUI(rc);
-                        } else {
-                            comp = new ResourceContainerUI(rc.getBlock().getType(), rc.getQuantity() / 2);
-                        }
-                        source.removeAll();
-                        comp.setTransferHandler(from);
-                        comp.addMouseListener(mouselistener);
-                        source.add(comp);
-                        processCrafting();
-                        source.revalidate();
-                        source.repaint();
-                        return true;
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                        return false;
-                    }
-                } else {
-                    return false;
-                }
-            }
-        };
-    }
-
-    private TransferHandler createTransfertFrom() {
-        return new TransferHandler() {
-
-            /**
-             * 
-             */
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            public int getSourceActions(JComponent c) {
-                return MOVE | COPY;
-            }
-
-            @Override
-            protected Transferable createTransferable(JComponent c) {
-                return ((ResourceContainerUI) c).getResourceContainer();
-            }
-
-            @Override
-            protected void exportDone(JComponent source, Transferable data, int action) {
-                ResourceContainer rc = ((ResourceContainerUI) source).getResourceContainer();
-                if (action == MOVE || rc.getQuantity() == 0) {
-                    Container container = source.getParent();
-                    container.remove(source);
-                    container.revalidate();
-                    container.repaint();
-                } else {
-                    rc.consume(rc.getQuantity() / 2);
-                }
-                processCrafting();
-            }
-
-        };
-    }
-
-    private TransferHandler createTransfertFromResult() {
-        return new TransferHandler() {
-
-            /**
-             * 
-             */
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            public int getSourceActions(JComponent c) {
-                return MOVE;
-            }
-
-            @Override
-            protected Transferable createTransferable(JComponent c) {
-                if (c instanceof ResourceContainerUI) {
-                    return ((ResourceContainerUI) c).getResourceContainer();
-                }
-                return ((ToolInstanceUI) c).getMineTool();
-            }
-
-            @Override
-            protected void exportDone(JComponent source, Transferable data, int action) {
-                consumeOneItem();
-                Container container = source.getParent();
-                container.remove(source);
-                processCrafting();
-                container.revalidate();
-                container.repaint();
-            }
-
-        };
     }
 }

@@ -3,6 +3,7 @@ package dut.flatcraft;
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -19,7 +20,15 @@ public class Main {
 		frame.add(BorderLayout.CENTER,scrollpane);
 		JPanel south = new JPanel();
 		south.setLayout(new BorderLayout());
-		south.add(BorderLayout.WEST, new JButton("Craft"));
+		
+		JDialog craft = new JDialog(frame, "Craft Table");
+		craft.add(new CraftTable());
+		craft.pack();
+        
+		JButton craftButton = new JButton("Craft");
+		craftButton.addActionListener(e -> craft.setVisible(true));
+		
+		south.add(BorderLayout.WEST, craftButton);
 		south.add(BorderLayout.CENTER, grid.getPlayer().getInventoryUI());
 		south.add(BorderLayout.EAST, new JButton("Cook"));
 		frame.add(BorderLayout.SOUTH,south);

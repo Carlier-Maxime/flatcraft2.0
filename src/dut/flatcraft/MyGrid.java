@@ -10,6 +10,8 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class MyGrid extends JComponent implements KeyListener {
 
@@ -99,6 +101,9 @@ public class MyGrid extends JComponent implements KeyListener {
 			needsUpdate = digOrFill();
 			needsToCheckVisible = true;
 			break;
+		case KeyEvent.VK_F1:
+			displayHelp();
+			break;
 		default:
 			// do nothing
 		}
@@ -129,6 +134,14 @@ public class MyGrid extends JComponent implements KeyListener {
 		}
 	}
 
+	private void displayHelp() {
+		String help = "<html><h1>Comment jouer ?</h1>" + "C'est simple : <ul>"
+				+ "<li>on se dirige à l'aide des touches directionnelles.</li>"
+				+ "<li>on utilise un outil ou on dépose une ressource à l'aide de la touche CTRL</li>"
+				+ "<li>on change d'objet en main à l'aide de CTRL+flèche droite ou gauche</li>" + "</ul>";
+		JOptionPane.showMessageDialog(null, help);
+	}
+
 	@Override
 	public void keyReleased(KeyEvent e) {
 	}
@@ -138,7 +151,7 @@ public class MyGrid extends JComponent implements KeyListener {
 		Cell cellToDig = map.getAt(toDig.y, toDig.x);
 		Optional<Cell> result = player.getHand().action(player, cellToDig);
 		if (result.isPresent()) {
-			map.setAt(toDig.y, toDig.x,result.get());
+			map.setAt(toDig.y, toDig.x, result.get());
 			if (player.getHand().mustBeChanged()) {
 				player.nextInHand();
 			}
