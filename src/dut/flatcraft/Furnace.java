@@ -41,8 +41,7 @@ public class Furnace extends JPanel {
 	private JPanel result;
 
 	private Player player;
-	private Handable handable;
-
+	
 	/**
 	 * Build an empty furnace.
 	 */
@@ -71,6 +70,7 @@ public class Furnace extends JPanel {
 		Component[] components = result.getComponents();
 		if (components.length == 1) {
 			Component c = components[0];
+			Handable handable;
 			if (c instanceof ResourceContainerUI) {
 				handable = (((ResourceContainerUI) c).getResourceContainer());
 			} else {
@@ -108,7 +108,7 @@ public class Furnace extends JPanel {
 		
 		ResourceContainer ore;
 		ResourceContainerUI rcui = (ResourceContainerUI) panel.getComponents()[0];
-		ore = (ResourceContainer) rcui.getResourceContainer();
+		ore = rcui.getResourceContainer();
 		if (ore.getQuantity() == 0) {
 			System.out.println("No ore in container");
 			return;
@@ -120,7 +120,7 @@ public class Furnace extends JPanel {
 		}
 		ResourceContainer combustible;
 		rcui = (ResourceContainerUI) panel.getComponents()[0];
-		combustible = (ResourceContainer) rcui.getResourceContainer();
+		combustible = rcui.getResourceContainer();
 		if (combustible.getQuantity() == 0) {
 			System.out.println("No combustible in container");
 			return;
