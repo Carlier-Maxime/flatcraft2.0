@@ -13,7 +13,12 @@ import javax.swing.JLabel;
 
 public class ToolInstance implements Transferable, MineElementInstance, Handable {
 
-    private final Tool toolType;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private final Tool toolType;
 
     private int currentLife;
 

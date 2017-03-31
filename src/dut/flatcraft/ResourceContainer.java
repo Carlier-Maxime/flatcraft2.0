@@ -11,6 +11,11 @@ import java.util.Optional;
 import javax.swing.ImageIcon;
 
 public class ResourceContainer implements Transferable, Cloneable, Handable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static final DataFlavor RESOURCE_FLAVOR = new DataFlavor(ResourceContainer.class, "resourcecontainer");
 
 	private int quantity;

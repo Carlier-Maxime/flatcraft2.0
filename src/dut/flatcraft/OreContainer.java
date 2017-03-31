@@ -4,6 +4,11 @@ import java.awt.datatransfer.DataFlavor;
 
 public class OreContainer extends ResourceContainer {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public static final DataFlavor ORE_FLAVOR = new DataFlavor(ResourceContainer.class, "orecontainer");
 
 	public OreContainer(Resource block, int quantity) {

@@ -4,10 +4,16 @@ import static dut.flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.Serializable;
 
 import javax.swing.JComponent;
 
-public class Player {
+public class Player implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Coordinate position;
 

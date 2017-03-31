@@ -4,6 +4,11 @@ import java.awt.datatransfer.DataFlavor;
 
 public class CombustibleContainer extends ResourceContainer {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public static final DataFlavor COMBUSTIBLE_FLAVOR = new DataFlavor(ResourceContainer.class, "resourcecontainer");
 
 	public CombustibleContainer(Resource block, int quantity) {

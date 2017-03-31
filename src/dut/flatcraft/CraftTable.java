@@ -60,7 +60,6 @@ public class CraftTable extends JPanel {
 	private MouseListener dndMouseListener;
 
 	private Player player;
-	private Handable handable;
 
 	/**
 	 * Build an empty craft table.
@@ -96,7 +95,7 @@ public class CraftTable extends JPanel {
 		result.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		result.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
 		JButton add = new JButton("Ajouter à l'inventaire");
-		add.addActionListener((e) -> addToInventory());
+		add.addActionListener(e -> addToInventory());
 		add(BorderLayout.EAST, result);
 		add(BorderLayout.SOUTH, add);
 	}
@@ -105,6 +104,7 @@ public class CraftTable extends JPanel {
 		Component[] components = result.getComponents();
 		if (components.length == 1) {
 			Component c = components[0];
+			Handable handable;
 			if (c instanceof ResourceContainerUI) {
 				handable = (((ResourceContainerUI) c).getResourceContainer());
 			} else {
@@ -180,10 +180,10 @@ public class CraftTable extends JPanel {
 	}
 
 	void register(ResourceContainerUI ui) {
-        ui.setTransferHandler(from);
-        ui.addMouseListener(dndMouseListener);
+		ui.setTransferHandler(from);
+		ui.addMouseListener(dndMouseListener);
 	}
-	
+
 	private String buildCraftingKey() {
 		StringBuilder stb = new StringBuilder();
 		JPanel panel;

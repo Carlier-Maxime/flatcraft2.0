@@ -62,7 +62,7 @@ public class Furnace extends JPanel {
 		result.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		result.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
 		JButton add = new JButton("Ajouter à l'inventaire");
-		add.addActionListener((e) -> addToInventory());
+		add.addActionListener(e -> addToInventory());
 		add(BorderLayout.EAST, result);
 		add(BorderLayout.SOUTH, add);
 	}
@@ -86,12 +86,13 @@ public class Furnace extends JPanel {
 	}
 
 	private void createGrid() {
-		JPanel tableCell;
-		craftPanel.add(tableCell = new JPanel());
+		JPanel tableCell= new JPanel();
+		craftPanel.add(tableCell);
 		tableCell.setTransferHandler(new AcceptOreTransfert(this));
 		tableCell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		tableCell.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
-		craftPanel.add(tableCell = new JPanel());
+		tableCell= new JPanel();
+		craftPanel.add(tableCell);
 		tableCell.setTransferHandler(new AcceptCombustibleTransfert(this));
 		tableCell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		tableCell.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));

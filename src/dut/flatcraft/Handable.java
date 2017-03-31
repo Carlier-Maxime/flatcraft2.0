@@ -1,10 +1,11 @@
 package dut.flatcraft;
 
+import java.io.Serializable;
 import java.util.Optional;
 
 import javax.swing.ImageIcon;
 
-public interface Handable {
+public interface Handable extends Serializable{
 
 	ImageIcon getImage();
 	
