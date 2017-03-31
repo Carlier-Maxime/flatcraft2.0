@@ -1,7 +1,5 @@
 package dut.flatcraft;
 
-import java.util.Iterator;
-
 public class SimpleGameMap implements GameMap {
 	private Cell[][] elements;
 	private final int width,height;

@@ -7,6 +7,11 @@ final class AcceptResourceTransfert extends TransferHandler {
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
 	private final CraftTable craftTable;
 
 	/**
@@ -15,11 +20,6 @@ final class AcceptResourceTransfert extends TransferHandler {
 	AcceptResourceTransfert(CraftTable craftTable) {
 		this.craftTable = craftTable;
 	}
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@Override
 	public boolean canImport(TransferSupport support) {
@@ -41,8 +41,7 @@ final class AcceptResourceTransfert extends TransferHandler {
 	                comp = new ResourceContainerUI(rc.getBlock().getType(), rc.getQuantity() / 2);
 	            }
 	            source.removeAll();
-	            comp.setTransferHandler(this.craftTable.from);
-	            comp.addMouseListener(this.craftTable.mouselistener);
+	            this.craftTable.register(comp);
 	            source.add(comp);
 	            this.craftTable.processCrafting();
 	            source.revalidate();

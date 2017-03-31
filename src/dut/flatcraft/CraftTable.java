@@ -55,9 +55,9 @@ public class CraftTable extends JPanel {
 	private JPanel craftPanel;
 	private JPanel result;
 
-	TransferHandler from;
+	private TransferHandler from;
 	private TransferHandler fromResult;
-	MouseListener mouselistener;
+	private MouseListener dndMouseListener;
 
 	private Player player;
 	private Handable handable;
@@ -73,7 +73,8 @@ public class CraftTable extends JPanel {
 
 		from = new AllowCopyOrMoveResource(this);
 
-		mouselistener = new MouseAdapter() {
+		dndMouseListener = new MouseAdapter() {
+			@Override
 			public void mousePressed(MouseEvent me) {
 				JComponent comp = (JComponent) me.getSource();
 				TransferHandler handler = comp.getTransferHandler();
@@ -148,7 +149,7 @@ public class CraftTable extends JPanel {
 				crafted = new ToolInstanceUI(tool.newInstance());
 			}
 			crafted.setTransferHandler(fromResult);
-			crafted.addMouseListener(mouselistener);
+			crafted.addMouseListener(dndMouseListener);
 		}
 		result.removeAll();
 		if (crafted == null) {
@@ -178,6 +179,11 @@ public class CraftTable extends JPanel {
 		}
 	}
 
+	void register(ResourceContainerUI ui) {
+        ui.setTransferHandler(from);
+        ui.addMouseListener(dndMouseListener);
+	}
+	
 	private String buildCraftingKey() {
 		StringBuilder stb = new StringBuilder();
 		JPanel panel;

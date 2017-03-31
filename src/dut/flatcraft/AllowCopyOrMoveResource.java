@@ -11,6 +11,12 @@ final class AllowCopyOrMoveResource extends TransferHandler {
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = 1L;
+
+
+	/**
+	 * 
+	 */
 	private final CraftTable craftTable;
 
 	/**
@@ -19,11 +25,6 @@ final class AllowCopyOrMoveResource extends TransferHandler {
 	AllowCopyOrMoveResource(CraftTable craftTable) {
 		this.craftTable = craftTable;
 	}
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@Override
 	public int getSourceActions(JComponent c) {
