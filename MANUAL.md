@@ -1,8 +1,8 @@
 # Flatcraft by DLB
 
-Le but de cette implémentation est de proposer une implémentation objet du jeu "Flatcraft".
+Le but de cet exercice est de proposer une implémentation objet du jeu "Flatcraft".
 
-L'objectif de l'exercice est d'utiliser au maximum les bonnes pratiques de programmation en Java (vérifiées par Sonar), d'utiliser les mécanismes disponibles dans l'API Java (AWT/Swing), et de mettre en application des patrons de conceptions (nouveaux ou ceux vus en S3).
+L'objectif pédagogique de l'exercice est d'utiliser au maximum les bonnes pratiques de programmation en Java (vérifiées par Sonar), d'utiliser les mécanismes disponibles dans l'API Java (AWT/Swing), et de mettre en application des patrons de conceptions (nouveaux ou ceux vus en S3).
 
 La taille de l'espace de jeu est fixée dans la classe principale. Elle est étudiée pour fonctionner au minimum sur l'écran d'un Macbook Air 13" (1440x900 pixels).
 
