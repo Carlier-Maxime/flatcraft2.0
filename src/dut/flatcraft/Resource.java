@@ -5,7 +5,12 @@ import javax.swing.JLabel;
 
 public class Resource implements MineElement {
 
-    private final ImageIcon blockAppearance;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private final ImageIcon blockAppearance;
     private int hardness;
     private final ToolType toolType;
     private final String name;

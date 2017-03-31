@@ -8,8 +8,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +15,6 @@ import java.util.Map;
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
@@ -57,7 +54,7 @@ public class CraftTable extends JPanel {
 
 	private TransferHandler from;
 	private TransferHandler fromResult;
-	private MouseListener dndMouseListener;
+	private MouseListener dndMouseListener = new MyMouseAdapter();
 
 	private Player player;
 
@@ -71,19 +68,6 @@ public class CraftTable extends JPanel {
 		craftPanel.setLayout(new GridLayout(3, 3));
 
 		from = new AllowCopyOrMoveResource(this);
-
-		dndMouseListener = new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent me) {
-				JComponent comp = (JComponent) me.getSource();
-				TransferHandler handler = comp.getTransferHandler();
-				if (me.getButton() == MouseEvent.BUTTON1) {
-					handler.exportAsDrag(comp, me, TransferHandler.MOVE);
-				} else {
-					handler.exportAsDrag(comp, me, TransferHandler.COPY);
-				}
-			}
-		};
 
 		createGrid();
 		createResultSpace();

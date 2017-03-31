@@ -4,6 +4,7 @@ import java.awt.datatransfer.Transferable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +15,12 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
-public class Inventory {
+public class Inventory implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Map<String, ResourceContainer> containers = new HashMap<>();
 
@@ -25,7 +31,7 @@ public class Inventory {
 	private List<Handable> handables = new ArrayList<>();
 
 	private TransferHandler handler;
-	private MouseListener mouselistener;
+	private MouseListener mouselistener = new MyMouseAdapterForInventory();
 
 	public Inventory() {
 		ui.setBorder(BorderFactory.createEmptyBorder());
@@ -36,15 +42,7 @@ public class Inventory {
 		handables.add(tool);
 		ui.add(new ToolInstanceUI(tool));
 		handler = createTransfertFrom();
-		mouselistener = new MouseAdapter() {
-			public void mousePressed(MouseEvent me) {
-				if (!me.isControlDown()) {
-					JComponent comp = (JComponent) me.getSource();
-					TransferHandler handler = comp.getTransferHandler();
-					handler.exportAsDrag(comp, me, TransferHandler.COPY);
-				}
-			}
-		};
+	
 		createOreContainer(MineUtils.getResourceByName("iron_lump"));
 		createCombustibleContainer(MineUtils.getResourceByName("wood"));
 		createCombustibleContainer(MineUtils.getResourceByName("leaves"));
