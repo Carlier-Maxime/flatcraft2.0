@@ -4,3 +4,6 @@ sonar:
     tags:
      - sonar
      - java
+    artifacts:
+     paths:
+      - flatcraft.jar
