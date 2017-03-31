@@ -60,7 +60,7 @@ public class MineUtils {
 
     public static final ImageIcon TREE_TOP = scaled("/textures/default_tree_top.png");
     public static final ImageIcon TREE = scaled("/textures/default_tree.png");
-
+    public static final ImageIcon LEAVES = scaled("/textures/default_leaves_simple.png");
     public static final ImageIcon WATER = scaled("/textures/default_water.png");
     
     public static final ImageIcon PLAYER = scaled("/textures/player.png");
@@ -75,9 +75,11 @@ public class MineUtils {
 
     public static final ImageIcon TOOL_AXE_WOOD = scaled("/textures/default_tool_woodaxe.png");
     public static final ImageIcon TOOL_AXE_STONE = scaled("/textures/default_tool_stoneaxe.png");
+    public static final ImageIcon TOOL_AXE_STEEL = scaled("/textures/default_tool_steelaxe.png");
     public static final ImageIcon TOOL_PICK_WOOD = scaled("/textures/default_tool_woodpick.png");
     public static final ImageIcon TOOL_PICK_STONE = scaled("/textures/default_tool_stonepick.png");
-
+    public static final ImageIcon TOOL_PICK_STEEL = scaled("/textures/default_tool_steelpick.png");
+   
     private static final Map<String, Resource> cachedResources = new HashMap<>();
     private static final Map<String, Tool> cachedTools = new HashMap<>();
 
@@ -181,6 +183,9 @@ public class MineUtils {
         case "tree":
             resource = new Resource("tree", MineUtils.TREE, 10, ToolType.NO_TOOL);
             break;
+        case "leaves":
+            resource = new Resource("leaves", MineUtils.LEAVES, 1, ToolType.NO_TOOL);
+            break;
         case "treetop":
             Resource digTree = getResourceByName("tree");
             resource = new TransformableResource("treetop", MineUtils.TREE_TOP, digTree, 10, ToolType.NO_TOOL);
@@ -237,6 +242,9 @@ public class MineUtils {
         case "cobble":
             resource = new Resource("cobble", MineUtils.COBBLE, 10, ToolType.MEDIUM_TOOL);
             break;
+        case "steel_lingot":
+            resource = new Resource("steel_lingot", MineUtils.STEEL_INGOT, 10, ToolType.MEDIUM_TOOL);
+            break;
         default:
             throw new IllegalArgumentException(resourceName + " is not a correct resource name");
         }
@@ -257,11 +265,17 @@ public class MineUtils {
         case "stonepick":
             tool = new Tool("stonepick", MineUtils.TOOL_PICK_STONE, 100, ToolType.MEDIUM_TOOL, 10);
             break;
+        case "steelpick":
+            tool = new Tool("steelpick", MineUtils.TOOL_PICK_STEEL, 100, ToolType.HARD_TOOL, 20);
+            break;
         case "woodaxe":
             tool = new Tool("woodaxe", MineUtils.TOOL_AXE_WOOD, 100, ToolType.NO_TOOL, 1);
             break;
         case "stoneaxe":
             tool = new Tool("stoneaxe", MineUtils.TOOL_AXE_STONE, 100, ToolType.NO_TOOL, 2);
+            break;
+        case "steelaxe":
+            tool = new Tool("steelaxe", MineUtils.TOOL_AXE_STEEL, 100, ToolType.NO_TOOL, 2);
             break;
         default:
             throw new IllegalArgumentException(toolName + " is not a correct tool name");

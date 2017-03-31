@@ -47,4 +47,9 @@ public class ResourceCellFactory implements CellFactory {
 		return MineUtils.getResourceByName("tree").newInstance();
 	}
 
+	@Override
+	public Cell createLeaves() {
+		return MineUtils.getResourceByName("leaves").newInstance();
+	}
+
 }

@@ -74,7 +74,6 @@ public class ToolInstance implements Transferable, MineElementInstance, Handable
 		if (((Resource)c.getType()).getToolType().compareTo(this.toolType.getTooltype())<=0) {
 			boolean result = c.dig(p);			
 			if (result) {
-				p.next();
 				return Optional.of(new EmptyCell(MineUtils.ICE, (JLabel)c.getUI()));
 			}
 		}

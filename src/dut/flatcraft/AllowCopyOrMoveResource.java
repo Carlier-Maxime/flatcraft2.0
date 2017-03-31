@@ -7,6 +7,7 @@ import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
 final class AllowCopyOrMoveResource extends TransferHandler {
+
 	/**
 	 * 
 	 */

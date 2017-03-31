@@ -22,6 +22,15 @@ public class TreeDecorator implements MapGenerator {
 			for (int j=0;j<treeHeight;j++) {
 				map.setAt(y--, x, factory.createTree());
 			}
+			if (x>0) {
+				map.setAt(y+1, x-1, factory.createLeaves());
+				map.setAt(y, x-1, factory.createLeaves());
+			}
+			map.setAt(y, x, factory.createLeaves());
+			if (x+1<map.getWidth()) {
+				map.setAt(y+1, x+1, factory.createLeaves());
+				map.setAt(y, x+1, factory.createLeaves());
+			}
 		}
 		return map;
 	}

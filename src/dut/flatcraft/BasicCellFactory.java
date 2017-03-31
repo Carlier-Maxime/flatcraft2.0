@@ -22,4 +22,9 @@ public class BasicCellFactory implements CellFactory {
 		return new NormalCell(MineUtils.TREE);
 	}
 
+	@Override
+	public Cell createLeaves() {
+		throw new UnsupportedOperationException();
+	}
+
 }

@@ -21,11 +21,6 @@ public class SimpleGameMap implements GameMap {
 	}
 	
 	@Override
-	public Iterator<Cell> iterator() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
 	public int getHeight() {
 		return height;
 	}

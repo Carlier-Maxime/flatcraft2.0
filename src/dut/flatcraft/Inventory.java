@@ -45,6 +45,10 @@ public class Inventory {
 				}
 			}
 		};
+		createOreContainer(MineUtils.getResourceByName("iron_lump"));
+		createCombustibleContainer(MineUtils.getResourceByName("wood"));
+		createCombustibleContainer(MineUtils.getResourceByName("leaves"));
+		createCombustibleContainer(MineUtils.getResourceByName("coal_lump"));
 	}
 
 	public Handable getElementInTheHand() {
@@ -74,9 +78,29 @@ public class Inventory {
 		}
 		container.inc();
 	}
-	
+
+	public void add(ResourceContainer rcontainer) {
+		ResourceContainer container = containers.get(rcontainer.getResource().getName());
+		if (container == null) {
+			// create container
+			container = createResourceContainer(rcontainer.getResource());
+		}
+		container.inc(rcontainer.getQuantity());
+	}
+
 	public void add(ToolInstance tool) {
 		handables.add(tool);
+		ui.add(new ToolInstanceUI(tool));
+	}
+
+	public void add(Handable handable) {
+		if (handable instanceof ResourceContainer) {
+			add((ResourceContainer) handable);
+		} else {
+			add((ToolInstance) handable);
+		}
+		ui.revalidate();
+		ui.repaint();
 	}
 
 	public JComponent getUI() {
@@ -110,7 +134,11 @@ public class Inventory {
 				if (action == MOVE) {
 					container.consumeAll();
 				} else {
-					container.consume(container.getQuantity() / 2);
+					if (container.getQuantity() == 1) {
+						container.consume(1);
+					} else {
+						container.consume(container.getQuantity() / 2);
+					}
 				}
 			}
 
@@ -131,7 +159,7 @@ public class Inventory {
 								.getTransferData(ResourceContainer.RESOURCE_FLAVOR);
 						if (transferedHandable instanceof ToolInstance) {
 							handables.add(transferedHandable);
-							ui.add(new ToolInstanceUI((ToolInstance)transferedHandable));
+							ui.add(new ToolInstanceUI((ToolInstance) transferedHandable));
 							ui.revalidate();
 							ui.repaint();
 						} else {
@@ -154,6 +182,21 @@ public class Inventory {
 
 	private ResourceContainer createResourceContainer(Resource resource) {
 		ResourceContainerUI cui = new ResourceContainerUI(resource);
+		register(resource, cui);
+		return cui.getResourceContainer();
+	}
+
+	private void createOreContainer(Resource resource) {
+		ResourceContainerUI cui = new ResourceContainerUI(new OreContainer(resource, 0));
+		register(resource, cui);
+	}
+
+	private void createCombustibleContainer(Resource resource) {
+		ResourceContainerUI cui = new ResourceContainerUI(new CombustibleContainer(resource, 0));
+		register(resource, cui);
+	}
+
+	private void register(Resource resource, ResourceContainerUI cui) {
 		ui.add(cui);
 		ui.revalidate();
 		cui.setTransferHandler(handler);
@@ -161,7 +204,6 @@ public class Inventory {
 		ResourceContainer container = cui.getResourceContainer();
 		containers.put(resource.getName(), container);
 		handables.add(container);
-		return container;
 	}
 
 	private void addResource(ResourceContainer container) {

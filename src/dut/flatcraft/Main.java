@@ -22,7 +22,7 @@ public class Main {
 		south.setLayout(new BorderLayout());
 		
 		JDialog craft = new JDialog(frame, "Craft Table");
-		craft.add(new CraftTable());
+		craft.add(new CraftTable(grid.getPlayer()));
 		craft.pack();
         
 		JButton craftButton = new JButton("Craft");
@@ -30,7 +30,15 @@ public class Main {
 		
 		south.add(BorderLayout.WEST, craftButton);
 		south.add(BorderLayout.CENTER, grid.getPlayer().getInventoryUI());
-		south.add(BorderLayout.EAST, new JButton("Cook"));
+		
+		JDialog cook = new JDialog(frame, "Furnace");
+		cook.add(new Furnace(grid.getPlayer()));
+		cook.pack();
+		
+		JButton cookButton = new JButton("Cook");
+		cookButton.addActionListener(e -> cook.setVisible(true));
+		
+		south.add(BorderLayout.EAST, cookButton);
 		frame.add(BorderLayout.SOUTH,south);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

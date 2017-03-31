@@ -3,27 +3,22 @@ package dut.flatcraft;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
-final class AcceptResourceTransfert extends TransferHandler {
-	/**
-	 * 
-	 */
-	private final CraftTable craftTable;
-
-	/**
-	 * @param craftTable
-	 */
-	AcceptResourceTransfert(CraftTable craftTable) {
-		this.craftTable = craftTable;
-	}
+final class AcceptCombustibleTransfert extends TransferHandler {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private Furnace furnace;
+	
+	public AcceptCombustibleTransfert(Furnace furnace) {
+		this.furnace = furnace;
+	}
+
 	@Override
 	public boolean canImport(TransferSupport support) {
-	    return support.isDataFlavorSupported(ResourceContainer.RESOURCE_FLAVOR);
+	    return support.isDataFlavorSupported(CombustibleContainer.COMBUSTIBLE_FLAVOR);
 	}
 
 	@Override
@@ -34,17 +29,15 @@ final class AcceptResourceTransfert extends TransferHandler {
 	        try {
 	            ResourceContainerUI comp;
 	            ResourceContainer rc = (ResourceContainer) support.getTransferable()
-	                    .getTransferData(ResourceContainer.RESOURCE_FLAVOR);
+	                    .getTransferData(CombustibleContainer.COMBUSTIBLE_FLAVOR);
 	            if (support.getDropAction() == MOVE || rc.getQuantity() == 1) {
 	                comp = new ResourceContainerUI(rc);
 	            } else {
 	                comp = new ResourceContainerUI(rc.getBlock().getType(), rc.getQuantity() / 2);
 	            }
 	            source.removeAll();
-	            comp.setTransferHandler(this.craftTable.from);
-	            comp.addMouseListener(this.craftTable.mouselistener);
 	            source.add(comp);
-	            this.craftTable.processCrafting();
+	            furnace.processCooking();
 	            source.revalidate();
 	            source.repaint();
 	            return true;

@@ -59,6 +59,7 @@ public class ResourceInstance implements MineElementInstance, Cell {
 	public boolean dig(Player p) {
 		if (dig((ToolInstance) p.getHand())) {
 			p.addToInventory(resourceType.digBlock().newInstance());
+			p.next();
 			return true;
 		}
 		return false;

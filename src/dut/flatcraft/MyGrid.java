@@ -10,7 +10,6 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 import javax.swing.JComponent;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 public class MyGrid extends JComponent implements KeyListener {
@@ -98,7 +97,8 @@ public class MyGrid extends JComponent implements KeyListener {
 			needsToCheckVisible = true;
 			break;
 		case KeyEvent.VK_CONTROL:
-			needsUpdate = digOrFill();
+			digOrFill();
+			needsUpdate = true;
 			needsToCheckVisible = true;
 			break;
 		case KeyEvent.VK_F1:

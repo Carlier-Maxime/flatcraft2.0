@@ -1,8 +1,6 @@
 package dut.flatcraft;
 
-import java.util.Iterator;
-
-public interface GameMap extends Iterable<Cell>{
+public interface GameMap {
 
 	int getHeight();
 	
@@ -12,5 +10,4 @@ public interface GameMap extends Iterable<Cell>{
 	
 	void setAt(int i, int j, Cell cell);
 	
-	Iterator<Cell> iterator();
 }

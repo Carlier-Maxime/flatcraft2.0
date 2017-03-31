@@ -9,4 +9,6 @@ public interface CellFactory {
 	Cell createSoil();
 	
 	Cell createTree();
+	
+	Cell createLeaves();
 }

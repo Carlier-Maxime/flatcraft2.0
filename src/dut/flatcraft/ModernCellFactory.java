@@ -37,4 +37,9 @@ public class ModernCellFactory implements CellFactory {
 		return new NormalCell(MineUtils.TREE);
 	}
 
+	@Override
+	public Cell createLeaves() {
+		return new NormalCell(MineUtils.LEAVES);
+	}
+
 }

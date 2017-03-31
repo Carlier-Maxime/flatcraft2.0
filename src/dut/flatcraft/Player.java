@@ -45,6 +45,10 @@ public class Player {
 	public void addToInventory(Cell cell) {
 		inventory.add(cell);
 	}
+	
+	public void addToInventory(Handable handable) {
+		inventory.add(handable);
+	}
 
 	void up() {
 		direction = up;

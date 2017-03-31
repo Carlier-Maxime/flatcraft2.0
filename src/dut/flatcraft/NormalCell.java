@@ -41,6 +41,7 @@ public class NormalCell implements Cell {
 
 	@Override
 	public boolean dig(Player p) {
+		p.next();
 		return false;
 	}
 
