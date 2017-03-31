@@ -1,6 +1,8 @@
 package dut.flatcraft;
 
-public interface GameMap {
+import java.io.Serializable;
+
+public interface GameMap extends Serializable {
 
 	int getHeight();
 	

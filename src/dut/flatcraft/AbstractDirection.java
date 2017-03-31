@@ -5,6 +5,11 @@ import java.awt.Graphics;
 
 public abstract class AbstractDirection implements Direction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	protected final Coordinate c;
 	
 	public AbstractDirection(Coordinate c) {

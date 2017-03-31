@@ -1,6 +1,13 @@
 package dut.flatcraft;
 
-class Coordinate {
+import java.io.Serializable;
+
+class Coordinate implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	int x, y;
 	final int width;
 	final int height;

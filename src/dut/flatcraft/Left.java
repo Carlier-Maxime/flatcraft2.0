@@ -2,6 +2,11 @@ package dut.flatcraft;
 
 public class Left extends AbstractDirection {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Left(Coordinate c) {
 		super(c);
 	}

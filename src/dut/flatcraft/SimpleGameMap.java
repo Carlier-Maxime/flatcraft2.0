@@ -1,8 +1,14 @@
 package dut.flatcraft;
 
 public class SimpleGameMap implements GameMap {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Cell[][] elements;
-	private final int width,height;
+	private final int width;
+	private final int height;
 	
 	public SimpleGameMap(int width,int height) {
 		elements = new Cell[height][width];
