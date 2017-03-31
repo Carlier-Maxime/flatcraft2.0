@@ -41,7 +41,7 @@ public class CraftTable extends JPanel {
 	 */
 	static {
 		RULES.put("tree_empty_empty_empty_empty_empty_empty_empty_empty", "wood 4");
-		RULES.put("wood_empty_empty_empty_empty_empty_empty_empty_empty", "stick 4");
+		RULES.put("wood_empty_empty_wood_empty_empty_empty_empty_empty", "stick 4");
 		RULES.put("wood_wood_wood_empty_stick_empty_empty_stick_empty", "woodpick");
 		RULES.put("wood_wood_empty_wood_stick_empty_empty_stick_empty", "woodaxe");
 		RULES.put("cobble_cobble_cobble_empty_stick_empty_empty_stick_empty", "stonepick");
