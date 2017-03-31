@@ -6,4 +6,4 @@ sonar:
      - java
     artifacts:
      paths:
-        - *.jar
+        - flatcraft.jar
