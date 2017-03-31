@@ -17,7 +17,7 @@ Le personnage se deplace dans une direction marquée par un curseur. Il suffit d
 
 Au départ du jeu, le personnage dispose de deux outils : une hâche en bois et une pioche en bois. Pour changer d'outil, on utilise `MAJ + flêche droite/gauche`.
 
-**Comme proposé en cours, il n'y a pas de différence fondamentale entre utiliser un outil ou une ressource : s'il l'on dispose d'un outil, la touche `CTRL` permet de creuser ; si l'on dispose d'une ressource, la touche `CTRL` permet de la poser.
+**Comme proposé en cours, il n'y a pas de différence fondamentale entre utiliser un outil ou une ressource : s'il l'on dispose d'un outil, la touche `CTRL` permet de creuser ; si l'on dispose d'une ressource, la touche `CTRL` permet de la poser.**
 
 ## Fonctionnalités spécifiques
 
