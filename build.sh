@@ -7,4 +7,4 @@ if [ ! -d bin ]; then
 fi
 javac -d bin @javafiles
 cp -R src/textures bin
-jar -cvfm flatcraft.jar manifest.mf -C bin/ .
+jar -cfm flatcraft.jar manifest.mf -C bin/ .
