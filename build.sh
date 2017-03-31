@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-find src -name *.java -print >javafiles
+find src -name "*.java" -print >javafiles
 if [ ! -d bin ]; then
     mkdir bin
 fi

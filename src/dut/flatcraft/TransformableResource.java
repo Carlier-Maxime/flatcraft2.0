@@ -4,7 +4,12 @@ import javax.swing.ImageIcon;
 
 public class TransformableResource extends Resource {
 
-    private final Resource digBlock;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private final Resource digBlock;
 
     public TransformableResource(String name, ImageIcon blockAppearance, Resource digBlock, int hardness,
             ToolType toolType) {
