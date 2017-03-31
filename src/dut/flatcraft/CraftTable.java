@@ -88,13 +88,7 @@ public class CraftTable extends JPanel {
 		Component[] components = result.getComponents();
 		if (components.length == 1) {
 			Component c = components[0];
-			Handable handable;
-			if (c instanceof ResourceContainerUI) {
-				handable = (((ResourceContainerUI) c).getResourceContainer());
-			} else {
-				handable = ((ToolInstanceUI) c).getMineTool();
-			}
-			player.addToInventory(handable);
+			player.addToInventory(((HandableUI)c).getHandable());
 			consumeOneItem();
 			result.remove(c);
 			processCrafting();

@@ -1,5 +1,7 @@
 package dut.flatcraft;
 
+import static dut.flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -8,9 +10,7 @@ import java.awt.Rectangle;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-import static dut.flatcraft.MineUtils.*;
-
-public class ToolInstanceUI extends JButton implements ToolInstanceListener {
+public class ToolInstanceUI extends JButton implements ToolInstanceListener, HandableUI {
 
 	/**
 	 * 
@@ -47,6 +47,11 @@ public class ToolInstanceUI extends JButton implements ToolInstanceListener {
 	@Override
 	public void update(ToolInstance source) {
 		repaint();
+	}
+
+	@Override
+	public Handable getHandable() {
+		return getMineTool();
 	}
 
 }
