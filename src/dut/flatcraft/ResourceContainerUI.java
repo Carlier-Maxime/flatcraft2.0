@@ -9,7 +9,7 @@ import java.awt.Rectangle;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-public class ResourceContainerUI extends JButton implements ResourceContainerListener {
+public class ResourceContainerUI extends JButton implements ResourceContainerListener, HandableUI {
 
     /**
      * 
@@ -61,4 +61,9 @@ public class ResourceContainerUI extends JButton implements ResourceContainerLis
     public void update(ResourceContainer source) {
         repaint();
     }
+
+	@Override
+	public Handable getHandable() {
+		return getResourceContainer();
+	}
 }

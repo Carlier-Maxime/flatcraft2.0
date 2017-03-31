@@ -41,7 +41,7 @@ public class CraftTable extends JPanel {
 	 */
 	static {
 		RULES.put("tree_empty_empty_empty_empty_empty_empty_empty_empty", "wood 4");
-		RULES.put("wood_empty_empty_empty_empty_empty_empty_empty_empty", "stick 4");
+		RULES.put("wood_empty_empty_wood_empty_empty_empty_empty_empty", "stick 4");
 		RULES.put("wood_wood_wood_empty_stick_empty_empty_stick_empty", "woodpick");
 		RULES.put("wood_wood_empty_wood_stick_empty_empty_stick_empty", "woodaxe");
 		RULES.put("cobble_cobble_cobble_empty_stick_empty_empty_stick_empty", "stonepick");
@@ -88,13 +88,7 @@ public class CraftTable extends JPanel {
 		Component[] components = result.getComponents();
 		if (components.length == 1) {
 			Component c = components[0];
-			Handable handable;
-			if (c instanceof ResourceContainerUI) {
-				handable = (((ResourceContainerUI) c).getResourceContainer());
-			} else {
-				handable = ((ToolInstanceUI) c).getMineTool();
-			}
-			player.addToInventory(handable);
+			player.addToInventory(((HandableUI)c).getHandable());
 			consumeOneItem();
 			result.remove(c);
 			processCrafting();
