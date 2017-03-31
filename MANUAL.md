@@ -33,7 +33,7 @@ Ajouter de nouvelles règles n'est pas difficile. Il faudrait idéalement qu'ell
 
 Le four permet de transformer un minerai en lingot, si l'on dispose de combustible. Il n'y a pas de différences entre les types de combustibles.
 
-**Remarque : le code actuel ne limite pas le dépôt des ressources aux seuls mineraix et aux combustibles, alors que cela devrait être le cas. Il y a un souci au niveau de l'implémentation qui doit être corrigé.**
+**Remarque : le code actuel ne limite pas le dépôt des ressources aux seuls minerais et aux combustibles, alors que cela devrait être le cas. Il y a un souci au niveau de l'implémentation qui doit être corrigé.**
 
 ## Jouabilité
 
