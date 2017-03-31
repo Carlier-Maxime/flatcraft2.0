@@ -10,7 +10,12 @@ import javax.swing.JLabel;
 
 public class Tool implements MineElement, Transferable {
 
-    public static final DataFlavor TOOL_FLAVOR = new DataFlavor(Tool.class, "tool");
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public static final DataFlavor TOOL_FLAVOR = new DataFlavor(Tool.class, "tool");
 
     private final ImageIcon image;
 
