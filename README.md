@@ -147,7 +147,7 @@ On supposera simplement que l'on dispose du nombre de ressources disponibles. Le
 	}
 ```
 
-##Création de ressources : la table de craft
+## Création de ressources : la table de craft
 
 ### Principe
 
