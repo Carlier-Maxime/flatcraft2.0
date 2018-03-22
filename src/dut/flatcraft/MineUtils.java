@@ -4,6 +4,9 @@ package dut.flatcraft;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -69,6 +72,7 @@ public class MineUtils {
     public static final ImageIcon COAL_LUMP = scaled("/textures/default_coal_lump.png");
     public static final ImageIcon GOLD = overlay(STONE, "/textures/default_mineral_gold.png");
     public static final ImageIcon GOLD_LUMP = scaled("/textures/default_gold_lump.png");
+    public static final ImageIcon GOLD_INGOT = scaled("/textures/default_gold_ingot.png");
     public static final ImageIcon IRON = overlay(STONE, "/textures/default_mineral_iron.png");
     public static final ImageIcon IRON_LUMP = scaled("/textures/default_iron_lump.png");
     public static final ImageIcon STEEL_INGOT = scaled("/textures/default_steel_ingot.png");
@@ -245,6 +249,9 @@ public class MineUtils {
         case "steel_lingot":
             resource = new Resource("steel_lingot", MineUtils.STEEL_INGOT, 10, ToolType.MEDIUM_TOOL);
             break;
+        case "gold_lingot":
+            resource = new Resource("gold_lingot", MineUtils.GOLD_INGOT, 10, ToolType.HARD_TOOL);
+            break;
         default:
             throw new IllegalArgumentException(resourceName + " is not a correct resource name");
         }
@@ -283,4 +290,17 @@ public class MineUtils {
         cachedTools.put(key, tool);
         return tool;
     }
+    
+    public static void fillRulesFromFile(String filename, Map<String, String> rules) {
+		File file = new File(CraftTable.class.getResource(filename).getFile());
+		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+			String line;
+			while ((line=reader.readLine())!=null) {
+				String [] pieces = line.split("=");
+				rules.put(pieces[0], pieces[1]);
+			}
+		} catch (IOException ioe) {
+			System.err.println("Rules file "+filename+" not found");
+		}
+	}
 }

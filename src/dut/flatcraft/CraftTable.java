@@ -44,17 +44,10 @@ public class CraftTable extends JPanel {
 	 * recompiling the program.
 	 */
 	static {
-		File file = new File(CraftTable.class.getResource("/craftrules.txt").getFile());
-		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-			String line;
-			while ((line=reader.readLine())!=null) {
-				String [] pieces = line.split("=");
-				RULES.put(pieces[0], pieces[1]);
-			}
-		} catch (IOException ioe) {
-			System.err.println("Rules file not found");
-		}
+		MineUtils.fillRulesFromFile("/craftrules.txt",RULES);
 	}
+
+	
 
 	private JPanel craftPanel;
 	private JPanel result;

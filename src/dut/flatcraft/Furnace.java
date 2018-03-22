@@ -33,9 +33,7 @@ public class Furnace extends JPanel {
 	private static final Map<String, String> RULES = new HashMap<>();
 
 	static {
-		RULES.put("gold_lump", "gold_lingot");
-		RULES.put("iron_lump", "steel_lingot");
-		RULES.put("copper_lump", "copper_lingot");
+		MineUtils.fillRulesFromFile("/furnacerules.txt",RULES);
 	}
 	private JPanel craftPanel;
 	private JPanel result;
