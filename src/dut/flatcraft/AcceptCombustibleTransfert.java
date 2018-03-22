@@ -1,5 +1,7 @@
 package dut.flatcraft;
 
+import java.util.logging.Logger;
+
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
@@ -23,7 +25,6 @@ final class AcceptCombustibleTransfert extends TransferHandler {
 
 	@Override
 	public boolean importData(TransferSupport support) {
-	    System.err.println("Importing data");
 	    if (support.isDrop()) {
 	        JPanel source = (JPanel) support.getComponent();
 	        try {
@@ -42,7 +43,7 @@ final class AcceptCombustibleTransfert extends TransferHandler {
 	            source.repaint();
 	            return true;
 	        } catch (Exception e) {
-	            System.out.println(e.getMessage());
+	            Logger.getAnonymousLogger().warning(e.getMessage());
 	            return false;
 	        }
 	    } else {

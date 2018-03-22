@@ -122,11 +122,11 @@ public class MyGrid extends JComponent implements KeyListener {
 			if (needsToCheckVisible) {
 				Rectangle visible = getVisibleRect();
 				if (current.x * CELL_SIZE > visible.x + visible.width) {
-					Logger.getAnonymousLogger().info(current.x * CELL_SIZE + "/" + (visible.x + visible.width));
+					Logger.getAnonymousLogger().fine(() -> current.x * CELL_SIZE + "/" + (visible.x + visible.width));
 					scrollRectToVisible(new Rectangle(visible.x + CELL_SIZE, visible.y, visible.width, visible.height));
 				}
 				if (current.x * CELL_SIZE < visible.x) {
-					Logger.getAnonymousLogger().info(current.x * CELL_SIZE + "/" + (visible.x + visible.width));
+					Logger.getAnonymousLogger().fine(() -> current.x * CELL_SIZE + "/" + (visible.x + visible.width));
 					scrollRectToVisible(new Rectangle(visible.x - CELL_SIZE, visible.y, visible.width, visible.height));
 				}
 			}

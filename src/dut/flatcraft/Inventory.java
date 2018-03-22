@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -40,7 +41,7 @@ public class Inventory implements Serializable {
 		handables.add(tool);
 		ui.add(new ToolInstanceUI(tool));
 		handler = createTransfertFrom();
-	
+
 		createOreContainer(MineUtils.getResourceByName("iron_lump"));
 		createCombustibleContainer(MineUtils.getResourceByName("wood"));
 		createCombustibleContainer(MineUtils.getResourceByName("leaves"));
@@ -118,18 +119,16 @@ public class Inventory implements Serializable {
 
 			@Override
 			protected Transferable createTransferable(JComponent c) {
-				System.err.println("Creating transferable");
 				ResourceContainer rc = ((ResourceContainerUI) c).getResourceContainer();
 				return rc.clone();
 			}
 
 			@Override
 			protected void exportDone(JComponent source, Transferable data, int action) {
-				System.err.println("Export done");
 				ResourceContainer container = ((ResourceContainerUI) source).getResourceContainer();
 				if (action == MOVE) {
 					container.consumeAll();
-				} else if (action == COPY){
+				} else if (action == COPY) {
 					if (container.getQuantity() == 1) {
 						container.consume(1);
 					} else {
@@ -147,7 +146,6 @@ public class Inventory implements Serializable {
 
 			@Override
 			public boolean importData(TransferSupport support) {
-				System.err.println("Importing data on dock");
 				if (support.isDrop()) {
 					JComponent source = (JComponent) support.getComponent();
 					try {
@@ -166,7 +164,7 @@ public class Inventory implements Serializable {
 						}
 						return true;
 					} catch (Exception e) {
-						System.out.println(e.getMessage());
+						Logger.getAnonymousLogger().info(e.getMessage());
 						return false;
 					}
 				} else {

@@ -14,6 +14,7 @@ public class MyMouseAdapterForInventory extends MouseAdapter implements Serializ
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	public void mousePressed(MouseEvent me) {
 		if (!me.isControlDown()) {
 			JComponent comp = (JComponent) me.getSource();

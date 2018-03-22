@@ -9,12 +9,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
@@ -44,10 +41,8 @@ public class CraftTable extends JPanel {
 	 * recompiling the program.
 	 */
 	static {
-		MineUtils.fillRulesFromFile("/craftrules.txt",RULES);
+		MineUtils.fillRulesFromFile("/craftrules.txt", RULES);
 	}
-
-	
 
 	private JPanel craftPanel;
 	private JPanel result;
@@ -101,7 +96,8 @@ public class CraftTable extends JPanel {
 		TransferHandler to = new AcceptResourceTransfert(this);
 		JPanel tableCell;
 		for (int i = 0; i < 9; i++) {
-			craftPanel.add(tableCell = new JPanel());
+			tableCell = new JPanel();
+			craftPanel.add(tableCell);
 			tableCell.setTransferHandler(to);
 			tableCell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 			tableCell.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
@@ -131,7 +127,7 @@ public class CraftTable extends JPanel {
 		}
 		result.removeAll();
 		if (crafted == null) {
-			System.err.println("Humm, cannot do anything for " + key);
+			Logger.getAnonymousLogger().warning(() -> "Humm, cannot do anything for " + key);
 		} else {
 			result.add(crafted);
 		}

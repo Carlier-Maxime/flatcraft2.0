@@ -41,7 +41,7 @@ public class ToolInstanceUI extends JButton implements ToolInstanceListener, Han
 			g.fillRect(rect.x + 5, rect.y + DEFAULT_IMAGE_SIZE / 2, DEFAULT_IMAGE_SIZE - 10, 3);
 			g.setColor(Color.YELLOW);
 			g.fillRect(rect.x + 5, DEFAULT_IMAGE_SIZE / 2,
-					(int) (tool.getCurrentLife() * DEFAULT_IMAGE_SIZE - 10) / tool.getType().getInitialLife(), 3);
+					(tool.getCurrentLife() * DEFAULT_IMAGE_SIZE - 10) / tool.getType().getInitialLife(), 3);
 		}
 	}
 

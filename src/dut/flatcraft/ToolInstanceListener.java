@@ -1,6 +1,8 @@
 package dut.flatcraft;
 
-public interface ToolInstanceListener {
+import java.io.Serializable;
 
-    void update(ToolInstance source);
+public interface ToolInstanceListener extends Serializable {
+
+	void update(ToolInstance source);
 }

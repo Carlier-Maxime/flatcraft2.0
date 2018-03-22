@@ -51,7 +51,7 @@ public class Player implements Serializable {
 	public void addToInventory(Cell cell) {
 		inventory.add(cell);
 	}
-	
+
 	public void addToInventory(Handable handable) {
 		inventory.add(handable);
 	}
@@ -97,10 +97,6 @@ public class Player implements Serializable {
 
 	public void paint(Graphics g) {
 		g.setColor(Color.PINK);
-		// g.fillOval(position.x * DEFAULT_IMAGE_SIZE + DEFAULT_IMAGE_SIZE / 4,
-		// position.y * DEFAULT_IMAGE_SIZE + DEFAULT_IMAGE_SIZE / 4,
-		// DEFAULT_IMAGE_SIZE / 2,
-		// DEFAULT_IMAGE_SIZE / 2);
 		g.drawImage(inventory.getElementInTheHand().getImage().getImage(), position.x * DEFAULT_IMAGE_SIZE,
 				position.y * DEFAULT_IMAGE_SIZE, null);
 		direction.paint(g);

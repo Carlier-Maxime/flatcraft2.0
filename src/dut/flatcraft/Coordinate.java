@@ -7,35 +7,35 @@ class Coordinate implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	int x, y;
 	final int width;
 	final int height;
-	
+
 	Coordinate(Coordinate c) {
-		this(c.x,c.y,c.width,c.height);
+		this(c.x, c.y, c.width, c.height);
 	}
-	
+
 	Coordinate(int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 	}
-	
+
 	Coordinate area(Coordinate c) {
-		int dx,dy;
-		if (x<c.x) {
-			dx=x;
+		int dx, dy;
+		if (x < c.x) {
+			dx = x;
 		} else {
 			dx = c.x;
 		}
-		if (y<c.y) {
-			dy=y;
+		if (y < c.y) {
+			dy = y;
 		} else {
 			dy = c.y;
 		}
-		return new Coordinate(dx,dy,width,height);
+		return new Coordinate(dx, dy, width, height);
 	}
 
 	@Override
@@ -64,8 +64,6 @@ class Coordinate implements Serializable {
 			return false;
 		if (x != other.x)
 			return false;
-		if (y != other.y)
-			return false;
-		return true;
+		return (y == other.y);
 	}
 }

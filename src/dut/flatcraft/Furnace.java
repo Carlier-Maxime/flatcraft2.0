@@ -10,6 +10,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
@@ -33,13 +34,13 @@ public class Furnace extends JPanel {
 	private static final Map<String, String> RULES = new HashMap<>();
 
 	static {
-		MineUtils.fillRulesFromFile("/furnacerules.txt",RULES);
+		MineUtils.fillRulesFromFile("/furnacerules.txt", RULES);
 	}
 	private JPanel craftPanel;
 	private JPanel result;
 
 	private Player player;
-	
+
 	/**
 	 * Build an empty furnace.
 	 */
@@ -84,12 +85,12 @@ public class Furnace extends JPanel {
 	}
 
 	private void createGrid() {
-		JPanel tableCell= new JPanel();
+		JPanel tableCell = new JPanel();
 		craftPanel.add(tableCell);
 		tableCell.setTransferHandler(new AcceptOreTransfert(this));
 		tableCell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		tableCell.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
-		tableCell= new JPanel();
+		tableCell = new JPanel();
 		craftPanel.add(tableCell);
 		tableCell.setTransferHandler(new AcceptCombustibleTransfert(this));
 		tableCell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -100,31 +101,31 @@ public class Furnace extends JPanel {
 	void processCooking() {
 		JPanel panel = (JPanel) craftPanel.getComponent(0);
 		if (panel.getComponentCount() == 0) {
-			System.out.println("No ore");
+			Logger.getAnonymousLogger().info("No ore");
 			return;
 		}
-		
+
 		ResourceContainer ore;
 		ResourceContainerUI rcui = (ResourceContainerUI) panel.getComponents()[0];
 		ore = rcui.getResourceContainer();
 		if (ore.getQuantity() == 0) {
-			System.out.println("No ore in container");
+			Logger.getAnonymousLogger().info("No ore in container");
 			return;
 		}
 		panel = (JPanel) craftPanel.getComponent(1);
 		if (panel.getComponentCount() == 0) {
-			System.out.println("No combustible");
+			Logger.getAnonymousLogger().info("No combustible");
 			return;
 		}
 		ResourceContainer combustible;
 		rcui = (ResourceContainerUI) panel.getComponents()[0];
 		combustible = rcui.getResourceContainer();
 		if (combustible.getQuantity() == 0) {
-			System.out.println("No combustible in container");
+			Logger.getAnonymousLogger().info("No combustible in container");
 			return;
 		}
 		String key = RULES.get(ore.getBlock().getName());
-		System.out.println("Should produce "+key);
+		Logger.getAnonymousLogger().info(() -> "Should produce " + key);
 		AbstractButton crafted = new ResourceContainerUI(MineUtils.getResourceByName(key), 1);
 		result.removeAll();
 		result.add(crafted);
