@@ -27,6 +27,7 @@ public class Main {
         
 		JButton craftButton = new JButton("Craft");
 		craftButton.addActionListener(e -> craft.setVisible(true));
+		craftButton.setFocusable(false);
 		
 		south.add(BorderLayout.WEST, craftButton);
 		south.add(BorderLayout.CENTER, grid.getPlayer().getInventoryUI());
@@ -37,6 +38,7 @@ public class Main {
 		
 		JButton cookButton = new JButton("Cook");
 		cookButton.addActionListener(e -> cook.setVisible(true));
+		cookButton.setFocusable(false);
 		
 		south.add(BorderLayout.EAST, cookButton);
 		frame.add(BorderLayout.SOUTH,south);

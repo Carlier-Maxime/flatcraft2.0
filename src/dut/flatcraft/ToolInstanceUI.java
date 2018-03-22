@@ -25,6 +25,7 @@ public class ToolInstanceUI extends JButton implements ToolInstanceListener, Han
 		this.tool.addListener(this);
 		setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE));
 		setBorder(BorderFactory.createEmptyBorder());
+		setFocusable(false);
 	}
 
 	public ToolInstance getMineTool() {

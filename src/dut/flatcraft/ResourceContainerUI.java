@@ -33,6 +33,7 @@ public class ResourceContainerUI extends JButton implements ResourceContainerLis
         setPreferredSize(new Dimension(MineUtils.DEFAULT_IMAGE_SIZE, MineUtils.DEFAULT_IMAGE_SIZE));
         setBorder(BorderFactory.createEmptyBorder());
         setToolTipText(container.getResource().getName());
+        setFocusable(false);
     }
 
     public ResourceContainer getResourceContainer() {
