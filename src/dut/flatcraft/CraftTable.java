@@ -9,6 +9,10 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,18 +39,21 @@ public class CraftTable extends JPanel {
 	private static final Map<String, String> RULES = new HashMap<>();
 
 	/*
-	 * The few crafting rules supported by the craftable. Ideally, the rules
-	 * should be read from a property file, that way the rules could be changed
-	 * without recompiling the program.
+	 * The few crafting rules supported by the craftable. Ideally, the rules should
+	 * be read from a property file, that way the rules could be changed without
+	 * recompiling the program.
 	 */
 	static {
-		RULES.put("tree_empty_empty_empty_empty_empty_empty_empty_empty", "wood 4");
-		RULES.put("wood_empty_empty_wood_empty_empty_empty_empty_empty", "stick 4");
-		RULES.put("wood_wood_wood_empty_stick_empty_empty_stick_empty", "woodpick");
-		RULES.put("wood_wood_empty_wood_stick_empty_empty_stick_empty", "woodaxe");
-		RULES.put("cobble_cobble_cobble_empty_stick_empty_empty_stick_empty", "stonepick");
-		RULES.put("cobble_cobble_empty_cobble_stick_empty_empty_stick_empty", "stoneaxe");
-		RULES.put("steel_lingot_steel_lingot_steel_lingot_empty_stick_empty_empty_stick_empty", "steelpick");
+		File file = new File(CraftTable.class.getResource("/craftrules.txt").getFile());
+		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+			String line;
+			while ((line=reader.readLine())!=null) {
+				String [] pieces = line.split("=");
+				RULES.put(pieces[0], pieces[1]);
+			}
+		} catch (IOException ioe) {
+			System.err.println("Rules file not found");
+		}
 	}
 
 	private JPanel craftPanel;
@@ -88,7 +95,7 @@ public class CraftTable extends JPanel {
 		Component[] components = result.getComponents();
 		if (components.length == 1) {
 			Component c = components[0];
-			player.addToInventory(((HandableUI)c).getHandable());
+			player.addToInventory(((HandableUI) c).getHandable());
 			consumeOneItem();
 			result.remove(c);
 			processCrafting();
