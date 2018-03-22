@@ -129,7 +129,7 @@ public class Inventory implements Serializable {
 				ResourceContainer container = ((ResourceContainerUI) source).getResourceContainer();
 				if (action == MOVE) {
 					container.consumeAll();
-				} else {
+				} else if (action == COPY){
 					if (container.getQuantity() == 1) {
 						container.consume(1);
 					} else {
