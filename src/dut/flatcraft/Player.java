@@ -15,6 +15,8 @@ public class Player implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private static Player player;
+
 	private Coordinate position;
 
 	final Direction up, down, left, right;
@@ -23,7 +25,7 @@ public class Player implements Serializable {
 
 	private Inventory inventory = new Inventory();
 
-	public Player(GameMap map) {
+	private Player(GameMap map) {
 		this.position = new Coordinate(0, 0, map.getWidth(), map.getHeight());
 		left = new Left(position);
 		right = new Right(position);
@@ -108,5 +110,16 @@ public class Player implements Serializable {
 
 	public JComponent getInventoryUI() {
 		return inventory.getUI();
+	}
+
+	public static void createPlayer(GameMap map) {
+		player = new Player(map);
+	}
+
+	public static Player instance() {
+		if (player == null) {
+			throw new IllegalStateException("The instance of player has not been created yet!");
+		}
+		return player;
 	}
 }
