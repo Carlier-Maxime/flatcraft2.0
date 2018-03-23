@@ -291,7 +291,7 @@ public class MineUtils {
 	}
 
 	public static void fillRulesFromFile(String filename, Map<String, String> rules) {
-		File file = new File(CraftTable.class.getResource(filename).getFile());
+		File file = new File(MineUtils.class.getResource(filename).getFile());
 		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 			String line;
 			while ((line = reader.readLine()) != null) {
