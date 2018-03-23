@@ -19,7 +19,7 @@ public interface Cell extends Serializable {
 
 	boolean dig(Player p);
 
-	default boolean action() {
+	default boolean execute() {
 		return false;
 	};
 

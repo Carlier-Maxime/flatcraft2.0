@@ -25,6 +25,8 @@ public class Player implements Serializable {
 
 	private Inventory inventory = new Inventory();
 
+	private GameMap map;
+
 	private Player(GameMap map) {
 		this.position = new Coordinate(0, 0, map.getWidth(), map.getHeight());
 		left = new Left(position);
@@ -32,6 +34,11 @@ public class Player implements Serializable {
 		up = new Up(position);
 		down = new Down(position);
 		direction = right;
+		this.map = map;
+	}
+
+	public GameMap getMap() {
+		return map;
 	}
 
 	public Handable getHand() {

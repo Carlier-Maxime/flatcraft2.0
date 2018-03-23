@@ -169,7 +169,7 @@ public class MyGrid extends JComponent implements KeyListener {
 	private boolean execute() {
 		Coordinate toExecute = player.toDig();
 		Cell cellToExecute = map.getAt(toExecute.y, toExecute.x);
-		return cellToExecute.action();
+		return cellToExecute.execute();
 	}
 
 	private void checkPhysics() {
