@@ -19,5 +19,9 @@ public interface Cell extends Serializable {
 
 	boolean dig(Player p);
 
+	default boolean action() {
+		return false;
+	};
+
 	boolean canBeReplacedBy(Cell c, Player p);
 }

@@ -101,6 +101,11 @@ public class MyGrid extends JComponent implements KeyListener {
 			needsUpdate = true;
 			needsToCheckVisible = true;
 			break;
+		case KeyEvent.VK_E:
+			execute();
+			needsUpdate = true;
+			needsToCheckVisible = true;
+			break;
 		case KeyEvent.VK_F1:
 			displayHelp();
 			break;
@@ -158,6 +163,12 @@ public class MyGrid extends JComponent implements KeyListener {
 			return true;
 		}
 		return false;
+	}
+
+	private boolean execute() {
+		Coordinate toExecute = player.toDig();
+		Cell cellToExecute = map.getAt(toExecute.y, toExecute.x);
+		return cellToExecute.action();
 	}
 
 	private void checkPhysics() {
