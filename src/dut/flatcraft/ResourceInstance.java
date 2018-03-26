@@ -19,6 +19,7 @@ public class ResourceInstance implements MineElementInstance, Cell {
 		this.hardness = type.getHardness();
 		this.label = label;
 		label.setIcon(type.getImage());
+		label.setToolTipText(type.getName());
 	}
 
 	public Resource getType() {
@@ -43,8 +44,9 @@ public class ResourceInstance implements MineElementInstance, Cell {
 	public void setUI(JLabel label) {
 		this.label = label;
 		label.setIcon(resourceType.getImage());
+		label.setToolTipText(resourceType.getName());
 	}
-	
+
 	@Override
 	public boolean manage(Player p) {
 		return false;
