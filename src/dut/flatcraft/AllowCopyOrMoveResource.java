@@ -4,6 +4,7 @@ import java.awt.Container;
 import java.awt.datatransfer.Transferable;
 
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
 final class AllowCopyOrMoveResource extends TransferHandler {
@@ -47,6 +48,10 @@ final class AllowCopyOrMoveResource extends TransferHandler {
 		} else if (action == COPY) {
 			if (rc.getQuantity() == 1) {
 				rc.consume(1);
+				JPanel panel = (JPanel) source.getParent();
+				panel.removeAll();
+				panel.revalidate();
+				panel.repaint();
 			} else {
 				rc.consume(rc.getQuantity() / 2);
 			}
