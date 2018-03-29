@@ -4,7 +4,6 @@ import java.awt.Container;
 import java.awt.datatransfer.Transferable;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
 final class AllowCopyOrMoveResource extends TransferHandler {
@@ -33,14 +32,14 @@ final class AllowCopyOrMoveResource extends TransferHandler {
 
 	@Override
 	protected Transferable createTransferable(JComponent c) {
-		return ((ResourceContainerUI) c).getResourceContainer();
+		return ((ResourceContainerUI) c).getResourceContainer().clone();
 	}
 
 	@Override
 	protected void exportDone(JComponent source, Transferable data, int action) {
+		Container container = source.getParent();
 		ResourceContainer rc = ((ResourceContainerUI) source).getResourceContainer();
 		if (action == MOVE || rc.getQuantity() == 0) {
-			Container container = source.getParent();
 			container.remove(source);
 			container.revalidate();
 			container.repaint();
@@ -48,15 +47,13 @@ final class AllowCopyOrMoveResource extends TransferHandler {
 		} else if (action == COPY) {
 			if (rc.getQuantity() == 1) {
 				rc.consume(1);
-				JPanel panel = (JPanel) source.getParent();
-				panel.removeAll();
-				panel.revalidate();
-				panel.repaint();
+				container.removeAll();
 			} else {
 				rc.consume(rc.getQuantity() / 2);
 			}
+			container.revalidate();
+			container.repaint();
 			this.craftTable.processCrafting();
 		}
-
 	}
 }
