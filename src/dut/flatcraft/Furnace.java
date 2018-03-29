@@ -59,10 +59,15 @@ public class Furnace extends JPanel {
 		result.setLayout(new FlowLayout());
 		result.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		result.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
+		JPanel south = new JPanel();
 		JButton add = new JButton("Ajouter à l'inventaire");
 		add.addActionListener(e -> addToInventory());
+		south.add(add);
+		JButton clear = new JButton("Nettoyer");
+		clear.addActionListener(e -> addBackToInventory());
+		south.add(clear);
 		add(BorderLayout.EAST, result);
-		add(BorderLayout.SOUTH, add);
+		add(BorderLayout.SOUTH, south);
 	}
 
 	private void addToInventory() {
@@ -81,6 +86,25 @@ public class Furnace extends JPanel {
 			processCooking();
 			result.revalidate();
 			result.repaint();
+		}
+	}
+
+	private void addBackToInventory() {
+		Component[] components = craftPanel.getComponents();
+		JPanel panel = (JPanel) components[0];
+		if (panel.getComponentCount() == 1) {
+
+			player.addToInventory(((ResourceContainerUI) panel.getComponent(0)).getHandable());
+			panel.removeAll();
+			panel.revalidate();
+			panel.repaint();
+		}
+		panel = (JPanel) components[1];
+		if (panel.getComponentCount() == 1) {
+			player.addToInventory(((ResourceContainerUI) panel.getComponent(0)).getHandable());
+			panel.removeAll();
+			panel.revalidate();
+			panel.repaint();
 		}
 	}
 
