@@ -106,6 +106,9 @@ public class Furnace extends JPanel {
 			panel.revalidate();
 			panel.repaint();
 		}
+		result.removeAll();
+		result.revalidate();
+		result.repaint();
 	}
 
 	private void createGrid() {
