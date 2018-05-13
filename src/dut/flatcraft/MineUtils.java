@@ -4,11 +4,11 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
@@ -291,15 +291,15 @@ public class MineUtils {
 	}
 
 	public static void fillRulesFromFile(String filename, Map<String, String> rules) {
-		File file = new File(MineUtils.class.getResource(filename).getFile());
-		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+		try (BufferedReader reader = new BufferedReader(
+				new InputStreamReader(MineUtils.class.getResource(filename).openStream()))) {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String[] pieces = line.split("=");
 				rules.put(pieces[0], pieces[1]);
 			}
 		} catch (IOException ioe) {
-			Logger.getAnonymousLogger().info("Rules file " + filename + " not found");
+			Logger.getAnonymousLogger().log(Level.INFO, "Rules file " + filename + " not found", ioe);
 		}
 	}
 }
