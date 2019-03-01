@@ -2,7 +2,6 @@ package dut.flatcraft;
 
 import static dut.flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.io.Serializable;
 
@@ -19,8 +18,14 @@ public class Player implements Serializable {
 
 	private Coordinate position;
 
+	/**
+	 * The four possible directions.
+	 */
 	final Direction up, down, left, right;
 
+	/**
+	 * The current direction.
+	 */
 	Direction direction;
 
 	private Inventory inventory = new Inventory();
@@ -105,9 +110,11 @@ public class Player implements Serializable {
 	}
 
 	public void paint(Graphics g) {
-		g.setColor(Color.PINK);
+		// TODO: useless ? g.setColor(Color.PINK);
 		g.drawImage(inventory.getElementInTheHand().getImage().getImage(), position.x * DEFAULT_IMAGE_SIZE,
 				position.y * DEFAULT_IMAGE_SIZE, null);
+		// application of state design pattern: the arrow is displayed depending of the
+		// internal state
 		direction.paint(g);
 	}
 
