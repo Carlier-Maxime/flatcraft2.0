@@ -38,7 +38,7 @@ public interface Cell extends Serializable {
 
 	default boolean execute() {
 		return false;
-	};
+	}
 
 	boolean canBeReplacedBy(Cell c, Player p);
 }
