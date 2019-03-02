@@ -18,15 +18,18 @@ public class Player implements Serializable {
 
 	private Coordinate position;
 
-	/**
+	/*
 	 * The four possible directions.
 	 */
-	final Direction up, down, left, right;
+	final Direction lookingUp;
+	final Direction lookingDown;
+	final Direction lookingLeft;
+	final Direction lookingRight;
 
 	/**
 	 * The current direction.
 	 */
-	Direction direction;
+	Direction currentDirection;
 
 	private Inventory inventory = new Inventory();
 
@@ -34,11 +37,11 @@ public class Player implements Serializable {
 
 	private Player(GameMap map) {
 		this.position = new Coordinate(0, 0, map.getWidth(), map.getHeight());
-		left = new Left(position);
-		right = new Right(position);
-		up = new Up(position);
-		down = new Down(position);
-		direction = right;
+		lookingLeft = new Left(position);
+		lookingRight = new Right(position);
+		lookingUp = new Up(position);
+		lookingDown = new Down(position);
+		currentDirection = lookingRight;
 		this.map = map;
 	}
 
@@ -71,51 +74,50 @@ public class Player implements Serializable {
 	}
 
 	void up() {
-		direction = up;
+		currentDirection = lookingUp;
 	}
 
 	void down() {
-		direction = down;
+		currentDirection = lookingDown;
 	}
 
 	void left() {
-		direction = left;
+		currentDirection = lookingLeft;
 	}
 
 	void right() {
-		direction = right;
+		currentDirection = lookingRight;
 	}
 
 	Direction opposite() {
-		if (direction == up)
-			return down;
-		if (direction == down)
-			return up;
-		if (direction == left)
-			return right;
-		assert direction == right;
-		return left;
+		if (currentDirection == lookingUp)
+			return lookingDown;
+		if (currentDirection == lookingDown)
+			return lookingUp;
+		if (currentDirection == lookingLeft)
+			return lookingRight;
+		assert currentDirection == lookingRight;
+		return lookingLeft;
 	}
 
 	boolean next() {
-		return direction.next();
+		return currentDirection.next();
 	}
 
 	Direction getDirection() {
-		return direction;
+		return currentDirection;
 	}
 
 	Coordinate toDig() {
-		return inventory.getElementInTheHand().toDig(direction);
+		return inventory.getElementInTheHand().toDig(currentDirection);
 	}
 
 	public void paint(Graphics g) {
-		// TODO: useless ? g.setColor(Color.PINK);
 		g.drawImage(inventory.getElementInTheHand().getImage().getImage(), position.x * DEFAULT_IMAGE_SIZE,
 				position.y * DEFAULT_IMAGE_SIZE, null);
 		// application of state design pattern: the arrow is displayed depending of the
 		// internal state
-		direction.paint(g);
+		currentDirection.paint(g);
 	}
 
 	public Coordinate getPosition() {

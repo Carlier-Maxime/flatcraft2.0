@@ -28,7 +28,7 @@ public class EmptyCell implements Cell {
 
 	@Override
 	public boolean manage(Player p) {
-		return p.down.next();
+		return p.lookingDown.next();
 	}
 	@Override
 	public JLabel getUI() {
