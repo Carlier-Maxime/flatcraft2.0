@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -66,6 +67,7 @@ public class Furnace extends JPanel {
 		JButton clear = new JButton("Nettoyer");
 		clear.addActionListener(e -> addBackToInventory());
 		south.add(clear);
+		add(BorderLayout.CENTER, new JLabel("<html><p>Up: metal</p><p>Down: wood, leaves</p>"));
 		add(BorderLayout.EAST, result);
 		add(BorderLayout.SOUTH, south);
 	}
@@ -122,7 +124,7 @@ public class Furnace extends JPanel {
 		tableCell.setTransferHandler(new AcceptCombustibleTransfert(this));
 		tableCell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		tableCell.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
-		add(BorderLayout.CENTER, craftPanel);
+		add(BorderLayout.WEST, craftPanel);
 	}
 
 	void processCooking() {

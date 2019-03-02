@@ -2,6 +2,7 @@ package dut.flatcraft;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Toolkit;
 
 import javax.swing.JButton;
@@ -12,10 +13,31 @@ import javax.swing.JScrollPane;
 
 public class Main {
 
+	private static void positionCraftTable(Dimension screenSize, JButton button, JDialog dialog) {
+		if (dialog.isVisible()) {
+			dialog.setVisible(false);
+		} else {
+			Point pos = button.getLocation();
+			dialog.setLocation(pos.x, screenSize.height - 70 - dialog.getHeight());
+			dialog.setVisible(true);
+		}
+	}
+
+	private static void positionFurnace(Dimension screenSize, JButton button, JDialog dialog) {
+		if (dialog.isVisible()) {
+			dialog.setVisible(false);
+		} else {
+			Point pos = button.getLocation();
+			dialog.setLocation(pos.x + button.getWidth() - dialog.getWidth(),
+					screenSize.height - 70 - dialog.getHeight());
+			dialog.setVisible(true);
+		}
+	}
+
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-		MyGrid grid = new MyGrid((dimension.height - 60) / 40, 120, new ResourceCellFactory(),
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		MyGrid grid = new MyGrid((screenSize.height - 60) / 40, 120, new ResourceCellFactory(),
 				new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5));
 		JScrollPane scrollpane = new JScrollPane(grid, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -24,14 +46,15 @@ public class Main {
 		scrollpane.setDoubleBuffered(true);
 		frame.add(BorderLayout.CENTER, scrollpane);
 		JPanel south = new JPanel();
-		south.setLayout(new BorderLayout());
+		// south.setLayout(new BorderLayout());
 
 		JDialog craft = new JDialog(frame, "Craft Table");
 		craft.add(new CraftTable(grid.getPlayer()));
 		craft.pack();
+		craft.setLocation(screenSize.width / 2 - craft.getWidth() / 2, screenSize.height / 2 - craft.getHeight() / 2);
 
 		JButton craftButton = new JButton("Craft");
-		craftButton.addActionListener(e -> craft.setVisible(true));
+		craftButton.addActionListener(e -> positionCraftTable(screenSize, craftButton, craft));
 		craftButton.setFocusable(false);
 
 		south.add(BorderLayout.WEST, craftButton);
@@ -42,7 +65,7 @@ public class Main {
 		cook.pack();
 
 		JButton cookButton = new JButton("Cook");
-		cookButton.addActionListener(e -> cook.setVisible(true));
+		cookButton.addActionListener(e -> positionFurnace(screenSize, cookButton, cook));
 		cookButton.setFocusable(false);
 
 		south.add(BorderLayout.EAST, cookButton);

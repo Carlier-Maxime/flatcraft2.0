@@ -41,11 +41,6 @@ public class Inventory implements Serializable {
 		handables.add(tool);
 		ui.add(new ToolInstanceUI(tool));
 		handler = createTransfertFrom();
-
-		createOreContainer(MineUtils.getResourceByName("iron_lump"));
-		createCombustibleContainer(MineUtils.getResourceByName("wood"));
-		createCombustibleContainer(MineUtils.getResourceByName("leaves"));
-		createCombustibleContainer(MineUtils.getResourceByName("coal_lump"));
 	}
 
 	public Handable getElementInTheHand() {
