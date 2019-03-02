@@ -10,6 +10,8 @@ import java.util.Optional;
 
 import javax.swing.ImageIcon;
 
+import fr.univartois.migl.utils.DesignPattern;
+
 public class ResourceContainer implements Transferable, Cloneable, Handable {
 	/**
 	 * 
@@ -118,6 +120,7 @@ public class ResourceContainer implements Transferable, Cloneable, Handable {
 	}
 
 	@Override
+	@DesignPattern(name = "Prototype")
 	public ResourceContainer clone() {
 		return new ResourceContainer(resource, quantity);
 	}
@@ -132,7 +135,7 @@ public class ResourceContainer implements Transferable, Cloneable, Handable {
 				Coordinate toDig = p.toDig();
 				consume();
 				if (toDig.equals(p.getPosition())) {
-					p.opposite()	.next();
+					p.opposite().next();
 				}
 				return Optional.of(instance);
 			}
@@ -147,6 +150,6 @@ public class ResourceContainer implements Transferable, Cloneable, Handable {
 
 	@Override
 	public boolean mustBeChanged() {
-		return quantity==0;
+		return quantity == 0;
 	}
 }

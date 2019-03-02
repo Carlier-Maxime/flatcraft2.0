@@ -5,14 +5,19 @@ import javax.swing.JLabel;
 
 public class NormalCell implements Cell {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private ImageIcon image;
 	private JLabel label;
-	
+
 	public NormalCell(ImageIcon image) {
 		this.image = image;
 		this.label = new JLabel(image);
 	}
-	
+
 	@Override
 	public ImageIcon getImage() {
 		return image;

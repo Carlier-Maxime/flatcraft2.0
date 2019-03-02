@@ -46,7 +46,6 @@ public class Main {
 		scrollpane.setDoubleBuffered(true);
 		frame.add(BorderLayout.CENTER, scrollpane);
 		JPanel south = new JPanel();
-		// south.setLayout(new BorderLayout());
 
 		JDialog craft = new JDialog(frame, "Craft Table");
 		craft.add(new CraftTable(grid.getPlayer()));
