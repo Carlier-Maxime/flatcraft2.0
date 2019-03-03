@@ -37,7 +37,7 @@ public class Main {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		MyGrid grid = new MyGrid((screenSize.height - 60) / 40, 120, new ResourceCellFactory(),
+		MyGrid grid = new MyGrid((screenSize.height - 100) / 40, 120, new ResourceCellFactory(),
 				new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5));
 		JScrollPane scrollpane = new JScrollPane(grid, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
