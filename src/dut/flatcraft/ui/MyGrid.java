@@ -112,9 +112,10 @@ public class MyGrid extends JComponent implements KeyListener {
 			needsToCheckVisible = true;
 			break;
 		case KeyEvent.VK_E:
-			execute();
-			needsUpdate = true;
-			needsToCheckVisible = true;
+			if (execute()) {
+				needsUpdate = true;
+				needsToCheckVisible = true;
+			}
 			break;
 		case KeyEvent.VK_F1:
 			displayHelp();
@@ -156,10 +157,11 @@ public class MyGrid extends JComponent implements KeyListener {
 	private void displayHelp() {
 		String help = "<html><h1>Comment jouer ?</h1>" + "C'est simple : <ul>"
 				+ "<li>on se dirige à l'aide des touches directionnelles.</li>"
-				+ "<li>on utilise un outil ou on dépose une ressource à l'aide de la touche CTRL</li>"
-				+ "<li>on change d'objet en main à l'aide de CTRL+flèche droite ou gauche</li>"
+				+ "<li>on utilise un outil ou on dépose une ressource à l'aide de la touche <pre>CTRL</pre></li>"
+				+ "<li>on change d'objet en main à l'aide de <pre>CTRL</pre>+flèche droite ou gauche</li>"
 				+ "<li>on déplace les ressources de l'inventaire à la table de craft par glissé/déplacé</li>"
-				+ "<li>on déplace les ressources sur table de craft par glissé/déplacé avec ou sans CTRL</li>"
+				+ "<li>on déplace les ressources sur table de craft par glissé/déplacé avec ou sans <pre>CTRL</pre></li>"
+				+ "<li>on exécute une action sur une cellule qui se trouve devant soi à l'aide de la touche <pre>e</pre></li>"
 				+ "</ul>";
 		JOptionPane.showMessageDialog(null, help);
 	}
