@@ -4,12 +4,25 @@ import dut.flatcraft.CellFactory;
 import dut.flatcraft.GameMap;
 import fr.univartois.migl.utils.DesignPattern;
 
+/**
+ * Adds a "terril" somewhere in the map.
+ * 
+ * The "terril" is like a pyramid made of soil.
+ * 
+ * @author leberre
+ *
+ */
 @DesignPattern(name = "Decorator")
 public class TerrilDecorator implements MapGenerator {
 
 	private int maxHeight;
 	private MapGenerator decorated;
 
+	/**
+	 * 
+	 * @param decorated the decorated MapGenerator
+	 * @param maxHeight the maximum height of the terril
+	 */
 	public TerrilDecorator(MapGenerator decorated, int maxHeight) {
 		this.decorated = decorated;
 		this.maxHeight = maxHeight;
