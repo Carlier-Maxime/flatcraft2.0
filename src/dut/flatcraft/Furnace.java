@@ -12,9 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -155,7 +155,7 @@ public class Furnace extends JPanel {
 		}
 		String key = RULES.get(ore.getBlock().getName());
 		Logger.getAnonymousLogger().info(() -> "Should produce " + key);
-		AbstractButton crafted = new ResourceContainerUI(MineUtils.getResourceByName(key), 1);
+		JComponent crafted = new ResourceContainerUI(MineUtils.getResourceByName(key), 1);
 		result.removeAll();
 		result.add(crafted);
 		result.revalidate();

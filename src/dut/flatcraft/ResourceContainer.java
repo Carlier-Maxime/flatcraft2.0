@@ -12,6 +12,17 @@ import javax.swing.ImageIcon;
 
 import fr.univartois.migl.utils.DesignPattern;
 
+/**
+ * A resource container allows to collect resources of a given type.
+ * 
+ * The ResourceInstance objects are not kept in the container: they are created
+ * on demand.
+ * 
+ * The interaction with the container is performed using Java Drap and Drop.
+ * 
+ * @author leberre
+ *
+ */
 public class ResourceContainer implements Transferable, Cloneable, Handable {
 	/**
 	 * 

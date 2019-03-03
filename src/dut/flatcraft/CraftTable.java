@@ -13,9 +13,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
@@ -108,7 +108,7 @@ public class CraftTable extends JPanel {
 	void processCrafting() {
 		String key = buildCraftingKey();
 		String value = RULES.get(key);
-		AbstractButton crafted = null;
+		JComponent crafted = null;
 		if (value != null) {
 			String[] pieces = value.split(" ");
 			if (pieces.length == 2) {

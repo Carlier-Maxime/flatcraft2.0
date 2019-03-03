@@ -7,9 +7,18 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
+import javax.swing.JLabel;
 
-public class ResourceContainerUI extends JButton implements ResourceContainerListener, HandableUI {
+/**
+ * Graphical representation of a ResourceContainer.
+ * 
+ * Each container is represented by the image of its type and a number
+ * representing the number of resources instance available in the container.
+ * 
+ * @author leberre
+ *
+ */
+public class ResourceContainerUI extends JLabel implements ResourceContainerListener, HandableUI {
 
 	/**
 	 * 
