@@ -52,14 +52,14 @@ pour vous en faire découvrir les mécanismes.
 
 Les classes importantes pour réaliser ces modifications sont :
 
-- [MineUtils](https://forge.univ-artois.fr/dut2017/flatcraft/blob/solution/src/dut/archilog/MineUtils.java)
-- [Resource](https://forge.univ-artois.fr/dut2017/flatcraft/blob/solution/src/dut/archilog/resources/Resource.java)
-- [ResourceInstance](https://forge.univ-artois.fr/dut2017/flatcraft/blob/solution/src/dut/archilog/resources/ResourceInstance.java)
-- [ExecutableResource](https://forge.univ-artois.fr/dut2017/flatcraft/blob/solution/src/dut/archilog/resources/ExecutableResource.java)
-- [ExecutableResourceInstance](https://forge.univ-artois.fr/dut2017/flatcraft/blob/solution/src/dut/archilog/resources/ExecutableResourceInstance.java)
-- [ResourceCellFactory](https://forge.univ-artois.fr/dut2017/flatcraft/blob/solution/src/dut/archilog/ResourceCellFactory.java)
+- [MineUtils](src/dut/flatcraft/MineUtils.java)
+- [Resource](src/dut/flatcraft/resources/Resource.java)
+- [ResourceInstance](src/dut/flatcraft/resources/ResourceInstance.java)
+- [ExecutableResource](src/dut/flatcraft/resources/ExecutableResource.java)
+- [ExecutableResourceInstance](src/dut/flatcraft/resources/ExecutableResourceInstance.java)
+- [ResourceCellFactory](src/dut/flatcraft/ResourceCellFactory.java)
 
-ainsi que les fichiers [`craftrules.txt`](https://forge.univ-artois.fr/dut2017/flatcraft/blob/solution/src/craftrules.txt) et [`furnacerules.txt`](https://forge.univ-artois.fr/dut2017/flatcraft/blob/solution/src/furnacerules.txt) à la racine du répertoire `src`.
+ainsi que les fichiers [`craftrules.txt`](src/craftrules.txt) et [`furnacerules.txt`](src/furnacerules.txt) à la racine du répertoire `src`.
 
 1. Ajouter une nouvelle ressource de votre choix
 1. Ajouter un nouvel outil de votre choix
