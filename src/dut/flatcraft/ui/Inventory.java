@@ -44,13 +44,18 @@ public class Inventory implements Serializable {
 
 	public Inventory() {
 		ui.setBorder(BorderFactory.createEmptyBorder());
+		handler = createTransfertFrom();
+		createOreContainer(MineUtils.getResourceByName("iron_lump"));
+		createCombustibleContainer(MineUtils.getResourceByName("wood"));
+		createCombustibleContainer(MineUtils.getResourceByName("leaves"));
+		createCombustibleContainer(MineUtils.getResourceByName("coal_lump"));
 		ToolInstance tool = MineUtils.createToolByName("woodaxe").newInstance();
 		handables.add(tool);
 		ui.add(new ToolInstanceUI(tool));
 		tool = MineUtils.createToolByName("woodpick").newInstance();
 		handables.add(tool);
 		ui.add(new ToolInstanceUI(tool));
-		handler = createTransfertFrom();
+		current = handables.size() - 2;
 	}
 
 	public Handable getElementInTheHand() {

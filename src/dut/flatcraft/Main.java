@@ -25,7 +25,8 @@ public class Main {
 			dialog.setVisible(false);
 		} else {
 			Point pos = button.getLocation();
-			dialog.setLocation(pos.x, screenSize.height - 70 - dialog.getHeight());
+			dialog.setLocation(pos.x + button.getWidth() - dialog.getWidth(),
+					screenSize.height - 70 - dialog.getHeight());
 			dialog.setVisible(true);
 		}
 	}
@@ -35,8 +36,7 @@ public class Main {
 			dialog.setVisible(false);
 		} else {
 			Point pos = button.getLocation();
-			dialog.setLocation(pos.x + button.getWidth() - dialog.getWidth(),
-					screenSize.height - 70 - dialog.getHeight());
+			dialog.setLocation(pos.x, screenSize.height - 70 - dialog.getHeight());
 			dialog.setVisible(true);
 		}
 	}
@@ -59,13 +59,6 @@ public class Main {
 		craft.pack();
 		craft.setLocation(screenSize.width / 2 - craft.getWidth() / 2, screenSize.height / 2 - craft.getHeight() / 2);
 
-		JButton craftButton = new JButton("Craft");
-		craftButton.addActionListener(e -> positionCraftTable(screenSize, craftButton, craft));
-		craftButton.setFocusable(false);
-
-		south.add(BorderLayout.WEST, craftButton);
-		south.add(BorderLayout.CENTER, grid.getPlayer().getInventoryUI());
-
 		JDialog cook = new JDialog(frame, "Furnace");
 		cook.add(new Furnace(grid.getPlayer()));
 		cook.pack();
@@ -73,8 +66,15 @@ public class Main {
 		JButton cookButton = new JButton("Cook");
 		cookButton.addActionListener(e -> positionFurnace(screenSize, cookButton, cook));
 		cookButton.setFocusable(false);
+		south.add(cookButton);
 
-		south.add(BorderLayout.EAST, cookButton);
+		south.add(grid.getPlayer().getInventoryUI());
+
+		JButton craftButton = new JButton("Craft");
+		craftButton.addActionListener(e -> positionCraftTable(screenSize, craftButton, craft));
+		craftButton.setFocusable(false);
+		south.add(craftButton);
+
 		frame.add(BorderLayout.SOUTH, south);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -39,9 +39,12 @@ public class ResourceCellFactory implements CellFactory {
 		if (RAND.nextInt(100) < 5) {
 			return MineUtils.getResourceByName("iron").newInstance();
 		}
+		if (RAND.nextInt(100) < 5) {
+			return MineUtils.getResourceByName("copper").newInstance();
+		}
 		return MineUtils.getResourceByName("stone").newInstance();
 	}
-	
+
 	@Override
 	public Cell createTree() {
 		return MineUtils.getResourceByName("tree").newInstance();

@@ -232,10 +232,21 @@ public class MineUtils {
 			resource = makeResource("cobble", 10, ToolType.MEDIUM_TOOL);
 			break;
 		case "steel_lingot":
-			resource = makeResource("steel_lingot", 10, ToolType.MEDIUM_TOOL);
+			resource = makeResource("steel_ingot", 10, ToolType.MEDIUM_TOOL);
 			break;
 		case "gold_lingot":
-			resource = makeResource("gold_lingot", 10, ToolType.HARD_TOOL);
+			resource = makeResource("gold_ingot", 10, ToolType.HARD_TOOL);
+			break;
+		case "copper_lump":
+			resource = makeResource("copper_lump", 30, ToolType.MEDIUM_TOOL);
+			break;
+		case "copper":
+			lump = getResourceByName("copper_lump");
+			resource = new TransformableResource("copper", overlay("stone", "mineral_copper"), lump, 30,
+					ToolType.MEDIUM_TOOL);
+			break;
+		case "copper_lingot":
+			resource = makeResource("copper_ingot", 10, ToolType.HARD_TOOL);
 			break;
 		default:
 			throw new IllegalArgumentException(resourceName + " is not a correct resource name");
