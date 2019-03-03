@@ -72,13 +72,14 @@ ces images dans votre programme en utilisant un nom court (ici `xxxxx`).
 
 Par exemple, pour récupérer l'image correspondant au fichier `textures/default_acacia_tree.png`,
 il suffit d'utiliser la méthode `MineUtils.getImage("acacia_tree")`.
- ### Partie 4 : à vous de jouer
+
+### Partie 4 : à vous de jouer
  
- Chaque binôme doit décider d'une nouvelle fonctionnalité à ajouter au jeu flatcraft.
- Idéalement, le travail des différents groupes pourra être aggrégé pour obtenir 
- un jeu plus complet.
+Chaque binôme doit décider d'une nouvelle fonctionnalité à ajouter au jeu flatcraft.
+Idéalement, le travail des différents groupes pourra être aggrégé pour obtenir 
+un jeu plus complet.
 
-
+Vous devez déposer votre proposition de fonctionnalité sur Moodle.
 
 # Flatcraft (sujet 2017)
 
