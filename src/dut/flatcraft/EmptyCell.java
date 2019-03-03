@@ -3,24 +3,38 @@ package dut.flatcraft;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import dut.flatcraft.player.Player;
+import dut.flatcraft.resources.Resource;
+
+/**
+ * A cell representing the absence of resource on the map.
+ * 
+ * @author leberre
+ *
+ */
 public class EmptyCell implements Cell {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private ImageIcon image;
 	private JLabel label;
-	
-	private Resource type = MineUtils.getResourceByName("air");
-	
+
+	private static final Resource TYPE = MineUtils.getResourceByName("air");
+
 	public EmptyCell(ImageIcon image, JLabel label) {
 		this.image = image;
 		this.label = label;
 		label.setIcon(image);
 		label.setToolTipText("Empty");
 	}
-	
+
 	public EmptyCell(ImageIcon image) {
-		this(image,new JLabel());
+		this(image, new JLabel());
 	}
-	
+
 	@Override
 	public ImageIcon getImage() {
 		return image;
@@ -30,6 +44,7 @@ public class EmptyCell implements Cell {
 	public boolean manage(Player p) {
 		return p.lookingDown.next();
 	}
+
 	@Override
 	public JLabel getUI() {
 		return label;
@@ -42,7 +57,7 @@ public class EmptyCell implements Cell {
 
 	@Override
 	public Resource getType() {
-		return type;
+		return TYPE;
 	}
 
 	@Override

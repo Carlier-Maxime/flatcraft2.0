@@ -11,6 +11,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import dut.flatcraft.map.SimpleGenerator;
+import dut.flatcraft.map.TerrilDecorator;
+import dut.flatcraft.map.TreeDecorator;
+import dut.flatcraft.ui.CraftTable;
+import dut.flatcraft.ui.Furnace;
+import dut.flatcraft.ui.MyGrid;
+
 public class Main {
 
 	private static void positionCraftTable(Dimension screenSize, JButton button, JDialog dialog) {

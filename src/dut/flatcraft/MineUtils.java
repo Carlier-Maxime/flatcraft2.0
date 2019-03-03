@@ -19,6 +19,11 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
 
+import dut.flatcraft.resources.Resource;
+import dut.flatcraft.resources.TransformableResource;
+import dut.flatcraft.tools.Tool;
+import dut.flatcraft.tools.ToolType;
+
 /**
  * Utility class to easily access the images to use in the game.
  * 
@@ -28,7 +33,7 @@ import javax.swing.JToggleButton;
 public class MineUtils {
 
 	private MineUtils() {
-		// pas possible de créer des instances de cette classe
+		// to prevent the creation of an instance of that class
 	}
 
 	public static final int DEFAULT_IMAGE_SIZE = 40;
