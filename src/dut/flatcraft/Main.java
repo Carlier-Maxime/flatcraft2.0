@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import dut.flatcraft.map.MapGenerator;
 import dut.flatcraft.map.SimpleGenerator;
 import dut.flatcraft.map.TerrilDecorator;
 import dut.flatcraft.map.TreeDecorator;
@@ -42,16 +43,19 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		JFrame frame = new JFrame();
+		MapGenerator generator = new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5);
+
+		JFrame frame = new JFrame("FLATCRAFT 2019 - PROJET DUT 2 - F1 pour obtenir de l'aide");
+
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		MyGrid grid = new MyGrid((screenSize.height - 100) / 40, 120, new ResourceCellFactory(),
-				new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5));
+		MyGrid grid = new MyGrid((screenSize.height - 100) / 40, 120, new ResourceCellFactory(), generator);
 		JScrollPane scrollpane = new JScrollPane(grid, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollpane.getVerticalScrollBar().setUnitIncrement(40);
 		scrollpane.getHorizontalScrollBar().setUnitIncrement(40);
 		scrollpane.setDoubleBuffered(true);
 		frame.add(BorderLayout.CENTER, scrollpane);
+
 		JPanel south = new JPanel();
 
 		JDialog craft = new JDialog(frame, "Craft Table");

@@ -157,7 +157,10 @@ public class MyGrid extends JComponent implements KeyListener {
 		String help = "<html><h1>Comment jouer ?</h1>" + "C'est simple : <ul>"
 				+ "<li>on se dirige à l'aide des touches directionnelles.</li>"
 				+ "<li>on utilise un outil ou on dépose une ressource à l'aide de la touche CTRL</li>"
-				+ "<li>on change d'objet en main à l'aide de CTRL+flèche droite ou gauche</li>" + "</ul>";
+				+ "<li>on change d'objet en main à l'aide de CTRL+flèche droite ou gauche</li>"
+				+ "<li>on déplace les ressources de l'inventaire à la table de craft par glissé/déplacé</li>"
+				+ "<li>on déplace les ressources sur table de craft par glissé/déplacé avec ou sans CTRL</li>"
+				+ "</ul>";
 		JOptionPane.showMessageDialog(null, help);
 	}
 
