@@ -52,14 +52,14 @@ pour vous en faire découvrir les mécanismes.
 
 Les classes importantes pour réaliser ces modifications sont :
 
-- [MineUtils](src/dut/archilog/MineUtils.java)
-- [Resource]((src/dut/archilog/resources/Resource.java)
-- [ResourceInstance](src/dut/archilog/resources/ResourceInstance.java)
-- [ExecutableResource](src/dut/archilog/resources/ExecutableResource.java)
-- [ExecutableResourceInstance](src/dut/archilog/resources/ExecutableResourceInstance.java)
-- [ResourceCellFactory](src/dut/archilog/ResourceCellFactory.java)
+- [MineUtils](blob/solution/src/dut/archilog/MineUtils.java)
+- [Resource](blob/solution/src/dut/archilog/resources/Resource.java)
+- [ResourceInstance](blob/solution/src/dut/archilog/resources/ResourceInstance.java)
+- [ExecutableResource](blob/solution/src/dut/archilog/resources/ExecutableResource.java)
+- [ExecutableResourceInstance](blob/solution/src/dut/archilog/resources/ExecutableResourceInstance.java)
+- [ResourceCellFactory](blob/solution/src/dut/archilog/ResourceCellFactory.java)
 
-ainsi que les fichiers [`craftrules.txt`](src/craftrules.txt) et [`furnacerules.txt`](src/furnacerules.txt) à la racine du répertoire `src`.
+ainsi que les fichiers [`craftrules.txt`](blob/solution/src/craftrules.txt) et [`furnacerules.txt`](blob/solution/src/furnacerules.txt) à la racine du répertoire `src`.
 
 1. Ajouter une nouvelle ressource de votre choix
 1. Ajouter un nouvel outil de votre choix
