@@ -9,9 +9,9 @@ public class ResourceCellFactory implements CellFactory {
 	@Override
 	public Cell createSky() {
 		if (RAND.nextInt(10) < 1) {
-			return new EmptyCell(MineUtils.CLOUD);
+			return new EmptyCell(MineUtils.getImage("cloud"));
 		}
-		return new EmptyCell(MineUtils.ICE);
+		return new EmptyCell(MineUtils.getImage("ice"));
 	}
 
 	@Override
