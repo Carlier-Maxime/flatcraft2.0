@@ -5,8 +5,8 @@
 
 ## Semaine 5 : découverte du code du jeu
 
-Le but de la semaine 5 est que j'ai étudiant découvre le code du projet.
-Ils vont pour cela devoir réaliser un certain nombre de modifications dans 
+Le but de la semaine 5 est que de découvrir le code du projet.
+Vous devez pour cela réaliser un certain nombre de modifications dans 
 le code original
 
 Il y a actuellement [2435 lignes de code sans bug ou vulnérabilité détectés par SonarQube](https://forge.univ-artois.fr/sonar67/dashboard?id=flatcraft_dut2017).
@@ -117,9 +117,7 @@ La première étape est de créer l'environnement du jeu : la création des mond
 
 ### Le monde des ressources
 
-Nous allons considérer un monde en 3D, représenté sur un plan : nous disposons d'une grille de blocs, et chaque bloc peut être "détruit, reposé ou transformé". Pour simplifier le fonctionnement du jeu, on considèrera un monde allant du niveau 0 (la surface de la terre) à un niveau $k$ (la lave). Pour rendre le jeu plus amusant, chaque case pourra avoir une "profondeur" $k$ spécifique, comprise entre 20 et 99.
-
-La carte des ressources fera 30x30 au minimum, et 50x50 au maximum. La carte peut être rectangulaire : le nombre de lignes et le nombre de colonnes doivent être indépendants.
+Nous allons considérer un monde en 2D, représenté sur un plan : nous disposons d'une grille de blocs, et chaque bloc peut être "détruit, reposé ou transformé". 
 
 On peut imaginer de nombreuses façons de créer un monde flatcraft. Au
 minimum, le jeu proposera une génération aléatoire du monde.
