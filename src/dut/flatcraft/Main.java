@@ -48,7 +48,7 @@ public class Main {
 		JFrame frame = new JFrame("FLATCRAFT 2019 - PROJET DUT 2 - F1 pour obtenir de l'aide");
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		MyGrid grid = new MyGrid((screenSize.height - 100) / 40, 120, new ResourceCellFactory(), generator);
+		MyGrid grid = new MyGrid((screenSize.height - 150) / 40, 120, new ResourceCellFactory(), generator);
 		JScrollPane scrollpane = new JScrollPane(grid, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollpane.getVerticalScrollBar().setUnitIncrement(40);
