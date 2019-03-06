@@ -45,7 +45,7 @@ public class Main {
 	public static void main(String[] args) {
 		MapGenerator generator = new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5);
 
-		JFrame frame = new JFrame("FLATCRAFT 2019 - PROJET DUT 2 - F1 pour obtenir de l'aide");
+		JFrame frame = new JFrame("FLATCRAFT 2019 - Student project - F1 to get help");
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		MyGrid grid = new MyGrid((screenSize.height - 150) / 40, 120, new ResourceCellFactory(), generator);
@@ -67,9 +67,10 @@ public class Main {
 		cook.add(new Furnace(grid.getPlayer()));
 		cook.pack();
 
-		JButton cookButton = new JButton("Cook");
+		JButton cookButton = new JButton(MineUtils.getImage("furnace_front"));
 		cookButton.addActionListener(e -> positionFurnace(screenSize, cookButton, cook));
 		cookButton.setFocusable(false);
+		cookButton.setToolTipText("Furnace");
 		south.add(cookButton);
 
 		south.add(grid.getPlayer().getInventoryUI());
@@ -77,6 +78,7 @@ public class Main {
 		JButton craftButton = new JButton("Craft");
 		craftButton.addActionListener(e -> positionCraftTable(screenSize, craftButton, craft));
 		craftButton.setFocusable(false);
+		craftButton.setToolTipText("Craft Table");
 		south.add(craftButton);
 
 		frame.add(BorderLayout.SOUTH, south);

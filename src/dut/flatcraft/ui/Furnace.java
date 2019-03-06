@@ -15,7 +15,6 @@ import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import dut.flatcraft.MineUtils;
@@ -53,11 +52,29 @@ public class Furnace extends JPanel {
 	public Furnace(Player player) {
 		this.player = player;
 		this.setLayout(new BorderLayout());
+		JPanel grid = new JPanel();
+		grid.setLayout(new GridLayout(1, 2));
+		createFurnaceSpace();
+		grid.add(craftPanel);
+		createResultSpace();
+		grid.add(result);
+		add(BorderLayout.CENTER, grid);
+		createButtons();
+	}
+
+	private void createFurnaceSpace() {
 		craftPanel = new JPanel();
 		craftPanel.setLayout(new GridLayout(2, 1));
-
-		createGrid();
-		createResultSpace();
+		JPanel tableCell = new JPanel();
+		craftPanel.add(tableCell);
+		tableCell.setTransferHandler(new AcceptOreTransfert(this));
+		tableCell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		tableCell.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
+		tableCell = new JPanel();
+		craftPanel.add(tableCell);
+		tableCell.setTransferHandler(new AcceptCombustibleTransfert(this));
+		tableCell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		tableCell.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
 	}
 
 	private void createResultSpace() {
@@ -65,15 +82,18 @@ public class Furnace extends JPanel {
 		result.setLayout(new FlowLayout());
 		result.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		result.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
+		craftPanel.add(result);
+
+	}
+
+	private void createButtons() {
 		JPanel south = new JPanel();
-		JButton add = new JButton("Ajouter à l'inventaire");
+		JButton add = new JButton("Add to inventory");
 		add.addActionListener(e -> addToInventory());
 		south.add(add);
-		JButton clear = new JButton("Nettoyer");
+		JButton clear = new JButton("Clear");
 		clear.addActionListener(e -> addBackToInventory());
 		south.add(clear);
-		add(BorderLayout.CENTER, new JLabel("<html><p>Up: metal</p><p>Down: wood, leaves</p>"));
-		add(BorderLayout.EAST, result);
 		add(BorderLayout.SOUTH, south);
 	}
 
@@ -116,20 +136,6 @@ public class Furnace extends JPanel {
 		result.removeAll();
 		result.revalidate();
 		result.repaint();
-	}
-
-	private void createGrid() {
-		JPanel tableCell = new JPanel();
-		craftPanel.add(tableCell);
-		tableCell.setTransferHandler(new AcceptOreTransfert(this));
-		tableCell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		tableCell.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
-		tableCell = new JPanel();
-		craftPanel.add(tableCell);
-		tableCell.setTransferHandler(new AcceptCombustibleTransfert(this));
-		tableCell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		tableCell.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
-		add(BorderLayout.WEST, craftPanel);
 	}
 
 	void processCooking() {

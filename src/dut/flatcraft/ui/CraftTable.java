@@ -78,7 +78,7 @@ public class CraftTable extends JPanel {
 		result.setLayout(new FlowLayout());
 		result.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		result.setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE + 10, DEFAULT_IMAGE_SIZE + 10));
-		JButton add = new JButton("Ajouter à l'inventaire");
+		JButton add = new JButton("Add to inventory");
 		add.addActionListener(e -> addToInventory());
 		add(BorderLayout.EAST, result);
 		add(BorderLayout.SOUTH, add);
