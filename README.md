@@ -1,4 +1,87 @@
-# Flatcraft
+# Flatcraft 2019
+
+> Le but du projet flatcraft est de servir de base pour le développement d'une 
+> nouvelle fonctionnalité pour un binôme (éventuellement trinôme) d'étudiants.
+
+## Semaine 5 : découverte du code du jeu
+
+Le but de la semaine 5 est que de découvrir le code du projet.
+Vous devez pour cela réaliser un certain nombre de modifications dans 
+le code original
+
+Il y a actuellement [2435 lignes de code sans bug ou vulnérabilité détectés par SonarQube](https://forge.univ-artois.fr/sonar67/dashboard?id=flatcraft_dut2017).
+
+
+### Partie 1 : préparation de l'environnement
+
+Comme pour le projet constructeur, vous devez "forker" le projet. 
+Cependant, cette fois-ci, vous travaillez en binôme.
+**Seul un membre du binôme doit faire un fork du projet.**
+
+Ensuite, vous devez rajouter le deuxième membre du binôme dans le projet comme `developer`.
+
+Vous devez aussi rajouter l'enseignant de TP comme `reporter`.
+
+Chaque membre du binôme fait un `git clone` sur sa machine.
+
+Chaque membre du binôme intègre le projet dans son EDI préféré : comme il s'agit d'un projet Eclipse, 
+il peut être facilement intégré en faisant `Import .../Import existing projet into workspace`.
+
+### Partie 2 : de l'intérêt du patron de conception décorateur
+
+Il existe deux implémentations du patron de conception décorateur, pour générer la carte de jeu.
+
+Le code ci-dessous se trouve dans la classe `Main`.
+
+```
+MapGenerator generator = new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5);
+```
+
+Que se passe t'il si vous inversez les deux décorateurs ?
+
+```
+MapGenerator generator = new TreeDecorator(new TerrilDecorator(new SimpleGenerator(), 5), 10, 5);
+```
+
+Comment faire pour avoir 3 terrils sur la carte ?
+
+### Partie 3 : modification du code existant
+
+Le but est maintenant de modifier de manière dirigée le code actuel du jeu 
+pour vous en faire découvrir les mécanismes.
+
+Les classes importantes pour réaliser ces modifications sont :
+
+- [MineUtils](src/dut/flatcraft/MineUtils.java)
+- [Resource](src/dut/flatcraft/resources/Resource.java)
+- [ResourceInstance](src/dut/flatcraft/resources/ResourceInstance.java)
+- [ExecutableResource](src/dut/flatcraft/resources/ExecutableResource.java)
+- [ExecutableResourceInstance](src/dut/flatcraft/resources/ExecutableResourceInstance.java)
+- [ResourceCellFactory](src/dut/flatcraft/ResourceCellFactory.java)
+
+ainsi que les fichiers [`craftrules.txt`](src/craftrules.txt) et [`furnacerules.txt`](src/furnacerules.txt) à la racine du répertoire `src`.
+
+1. Ajouter une nouvelle ressource de votre choix
+1. Ajouter un nouvel outil de votre choix
+1. Ajouter une nouvelle règle à la table de craft ou au fourneau
+1. Ajouter une nouvelle action quand on clique sur une ressource particulière
+
+De nombreuses images sont disponibles dans le répertoire `textures`. 
+Les noms des fichiers sont normalisés, `default_xxxxx.png` ce qui permet de facilement intégrer 
+ces images dans votre programme en utilisant un nom court (ici `xxxxx`).
+
+Par exemple, pour récupérer l'image correspondant au fichier `textures/default_acacia_tree.png`,
+il suffit d'utiliser la méthode `MineUtils.getImage("acacia_tree")`.
+
+### Partie 4 : à vous de jouer
+ 
+Chaque binôme doit décider d'une nouvelle fonctionnalité à ajouter au jeu flatcraft.
+Idéalement, le travail des différents groupes pourra être aggrégé pour obtenir 
+un jeu plus complet.
+
+Vous devez déposer votre proposition de fonctionnalité sur Moodle.
+
+# Flatcraft (sujet 2017)
 
 Flatcraft est une version simplifiée 2D de MineCraft qui doit être réalisée en binôme par les étudiants de DUT2 en informatique de Lens.
 
@@ -34,9 +117,7 @@ La première étape est de créer l'environnement du jeu : la création des mond
 
 ### Le monde des ressources
 
-Nous allons considérer un monde en 3D, représenté sur un plan : nous disposons d'une grille de blocs, et chaque bloc peut être "détruit, reposé ou transformé". Pour simplifier le fonctionnement du jeu, on considèrera un monde allant du niveau 0 (la surface de la terre) à un niveau $k$ (la lave). Pour rendre le jeu plus amusant, chaque case pourra avoir une "profondeur" $k$ spécifique, comprise entre 20 et 99.
-
-La carte des ressources fera 30x30 au minimum, et 50x50 au maximum. La carte peut être rectangulaire : le nombre de lignes et le nombre de colonnes doivent être indépendants.
+Nous allons considérer un monde en 2D, représenté sur un plan : nous disposons d'une grille de blocs, et chaque bloc peut être "détruit, reposé ou transformé". 
 
 On peut imaginer de nombreuses façons de créer un monde flatcraft. Au
 minimum, le jeu proposera une génération aléatoire du monde.
@@ -223,7 +304,7 @@ Ensuite, il suffira de taper la commande `git pull upstream master`
 pour mettre à jour votre projet avec les données partagées.
 
 
-## Résultat attendu
+## Résultat attendu (pour information, c'était en 2017)
 
 *On doit pouvoir jouer à votre jeu. Un projet qui ne compile pas ou qui
 ne s'exécute pas se verra attribué la note arbitraire de 1/20 pour le binôme.*
@@ -235,7 +316,7 @@ Une note de fonctionnalité sera établie selon les critères suivants :
 - [ ] Il est possible de transformer des ressources pour créer de nouvelles ressources ou outils (table de craft)
 - [ ] Il est possible de déposer des ressources sur le monde
 - [ ] Les ressources sont disposées correctement dans le monde
-- [ ]  Le temps nécessaires à l'obtention d'une ressource dépend des ressources et des outils utilisés
+- [ ] Le temps nécessaires à l'obtention d'une ressource dépend des ressources et des outils utilisés
 - [ ] Aucun bug visible n'apparait lors d'un test rapide de l'application
 - [ ] Le fonctionnement de l'application est intuitif (on ne reste jamais bloqué)
 - [ ] La gestion des ressources et des outils est avancée
