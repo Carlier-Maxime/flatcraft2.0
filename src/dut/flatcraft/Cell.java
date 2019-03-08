@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import dut.flatcraft.player.Player;
+import dut.flatcraft.ui.Inventory;
 
 /**
  * A cell represents a unit space in the map. It can be filled with a resource
@@ -77,4 +78,9 @@ public interface Cell extends Serializable {
 	 * @return true iff the new cell can replace the current one on the map
 	 */
 	boolean canBeReplacedBy(Cell c, Player p);
+
+	/**
+	 * 
+	 */
+	void addTo(Inventory inventory);
 }

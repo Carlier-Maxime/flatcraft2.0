@@ -21,8 +21,10 @@ import dut.flatcraft.resources.CombustibleContainer;
 import dut.flatcraft.resources.OreContainer;
 import dut.flatcraft.resources.Resource;
 import dut.flatcraft.resources.ResourceContainer;
+import dut.flatcraft.resources.ResourceInstance;
 import dut.flatcraft.tools.Tool;
 import dut.flatcraft.tools.ToolInstance;
+import fr.univartois.migl.utils.DesignPattern;
 
 public class Inventory implements Serializable {
 
@@ -77,11 +79,16 @@ public class Inventory implements Serializable {
 		}
 	}
 
+	@DesignPattern(name = "Double Dispatch")
 	public void add(Cell cell) {
-		ResourceContainer container = containers.get(cell.getName());
+		cell.addTo(this);
+	}
+
+	public void add(ResourceInstance instance) {
+		ResourceContainer container = containers.get(instance.getName());
 		if (container == null) {
 			// create container
-			container = createResourceContainer((Resource) cell.getType());
+			container = createResourceContainer((Resource) instance.getType());
 		}
 		container.inc();
 	}
