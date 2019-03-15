@@ -6,9 +6,9 @@ import java.util.Optional;
 import javax.swing.ImageIcon;
 
 import dut.flatcraft.Cell;
-import dut.flatcraft.ui.Inventory;
+import dut.flatcraft.ui.Inventoriable;
 
-public interface Handable extends Serializable {
+public interface Handable extends Serializable, Inventoriable {
 
 	ImageIcon getImage();
 
@@ -17,6 +17,4 @@ public interface Handable extends Serializable {
 	Coordinate toDig(Direction direction);
 
 	boolean mustBeChanged();
-
-	void addTo(Inventory inventory);
 }

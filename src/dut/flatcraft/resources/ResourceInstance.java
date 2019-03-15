@@ -7,9 +7,10 @@ import dut.flatcraft.Cell;
 import dut.flatcraft.MineElementInstance;
 import dut.flatcraft.player.Player;
 import dut.flatcraft.tools.ToolInstance;
+import dut.flatcraft.ui.Inventoriable;
 import dut.flatcraft.ui.Inventory;
 
-public class ResourceInstance implements MineElementInstance, Cell {
+public class ResourceInstance implements MineElementInstance, Cell, Inventoriable {
 
 	/**
 	 * 

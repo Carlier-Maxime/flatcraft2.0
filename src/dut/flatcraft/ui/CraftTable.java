@@ -88,7 +88,7 @@ public class CraftTable extends JPanel {
 		Component[] components = result.getComponents();
 		if (components.length == 1) {
 			Component c = components[0];
-			player.addToInventory(((HandableUI) c).getHandable());
+			player.addToInventory(((InventoriableUI) c).getHandable());
 			consumeOneItem();
 			result.remove(c);
 			processCrafting();
