@@ -7,8 +7,8 @@ import java.io.Serializable;
 
 import javax.swing.JComponent;
 
-import dut.flatcraft.Cell;
 import dut.flatcraft.GameMap;
+import dut.flatcraft.ui.Inventoriable;
 import dut.flatcraft.ui.Inventory;
 
 public class Player implements Serializable {
@@ -62,12 +62,8 @@ public class Player implements Serializable {
 		} while (inventory.getElementInTheHand().mustBeChanged());
 	}
 
-	public void addToInventory(Cell cell) {
-		inventory.add(cell);
-	}
-
-	public void addToInventory(Handable handable) {
-		inventory.add(handable);
+	public void addToInventory(Inventoriable inventoriable) {
+		inventoriable.addTo(inventory);
 	}
 
 	public void up() {
