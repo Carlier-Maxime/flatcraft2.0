@@ -15,6 +15,7 @@ import dut.flatcraft.player.Coordinate;
 import dut.flatcraft.player.Direction;
 import dut.flatcraft.player.Handable;
 import dut.flatcraft.player.Player;
+import dut.flatcraft.ui.Inventory;
 import fr.univartois.migl.utils.DesignPattern;
 
 /**
@@ -167,5 +168,10 @@ public class ResourceContainer implements Transferable, Cloneable, Handable {
 	@Override
 	public boolean mustBeChanged() {
 		return quantity == 0;
+	}
+
+	@Override
+	public void addTo(Inventory inventory) {
+		inventory.add(this);
 	}
 }

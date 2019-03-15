@@ -108,11 +108,7 @@ public class Inventory implements Serializable {
 	}
 
 	public void add(Handable handable) {
-		if (handable instanceof ResourceContainer) {
-			add((ResourceContainer) handable);
-		} else {
-			add((ToolInstance) handable);
-		}
+		handable.addTo(this);
 		ui.revalidate();
 		ui.repaint();
 	}
