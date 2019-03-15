@@ -1,5 +1,6 @@
 package dut.flatcraft.map;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -91,10 +92,19 @@ public class CompleteGameMap extends SimpleGameMap implements ExtendedGameMap {
 	public Iterator<Optional<Cell>> neighbors(Cell cell) {
 		return new Iterator<Optional<Cell>>() {
 			private Coordinate origin = coordinates.get(cell);
-			private List<Predicate<Coordinate>> p = List.of(Coordinate::decX, c -> c.decX() && c.decY(),
-					Coordinate::decY, c -> c.incX() && c.decY(), Coordinate::incX, c -> c.incX() && c.incY(),
-					Coordinate::incY, c -> c.decX() && c.incY());
-			private Iterator<Predicate<Coordinate>> it = p.iterator();
+			private List<Predicate<Coordinate>> p = new ArrayList<>();
+			private Iterator<Predicate<Coordinate>> it;
+			{
+				p.add(Coordinate::decX);
+				p.add(c -> c.decX() && c.decY());
+				p.add(Coordinate::decY);
+				p.add(c -> c.incX() && c.decY());
+				p.add(Coordinate::incX);
+				p.add(c -> c.incX() && c.incY());
+				p.add(Coordinate::incY);
+				p.add(c -> c.decX() && c.incY());
+				it = p.iterator();
+			}
 
 			@Override
 			public boolean hasNext() {
