@@ -2,6 +2,7 @@ package dut.flatcraft.map;
 
 import dut.flatcraft.CellFactory;
 import dut.flatcraft.GameMap;
+import dut.flatcraft.MapRegistry;
 
 /**
  * Generates a map in three parts:
@@ -19,7 +20,7 @@ public class SimpleGenerator implements MapGenerator {
 
 	@Override
 	public GameMap generate(int width, int heigh, CellFactory factory) {
-		SimpleGameMap map = new SimpleGameMap(width, heigh);
+		SimpleGameMap map = MapRegistry.makeMap(width, heigh);
 		int halfHeigh = heigh / 2;
 		for (int i = 0; i < halfHeigh; i++) {
 			for (int j = 0; j < width; j++) {
