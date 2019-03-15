@@ -66,7 +66,7 @@ public class SimpleGameMap implements GameMap {
 		for (int i = 0; i < elements.length; i++) {
 			for (int j = 0; j < elements[i].length; j++) {
 				if (elements[i][j] == cell) {
-					return new Coordinate(i, j, width, height);
+					return new Coordinate(j, i, width, height);
 				}
 			}
 		}
