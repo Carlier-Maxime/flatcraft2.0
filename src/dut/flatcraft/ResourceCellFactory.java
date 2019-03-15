@@ -2,11 +2,6 @@ package dut.flatcraft;
 
 import java.util.Random;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import dut.flatcraft.resources.ExecutableResourceInstance;
-
 public class ResourceCellFactory implements CellFactory {
 
 	public static final Random RAND = new Random();
@@ -51,11 +46,7 @@ public class ResourceCellFactory implements CellFactory {
 			return MineUtils.getResourceByName("ladder").newInstance();
 		}
 		if (RAND.nextInt(100) < 1) {
-			ExecutableResourceInstance chest = (ExecutableResourceInstance) MineUtils.getResourceByName("chest")
-					.newInstance();
-			chest.setRunnable(() -> JOptionPane.showMessageDialog(null, new JLabel("Le beau coffre"), "Attention",
-					JOptionPane.PLAIN_MESSAGE));
-			return chest;
+			return MineUtils.getResourceByName("chest").newInstance();
 		}
 		return MineUtils.getResourceByName("stone").newInstance();
 	}

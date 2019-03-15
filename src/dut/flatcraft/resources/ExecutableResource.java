@@ -17,12 +17,12 @@ public class ExecutableResource extends Resource {
 	}
 
 	@Override
-	public ResourceInstance newInstance() {
+	public ExecutableResourceInstance newInstance() {
 		return new ExecutableResourceInstance(this);
 	}
 
 	@Override
-	public ResourceInstance newInstance(JLabel label) {
+	public ExecutableResourceInstance newInstance(JLabel label) {
 		return new ExecutableResourceInstance(this, label);
 	}
 
