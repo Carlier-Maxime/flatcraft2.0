@@ -122,4 +122,8 @@ public class CompleteGameMap extends SimpleGameMap implements ExtendedGameMap {
 		};
 	}
 
+	@Override
+	public Coordinate findCell(Cell cell) {
+		return coordinates.get(cell);
+	}
 }
