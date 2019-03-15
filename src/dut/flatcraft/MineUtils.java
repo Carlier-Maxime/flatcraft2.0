@@ -22,6 +22,7 @@ import javax.swing.JToggleButton;
 import dut.flatcraft.resources.ExecutableResource;
 import dut.flatcraft.resources.Resource;
 import dut.flatcraft.resources.TransformableResource;
+import dut.flatcraft.resources.TraversableResource;
 import dut.flatcraft.tools.Tool;
 import dut.flatcraft.tools.ToolType;
 
@@ -251,6 +252,9 @@ public class MineUtils {
 			break;
 		case "chest":
 			resource = new ExecutableResource("chest", getImage("chest_front"), 100000, ToolType.NO_TOOL);
+			break;
+		case "ladder":
+			resource = new TraversableResource("ladder", getImage("ladder"), 5, ToolType.NO_TOOL);
 			break;
 		default:
 			throw new IllegalArgumentException(resourceName + " is not a correct resource name");

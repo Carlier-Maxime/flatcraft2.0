@@ -47,6 +47,9 @@ public class ResourceCellFactory implements CellFactory {
 		if (RAND.nextInt(100) < 5) {
 			return MineUtils.getResourceByName("copper").newInstance();
 		}
+		if (RAND.nextInt(100) < 3) {
+			return MineUtils.getResourceByName("ladder").newInstance();
+		}
 		if (RAND.nextInt(100) < 1) {
 			ExecutableResourceInstance chest = (ExecutableResourceInstance) MineUtils.getResourceByName("chest")
 					.newInstance();
