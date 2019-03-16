@@ -94,6 +94,7 @@ public class CompleteGameMap extends SimpleGameMap implements ExtendedGameMap {
 			private Coordinate origin = coordinates.get(cell);
 			private List<Predicate<Coordinate>> p = new ArrayList<>();
 			private Iterator<Predicate<Coordinate>> it;
+
 			{
 				p.add(Coordinate::decX);
 				p.add(c -> c.decX() && c.decY());
@@ -124,6 +125,10 @@ public class CompleteGameMap extends SimpleGameMap implements ExtendedGameMap {
 
 	@Override
 	public Coordinate findCell(Cell cell) {
-		return coordinates.get(cell);
+		Coordinate c = coordinates.get(cell);
+		if (c == null) {
+			return null;
+		}
+		return new Coordinate(c);
 	}
 }
