@@ -8,8 +8,10 @@ import java.io.Serializable;
 import javax.swing.JComponent;
 
 import dut.flatcraft.GameMap;
+import dut.flatcraft.MapRegistry;
 import dut.flatcraft.ui.Inventoriable;
 import dut.flatcraft.ui.Inventory;
+import fr.univartois.migl.utils.DesignPattern;
 
 public class Player implements Serializable {
 
@@ -121,10 +123,29 @@ public class Player implements Serializable {
 		return inventory.getUI();
 	}
 
-	public static void createPlayer(GameMap map) {
+	/**
+	 * Creates a player on a given map
+	 * 
+	 * @param map a GameMap
+	 * @return the player interacting with that map
+	 */
+	@DesignPattern(name = "factory method")
+	public static Player createPlayer(GameMap map) {
 		player = new Player(map);
+		return player;
 	}
 
+	/**
+	 * Allow access to the player object anywhere in the code.
+	 * 
+	 * As such, it is really a registry design pattern, not a singleton design
+	 * pattern: the method does not enforce that only one instance of a player will
+	 * be created.
+	 * 
+	 * @return the last player created using the {@link #createPlayer(GameMap)}
+	 * @see {@link MapRegistry} for equivalent functionaly for GameMap.
+	 */
+	@DesignPattern(name = "registry", url = "https://martinfowler.com/eaaCatalog/registry.html")
 	public static Player instance() {
 		if (player == null) {
 			throw new IllegalStateException("The instance of player has not been created yet!");
