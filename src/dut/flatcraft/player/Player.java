@@ -32,6 +32,11 @@ public class Player implements Serializable {
 	public final Direction lookingLeft;
 	public final Direction lookingRight;
 
+	public final Direction lookingUpRight;
+	public final Direction lookingDownRight;
+	public final Direction lookingUpLeft;
+	public final Direction lookingDownLeft;
+
 	/**
 	 * The current direction.
 	 */
@@ -45,6 +50,10 @@ public class Player implements Serializable {
 		lookingRight = new Right(position);
 		lookingUp = new Up(position);
 		lookingDown = new Down(position);
+		lookingUpRight = new UpRight(position);
+		lookingDownRight = new DownRight(position);
+		lookingUpLeft = new UpLeft(position);
+		lookingDownLeft = new DownLeft(position);
 		currentDirection = lookingRight;
 	}
 
@@ -70,19 +79,88 @@ public class Player implements Serializable {
 
 	public void up() {
 		currentDirection = lookingUp;
+		System.out.println("Up");
 	}
 
 	public void down() {
 		currentDirection = lookingDown;
+		System.out.println("Down");
 	}
 
 	public void left() {
 		currentDirection = lookingLeft;
+		System.out.println("Left");
 	}
 
 	public void right() {
 		currentDirection = lookingRight;
+		System.out.println("Right");
 	}
+
+	public void upRight() {
+		currentDirection = lookingUpRight;
+		System.out.println("UpRight");
+	}
+
+	public void downRight() {
+		currentDirection = lookingDownRight;
+		System.out.println("DownRight");
+	}
+
+	public void upLeft() {
+		currentDirection = lookingUpLeft;
+		System.out.println("UpLeft");
+	}
+
+	public void downLeft() {
+		currentDirection = lookingDownLeft;
+		System.out.println("DownLeft");
+	}
+
+	// Start - QD Implementation
+
+	public Coordinate getRight(){
+		return lookingRight.toDig();
+	}
+
+	public Coordinate getLeft(){
+		return lookingLeft.toDig();
+	}
+
+	public Coordinate getTop(){
+		return lookingUp.toDig();
+	}
+
+	public Coordinate getTopRight(){
+		return new Coordinate(getRight().getX(),getRight().getY()-1,getRight().width,getRight().height);
+	}
+
+	public Coordinate getTopLeft(){
+		return new Coordinate(getLeft().getX(),getLeft().getY()-1,getLeft().width,getLeft().height);
+	}
+
+	public void moveRight() {
+		if(isEmptyCell(getRight())){
+			lookingRight.next();
+		}
+		else if(isEmptyCell(getTop()) && isEmptyCell(getTopRight())){
+			lookingUpRight.next();
+		}
+	}
+	public void moveLeft() {
+		if(isEmptyCell(getLeft())){
+			lookingLeft.next();
+		}
+		else if(isEmptyCell(getTop()) && isEmptyCell(getTopLeft())){
+			lookingUpLeft.next();
+		}
+	}
+
+	private boolean isEmptyCell(Coordinate c){
+		return (MapRegistry.getMap().getAt(c.getY(),c.getX()).getName().equals("empty"));
+	}
+
+	// End - QD Implementation
 
 	public Direction opposite() {
 		if (currentDirection == lookingUp)

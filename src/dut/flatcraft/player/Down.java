@@ -9,6 +9,7 @@ public class Down extends AbstractDirection {
 
 	public Down(Coordinate c) {
 		super(c);
+		super.angle = Math.toRadians(90);
 	}
 
 	@Override
@@ -17,7 +18,15 @@ public class Down extends AbstractDirection {
 	}
 
 	@Override
+	public Coordinate getNext() {
+		Coordinate c2 = new Coordinate(c);
+		c2.incY();
+		return c2;
+	}
+
+	@Override
 	public Coordinate toDig() {
+		System.out.println("dinging down");
 		if (c.getY() < c.height - 1) {
 			return new Coordinate(c.getX(), c.getY() + 1, c.width, c.height);
 		}
@@ -25,17 +34,7 @@ public class Down extends AbstractDirection {
 	}
 
 	@Override
-	public int dx(int dx) {
-		return dx + 16;
-	}
-
-	@Override
-	public int dy(int dy) {
-		return dy + 20;
-	}
-
-	@Override
-	public int dw(int dw) {
-		return 8;
+	public Coordinate nextForResource() {
+		return new Coordinate(c);
 	}
 }

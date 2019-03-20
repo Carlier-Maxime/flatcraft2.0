@@ -14,6 +14,8 @@ public interface Direction extends Serializable {
 	 */
 	boolean next();
 
+	Coordinate getNext();
+
 	/**
 	 * Compute the coordinate of the block to dig
 	 * 
@@ -34,4 +36,6 @@ public interface Direction extends Serializable {
 	 * @return the coordinate where to put a resource
 	 */
 	Coordinate nextForResource();
+
+
 }

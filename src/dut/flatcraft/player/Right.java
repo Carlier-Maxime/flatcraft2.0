@@ -9,21 +9,7 @@ public class Right extends AbstractDirection {
 
 	public Right(Coordinate c) {
 		super(c);
-	}
-
-	@Override
-	public int dx(int dx) {
-		return dx + 20;
-	}
-
-	@Override
-	public int dy(int dy) {
-		return dy + 16;
-	}
-
-	@Override
-	public int dh(int dh) {
-		return 8;
+		super.angle = Math.toRadians(0);
 	}
 
 	@Override
@@ -32,10 +18,24 @@ public class Right extends AbstractDirection {
 	}
 
 	@Override
+	public Coordinate getNext() {
+		Coordinate c2 = new Coordinate(c);
+		c2.incX();
+		return c2;
+	}
+
+	@Override
 	public Coordinate toDig() {
 		if (c.getX() < c.width - 1) {
 			return new Coordinate(c.getX() + 1, c.getY(), c.width, c.height);
 		}
 		return new Coordinate(c);
+	}
+
+	@Override
+	public String toString() {
+		return "Right{" +
+				"c=" + c +
+				'}';
 	}
 }
