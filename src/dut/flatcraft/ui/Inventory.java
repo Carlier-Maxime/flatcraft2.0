@@ -51,12 +51,8 @@ public class Inventory implements Serializable {
 		createCombustibleContainer(MineUtils.getResourceByName("wood"));
 		createCombustibleContainer(MineUtils.getResourceByName("leaves"));
 		createCombustibleContainer(MineUtils.getResourceByName("coal_lump"));
-		ToolInstance tool = MineUtils.createToolByName("woodaxe").newInstance();
-		handables.add(tool);
-		ui.add(new ToolInstanceUI(tool));
-		tool = MineUtils.createToolByName("woodpick").newInstance();
-		handables.add(tool);
-		ui.add(new ToolInstanceUI(tool));
+		add(MineUtils.createToolByName("woodaxe").newInstance());
+		add(MineUtils.createToolByName("woodpick").newInstance());
 		current = handables.size() - 2;
 	}
 
@@ -104,7 +100,10 @@ public class Inventory implements Serializable {
 
 	public void add(ToolInstance tool) {
 		handables.add(tool);
-		ui.add(new ToolInstanceUI(tool));
+		ToolInstanceUI tui = new ToolInstanceUI(tool);
+		ui.add(tui);
+		tui.setTransferHandler(handler);
+		tui.addMouseListener(mouselistener);
 	}
 
 	public void add(Handable handable) {
@@ -132,20 +131,26 @@ public class Inventory implements Serializable {
 
 			@Override
 			protected Transferable createTransferable(JComponent c) {
-				ResourceContainer rc = ((ResourceContainerUI) c).getResourceContainer();
-				return rc.clone();
+				if (c instanceof ResourceContainerUI) {
+					ResourceContainer rc = ((ResourceContainerUI) c).getResourceContainer();
+					return rc.clone();
+				} else {
+					return ((ToolInstanceUI) c).getMineTool();
+				}
 			}
 
 			@Override
 			protected void exportDone(JComponent source, Transferable data, int action) {
-				ResourceContainer container = ((ResourceContainerUI) source).getResourceContainer();
-				if (action == MOVE) {
-					container.consumeAll();
-				} else if (action == COPY) {
-					if (container.getQuantity() == 1) {
-						container.consume(1);
-					} else {
-						container.consume(container.getQuantity() / 2);
+				if (data instanceof ResourceContainerUI) {
+					ResourceContainer container = ((ResourceContainerUI) source).getResourceContainer();
+					if (action == MOVE) {
+						container.consumeAll();
+					} else if (action == COPY) {
+						if (container.getQuantity() == 1) {
+							container.consume(1);
+						} else {
+							container.consume(container.getQuantity() / 2);
+						}
 					}
 				}
 			}
@@ -165,10 +170,12 @@ public class Inventory implements Serializable {
 						Handable transferedHandable = (Handable) support.getTransferable()
 								.getTransferData(ResourceContainer.RESOURCE_FLAVOR);
 						if (transferedHandable instanceof ToolInstance) {
-							handables.add(transferedHandable);
-							ui.add(new ToolInstanceUI((ToolInstance) transferedHandable));
-							ui.revalidate();
-							ui.repaint();
+							if (!handables.contains(transferedHandable)) {
+								handables.add(transferedHandable);
+								ui.add(new ToolInstanceUI((ToolInstance) transferedHandable));
+								ui.revalidate();
+								ui.repaint();
+							}
 						} else {
 							ResourceContainer sourceContainer = (ResourceContainer) transferedHandable;
 							addResource(sourceContainer);
