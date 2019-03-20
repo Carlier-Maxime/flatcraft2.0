@@ -8,12 +8,12 @@ import fr.univartois.migl.utils.DesignPattern;
 /**
  * Game map with the possibility to access neighboring cells.
  * 
- * The idea is a hide the way the cells are stored. As such,
- * the current cell is given as parameter, and the height neighboring
- * cells are denoted by directions.
+ * The idea is a hide the way the cells are stored. As such, the current cell is
+ * given as parameter, and the height neighboring cells are denoted by
+ * directions.
  * 
- * Note that in some cases, there is no neighbor, which result in the
- * choice to return an Optional object, not directly a Cell.
+ * Note that in some cases, there is no neighbor, which result in the choice to
+ * return an Optional object, not directly a Cell.
  * 
  * @author leberre
  *

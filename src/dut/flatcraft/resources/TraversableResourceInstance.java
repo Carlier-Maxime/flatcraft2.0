@@ -9,11 +9,11 @@ import dut.flatcraft.ExtendedGameMap;
 import dut.flatcraft.MapRegistry;
 
 /**
- * Specific implementation of a cell allowing to
- * propagate the call to the execute() method from left to right.
+ * Specific implementation of a cell allowing to propagate the call to the
+ * execute() method from left to right.
  * 
- * This class is given as a simple example of what can be done with
- * the new {@link ExtendedGameMap} and {@link MapRegistry}.
+ * This class is given as a simple example of what can be done with the new
+ * {@link ExtendedGameMap} and {@link MapRegistry}.
  */
 public class TraversableResourceInstance extends ResourceInstance {
 

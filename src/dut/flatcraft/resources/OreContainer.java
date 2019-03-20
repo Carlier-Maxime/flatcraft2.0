@@ -8,7 +8,7 @@ public class OreContainer extends ResourceContainer {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	public static final DataFlavor ORE_FLAVOR = new DataFlavor(ResourceContainer.class, "orecontainer");
 
 	public OreContainer(Resource block, int quantity) {
@@ -24,7 +24,7 @@ public class OreContainer extends ResourceContainer {
 	public boolean isDataFlavorSupported(DataFlavor flavor) {
 		return ORE_FLAVOR.equals(flavor);
 	}
-	
+
 	@Override
 	public OreContainer clone() {
 		return new OreContainer(getResource(), getQuantity());

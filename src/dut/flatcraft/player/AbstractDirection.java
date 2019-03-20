@@ -20,8 +20,8 @@ public abstract class AbstractDirection implements Direction {
 
 	@Override
 	public void paint(Graphics g) {
-		int dx = c.getX() * 40 +20;
-		int dy = c.getY() * 40 +17;
+		int dx = c.getX() * 40 + 20;
+		int dy = c.getY() * 40 + 17;
 		int dw = 20;
 		int dh = 6;
 		Rectangle rect = new Rectangle(dx, dy, dw, dh);
@@ -29,13 +29,12 @@ public abstract class AbstractDirection implements Direction {
 		path.append(rect, false);
 
 		AffineTransform t = new AffineTransform();
-		t.rotate(angle, dx, dy+3);
+		t.rotate(angle, dx, dy + 3);
 		path.transform(t);
 
-		Rectangle nextRect = new Rectangle(getNext().getX()*40, getNext().getY()*40, 40, 40);
+		Rectangle nextRect = new Rectangle(getNext().getX() * 40, getNext().getY() * 40, 40, 40);
 
-		Graphics2D g2d = (Graphics2D)g;
-
+		Graphics2D g2d = (Graphics2D) g;
 
 		g2d.setColor(Color.PINK);
 //		g.fill3DRect(dx, dy, dw, dh, true);

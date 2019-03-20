@@ -34,8 +34,6 @@ public class Right extends AbstractDirection {
 
 	@Override
 	public String toString() {
-		return "Right{" +
-				"c=" + c +
-				'}';
+		return "Right{" + "c=" + c + '}';
 	}
 }

@@ -26,24 +26,24 @@ final class MoveResultingResourceFromCraftTable extends TransferHandler {
 
 	@Override
 	public int getSourceActions(JComponent c) {
-	    return MOVE;
+		return MOVE;
 	}
 
 	@Override
 	protected Transferable createTransferable(JComponent c) {
-	    if (c instanceof ResourceContainerUI) {
-	        return ((ResourceContainerUI) c).getResourceContainer();
-	    }
-	    return ((ToolInstanceUI) c).getMineTool();
+		if (c instanceof ResourceContainerUI) {
+			return ((ResourceContainerUI) c).getResourceContainer();
+		}
+		return ((ToolInstanceUI) c).getMineTool();
 	}
 
 	@Override
 	protected void exportDone(JComponent source, Transferable data, int action) {
-	    this.craftTable.consumeOneItem();
-	    Container container = source.getParent();
-	    container.remove(source);
-	    this.craftTable.processCrafting();
-	    container.revalidate();
-	    container.repaint();
+		this.craftTable.consumeOneItem();
+		Container container = source.getParent();
+		container.remove(source);
+		this.craftTable.processCrafting();
+		container.revalidate();
+		container.repaint();
 	}
 }

@@ -6,8 +6,8 @@ import javax.swing.JLabel;
 import dut.flatcraft.tools.ToolType;
 
 /**
- * Resource allowing to propagate a call to the execute() method
- * to neighboring cells.
+ * Resource allowing to propagate a call to the execute() method to neighboring
+ * cells.
  */
 public class TraversableResource extends Resource {
 

@@ -37,5 +37,4 @@ public interface Direction extends Serializable {
 	 */
 	Coordinate nextForResource();
 
-
 }

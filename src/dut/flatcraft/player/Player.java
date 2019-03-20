@@ -119,45 +119,44 @@ public class Player implements Serializable {
 
 	// Start - QD Implementation
 
-	public Coordinate getRight(){
+	public Coordinate getRight() {
 		return lookingRight.toDig();
 	}
 
-	public Coordinate getLeft(){
+	public Coordinate getLeft() {
 		return lookingLeft.toDig();
 	}
 
-	public Coordinate getTop(){
+	public Coordinate getTop() {
 		return lookingUp.toDig();
 	}
 
-	public Coordinate getTopRight(){
-		return new Coordinate(getRight().getX(),getRight().getY()-1,getRight().width,getRight().height);
+	public Coordinate getTopRight() {
+		return new Coordinate(getRight().getX(), getRight().getY() - 1, getRight().width, getRight().height);
 	}
 
-	public Coordinate getTopLeft(){
-		return new Coordinate(getLeft().getX(),getLeft().getY()-1,getLeft().width,getLeft().height);
+	public Coordinate getTopLeft() {
+		return new Coordinate(getLeft().getX(), getLeft().getY() - 1, getLeft().width, getLeft().height);
 	}
 
 	public void moveRight() {
-		if(isEmptyCell(getRight())){
+		if (isEmptyCell(getRight())) {
 			lookingRight.next();
-		}
-		else if(isEmptyCell(getTop()) && isEmptyCell(getTopRight())){
+		} else if (isEmptyCell(getTop()) && isEmptyCell(getTopRight())) {
 			lookingUpRight.next();
 		}
 	}
+
 	public void moveLeft() {
-		if(isEmptyCell(getLeft())){
+		if (isEmptyCell(getLeft())) {
 			lookingLeft.next();
-		}
-		else if(isEmptyCell(getTop()) && isEmptyCell(getTopLeft())){
+		} else if (isEmptyCell(getTop()) && isEmptyCell(getTopLeft())) {
 			lookingUpLeft.next();
 		}
 	}
 
-	private boolean isEmptyCell(Coordinate c){
-		return (MapRegistry.getMap().getAt(c.getY(),c.getX()).getName().equals("empty"));
+	private boolean isEmptyCell(Coordinate c) {
+		return (MapRegistry.getMap().getAt(c.getY(), c.getX()).getName().equals("empty"));
 	}
 
 	// End - QD Implementation
