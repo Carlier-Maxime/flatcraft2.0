@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 
 import dut.flatcraft.player.Player;
 import dut.flatcraft.resources.Resource;
+import dut.flatcraft.ui.Inventory;
 
 /**
  * A cell representing the absence of resource on the map.
@@ -69,5 +70,10 @@ public class EmptyCell implements Cell {
 	@Override
 	public boolean canBeReplacedBy(Cell c, Player p) {
 		return true;
+	}
+
+	@Override
+	public void addTo(Inventory inventory) {
+		// do nothing
 	}
 }

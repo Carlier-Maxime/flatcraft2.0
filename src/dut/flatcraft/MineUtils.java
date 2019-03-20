@@ -19,7 +19,7 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
 
-import dut.flatcraft.resources.ExecutableResource;
+import dut.flatcraft.resources.ChestResource;
 import dut.flatcraft.resources.Resource;
 import dut.flatcraft.resources.TransformableResource;
 import dut.flatcraft.resources.TraversableResource;
@@ -251,7 +251,10 @@ public class MineUtils {
 			resource = makeResource("copper_ingot", 10, ToolType.HARD_TOOL);
 			break;
 		case "chest":
-			resource = new ExecutableResource("chest", getImage("chest_front"), 100000, ToolType.NO_TOOL);
+			resource = new ChestResource("chest", getImage("chest_front"), 100000, ToolType.NO_TOOL);
+			break;
+		case "ladder":
+			resource = new TraversableResource("ladder", getImage("ladder"), 5, ToolType.NO_TOOL);
 			break;
 		case "ladder":
 			resource = new TraversableResource("ladder", getImage("ladder"), 5, ToolType.NO_TOOL);

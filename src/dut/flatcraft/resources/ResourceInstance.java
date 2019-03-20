@@ -7,8 +7,10 @@ import dut.flatcraft.Cell;
 import dut.flatcraft.MineElementInstance;
 import dut.flatcraft.player.Player;
 import dut.flatcraft.tools.ToolInstance;
+import dut.flatcraft.ui.Inventoriable;
+import dut.flatcraft.ui.Inventory;
 
-public class ResourceInstance implements MineElementInstance, Cell {
+public class ResourceInstance implements MineElementInstance, Cell, Inventoriable {
 
 	/**
 	 * 
@@ -80,6 +82,11 @@ public class ResourceInstance implements MineElementInstance, Cell {
 	@Override
 	public boolean canBeReplacedBy(Cell c, Player p) {
 		return false;
+	}
+
+	@Override
+	public void addTo(Inventory inventory) {
+		inventory.add(this);
 	}
 
 }

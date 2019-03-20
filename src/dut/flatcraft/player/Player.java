@@ -54,7 +54,6 @@ public class Player implements Serializable {
 		lookingDownRight = new DownRight(position);
 		lookingUpLeft = new UpLeft(position);
 		lookingDownLeft = new DownLeft(position);
-
 		currentDirection = lookingRight;
 	}
 

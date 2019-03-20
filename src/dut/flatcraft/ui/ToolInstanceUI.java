@@ -10,11 +10,10 @@ import java.awt.Rectangle;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-import dut.flatcraft.player.Handable;
 import dut.flatcraft.tools.ToolInstance;
 import dut.flatcraft.tools.ToolInstanceListener;
 
-public class ToolInstanceUI extends JButton implements ToolInstanceListener, HandableUI {
+public class ToolInstanceUI extends JButton implements ToolInstanceListener, InventoriableUI {
 
 	/**
 	 * 
@@ -55,7 +54,7 @@ public class ToolInstanceUI extends JButton implements ToolInstanceListener, Han
 	}
 
 	@Override
-	public Handable getHandable() {
+	public Inventoriable getHandable() {
 		return getMineTool();
 	}
 

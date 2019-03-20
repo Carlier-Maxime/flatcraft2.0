@@ -10,7 +10,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
 import dut.flatcraft.MineUtils;
-import dut.flatcraft.player.Handable;
 import dut.flatcraft.resources.Resource;
 import dut.flatcraft.resources.ResourceContainer;
 import dut.flatcraft.resources.ResourceContainerListener;
@@ -24,7 +23,7 @@ import dut.flatcraft.resources.ResourceContainerListener;
  * @author leberre
  *
  */
-public class ResourceContainerUI extends JLabel implements ResourceContainerListener, HandableUI {
+public class ResourceContainerUI extends JLabel implements ResourceContainerListener, InventoriableUI {
 
 	/**
 	 * 
@@ -79,7 +78,7 @@ public class ResourceContainerUI extends JLabel implements ResourceContainerList
 	}
 
 	@Override
-	public Handable getHandable() {
+	public Inventoriable getHandable() {
 		return getResourceContainer();
 	}
 }

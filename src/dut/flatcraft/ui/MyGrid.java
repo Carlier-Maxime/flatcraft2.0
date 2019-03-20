@@ -35,8 +35,7 @@ public class MyGrid extends JComponent implements KeyListener {
 	public MyGrid(int height, int width, CellFactory factory, MapGenerator generator) {
 
 		map = generator.generate(width, height, factory);
-		Player.createPlayer(map);
-		player = Player.instance();
+		player = Player.createPlayer(map);
 		setLayout(new GridLayout(height, width));
 		for (int i = 0; i < map.getHeight(); i++) {
 			for (int j = 0; j < map.getWidth(); j++) {
