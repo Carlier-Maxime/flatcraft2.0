@@ -256,9 +256,6 @@ public class MineUtils {
 		case "ladder":
 			resource = new TraversableResource("ladder", getImage("ladder"), 5, ToolType.NO_TOOL);
 			break;
-		case "ladder":
-			resource = new TraversableResource("ladder", getImage("ladder"), 5, ToolType.NO_TOOL);
-			break;
 		default:
 			throw new IllegalArgumentException(resourceName + " is not a correct resource name");
 		}
