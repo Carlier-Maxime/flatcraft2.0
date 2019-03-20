@@ -6,26 +6,26 @@ import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 import java.util.Optional;
 import java.util.logging.Logger;
 
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-import dut.flatcraft.Cell;
-import dut.flatcraft.CellFactory;
-import dut.flatcraft.GameMap;
-import dut.flatcraft.MineUtils;
+import dut.flatcraft.*;
 import dut.flatcraft.map.MapGenerator;
 import dut.flatcraft.player.Coordinate;
 import dut.flatcraft.player.Player;
+
+import java.awt.event.MouseMotionListener;
 
 public class MyGrid extends JComponent implements KeyListener {
 
 	private static final int CELL_SIZE = MineUtils.DEFAULT_IMAGE_SIZE;
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -73,53 +73,65 @@ public class MyGrid extends JComponent implements KeyListener {
 		boolean needsToCheckVisible = false;
 		Coordinate old = player.getPosition();
 		switch (e.getKeyCode()) {
-		case KeyEvent.VK_KP_UP:
-		case KeyEvent.VK_UP:
-			player.up();
-			needsUpdate = true;
-			break;
-		case KeyEvent.VK_KP_DOWN:
-		case KeyEvent.VK_DOWN:
-			player.down();
-			needsUpdate = true;
-			break;
-		case KeyEvent.VK_KP_LEFT:
-		case KeyEvent.VK_LEFT:
-			if (e.isShiftDown()) {
-				player.previousInHand();
-			} else {
-				player.left();
-			}
-			needsUpdate = true;
-			break;
-		case KeyEvent.VK_KP_RIGHT:
-		case KeyEvent.VK_RIGHT:
-			if (e.isShiftDown()) {
-				player.nextInHand();
-			} else {
-				player.right();
-			}
-			needsUpdate = true;
-			break;
-		case KeyEvent.VK_SPACE:
-			needsUpdate = player.next();
-			needsToCheckVisible = true;
-			break;
-		case KeyEvent.VK_CONTROL:
-			digOrFill();
-			needsUpdate = true;
-			needsToCheckVisible = true;
-			break;
-		case KeyEvent.VK_E:
-			if (execute()) {
+			case KeyEvent.VK_KP_UP:
+			case KeyEvent.VK_UP:
+				player.up();
+				needsUpdate = true;
+				break;
+			case KeyEvent.VK_KP_DOWN:
+			case KeyEvent.VK_DOWN:
+				player.down();
+				needsUpdate = true;
+				break;
+			case KeyEvent.VK_KP_LEFT:
+			case KeyEvent.VK_LEFT:
+				if (e.isShiftDown()) {
+					player.previousInHand();
+				} else {
+					player.left();
+				}
+				needsUpdate = true;
+				break;
+			case KeyEvent.VK_KP_RIGHT:
+			case KeyEvent.VK_RIGHT:
+				if (e.isShiftDown()) {
+					player.nextInHand();
+				} else {
+					player.right();
+				}
+				needsUpdate = true;
+				break;
+			case KeyEvent.VK_SPACE:
+				needsUpdate = player.next();
+				needsToCheckVisible = true;
+				break;
+			case KeyEvent.VK_CONTROL:
+				digOrFill();
 				needsUpdate = true;
 				needsToCheckVisible = true;
-			}
-			break;
-		case KeyEvent.VK_F1:
-			displayHelp();
-			break;
-		default:
+				break;
+			case KeyEvent.VK_E:
+				if (execute()) {
+					needsUpdate = true;
+					needsToCheckVisible = true;
+				}
+				break;
+				// Start - QD Implementation
+			case KeyEvent.VK_D:
+				player.moveRight();
+				needsUpdate = true;
+				needsToCheckVisible = true;
+				break;
+			case KeyEvent.VK_Q:
+				player.moveLeft();
+				needsUpdate = true;
+				needsToCheckVisible = true;
+				break;
+				// End - QD Implementation
+			case KeyEvent.VK_F1:
+				displayHelp();
+				break;
+			default:
 			// do nothing
 		}
 		if (needsUpdate) {
@@ -169,7 +181,7 @@ public class MyGrid extends JComponent implements KeyListener {
 		// we are only interested in keyPressed()
 	}
 
-	private boolean digOrFill() {
+	public boolean digOrFill() {
 		Coordinate toDig = player.toDig();
 		Cell cellToDig = map.getAt(toDig.getY(), toDig.getX());
 		Optional<Cell> result = player.getHand().action(player, cellToDig);
@@ -189,7 +201,7 @@ public class MyGrid extends JComponent implements KeyListener {
 		return cellToExecute.execute();
 	}
 
-	private void checkPhysics() {
+	public void checkPhysics() {
 		Coordinate down;
 		do {
 			down = player.lookingDown.toDig();
