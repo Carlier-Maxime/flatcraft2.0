@@ -21,6 +21,12 @@ import dut.flatcraft.ui.MyGrid;
 
 public class Main {
 
+	private static JFrame frame = new JFrame("FLATCRAFT 2019 - Student project - F1 to get help");
+
+	public static JFrame getFrame() {
+		return frame;
+	}
+
 	private static void positionCraftTable(Dimension screenSize, JButton button, JDialog dialog) {
 		if (dialog.isVisible()) {
 			dialog.setVisible(false);
@@ -44,8 +50,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		MapGenerator generator = new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5);
-
-		JFrame frame = new JFrame("FLATCRAFT 2019 - Student project - F1 to get help");
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		MyGrid grid = new MyGrid((screenSize.height - 150) / 40, 120, new ResourceCellFactory(), generator);
