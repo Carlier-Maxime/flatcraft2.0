@@ -53,11 +53,13 @@ public class Main {
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		MyGrid grid = new MyGrid((screenSize.height - 150) / 40, 120, new ResourceCellFactory(), generator);
-		JScrollPane scrollpane = new JScrollPane(grid, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
-				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollpane.getVerticalScrollBar().setUnitIncrement(40);
-		scrollpane.getHorizontalScrollBar().setUnitIncrement(40);
-		scrollpane.setDoubleBuffered(true);
+		GlassPaneWrapper glassPaneWrapper = new GlassPaneWrapper(grid);
+		glassPaneWrapper.activateGlassPane(true);
+        JScrollPane scrollpane = new JScrollPane(glassPaneWrapper, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollpane.getVerticalScrollBar().setUnitIncrement(40);
+        scrollpane.getHorizontalScrollBar().setUnitIncrement(40);
+        scrollpane.setDoubleBuffered(true);
 		frame.add(BorderLayout.CENTER, scrollpane);
 
 		JPanel south = new JPanel();
