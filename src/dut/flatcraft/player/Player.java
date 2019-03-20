@@ -7,9 +7,11 @@ import java.io.Serializable;
 
 import javax.swing.JComponent;
 
-import dut.flatcraft.Cell;
 import dut.flatcraft.GameMap;
+import dut.flatcraft.MapRegistry;
+import dut.flatcraft.ui.Inventoriable;
 import dut.flatcraft.ui.Inventory;
+import fr.univartois.migl.utils.DesignPattern;
 
 public class Player implements Serializable {
 
@@ -30,6 +32,11 @@ public class Player implements Serializable {
 	public final Direction lookingLeft;
 	public final Direction lookingRight;
 
+	public final Direction lookingUpRight;
+	public final Direction lookingDownRight;
+	public final Direction lookingUpLeft;
+	public final Direction lookingDownLeft;
+
 	/**
 	 * The current direction.
 	 */
@@ -43,6 +50,11 @@ public class Player implements Serializable {
 		lookingRight = new Right(position);
 		lookingUp = new Up(position);
 		lookingDown = new Down(position);
+		lookingUpRight = new UpRight(position);
+		lookingDownRight = new DownRight(position);
+		lookingUpLeft = new UpLeft(position);
+		lookingDownLeft = new DownLeft(position);
+
 		currentDirection = lookingRight;
 	}
 
@@ -62,29 +74,94 @@ public class Player implements Serializable {
 		} while (inventory.getElementInTheHand().mustBeChanged());
 	}
 
-	public void addToInventory(Cell cell) {
-		inventory.add(cell);
-	}
-
-	public void addToInventory(Handable handable) {
-		inventory.add(handable);
+	public void addToInventory(Inventoriable inventoriable) {
+		inventoriable.addTo(inventory);
 	}
 
 	public void up() {
 		currentDirection = lookingUp;
+		System.out.println("Up");
 	}
 
 	public void down() {
 		currentDirection = lookingDown;
+		System.out.println("Down");
 	}
 
 	public void left() {
 		currentDirection = lookingLeft;
+		System.out.println("Left");
 	}
 
 	public void right() {
 		currentDirection = lookingRight;
+		System.out.println("Right");
 	}
+
+	public void upRight() {
+		currentDirection = lookingUpRight;
+		System.out.println("UpRight");
+	}
+
+	public void downRight() {
+		currentDirection = lookingDownRight;
+		System.out.println("DownRight");
+	}
+
+	public void upLeft() {
+		currentDirection = lookingUpLeft;
+		System.out.println("UpLeft");
+	}
+
+	public void downLeft() {
+		currentDirection = lookingDownLeft;
+		System.out.println("DownLeft");
+	}
+
+	// Start - QD Implementation
+
+	public Coordinate getRight(){
+		return lookingRight.toDig();
+	}
+
+	public Coordinate getLeft(){
+		return lookingLeft.toDig();
+	}
+
+	public Coordinate getTop(){
+		return lookingUp.toDig();
+	}
+
+	public Coordinate getTopRight(){
+		return new Coordinate(getRight().getX(),getRight().getY()-1,getRight().width,getRight().height);
+	}
+
+	public Coordinate getTopLeft(){
+		return new Coordinate(getLeft().getX(),getLeft().getY()-1,getLeft().width,getLeft().height);
+	}
+
+	public void moveRight() {
+		if(isEmptyCell(getRight())){
+			lookingRight.next();
+		}
+		else if(isEmptyCell(getTop()) && isEmptyCell(getTopRight())){
+			lookingUpRight.next();
+		}
+	}
+	public void moveLeft() {
+		if(isEmptyCell(getLeft())){
+			lookingLeft.next();
+		}
+		else if(isEmptyCell(getTop()) && isEmptyCell(getTopLeft())){
+			lookingUpLeft.next();
+		}
+	}
+
+	private boolean isEmptyCell(Coordinate c){
+		return (MapRegistry.getMap().getAt(c.getY(),c.getX()).getName().equals("empty"));
+	}
+
+	// End - QD Implementation
 
 	public Direction opposite() {
 		if (currentDirection == lookingUp)
@@ -125,10 +202,29 @@ public class Player implements Serializable {
 		return inventory.getUI();
 	}
 
-	public static void createPlayer(GameMap map) {
+	/**
+	 * Creates a player on a given map
+	 * 
+	 * @param map a GameMap
+	 * @return the player interacting with that map
+	 */
+	@DesignPattern(name = "factory method")
+	public static Player createPlayer(GameMap map) {
 		player = new Player(map);
+		return player;
 	}
 
+	/**
+	 * Allow access to the player object anywhere in the code.
+	 * 
+	 * As such, it is really a registry design pattern, not a singleton design
+	 * pattern: the method does not enforce that only one instance of a player will
+	 * be created.
+	 * 
+	 * @return the last player created using the {@link #createPlayer(GameMap)}
+	 * @see {@link MapRegistry} for equivalent functionaly for GameMap.
+	 */
+	@DesignPattern(name = "registry", url = "https://martinfowler.com/eaaCatalog/registry.html")
 	public static Player instance() {
 		if (player == null) {
 			throw new IllegalStateException("The instance of player has not been created yet!");

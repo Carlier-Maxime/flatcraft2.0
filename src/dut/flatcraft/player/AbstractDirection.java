@@ -1,7 +1,8 @@
 package dut.flatcraft.player;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Path2D;
 
 public abstract class AbstractDirection implements Direction {
 
@@ -11,6 +12,7 @@ public abstract class AbstractDirection implements Direction {
 	private static final long serialVersionUID = 1L;
 
 	protected final Coordinate c;
+	protected double angle;
 
 	public AbstractDirection(Coordinate c) {
 		this.c = c;
@@ -18,36 +20,32 @@ public abstract class AbstractDirection implements Direction {
 
 	@Override
 	public void paint(Graphics g) {
-		int dx = c.getX() * 40;
-		int dy = c.getY() * 40;
+		int dx = c.getX() * 40 +20;
+		int dy = c.getY() * 40 +17;
 		int dw = 20;
-		int dh = 20;
-		dx = dx(dx);
-		dy = dy(dy);
-		dw = dw(dw);
-		dh = dh(dh);
-		g.setColor(Color.PINK);
-		g.fill3DRect(dx, dy, dw, dh, true);
-	}
+		int dh = 6;
+		Rectangle rect = new Rectangle(dx, dy, dw, dh);
+		Path2D.Double path = new Path2D.Double();
+		path.append(rect, false);
 
-	protected int dx(int dx) {
-		return dx;
-	}
+		AffineTransform t = new AffineTransform();
+		t.rotate(angle, dx, dy+3);
+		path.transform(t);
 
-	protected int dy(int dy) {
-		return dy;
-	}
+		Rectangle nextRect = new Rectangle(getNext().getX()*40, getNext().getY()*40, 40, 40);
 
-	protected int dw(int dw) {
-		return dw;
-	}
+		Graphics2D g2d = (Graphics2D)g;
 
-	protected int dh(int dh) {
-		return dh;
+
+		g2d.setColor(Color.PINK);
+//		g.fill3DRect(dx, dy, dw, dh, true);
+		g2d.fill(path);
+		g2d.setColor(Color.YELLOW);
+		g2d.draw(nextRect);
 	}
 
 	@Override
 	public Coordinate nextForResource() {
-		return new Coordinate(c);
+		return new Coordinate(getNext());
 	}
 }
