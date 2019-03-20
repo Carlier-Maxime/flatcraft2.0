@@ -9,6 +9,7 @@ public class Left extends AbstractDirection {
 
 	public Left(Coordinate c) {
 		super(c);
+		super.angle = Math.toRadians(180);
 	}
 
 	@Override
@@ -17,20 +18,18 @@ public class Left extends AbstractDirection {
 	}
 
 	@Override
+	public Coordinate getNext() {
+		Coordinate c2 = new Coordinate(c);
+		c2.decX();
+		return c2;
+	}
+
+	@Override
 	public Coordinate toDig() {
+		System.out.println("Diging Left");
 		if (c.getX() > 0) {
 			return new Coordinate(c.getX() - 1, c.getY(), c.width, c.height);
 		}
 		return new Coordinate(c);
-	}
-
-	@Override
-	public int dy(int dy) {
-		return dy + 16;
-	}
-
-	@Override
-	public int dh(int dh) {
-		return 8;
 	}
 }

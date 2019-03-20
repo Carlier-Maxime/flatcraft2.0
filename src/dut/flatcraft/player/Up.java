@@ -9,6 +9,7 @@ public class Up extends AbstractDirection {
 
 	public Up(Coordinate c) {
 		super(c);
+		super.angle = Math.toRadians(270);
 	}
 
 	@Override
@@ -17,17 +18,16 @@ public class Up extends AbstractDirection {
 	}
 
 	@Override
-	public int dx(int dx) {
-		return dx + 16;
+	public Coordinate getNext() {
+		Coordinate c2 = new Coordinate(c);
+		c2.decY();
+		return c2;
 	}
 
-	@Override
-	public int dw(int dw) {
-		return 8;
-	}
 
 	@Override
 	public Coordinate toDig() {
+		System.out.println("Diging Up");
 		if (c.getY() > 0) {
 			return new Coordinate(c.getX(), c.getY() - 1, c.width, c.height);
 		}
