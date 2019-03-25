@@ -40,7 +40,7 @@ public class MineUtils {
 
 	public static final int DEFAULT_IMAGE_SIZE = 40;
 
-	private static final Map<String, ImageIcon> cachedImages = new HashMap<>();
+	private static final Map<String, VaryingImageIcon> cachedImages = new HashMap<>();
 	private static final Map<String, Resource> cachedResources = new HashMap<>();
 	private static final Map<String, Tool> cachedTools = new HashMap<>();
 
@@ -55,15 +55,15 @@ public class MineUtils {
 	 * @return an ImageIcon scaled up to 40x40.
 	 */
 
-	public static ImageIcon getImage(String localName) {
-		ImageIcon cached = cachedImages.get(localName);
+	public static VaryingImageIcon getImage(String localName) {
+		VaryingImageIcon cached = cachedImages.get(localName);
 		if (cached == null) {
 			String absoluteName = "/textures/default_" + localName + ".png";
 			try {
-				cached = new ImageIcon(ImageIO.read(MineUtils.class.getResource(absoluteName))
+				cached = new VaryingImageIcon(ImageIO.read(MineUtils.class.getResource(absoluteName))
 						.getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, Image.SCALE_DEFAULT));
 			} catch (IOException e) {
-				cached = new ImageIcon();
+				cached = new VaryingImageIcon();
 			}
 			cachedImages.put(localName, cached);
 		}
@@ -76,12 +76,12 @@ public class MineUtils {
 	 * @param imageName the name of the texture file.
 	 * @return an ImageIcon scaled up to 40x40.
 	 */
-	public static ImageIcon scaled(String imageName) {
+	public static VaryingImageIcon scaled(String imageName) {
 		try {
-			return new ImageIcon(ImageIO.read(MineUtils.class.getResource(imageName))
+			return new VaryingImageIcon(ImageIO.read(MineUtils.class.getResource(imageName))
 					.getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, Image.SCALE_DEFAULT));
 		} catch (IOException e) {
-			return new ImageIcon();
+			return new VaryingImageIcon();
 		}
 	}
 
@@ -94,13 +94,13 @@ public class MineUtils {
 	 * @return an image consisting of imageName with the given background.
 	 */
 	public static ImageIcon overlay(String backgroundName, String foregroundName) {
-		ImageIcon background = getImage(backgroundName);
-		ImageIcon foreground = getImage(foregroundName);
+		Image background = getImage(backgroundName).getOriginalImage();
+		Image foreground = getImage(foregroundName).getOriginalImage();
 		BufferedImage merged = new BufferedImage(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, BufferedImage.TYPE_INT_ARGB);
 		Graphics g = merged.getGraphics();
-		g.drawImage(background.getImage(), 0, 0, null);
-		g.drawImage(foreground.getImage(), 0, 0, null);
-		return new ImageIcon(merged);
+		g.drawImage(background, 0, 0, null);
+		g.drawImage(foreground, 0, 0, null);
+		return new VaryingImageIcon(merged);
 	}
 
 	/**

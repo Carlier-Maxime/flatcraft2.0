@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -22,6 +23,69 @@ import dut.flatcraft.ui.MyGrid;
 public class Main {
 
 	private static JFrame frame = new JFrame("FLATCRAFT 2019 - Student project - F1 to get help");
+
+	public static int hourOfTheDay = 12;
+
+	public static final void updateHour(ActionEvent e) {
+		float factor = 1.0f;
+		hourOfTheDay = (hourOfTheDay + 1) % 24;
+		switch (hourOfTheDay) {
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+			factor = 0.5f;
+			break;
+		case 7:
+			factor = 0.55f;
+			break;
+		case 8:
+			factor = 0.6f;
+			break;
+		case 9:
+			factor = 0.7f;
+			break;
+		case 10:
+			factor = 0.8f;
+			break;
+		case 11:
+			factor = 0.9f;
+			break;
+		case 12:
+		case 13:
+		case 14:
+		case 15:
+		case 16:
+		case 17:
+			factor = 1.0f;
+			break;
+		case 18:
+			factor = 0.9f;
+			break;
+		case 19:
+			factor = 0.8f;
+			break;
+		case 20:
+			factor = 0.7f;
+			break;
+		case 21:
+			factor = 0.6f;
+			break;
+		case 22:
+			factor = 0.55f;
+			break;
+		case 23:
+			factor = 0.5f;
+			break;
+		default:
+			throw new IllegalStateException("A day does not last more than 24 hours");
+		}
+		VaryingImageIcon.setFactor(factor);
+		frame.repaint();
+	}
 
 	public static JFrame getFrame() {
 		return frame;
@@ -91,5 +155,7 @@ public class Main {
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+
+		VaryingImageIcon.startSimulation(5, Main::updateHour);
 	}
 }
