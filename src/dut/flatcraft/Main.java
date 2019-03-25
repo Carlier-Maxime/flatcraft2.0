@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -24,7 +25,13 @@ public class Main {
 
 	private static JFrame frame = new JFrame("FLATCRAFT 2019 - Student project - F1 to get help");
 
-	public static int hourOfTheDay = 12;
+	private static int hourOfTheDay = 12;
+
+	private static JLabel hourLabel = new JLabel(hourString());
+
+	private static String hourString() {
+		return String.format("Time: %2d o'clock", hourOfTheDay);
+	}
 
 	public static final void updateHour(ActionEvent e) {
 		float factor = 1.0f;
@@ -84,6 +91,7 @@ public class Main {
 			throw new IllegalStateException("A day does not last more than 24 hours");
 		}
 		VaryingImageIcon.setFactor(factor);
+		hourLabel.setText(hourString());
 		frame.repaint();
 	}
 
@@ -127,6 +135,7 @@ public class Main {
 		frame.add(BorderLayout.CENTER, scrollpane);
 
 		JPanel south = new JPanel();
+		south.add(hourLabel);
 
 		JDialog craft = new JDialog(frame, "Craft Table");
 		craft.add(new CraftTable(grid.getPlayer()));
