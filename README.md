@@ -7,7 +7,7 @@
 
 1. se connecter sur [sonarqube](http://forge.univ-artois.fr/sonar67/)
 1. le responsable du projet de groupe crée un token sur [son profil/onglet sécurité](https://forge.univ-artois.fr/sonar67/account/security/)
-1. intégrer ce token dans le fichier [sonar-project.properties](sonar-project.properties)
+1. intégrer ce token au niveau de la clé `sonar.login` dans le fichier [sonar-project.properties](sonar-project.properties)
 1. remplacer dans [.gitlab-ci.yml](.gitlab-ci.yml) le script `./build.sh` par `./build.sh && sonar-scanner -Dsonar.projectKey=flatcraft_$CI_PROJECT_NAMESPACE`
 1. dans quelques minutes, votre projet sera visible sur [sonarqube](http://forge.univ-artois.fr/sonar67/)
 1. combien de jours de dette technique avez-vous ?
