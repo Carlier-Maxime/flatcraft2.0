@@ -11,6 +11,9 @@
 1. remplacer dans [.gitlab-ci.yml](.gitlab-ci.yml) le script `./build.sh` par `./build.sh && sonar-scanner -Dsonar.projectKey=flatcraft_$CI_PROJECT_NAMESPACE`
 1. dans quelques minutes, votre projet sera visible sur [sonarqube](http://forge.univ-artois.fr/sonar67/)
 1. combien de jours de dette technique avez-vous ?
+1. changer le profil de qualité à `DUT2` dans Administration/Quality Profile
+1. relancer la construction et l'analyse du projet : est ce plus raisonnable ?
+1. corriger ou ignorer les violations proposées par sonarqube
 
 ## Semaine 5 : découverte du code du jeu
 
