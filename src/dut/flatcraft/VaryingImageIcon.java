@@ -24,7 +24,7 @@ public class VaryingImageIcon extends ImageIcon {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static float factor = 1.0f;
+	private static float factor = 1.0f;
 
 	public static final void startSimulation(int delayInSeconds, ActionListener listener) {
 		Timer timer = new Timer(delayInSeconds * 1000, listener);
