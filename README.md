@@ -3,6 +3,15 @@
 > Le but du projet flatcraft est de servir de base pour le développement d'une 
 > nouvelle fonctionnalité pour un binôme (éventuellement trinôme) d'étudiants.
 
+## Semaine 8 : coder, c'est bien, coder bien, c'est mieux
+
+1. se connecter sur [sonarqube](http://forge.univ-artois.fr/sonar67/)
+1. le responsable du projet de groupe crée un token sur [son profil/onglet sécurité](https://forge.univ-artois.fr/sonar67/account/security/)
+1. intégrer ce token dans le fichier [sonar-project.properties](sonar-project.properties)
+1. remplacer dans [.gitlab-ci.yml](.gitlab-ci.yml) le script `./build.sh` par `./build.sh && sonar-scanner -Dsonar.projectKey=flatcraft_$CI_PROJECT_NAMESPACE`
+1. dans quelques minutes, votre projet sera visible sur [sonarqube](http://forge.univ-artois.fr/sonar67/)
+1. combien de jours de dette technique avez-vous ?
+
 ## Semaine 5 : découverte du code du jeu
 
 Le but de la semaine 5 est que de découvrir le code du projet.
