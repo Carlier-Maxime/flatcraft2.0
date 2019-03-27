@@ -1,6 +1,9 @@
 package dut.flatcraft.player;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 
@@ -29,7 +32,7 @@ public abstract class AbstractDirection implements Direction {
 		path.append(rect, false);
 
 		AffineTransform t = new AffineTransform();
-		t.rotate(angle, dx, dy + 3);
+		t.rotate(angle, dx, dy + 3.0);
 		path.transform(t);
 
 		Rectangle nextRect = new Rectangle(getNext().getX() * 40, getNext().getY() * 40, 40, 40);
