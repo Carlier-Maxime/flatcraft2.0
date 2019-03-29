@@ -26,6 +26,9 @@ public class VaryingImageIcon extends ImageIcon {
 
 	private static float factor = 1.0f;
 
+	private final BufferedImage modified = new BufferedImage(MineUtils.DEFAULT_IMAGE_SIZE, MineUtils.DEFAULT_IMAGE_SIZE,
+			BufferedImage.TYPE_INT_ARGB);
+
 	public static final void startSimulation(int delayInSeconds, ActionListener listener) {
 		Timer timer = new Timer(delayInSeconds * 1000, listener);
 		timer.start();
@@ -87,8 +90,6 @@ public class VaryingImageIcon extends ImageIcon {
 	@Override
 	public Image getImage() {
 		Image original = super.getImage();
-		BufferedImage modified = new BufferedImage(original.getWidth(getImageObserver()),
-				original.getHeight(getImageObserver()), BufferedImage.TYPE_INT_ARGB);
 		RescaleOp op = new RescaleOp(factor, 0, null);
 		modified.createGraphics().drawImage(original, 0, 0, null);
 		op.filter(modified, modified);
