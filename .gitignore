@@ -1,2 +1,3 @@
 /bin/
 sonar-project.properties
+.gitlab-ci.yml
