@@ -91,7 +91,7 @@ public class VaryingImageIcon extends ImageIcon {
 				original.getHeight(getImageObserver()), BufferedImage.TYPE_INT_ARGB);
 		RescaleOp op = new RescaleOp(factor, 0, null);
 		modified.createGraphics().drawImage(original, 0, 0, null);
-		modified = op.filter(modified, null);
+		op.filter(modified, modified);
 		return modified;
 	}
 
