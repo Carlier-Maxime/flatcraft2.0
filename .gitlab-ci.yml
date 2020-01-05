@@ -1,5 +1,5 @@
 sonar:
-    script: ./build.sh && sonar-scanner -Dsonar.projectKey=flatcraft_PEL19_$CI_PROJECT_NAMESPACE 
+    script: ./build.sh && sonar-scanner -Dsonar.login=$SONARTOKEN -Dsonar.projectKey=flatcraft_2020_$CI_PROJECT_NAMESPACE 
     stage: build
     tags:
      - sonar
