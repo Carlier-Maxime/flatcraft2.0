@@ -22,7 +22,6 @@ public class UpLeft extends AbstractDirection {
 
 	@Override
 	public Coordinate toDig() {
-		System.out.println("Diging Up Left");
 		if (c.getX() > 0 && c.getY() > 0) {
 			return new Coordinate(c.getX() - 1, c.getY() - 1, c.width, c.height);
 		}

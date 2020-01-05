@@ -30,7 +30,6 @@ public class DownLeft extends AbstractDirection {
 
 	@Override
 	public String toString() {
-		System.out.println("Diging down left");
 		return "UpRight{" + "c=" + c + '}';
 	}
 }

@@ -25,7 +25,6 @@ public class UpRight extends AbstractDirection {
 
 	@Override
 	public Coordinate toDig() {
-		System.out.println("Diging Up Right");
 		if (c.getX() < c.width - 1 && c.getY() > 0) {
 			return new Coordinate(c.getX() + 1, c.getY() - 1, c.width, c.height);
 		}

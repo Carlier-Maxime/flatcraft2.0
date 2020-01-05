@@ -78,19 +78,6 @@ public class GlassPaneWrapper extends JLayeredPane {
 
 		double angle = Math.acos(pa / pm);
 
-//                System.out.println(angle);
-
-//                System.out.println(mx + " " + my);
-//                System.out.println(px + " " + py);
-
-//                if (Math.abs(px-mx)<Math.abs(py-my)) {
-//                    if (py>my) grid.getPlayer().up();
-//                    else grid.getPlayer().down();
-//                } else {
-//                    if (px>mx) grid.getPlayer().left();
-//                    else grid.getPlayer().right();
-//                }
-
 		if (py > my) { // vers le haut
 			if (px > mx) { // vers le haut gauche
 				if (angle > 3 * Math.PI / 8) {

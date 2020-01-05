@@ -110,7 +110,6 @@ public class Coordinate implements Serializable {
 
 	public boolean incXincY() {
 		if (x < width - 1 && y < height - 1) {
-			System.out.println("test");
 			x++;
 			y++;
 			return true;

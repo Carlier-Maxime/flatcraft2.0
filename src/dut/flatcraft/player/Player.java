@@ -79,42 +79,34 @@ public class Player implements Serializable {
 
 	public void up() {
 		currentDirection = lookingUp;
-		System.out.println("Up");
 	}
 
 	public void down() {
 		currentDirection = lookingDown;
-		System.out.println("Down");
 	}
 
 	public void left() {
 		currentDirection = lookingLeft;
-		System.out.println("Left");
 	}
 
 	public void right() {
 		currentDirection = lookingRight;
-		System.out.println("Right");
 	}
 
 	public void upRight() {
 		currentDirection = lookingUpRight;
-		System.out.println("UpRight");
 	}
 
 	public void downRight() {
 		currentDirection = lookingDownRight;
-		System.out.println("DownRight");
 	}
 
 	public void upLeft() {
 		currentDirection = lookingUpLeft;
-		System.out.println("UpLeft");
 	}
 
 	public void downLeft() {
 		currentDirection = lookingDownLeft;
-		System.out.println("DownLeft");
 	}
 
 	// Start - QD Implementation

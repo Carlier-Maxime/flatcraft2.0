@@ -23,7 +23,7 @@ import dut.flatcraft.ui.MyGrid;
 
 public class Main {
 
-	private static JFrame frame = new JFrame("FLATCRAFT 2019 - Student project - F1 to get help");
+	private static JFrame frame = new JFrame("FLATCRAFT 2020 - Student project - F1 to get help");
 
 	private static int hourOfTheDay = 12;
 

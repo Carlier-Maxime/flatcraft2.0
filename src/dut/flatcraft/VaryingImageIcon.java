@@ -1,12 +1,14 @@
 package dut.flatcraft;
 
+
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
@@ -65,18 +67,6 @@ public class VaryingImageIcon extends ImageIcon {
 		super();
 	}
 
-	public VaryingImageIcon(byte[] imageData, String description) {
-		super(imageData, description);
-	}
-
-	public VaryingImageIcon(byte[] imageData) {
-		super(imageData);
-	}
-
-	public VaryingImageIcon(Image image, String description) {
-		super(image, description);
-	}
-
 	public VaryingImageIcon(Image image) {
 		super(image);
 		instances.add(this);
@@ -94,13 +84,16 @@ public class VaryingImageIcon extends ImageIcon {
 
 	@Override
 	public Image getImage() {
+		return modified;
+	}
+
+    private void updateImage() {
 		Image original = super.getImage();
 		RescaleOp op = new RescaleOp(lightFactor, 0, null);
 		modified.createGraphics().drawImage(original, 0, 0, null);
 		op.filter(modified, modified);
-		return modified;
-	}
-
+    }
+    
 	public Image getOriginalImage() {
 		return super.getImage();
 	}

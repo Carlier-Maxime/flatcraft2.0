@@ -6,19 +6,19 @@ import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
 import java.util.Optional;
 import java.util.logging.Logger;
 
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-import dut.flatcraft.*;
+import dut.flatcraft.Cell;
+import dut.flatcraft.CellFactory;
+import dut.flatcraft.GameMap;
+import dut.flatcraft.MineUtils;
 import dut.flatcraft.map.MapGenerator;
 import dut.flatcraft.player.Coordinate;
 import dut.flatcraft.player.Player;
-
-import java.awt.event.MouseMotionListener;
 
 public class MyGrid extends JComponent implements KeyListener {
 
