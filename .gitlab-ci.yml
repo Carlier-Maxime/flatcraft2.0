@@ -2,8 +2,7 @@ sonar:
     script: ./build.sh && sonar-scanner -Dsonar.login=$SONARTOKEN -Dsonar.projectKey=flatcraft_2020_$CI_PROJECT_NAMESPACE 
     stage: build
     tags:
-     - sonar
-     - java
+     - iut
     artifacts:
      paths:
         - flatcraft.jar
