@@ -141,7 +141,7 @@ public class Inventory implements Serializable {
 
 			@Override
 			protected void exportDone(JComponent source, Transferable data, int action) {
-				if (data instanceof ResourceContainerUI) {
+				if (source instanceof ResourceContainerUI) {
 					ResourceContainer container = ((ResourceContainerUI) source).getResourceContainer();
 					if (action == MOVE) {
 						container.consumeAll();
