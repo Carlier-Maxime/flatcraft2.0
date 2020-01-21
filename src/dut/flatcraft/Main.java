@@ -2,8 +2,9 @@ package dut.flatcraft;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.DisplayMode;
+import java.awt.GraphicsEnvironment;
 import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
@@ -122,8 +123,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		MapGenerator generator = new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5);
-
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		DisplayMode displayMode = ge.getDefaultScreenDevice().getDisplayMode();
+		Dimension screenSize = new Dimension(displayMode.getWidth(), displayMode.getHeight());
 		MyGrid grid = new MyGrid((screenSize.height - 150) / 40, 120, new ResourceCellFactory(), generator);
 		GlassPaneWrapper glassPaneWrapper = new GlassPaneWrapper(grid);
 		glassPaneWrapper.activateGlassPane(true);
