@@ -152,6 +152,14 @@ public class Inventory implements Serializable {
 							container.consume(container.getQuantity() / 2);
 						}
 					}
+				} else if (source instanceof ToolInstanceUI) {
+					if (action == MOVE || action == COPY) {
+						ToolInstanceUI toolUI = (ToolInstanceUI) source;
+						ui.remove(toolUI);
+						handables.remove(toolUI.getMineTool());
+						ui.revalidate();
+						ui.repaint();
+					}
 				}
 			}
 
@@ -171,10 +179,7 @@ public class Inventory implements Serializable {
 								.getTransferData(ResourceContainer.RESOURCE_FLAVOR);
 						if (transferedHandable instanceof ToolInstance) {
 							if (!handables.contains(transferedHandable)) {
-								handables.add(transferedHandable);
-								ui.add(new ToolInstanceUI((ToolInstance) transferedHandable));
-								ui.revalidate();
-								ui.repaint();
+								add((ToolInstance) transferedHandable);
 							}
 						} else {
 							ResourceContainer sourceContainer = (ResourceContainer) transferedHandable;
