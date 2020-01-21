@@ -164,6 +164,9 @@ public class Main {
 
 		frame.add(BorderLayout.SOUTH, south);
 		frame.pack();
+		if (frame.getWidth() > screenSize.width) {
+			frame.setSize(screenSize.width, frame.getHeight());
+		}
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 
