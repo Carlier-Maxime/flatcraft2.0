@@ -73,6 +73,16 @@ public class ResourceContainerUI extends JLabel implements ResourceContainerList
 	}
 
 	@Override
+	public void paintImmediately(int x, int y, int w, int h) {
+		repaint();
+	}
+
+	@Override
+	public void paintImmediately(Rectangle r) {
+		repaint();
+	}
+
+	@Override
 	public void update(ResourceContainer source) {
 		repaint();
 	}
