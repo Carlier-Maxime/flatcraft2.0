@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import dut.flatcraft.map.MapGenerator;
 import dut.flatcraft.map.SimpleGenerator;
@@ -121,7 +123,9 @@ public class Main {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, InstantiationException,
+			IllegalAccessException, UnsupportedLookAndFeelException {
+		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		MapGenerator generator = new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5);
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		DisplayMode displayMode = ge.getDefaultScreenDevice().getDisplayMode();
