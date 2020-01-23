@@ -57,6 +57,10 @@ public class ResourceContainerUI extends JLabel implements ResourceContainerList
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		customPainting(g);
+	}
+
+	private void customPainting(Graphics g) {
 		int qty = container.getQuantity();
 		if (qty > 0) {
 			Rectangle rect = g.getClipBounds();
@@ -70,6 +74,12 @@ public class ResourceContainerUI extends JLabel implements ResourceContainerList
 				g.drawString(String.valueOf(qty), rect.x + 23, rect.y + 34);
 			}
 		}
+	}
+
+	@Override
+	public void update(Graphics g) {
+		super.update(g);
+		customPainting(g);
 	}
 
 	@Override
