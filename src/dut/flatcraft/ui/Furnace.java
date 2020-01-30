@@ -165,7 +165,11 @@ public class Furnace extends JPanel {
 			return;
 		}
 		String key = RULES.get(ore.getBlock().getName());
-		Logger.getAnonymousLogger().info(() -> "Should produce " + key);
+		Logger.getAnonymousLogger().info(() -> "Should produce " + key + " from " + ore.getBlock().getName());
+		if (key == null) {
+			Logger.getAnonymousLogger().info("No furnace rule found");
+			return;
+		}
 		JComponent crafted = new ResourceContainerUI(MineUtils.getResourceByName(key), 1);
 		result.removeAll();
 		result.add(crafted);
