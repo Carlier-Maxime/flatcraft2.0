@@ -6,6 +6,12 @@ import javax.swing.JOptionPane;
 
 import dut.flatcraft.tools.ToolType;
 
+/**
+ * Example of ExecutableResource, i.e. a resource which reacts to an action.
+ * 
+ * @author leberre
+ *
+ */
 public class ChestResource extends ExecutableResource {
 
 	/**

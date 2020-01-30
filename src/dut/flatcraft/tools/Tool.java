@@ -10,6 +10,12 @@ import javax.swing.JLabel;
 
 import dut.flatcraft.MineElement;
 
+/**
+ * Define a particular kind of tool.
+ * 
+ * @author leberre
+ *
+ */
 public class Tool implements MineElement, Transferable {
 
 	/**

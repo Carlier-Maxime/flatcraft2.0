@@ -2,6 +2,12 @@ package dut.flatcraft.resources;
 
 import java.awt.datatransfer.DataFlavor;
 
+/**
+ * Combustible resources are used in the furnace.
+ * 
+ * @author leberre
+ *
+ */
 public class CombustibleContainer extends ResourceContainer {
 
 	/**

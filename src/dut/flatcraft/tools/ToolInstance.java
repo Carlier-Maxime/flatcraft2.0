@@ -22,6 +22,13 @@ import dut.flatcraft.player.Player;
 import dut.flatcraft.resources.Resource;
 import dut.flatcraft.ui.Inventory;
 
+/**
+ * A particular instance of a tool, i.e. one that will be manipulated in the
+ * game.
+ * 
+ * @author leberre
+ *
+ */
 public class ToolInstance implements Transferable, MineElementInstance, Handable {
 
 	/**
