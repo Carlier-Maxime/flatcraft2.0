@@ -4,8 +4,7 @@ public class DownLeft extends AbstractDirection {
 	private static final long serialVersionUID = 1L;
 
 	public DownLeft(Coordinate c) {
-		super(c);
-		super.angle = Math.toRadians(135);
+		super(c, Math.toRadians(135));
 	}
 
 	@Override

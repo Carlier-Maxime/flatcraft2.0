@@ -15,10 +15,11 @@ public abstract class AbstractDirection implements Direction {
 	private static final long serialVersionUID = 1L;
 
 	protected final Coordinate c;
-	protected double angle;
+	protected final double angle;
 
-	public AbstractDirection(Coordinate c) {
+	public AbstractDirection(Coordinate c, double angle) {
 		this.c = c;
+		this.angle = angle;
 	}
 
 	@Override

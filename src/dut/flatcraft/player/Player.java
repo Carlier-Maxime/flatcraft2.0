@@ -13,6 +13,12 @@ import dut.flatcraft.ui.Inventoriable;
 import dut.flatcraft.ui.Inventory;
 import fr.univartois.migl.utils.DesignPattern;
 
+/**
+ * The player controlled on the GameMap.
+ * 
+ * @author leberre
+ *
+ */
 public class Player implements Serializable {
 
 	/**
@@ -25,13 +31,16 @@ public class Player implements Serializable {
 	private Coordinate position;
 
 	/*
-	 * The four possible directions.
+	 * The four cardinal directions.
 	 */
 	public final Direction lookingUp;
 	public final Direction lookingDown;
 	public final Direction lookingLeft;
 	public final Direction lookingRight;
 
+	/*
+	 * The four diagonal directions (provided by 2019's students)
+	 */
 	public final Direction lookingUpRight;
 	public final Direction lookingDownRight;
 	public final Direction lookingUpLeft;
@@ -124,11 +133,11 @@ public class Player implements Serializable {
 	}
 
 	public Coordinate getTopRight() {
-		return new Coordinate(getRight().getX(), getRight().getY() - 1, getRight().width, getRight().height);
+		return lookingUpRight.toDig();
 	}
 
 	public Coordinate getTopLeft() {
-		return new Coordinate(getLeft().getX(), getLeft().getY() - 1, getLeft().width, getLeft().height);
+		return lookingUpLeft.toDig();
 	}
 
 	public void moveRight() {
@@ -147,7 +156,7 @@ public class Player implements Serializable {
 		}
 	}
 
-	private boolean isEmptyCell(Coordinate c) {
+	private static boolean isEmptyCell(Coordinate c) {
 		return (MapRegistry.getMap().getAt(c.getY(), c.getX()).getName().equals("empty"));
 	}
 
@@ -212,7 +221,7 @@ public class Player implements Serializable {
 	 * be created.
 	 * 
 	 * @return the last player created using the {@link #createPlayer(GameMap)}
-	 * @see {@link MapRegistry} for equivalent functionaly for GameMap.
+	 * @see {@link MapRegistry} for equivalent functionality for GameMap.
 	 */
 	@DesignPattern(name = "registry", url = "https://martinfowler.com/eaaCatalog/registry.html")
 	public static Player instance() {

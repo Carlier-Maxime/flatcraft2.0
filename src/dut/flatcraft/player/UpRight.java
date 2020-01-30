@@ -7,8 +7,7 @@ public class UpRight extends AbstractDirection {
 	private static final long serialVersionUID = 1L;
 
 	public UpRight(Coordinate c) {
-		super(c);
-		super.angle = Math.toRadians(315);
+		super(c, Math.toRadians(315));
 	}
 
 	@Override

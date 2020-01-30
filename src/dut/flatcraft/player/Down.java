@@ -8,8 +8,7 @@ public class Down extends AbstractDirection {
 	private static final long serialVersionUID = 1L;
 
 	public Down(Coordinate c) {
-		super(c);
-		super.angle = Math.toRadians(90);
+		super(c, Math.toRadians(90));
 	}
 
 	@Override

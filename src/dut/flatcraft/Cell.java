@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 
 import dut.flatcraft.player.Player;
 import dut.flatcraft.ui.Inventory;
+import fr.univartois.migl.utils.DesignPattern;
 
 /**
  * A cell represents a unit space in the map. It can be filled with a resource
@@ -80,7 +81,9 @@ public interface Cell extends Serializable {
 	boolean canBeReplacedBy(Cell c, Player p);
 
 	/**
+	 * Ask a cell to add itself to the inventory.
 	 * 
 	 */
+	@DesignPattern(name = "Double Dispatch")
 	void addTo(Inventory inventory);
 }

@@ -8,8 +8,7 @@ public class Right extends AbstractDirection {
 	private static final long serialVersionUID = 1L;
 
 	public Right(Coordinate c) {
-		super(c);
-		super.angle = Math.toRadians(0);
+		super(c, Math.toRadians(0));
 	}
 
 	@Override
