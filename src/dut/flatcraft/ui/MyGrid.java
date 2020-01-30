@@ -190,6 +190,7 @@ public class MyGrid extends JComponent implements KeyListener {
 			if (player.getHand().mustBeChanged()) {
 				player.nextInHand();
 			}
+			player.next();
 			return true;
 		}
 		return false;

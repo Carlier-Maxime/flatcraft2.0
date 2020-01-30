@@ -73,7 +73,6 @@ public class ResourceInstance implements MineElementInstance, Cell, Inventoriabl
 	public boolean dig(Player p) {
 		if (dig((ToolInstance) p.getHand())) {
 			p.addToInventory(resourceType.digBlock().newInstance());
-			p.next(); // TODO deactivate?
 			return true;
 		}
 		return false;
