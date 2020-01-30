@@ -130,7 +130,7 @@ public class Main {
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		DisplayMode displayMode = ge.getDefaultScreenDevice().getDisplayMode();
 		Dimension screenSize = new Dimension(displayMode.getWidth(), displayMode.getHeight());
-		MyGrid grid = new MyGrid((screenSize.height - 150) / 40, 120, new ResourceCellFactory(), generator);
+		MyGrid grid = new MyGrid((screenSize.height * 80 / 100) / 40, 120, new ResourceCellFactory(), generator);
 		GlassPaneWrapper glassPaneWrapper = new GlassPaneWrapper(grid);
 		glassPaneWrapper.activateGlassPane(true);
 		JScrollPane scrollpane = new JScrollPane(glassPaneWrapper, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
