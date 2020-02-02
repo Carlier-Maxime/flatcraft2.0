@@ -108,7 +108,7 @@ public class Main {
 		} else {
 			Point pos = button.getLocation();
 			dialog.setLocation(pos.x + button.getWidth() - dialog.getWidth(),
-					screenSize.height - 70 - dialog.getHeight());
+					frame.getHeight() - 70 - dialog.getHeight());
 			dialog.setVisible(true);
 		}
 	}
@@ -118,7 +118,7 @@ public class Main {
 			dialog.setVisible(false);
 		} else {
 			Point pos = button.getLocation();
-			dialog.setLocation(pos.x, screenSize.height - 70 - dialog.getHeight());
+			dialog.setLocation(pos.x, frame.getHeight() - 70 - dialog.getHeight());
 			dialog.setVisible(true);
 		}
 	}
@@ -146,7 +146,6 @@ public class Main {
 		JDialog craft = new JDialog(frame, "Craft Table");
 		craft.add(new CraftTable(grid.getPlayer()));
 		craft.pack();
-		craft.setLocation(screenSize.width / 2 - craft.getWidth() / 2, screenSize.height / 2 - craft.getHeight() / 2);
 
 		JDialog cook = new JDialog(frame, "Furnace");
 		cook.add(new Furnace(grid.getPlayer()));
