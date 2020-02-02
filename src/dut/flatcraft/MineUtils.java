@@ -6,8 +6,8 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,9 +40,9 @@ public class MineUtils {
 
 	public static final int DEFAULT_IMAGE_SIZE = 40;
 
-	private static final Map<String, VaryingImageIcon> cachedImages = new HashMap<>();
-	private static final Map<String, Resource> cachedResources = new HashMap<>();
-	private static final Map<String, Tool> cachedTools = new HashMap<>();
+	private static final Map<String, VaryingImageIcon> cachedImages = new TreeMap<>();
+	private static final Map<String, Resource> cachedResources = new TreeMap<>();
+	private static final Map<String, Tool> cachedTools = new TreeMap<>();
 
 	public static final ImageIcon AIR = scaled("/textures/air.png");
 	public static final ImageIcon PLAYER = scaled("/textures/player.png");
@@ -59,12 +59,7 @@ public class MineUtils {
 		VaryingImageIcon cached = cachedImages.get(localName);
 		if (cached == null) {
 			String absoluteName = "/textures/default_" + localName + ".png";
-			try {
-				cached = new VaryingImageIcon(ImageIO.read(MineUtils.class.getResource(absoluteName))
-						.getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, Image.SCALE_DEFAULT));
-			} catch (IOException e) {
-				cached = new VaryingImageIcon();
-			}
+			cached = scaled(absoluteName);
 			cachedImages.put(localName, cached);
 		}
 		return cached;
@@ -154,11 +149,11 @@ public class MineUtils {
 	 * @param toolType  the type of tool required to dig it
 	 * @return
 	 */
-	public static final Resource makeResource(String localName, int hardness, ToolType toolType) {
+	private static final Resource makeResource(String localName, int hardness, ToolType toolType) {
 		return new Resource(localName, getImage(localName), hardness, toolType);
 	}
 
-	public static final Resource getResourceByName(String resourceName) {
+	public static final synchronized Resource getResourceByName(String resourceName) {
 		String key = resourceName.toLowerCase();
 		Resource resource = cachedResources.get(key);
 		if (resource != null) {
@@ -248,7 +243,7 @@ public class MineUtils {
 					ToolType.MEDIUM_TOOL);
 			break;
 		case "copper_lingot":
-			resource = makeResource("copper_ingot", 10, ToolType.HARD_TOOL);
+			resource = makeResource("copper_lingot", 10, ToolType.HARD_TOOL);
 			break;
 		case "chest":
 			resource = new ChestResource("chest", getImage("chest_front"), 100000, ToolType.NO_TOOL);
@@ -273,11 +268,11 @@ public class MineUtils {
 	 *                  used
 	 * @return a new tool
 	 */
-	public static final Tool makeTool(String localName, int life, ToolType toolType, int decrement) {
+	private static final Tool makeTool(String localName, int life, ToolType toolType, int decrement) {
 		return new Tool(localName, getImage("tool_" + localName), life, toolType, decrement);
 	}
 
-	public static final Tool createToolByName(String toolName) {
+	public static final synchronized Tool createToolByName(String toolName) {
 		String key = toolName.toLowerCase();
 		Tool tool = cachedTools.get(key);
 		if (tool != null) {
