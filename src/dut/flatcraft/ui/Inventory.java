@@ -206,12 +206,12 @@ public class Inventory implements Serializable {
 	}
 
 	private void createOreContainer(Resource resource) {
-		ResourceContainerUI cui = new ResourceContainerUI(new OreContainer(resource, 0));
+		ResourceContainerUI cui = new ResourceContainerUI(new OreContainer(resource, 5));
 		register(resource, cui);
 	}
 
 	private void createCombustibleContainer(Resource resource) {
-		ResourceContainerUI cui = new ResourceContainerUI(new CombustibleContainer(resource, 0));
+		ResourceContainerUI cui = new ResourceContainerUI(new CombustibleContainer(resource, 5));
 		register(resource, cui);
 	}
 

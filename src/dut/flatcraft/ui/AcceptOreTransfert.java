@@ -39,8 +39,19 @@ final class AcceptOreTransfert extends TransferHandler {
 				} else {
 					comp = new ResourceContainerUI(rc.getBlock().getType(), rc.getQuantity() / 2);
 				}
-				source.removeAll();
-				source.add(comp);
+				if (source.getComponentCount() > 0) {
+					ResourceContainerUI existing = (ResourceContainerUI) source.getComponent(0);
+					if (existing.getResourceContainer().getResource() == rc.getResource()) {
+						existing.getResourceContainer().inc(rc.getQuantity());
+					} else if (existing.getResourceContainer().getQuantity() == 0) {
+						source.removeAll();
+						source.add(comp);
+					} else {
+						return false;
+					}
+				} else {
+					source.add(comp);
+				}
 				furnace.processCooking();
 				source.revalidate();
 				source.repaint();
