@@ -17,48 +17,48 @@ public class ResourceCellFactory implements CellFactory {
 	@Override
 	public Cell createGrass() {
 		if (RAND.nextInt(10) < 1) {
-			return MineUtils.getResourceByName("junglegrass").newInstance();
+			return createCell("junglegrass");
 		}
 		if (RAND.nextInt(10) < 2) {
-			return MineUtils.getResourceByName("water").newInstance();
+			return createCell("water");
 		}
-		return MineUtils.getResourceByName("grass").newInstance();
+		return createCell("grass");
 	}
 
 	@Override
 	public Cell createSoil() {
 		if (RAND.nextInt(10) < 7) {
-			return MineUtils.getResourceByName("dirt").newInstance();
+			return createCell("dirt");
 		}
 		if (RAND.nextInt(100) < 10) {
-			return MineUtils.getResourceByName("coal").newInstance();
+			return createCell("coal");
 		}
 		if (RAND.nextInt(100) < 5) {
-			return MineUtils.getResourceByName("gold").newInstance();
+			return createCell("gold");
 		}
 		if (RAND.nextInt(100) < 5) {
-			return MineUtils.getResourceByName("iron").newInstance();
+			return createCell("iron");
 		}
 		if (RAND.nextInt(100) < 5) {
-			return MineUtils.getResourceByName("copper").newInstance();
+			return createCell("copper");
 		}
 		if (RAND.nextInt(100) < 3) {
-			return MineUtils.getResourceByName("ladder").newInstance();
+			return createCell("ladder");
 		}
 		if (RAND.nextInt(100) < 1) {
-			return MineUtils.getResourceByName("chest").newInstance();
+			return createCell("chest");
 		}
-		return MineUtils.getResourceByName("stone").newInstance();
+		return createCell("stone");
 	}
 
 	@Override
 	public Cell createTree() {
-		return MineUtils.getResourceByName("tree").newInstance();
+		return createCell("tree");
 	}
 
 	@Override
 	public Cell createLeaves() {
-		return MineUtils.getResourceByName("leaves").newInstance();
+		return createCell("leaves");
 	}
 
 }

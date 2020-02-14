@@ -46,4 +46,15 @@ public interface CellFactory {
 	 * @return
 	 */
 	Cell createLeaves();
+
+	/**
+	 * Create a cell object using its name.
+	 * 
+	 * @param name a resource name
+	 * @return an instance of that resource
+	 * @see MineUtils
+	 */
+	default Cell createCell(String name) {
+		return MineUtils.getResourceByName(name).newInstance();
+	}
 }
