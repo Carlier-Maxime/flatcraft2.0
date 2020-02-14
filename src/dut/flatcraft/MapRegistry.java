@@ -15,6 +15,10 @@ import fr.univartois.migl.utils.DesignPattern;
 public class MapRegistry {
 	private static ExtendedGameMap map;
 
+	private MapRegistry() {
+		// prevent instantiation
+	}
+
 	@DesignPattern(name = "factory method")
 	public static <T extends GameMap> T makeMap(int width, int height) {
 		map = new CompleteGameMap(width, height);

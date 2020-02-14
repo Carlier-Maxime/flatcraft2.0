@@ -1,10 +1,16 @@
 package dut.flatcraft;
 
-import dut.flatcraft.ui.MyGrid;
+import java.awt.Point;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+
+import dut.flatcraft.ui.MyGrid;
 
 public class GlassPaneWrapper extends JLayeredPane {
 	private JPanel glassPanel = new JPanel();
@@ -91,8 +97,9 @@ public class GlassPaneWrapper extends JLayeredPane {
 					grid.getPlayer().up();
 				} else if (angle < Math.PI / 8) {
 					grid.getPlayer().right();
-				} else
+				} else {
 					grid.getPlayer().upRight();
+				}
 			}
 		} else { // vers le bas
 			if (px > mx) { // vers le bas gauche
@@ -100,15 +107,17 @@ public class GlassPaneWrapper extends JLayeredPane {
 					grid.getPlayer().down();
 				} else if (angle < Math.PI / 8) {
 					grid.getPlayer().left();
-				} else
+				} else {
 					grid.getPlayer().downLeft();
+				}
 			} else { // vers le bas droite
 				if (angle > 3 * Math.PI / 8) {
 					grid.getPlayer().down();
 				} else if (angle < Math.PI / 8) {
 					grid.getPlayer().right();
-				} else
+				} else {
 					grid.getPlayer().downRight();
+				}
 			}
 		}
 		grid.repaint();

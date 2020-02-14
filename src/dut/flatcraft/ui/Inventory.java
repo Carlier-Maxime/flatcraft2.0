@@ -42,7 +42,7 @@ public class Inventory implements Serializable {
 	private List<Handable> handables = new ArrayList<>();
 
 	private TransferHandler handler;
-	private MouseListener mouselistener = new MyMouseAdapterForInventory();
+	private transient MouseListener mouselistener = new MyMouseAdapterForInventory();
 
 	public Inventory() {
 		ui.setBorder(BorderFactory.createEmptyBorder());
@@ -84,7 +84,7 @@ public class Inventory implements Serializable {
 		ResourceContainer container = containers.get(instance.getName());
 		if (container == null) {
 			// create container
-			container = createResourceContainer((Resource) instance.getType());
+			container = createResourceContainer(instance.getType());
 		}
 		container.inc();
 	}
@@ -152,14 +152,12 @@ public class Inventory implements Serializable {
 							container.consume(container.getQuantity() / 2);
 						}
 					}
-				} else if (source instanceof ToolInstanceUI) {
-					if (action == MOVE || action == COPY) {
-						ToolInstanceUI toolUI = (ToolInstanceUI) source;
-						ui.remove(toolUI);
-						handables.remove(toolUI.getMineTool());
-						ui.revalidate();
-						ui.repaint();
-					}
+				} else if ((source instanceof ToolInstanceUI) && (action == MOVE || action == COPY)) {
+					ToolInstanceUI toolUI = (ToolInstanceUI) source;
+					ui.remove(toolUI);
+					handables.remove(toolUI.getMineTool());
+					ui.revalidate();
+					ui.repaint();
 				}
 			}
 
@@ -196,6 +194,7 @@ public class Inventory implements Serializable {
 					return false;
 				}
 			}
+
 		};
 	}
 

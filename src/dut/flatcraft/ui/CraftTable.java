@@ -54,7 +54,7 @@ public class CraftTable extends JPanel {
 
 	private TransferHandler from;
 	private TransferHandler fromResult;
-	private MouseListener dndMouseListener = new MyMouseAdapter();
+	private transient MouseListener dndMouseListener = new MyMouseAdapter();
 
 	private Player player;
 

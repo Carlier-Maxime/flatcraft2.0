@@ -13,8 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
 
 import dut.flatcraft.map.MapGenerator;
 import dut.flatcraft.map.SimpleGenerator;
@@ -37,7 +39,7 @@ public class Main {
 	}
 
 	public static final void updateHour(ActionEvent e) {
-		float factor = 1.0f;
+		float factor;
 		hourOfTheDay = (hourOfTheDay + 1) % 24;
 		switch (hourOfTheDay) {
 		case 0:
@@ -102,7 +104,7 @@ public class Main {
 		return frame;
 	}
 
-	private static void positionCraftTable(Dimension screenSize, JButton button, JDialog dialog) {
+	private static void positionCraftTable(JButton button, JDialog dialog) {
 		if (dialog.isVisible()) {
 			dialog.setVisible(false);
 		} else {
@@ -113,7 +115,7 @@ public class Main {
 		}
 	}
 
-	private static void positionFurnace(Dimension screenSize, JButton button, JDialog dialog) {
+	private static void positionFurnace(JButton button, JDialog dialog) {
 		if (dialog.isVisible()) {
 			dialog.setVisible(false);
 		} else {
@@ -133,8 +135,8 @@ public class Main {
 		MyGrid grid = new MyGrid((screenSize.height * 80 / 100) / 40, 120, new ResourceCellFactory(), generator);
 		GlassPaneWrapper glassPaneWrapper = new GlassPaneWrapper(grid);
 		glassPaneWrapper.activateGlassPane(true);
-		JScrollPane scrollpane = new JScrollPane(glassPaneWrapper, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
-				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		JScrollPane scrollpane = new JScrollPane(glassPaneWrapper, ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollpane.getVerticalScrollBar().setUnitIncrement(40);
 		scrollpane.getHorizontalScrollBar().setUnitIncrement(40);
 		scrollpane.setDoubleBuffered(true);
@@ -152,7 +154,7 @@ public class Main {
 		cook.pack();
 
 		JButton cookButton = new JButton(MineUtils.getImage("furnace_front"));
-		cookButton.addActionListener(e -> positionFurnace(screenSize, cookButton, cook));
+		cookButton.addActionListener(e -> positionFurnace(cookButton, cook));
 		cookButton.setFocusable(false);
 		cookButton.setToolTipText("Furnace");
 		south.add(cookButton);
@@ -160,7 +162,7 @@ public class Main {
 		south.add(grid.getPlayer().getInventoryUI());
 
 		JButton craftButton = new JButton("Craft");
-		craftButton.addActionListener(e -> positionCraftTable(screenSize, craftButton, craft));
+		craftButton.addActionListener(e -> positionCraftTable(craftButton, craft));
 		craftButton.setFocusable(false);
 		craftButton.setToolTipText("Craft Table");
 		south.add(craftButton);
@@ -170,7 +172,7 @@ public class Main {
 		if (frame.getWidth() > screenSize.width) {
 			frame.setSize(screenSize.width, frame.getHeight());
 		}
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 
 		VaryingImageIcon.startSimulation(5, Main::updateHour);

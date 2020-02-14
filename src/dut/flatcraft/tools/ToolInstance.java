@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import dut.flatcraft.Cell;
 import dut.flatcraft.EmptyCell;
@@ -97,7 +96,7 @@ public class ToolInstance implements Transferable, MineElementInstance, Handable
 		if (((Resource) c.getType()).getToolType().compareTo(this.toolType.getTooltype()) <= 0) {
 			boolean result = c.dig(p);
 			if (result) {
-				return Optional.of(new EmptyCell(MineUtils.getImage("ice"), (JLabel) c.getUI()));
+				return Optional.of(new EmptyCell(MineUtils.getImage("ice"), c.getUI()));
 			}
 		}
 		return Optional.empty();

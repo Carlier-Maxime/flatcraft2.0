@@ -15,7 +15,7 @@ public class ExecutableResourceInstance extends ResourceInstance {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Runnable runnable;
+	private transient Runnable runnable;
 
 	public ExecutableResourceInstance(Resource type) {
 		super(type);

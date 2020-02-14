@@ -41,7 +41,6 @@ public abstract class AbstractDirection implements Direction {
 		Graphics2D g2d = (Graphics2D) g;
 
 		g2d.setColor(Color.PINK);
-//		g.fill3DRect(dx, dy, dw, dh, true);
 		g2d.fill(path);
 		g2d.setColor(Color.YELLOW);
 		g2d.draw(nextRect);
