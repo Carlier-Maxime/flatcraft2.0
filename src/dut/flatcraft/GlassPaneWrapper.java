@@ -90,8 +90,9 @@ public class GlassPaneWrapper extends JLayeredPane {
 					grid.getPlayer().up();
 				} else if (angle < Math.PI / 8) {
 					grid.getPlayer().left();
-				} else
+				} else {
 					grid.getPlayer().upLeft();
+				}
 			} else { // vers le haut droite
 				if (angle > 3 * Math.PI / 8) {
 					grid.getPlayer().up();
