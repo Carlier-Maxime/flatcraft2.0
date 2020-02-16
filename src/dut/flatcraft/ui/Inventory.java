@@ -43,6 +43,7 @@ public class Inventory implements Serializable {
 
 	public Inventory() {
 		ui.setBorder(BorderFactory.createEmptyBorder());
+		ui.setOpaque(true);
 		handler = new InventoryTransfert(this);
 		createOreContainer(MineUtils.getResourceByName("iron_lump"));
 		createCombustibleContainer(MineUtils.getResourceByName("wood"));
