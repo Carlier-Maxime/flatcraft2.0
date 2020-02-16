@@ -29,40 +29,39 @@ abstract class AbstractResourceTransfert extends TransferHandler {
 
 	@Override
 	public boolean importData(TransferSupport support) {
-		if (support.isDrop()) {
-			JPanel source = (JPanel) support.getComponent();
-			try {
-				ResourceContainerUI comp;
-				ResourceContainer rc = (ResourceContainer) support.getTransferable().getTransferData(getFlavor());
-				if (support.getDropAction() == MOVE || rc.getQuantity() == 1) {
-					comp = new ResourceContainerUI(rc);
-				} else {
-					comp = new ResourceContainerUI(rc.getBlock().getType(), rc.getQuantity() / 2);
-				}
-				if (source.getComponentCount() > 0) {
-					ResourceContainerUI existing = (ResourceContainerUI) source.getComponent(0);
-					if (existing.getResourceContainer().getResource() == rc.getResource()) {
-						existing.getResourceContainer().inc(rc.getQuantity());
-					} else if (existing.getResourceContainer().getQuantity() == 0) {
-						source.removeAll();
-						onNewContainer(comp);
-						source.add(comp);
-					} else {
-						return false;
-					}
-				} else {
+		if (!support.isDrop()) {
+			return false;
+		}
+		JPanel source = (JPanel) support.getComponent();
+		try {
+			ResourceContainerUI comp;
+			ResourceContainer rc = (ResourceContainer) support.getTransferable().getTransferData(getFlavor());
+			if (support.getDropAction() == MOVE || rc.getQuantity() == 1) {
+				comp = new ResourceContainerUI(rc);
+			} else {
+				comp = new ResourceContainerUI(rc.getBlock().getType(), rc.getQuantity() / 2);
+			}
+			if (source.getComponentCount() > 0) {
+				ResourceContainerUI existing = (ResourceContainerUI) source.getComponent(0);
+				if (existing.getResourceContainer().getResource() == rc.getResource()) {
+					existing.getResourceContainer().inc(rc.getQuantity());
+				} else if (existing.getResourceContainer().getQuantity() == 0) {
+					source.removeAll();
 					onNewContainer(comp);
 					source.add(comp);
+				} else {
+					return false;
 				}
-				afterReceivingResource();
-				source.revalidate();
-				source.repaint();
-				return true;
-			} catch (Exception e) {
-				Logger.getAnonymousLogger().warning(e.getMessage());
-				return false;
+			} else {
+				onNewContainer(comp);
+				source.add(comp);
 			}
-		} else {
+			afterReceivingResource();
+			source.revalidate();
+			source.repaint();
+			return true;
+		} catch (Exception e) {
+			Logger.getAnonymousLogger().warning(e.getMessage());
 			return false;
 		}
 	}
