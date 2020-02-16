@@ -41,9 +41,7 @@ public class CraftTable extends JPanel {
 	private static final Map<String, String> RULES = new HashMap<>();
 
 	/*
-	 * The few crafting rules supported by the craftable. Ideally, the rules should
-	 * be read from a property file, that way the rules could be changed without
-	 * recompiling the program.
+	 * The crafting rules supported by the craftable.
 	 */
 	static {
 		MineUtils.fillRulesFromFile("/craftrules.txt", RULES);
