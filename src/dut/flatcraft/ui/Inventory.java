@@ -104,12 +104,12 @@ public class Inventory implements Serializable {
 		ui.add(tui);
 		tui.setTransferHandler(handler);
 		tui.addMouseListener(mouselistener);
+		ui.revalidate();
+		ui.repaint();
 	}
 
 	public void add(Handable handable) {
 		handable.addTo(this);
-		ui.revalidate();
-		ui.repaint();
 	}
 
 	public JComponent getUI() {
