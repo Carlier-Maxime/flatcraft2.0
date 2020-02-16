@@ -9,7 +9,7 @@ import dut.flatcraft.Cell;
 import dut.flatcraft.ui.Inventoriable;
 
 /**
- * And abstraction for something that the player can have in its hand.
+ * An abstraction for something that the player can have in its hand.
  * 
  * @author leberre
  *
