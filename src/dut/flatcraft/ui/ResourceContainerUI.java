@@ -48,6 +48,7 @@ public class ResourceContainerUI extends JLabel implements ResourceContainerList
 		setBorder(BorderFactory.createEmptyBorder());
 		setToolTipText(container.getResource().getName());
 		setFocusable(false);
+		setOpaque(true);
 	}
 
 	public ResourceContainer getResourceContainer() {
@@ -74,12 +75,6 @@ public class ResourceContainerUI extends JLabel implements ResourceContainerList
 				g.drawString(String.valueOf(qty), rect.x + 23, rect.y + 34);
 			}
 		}
-	}
-
-	@Override
-	public void update(Graphics g) {
-		super.update(g);
-		customPainting(g);
 	}
 
 	@Override
