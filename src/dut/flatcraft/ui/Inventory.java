@@ -1,14 +1,11 @@
 package dut.flatcraft.ui;
 
-import java.awt.Component;
-import java.awt.datatransfer.Transferable;
 import java.awt.event.MouseListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -23,7 +20,6 @@ import dut.flatcraft.resources.OreContainer;
 import dut.flatcraft.resources.Resource;
 import dut.flatcraft.resources.ResourceContainer;
 import dut.flatcraft.resources.ResourceInstance;
-import dut.flatcraft.tools.Tool;
 import dut.flatcraft.tools.ToolInstance;
 import fr.univartois.migl.utils.DesignPattern;
 
@@ -47,7 +43,7 @@ public class Inventory implements Serializable {
 
 	public Inventory() {
 		ui.setBorder(BorderFactory.createEmptyBorder());
-		handler = createTransfertFrom();
+		handler = new InventoryTransfert(this);
 		createOreContainer(MineUtils.getResourceByName("iron_lump"));
 		createCombustibleContainer(MineUtils.getResourceByName("wood"));
 		createCombustibleContainer(MineUtils.getResourceByName("leaves"));
@@ -117,89 +113,8 @@ public class Inventory implements Serializable {
 		return ui;
 	}
 
-	private TransferHandler createTransfertFrom() {
-		return new TransferHandler() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public int getSourceActions(JComponent c) {
-				return COPY;
-			}
-
-			@Override
-			protected Transferable createTransferable(JComponent c) {
-				if (c instanceof ResourceContainerUI) {
-					ResourceContainer rc = ((ResourceContainerUI) c).getResourceContainer();
-					return rc.clone();
-				} else {
-					return ((ToolInstanceUI) c).getMineTool();
-				}
-			}
-
-			@Override
-			protected void exportDone(JComponent source, Transferable data, int action) {
-				if (source instanceof ResourceContainerUI) {
-					ResourceContainer container = ((ResourceContainerUI) source).getResourceContainer();
-					if (action == MOVE) {
-						container.consumeAll();
-					} else if (action == COPY) {
-						if (container.getQuantity() == 1) {
-							container.consume(1);
-						} else {
-							container.consume(container.getQuantity() / 2);
-						}
-					}
-				} else if ((source instanceof ToolInstanceUI) && (action == MOVE || action == COPY)) {
-					ToolInstanceUI toolUI = (ToolInstanceUI) source;
-					ui.remove(toolUI);
-					handables.remove(toolUI.getMineTool());
-					ui.revalidate();
-					ui.repaint();
-				}
-			}
-
-			// partie to
-			@Override
-			public boolean canImport(TransferSupport support) {
-				return support.isDataFlavorSupported(ResourceContainer.RESOURCE_FLAVOR)
-						|| support.isDataFlavorSupported(Tool.TOOL_FLAVOR);
-			}
-
-			@Override
-			public boolean importData(TransferSupport support) {
-				if (support.isDrop()) {
-					JComponent source = (JComponent) support.getComponent();
-					for (Component comp : ui.getComponents()) {
-						if (comp == source) {
-							return false;
-						}
-					}
-					try {
-						Handable transferedHandable = (Handable) support.getTransferable()
-								.getTransferData(ResourceContainer.RESOURCE_FLAVOR);
-						if (transferedHandable instanceof ToolInstance) {
-							add((ToolInstance) transferedHandable);
-						} else {
-							ResourceContainer sourceContainer = (ResourceContainer) transferedHandable;
-							addResource(sourceContainer);
-							source.revalidate();
-							source.repaint();
-						}
-						return true;
-					} catch (Exception e) {
-						Logger.getAnonymousLogger().info(e.getMessage());
-						return false;
-					}
-				} else {
-					return false;
-				}
-			}
-
-		};
+	public List<Handable> getHandables() {
+		return handables;
 	}
 
 	private ResourceContainer createResourceContainer(Resource resource) {
@@ -228,7 +143,7 @@ public class Inventory implements Serializable {
 		handables.add(container);
 	}
 
-	private void addResource(ResourceContainer container) {
+	void addResource(ResourceContainer container) {
 		ResourceContainer mcontainer = containers.get(container.getResource().getName());
 		if (mcontainer == null) {
 			// create container
