@@ -1,5 +1,6 @@
 package dut.flatcraft.ui;
 
+import java.awt.Component;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.MouseListener;
 import java.io.Serializable;
@@ -172,6 +173,11 @@ public class Inventory implements Serializable {
 			public boolean importData(TransferSupport support) {
 				if (support.isDrop()) {
 					JComponent source = (JComponent) support.getComponent();
+					for (Component comp : ui.getComponents()) {
+						if (comp == source) {
+							return false;
+						}
+					}
 					try {
 						Handable transferedHandable = (Handable) support.getTransferable()
 								.getTransferData(ResourceContainer.RESOURCE_FLAVOR);
