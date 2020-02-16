@@ -182,9 +182,7 @@ public class Inventory implements Serializable {
 						Handable transferedHandable = (Handable) support.getTransferable()
 								.getTransferData(ResourceContainer.RESOURCE_FLAVOR);
 						if (transferedHandable instanceof ToolInstance) {
-							if (!handables.contains(transferedHandable)) {
-								add((ToolInstance) transferedHandable);
-							}
+							add((ToolInstance) transferedHandable);
 						} else {
 							ResourceContainer sourceContainer = (ResourceContainer) transferedHandable;
 							addResource(sourceContainer);
