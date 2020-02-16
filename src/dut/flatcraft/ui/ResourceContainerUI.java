@@ -7,7 +7,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
+import javax.swing.JComponent;
 
 import dut.flatcraft.MineUtils;
 import dut.flatcraft.resources.Resource;
@@ -23,7 +23,7 @@ import dut.flatcraft.resources.ResourceContainerListener;
  * @author leberre
  *
  */
-public class ResourceContainerUI extends JLabel implements ResourceContainerListener, InventoriableUI {
+public class ResourceContainerUI extends JComponent implements ResourceContainerListener, InventoriableUI {
 
 	/**
 	 * 
@@ -43,7 +43,6 @@ public class ResourceContainerUI extends JLabel implements ResourceContainerList
 	public ResourceContainerUI(ResourceContainer container) {
 		this.container = container;
 		container.addListener(this);
-		this.setIcon(container.getImage());
 		setPreferredSize(new Dimension(MineUtils.DEFAULT_IMAGE_SIZE, MineUtils.DEFAULT_IMAGE_SIZE));
 		setBorder(BorderFactory.createEmptyBorder());
 		setToolTipText(container.getResource().getName());
@@ -61,6 +60,7 @@ public class ResourceContainerUI extends JLabel implements ResourceContainerList
 	}
 
 	private void customPainting(Graphics g) {
+		g.drawImage(container.getImage().getImage(), 0, 0, null);
 		int qty = container.getQuantity();
 		if (qty > 0) {
 			Rectangle rect = g.getClipBounds();
