@@ -53,10 +53,12 @@ public class ToolInstanceUI extends JButton implements ToolInstanceListener, Inv
 	public void update(ToolInstance source) {
 		if (tool.getCurrentLife() == 0) {
 			Container parent = this.getParent();
-			parent.remove(this);
-			this.setTransferHandler(null);
-			parent.invalidate();
-			parent.repaint();
+			if (parent != null) {
+				parent.remove(this);
+				this.setTransferHandler(null);
+				parent.invalidate();
+				parent.repaint();
+			}
 		} else {
 			repaint();
 		}
