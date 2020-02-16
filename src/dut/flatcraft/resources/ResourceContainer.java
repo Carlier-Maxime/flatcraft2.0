@@ -29,7 +29,7 @@ import fr.univartois.migl.utils.DesignPattern;
  * @author leberre
  *
  */
-public class ResourceContainer implements Transferable, Cloneable, Handable {
+public class ResourceContainer implements Transferable, Handable {
 	/**
 	 * 
 	 */
@@ -136,9 +136,8 @@ public class ResourceContainer implements Transferable, Cloneable, Handable {
 		return this;
 	}
 
-	@Override
 	@DesignPattern(name = "Prototype")
-	public ResourceContainer clone() {
+	public ResourceContainer duplicate() {
 		return new ResourceContainer(resource, quantity);
 	}
 

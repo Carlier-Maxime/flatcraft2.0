@@ -32,7 +32,7 @@ public class CombustibleContainer extends ResourceContainer {
 	}
 
 	@Override
-	public CombustibleContainer clone() {
+	public CombustibleContainer duplicate() {
 		return new CombustibleContainer(getResource(), getQuantity());
 	}
 }

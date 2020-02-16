@@ -1,5 +1,7 @@
 package dut.flatcraft.resources;
 
+import java.util.Objects;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -115,5 +117,18 @@ public class Resource implements MineElement {
 	@Override
 	public ResourceInstance newInstance(JLabel label) {
 		return new ResourceInstance(this, label);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Resource) {
+			return name.equals(((Resource) o).name);
+		}
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
 	}
 }

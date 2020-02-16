@@ -35,7 +35,7 @@ final class InventoryTransfert extends TransferHandler {
 	protected Transferable createTransferable(JComponent c) {
 		if (c instanceof ResourceContainerUI) {
 			ResourceContainer rc = ((ResourceContainerUI) c).getResourceContainer();
-			return rc.clone();
+			return rc.duplicate();
 		} else {
 			return ((ToolInstanceUI) c).getMineTool();
 		}

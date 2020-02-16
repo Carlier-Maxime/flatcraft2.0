@@ -26,7 +26,7 @@ public class OreContainer extends ResourceContainer {
 	}
 
 	@Override
-	public OreContainer clone() {
+	public OreContainer duplicate() {
 		return new OreContainer(getResource(), getQuantity());
 	}
 }

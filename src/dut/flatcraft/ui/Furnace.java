@@ -164,8 +164,8 @@ public class Furnace extends JPanel {
 			Logger.getAnonymousLogger().info("No combustible in container");
 			return;
 		}
-		String key = RULES.get(ore.getBlock().getName());
-		Logger.getAnonymousLogger().info(() -> "Should produce " + key + " from " + ore.getBlock().getName());
+		String key = RULES.get(ore.getResource().getName());
+		Logger.getAnonymousLogger().info(() -> "Should produce " + key + " from " + ore.getResource().getName());
 		if (key == null) {
 			Logger.getAnonymousLogger().info("No furnace rule found");
 			return;

@@ -34,7 +34,7 @@ final class AllowCopyOrMoveResource extends TransferHandler {
 
 	@Override
 	protected Transferable createTransferable(JComponent c) {
-		return ((ResourceContainerUI) c).getResourceContainer().clone();
+		return ((ResourceContainerUI) c).getResourceContainer().duplicate();
 	}
 
 	@Override

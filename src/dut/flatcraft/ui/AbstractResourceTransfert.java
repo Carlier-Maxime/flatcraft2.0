@@ -41,12 +41,12 @@ abstract class AbstractResourceTransfert extends TransferHandler {
 			if (support.getDropAction() == MOVE || rc.getQuantity() == 1) {
 				comp = new ResourceContainerUI(rc);
 			} else {
-				comp = new ResourceContainerUI(rc.getBlock().getType(), rc.getQuantity() / 2);
+				comp = new ResourceContainerUI(rc.getResource(), rc.getQuantity() / 2);
 			}
 			if (source.getComponentCount() > 0) {
 				ResourceContainerUI existing = (ResourceContainerUI) source.getComponent(0);
-				if (existing.getResourceContainer().getResource() == rc.getResource()) {
-					existing.getResourceContainer().inc(rc.getQuantity());
+				if (existing.getResourceContainer().getResource().equals(rc.getResource())) {
+					existing.getResourceContainer().inc(comp.getResourceContainer().getQuantity());
 				} else if (existing.getResourceContainer().getQuantity() == 0) {
 					source.removeAll();
 					onNewContainer(comp);
