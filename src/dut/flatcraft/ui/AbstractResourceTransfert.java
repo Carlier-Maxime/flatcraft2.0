@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
 import dut.flatcraft.resources.ResourceContainer;
+import fr.univartois.migl.utils.DesignPattern;
 
 abstract class AbstractResourceTransfert extends TransferHandler {
 	/**
@@ -27,6 +28,7 @@ abstract class AbstractResourceTransfert extends TransferHandler {
 		return ResourceContainer.RESOURCE_FLAVOR;
 	}
 
+	@DesignPattern(name = "template")
 	@Override
 	public boolean importData(TransferSupport support) {
 		if (!support.isDrop()) {
