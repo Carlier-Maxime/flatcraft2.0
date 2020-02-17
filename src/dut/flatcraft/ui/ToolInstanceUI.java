@@ -30,7 +30,6 @@ public class ToolInstanceUI extends JComponent implements ToolInstanceListener, 
 		setBorder(BorderFactory.createEmptyBorder());
 		setToolTipText(tool.getType().getName());
 		setFocusable(false);
-		setOpaque(true);
 	}
 
 	public ToolInstance getMineTool() {
