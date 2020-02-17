@@ -47,6 +47,7 @@ public class ResourceContainerUI extends JComponent implements ResourceContainer
 		setBorder(BorderFactory.createEmptyBorder());
 		setToolTipText(container.getResource().getName());
 		setFocusable(false);
+		setOpaque(true);
 	}
 
 	public ResourceContainer getResourceContainer() {

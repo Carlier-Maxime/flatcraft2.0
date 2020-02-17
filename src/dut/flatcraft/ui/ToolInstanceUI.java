@@ -28,7 +28,9 @@ public class ToolInstanceUI extends JComponent implements ToolInstanceListener, 
 		this.tool.addListener(this);
 		setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE));
 		setBorder(BorderFactory.createEmptyBorder());
+		setToolTipText(tool.getType().getName());
 		setFocusable(false);
+		setOpaque(true);
 	}
 
 	public ToolInstance getMineTool() {
