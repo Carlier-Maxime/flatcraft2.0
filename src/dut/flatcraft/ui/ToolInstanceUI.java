@@ -9,12 +9,12 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
+import javax.swing.JComponent;
 
 import dut.flatcraft.tools.ToolInstance;
 import dut.flatcraft.tools.ToolInstanceListener;
 
-public class ToolInstanceUI extends JButton implements ToolInstanceListener, InventoriableUI {
+public class ToolInstanceUI extends JComponent implements ToolInstanceListener, InventoriableUI {
 
 	/**
 	 * 
@@ -25,7 +25,6 @@ public class ToolInstanceUI extends JButton implements ToolInstanceListener, Inv
 
 	public ToolInstanceUI(ToolInstance tool) {
 		this.tool = tool;
-		this.setIcon(tool.getImage());
 		this.tool.addListener(this);
 		setPreferredSize(new Dimension(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE));
 		setBorder(BorderFactory.createEmptyBorder());
@@ -39,6 +38,7 @@ public class ToolInstanceUI extends JButton implements ToolInstanceListener, Inv
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		g.drawImage(tool.getImage().getImage(), 0, 0, null);
 		Rectangle rect = g.getClipBounds();
 		g.setColor(Color.GRAY);
 		g.fillRect(rect.x + 5, rect.y + DEFAULT_IMAGE_SIZE / 2, DEFAULT_IMAGE_SIZE - 10, 3);
