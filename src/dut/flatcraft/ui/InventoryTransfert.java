@@ -1,6 +1,5 @@
 package dut.flatcraft.ui;
 
-import java.awt.Component;
 import java.awt.datatransfer.Transferable;
 import java.util.logging.Logger;
 
@@ -73,12 +72,7 @@ final class InventoryTransfert extends TransferHandler {
 	@Override
 	public boolean importData(TransferSupport support) {
 		if (support.isDrop()) {
-			JComponent source = (JComponent) support.getComponent();
-			for (Component comp : inventory.getUI().getComponents()) {
-				if (comp == source) {
-					return false;
-				}
-			}
+			JComponent target = (JComponent) support.getComponent();
 			try {
 				Handable transferedHandable = (Handable) support.getTransferable()
 						.getTransferData(ResourceContainer.RESOURCE_FLAVOR);
@@ -87,8 +81,8 @@ final class InventoryTransfert extends TransferHandler {
 				} else {
 					ResourceContainer sourceContainer = (ResourceContainer) transferedHandable;
 					inventory.addResource(sourceContainer);
-					source.revalidate();
-					source.repaint();
+					target.revalidate();
+					target.repaint();
 				}
 				return true;
 			} catch (Exception e) {
