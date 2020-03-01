@@ -46,7 +46,7 @@ Le but de la semaine 5 est que de découvrir le code du projet.
 Vous devez pour cela réaliser un certain nombre de modifications dans 
 le code original
 
-Il y a actuellement [3192 lignes de code sans bug ou vulnérabilité détectés par SonarQube](https://sonarqube.univ-artois.fr/project_roles?id=flatcraft_2020_dlbenseignement%2Fdut2-2019).
+Il y a actuellement [3192 lignes de code sans bug ou vulnérabilité détectés par SonarQube](https://sonarqube.univ-artois.fr/dashboard?id=flatcraft_2020_dlbenseignement%2Fdut2-2019).
 
 
 ### Partie 1 : préparation de l'environnement
