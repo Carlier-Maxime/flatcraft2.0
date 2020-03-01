@@ -1,20 +1,44 @@
-# Flatcraft 2019
+# Flatcraft 2020
 
 > Le but du projet flatcraft est de servir de base pour le développement d'une 
 > nouvelle fonctionnalité pour un binôme (éventuellement trinôme) d'étudiants.
 
 ## Semaine 8 : coder, c'est bien, coder bien, c'est mieux
 
-1. se connecter sur [sonarqube](http://forge.univ-artois.fr/sonar67/)
-1. le responsable du projet de groupe crée un token sur [son profil/onglet sécurité](https://forge.univ-artois.fr/sonar67/account/security/)
+Durant cette dernière semaine, le but est de "nettoyer" le code écrit avant de l'intégrer dans le projet de groupe.
+ 
+1. se connecter sur [sonarqube](http://sonarqube.univ-artois.fr/)
+1. le responsable du projet de groupe crée un token sur [son profil/onglet sécurité](http://sonarqube.univ-artois.fr/account/security/)
 1. intégrer ce token au niveau de la clé `sonar.login` dans le fichier [sonar-project.properties](sonar-project.properties)
 1. remplacer dans [.gitlab-ci.yml](.gitlab-ci.yml) le script `./build.sh` par `./build.sh && sonar-scanner -Dsonar.projectKey=flatcraft_$CI_PROJECT_NAMESPACE`
-1. dans quelques minutes, votre projet sera visible sur [sonarqube](http://forge.univ-artois.fr/sonar67/)
+1. dans quelques minutes, votre projet sera visible sur [sonarqube](http://sonarqube.univ-artois.fr/)
 1. combien de jours de dette technique avez-vous ?
 1. ajouter les autres membres du groupe et l'enseignant dans le projet à l'aide du menu `Administration/Permissions`
 1. changer le profil de qualité à `DUT2` à l'aide du menu `Administration/Quality Profile`
 1. relancer la construction et l'analyse du projet : est ce plus raisonnable ?
 1. corriger ou ignorer en donnant une raison les violations proposées par sonarqube
+
+Une fois les violations corrigées, il faut intégrer le travail du binôme ou trinôme au projet de groupe (IPI1, IPI2 ou PEL).
+
+1. Créer une merge request du projet du binôme/trinôme vers la branche du groupe
+1. Prendre en compte les commentaires de l'encadrant de TP (seul autorisé à intégrer les MR)
+1. Seules les MR intégrées 
+
+## Semaines 6 et 7 : Ajout d'une fonctionnalité au jeu
+
+Durant ces deux semaines, les deux membres du groupe vont développer la fonctionnalité choisie dans le jeu.
+
+Cette fonctionnalité doit :
+
++ correspondre à la description validée en semaine 5.
++ fonctionner correctement pour un usage normal du jeu (sans essayer de piéger le jeu, sans essayer de chercher un bug).
++ s'intégrer facilement dans le projet de groupe : il ne faut pas changer les classes du projet de groupe, hormis la classe Main.java.
+
+Afin de faciliter l'intégration du travail de chaque binôme/trinôme, celui ci devra être réalisé dans un paquetage dédié, préfixé par le groupe, suivi du nom du binôme.
+(par exemple, `pelgroupe1`).
+
+Pour tout changement nécessaire d'une classe partagée, merci de faire une merge request sur la branche du groupe. De cette manière, les trois groupes (IPI1, IPI2 et PEL)
+vont pouvoir évoluer différemment, selon les projets de chacun.
 
 ## Semaine 5 : découverte du code du jeu
 
@@ -22,7 +46,7 @@ Le but de la semaine 5 est que de découvrir le code du projet.
 Vous devez pour cela réaliser un certain nombre de modifications dans 
 le code original
 
-Il y a actuellement [2435 lignes de code sans bug ou vulnérabilité détectés par SonarQube](https://forge.univ-artois.fr/sonar67/dashboard?id=flatcraft_dut2017).
+Il y a actuellement [3192 lignes de code sans bug ou vulnérabilité détectés par SonarQube](https://sonarqube.univ-artois.fr/project_roles?id=flatcraft_2020_dlbenseignement%2Fdut2-2019).
 
 
 ### Partie 1 : préparation de l'environnement
