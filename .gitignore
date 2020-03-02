@@ -2,7 +2,9 @@
 sonar-project.properties
 .gitlab-ci.yml
 flatcraft.iml
-
+flatcraft.jar
+javafiles
+patterns.md
 
 
 # Created by https://www.gitignore.io/api/intellij+iml
