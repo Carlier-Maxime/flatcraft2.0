@@ -25,7 +25,7 @@ public class Coordinate implements Serializable {
 	}
 
 	/*
-	 * calculate the hashcode of the current coordinate
+	 * Compute the hashcode of the current coordinate
 	 * 
 	 * @return the hash code of the position
 	 */
