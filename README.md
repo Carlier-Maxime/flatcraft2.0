@@ -64,6 +64,21 @@ Chaque membre du binôme fait un `git clone` sur sa machine.
 Chaque membre du binôme intègre le projet dans son EDI préféré : comme il s'agit d'un projet Eclipse, 
 il peut être facilement intégré en faisant `Import .../Import existing projet into workspace`.
 
+Pour pouvoir facilement MAJ votre projet à partir du dépôt de groupe, vous pouvez définir
+une nouvelle source pour votre dépôt :
+
+```bash
+$ git remote add upstream https://gitlab.univ-artois.fr/dlbenseignement/dut2-2019/flatcraft.git
+$ git pull upstream master
+$ git push origin master
+```
+
+En cas de soucis avec le proxy, utiliser la commande suivante :
+
+```bash
+$ git config --global http.proxy http://cache-iutl.univ-artois.fr:3128
+```
+
 ### Partie 2 : de l'intérêt du patron de conception décorateur
 
 Il existe deux implémentations du patron de conception décorateur, pour générer la carte de jeu.
