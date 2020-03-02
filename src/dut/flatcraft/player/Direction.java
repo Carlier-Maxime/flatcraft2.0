@@ -10,10 +10,15 @@ public interface Direction extends Serializable {
 	/**
 	 * Move the player to the next position
 	 * 
-	 * @return true iff the player can move
+	 * @return true if the player can move
 	 */
 	boolean next();
 
+	/**
+	 * Get the next block in this direction
+	 * 
+	 * @return the Coordinate of the next block
+	 */
 	Coordinate getNext();
 
 	/**
