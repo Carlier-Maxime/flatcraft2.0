@@ -79,6 +79,18 @@ En cas de soucis avec le proxy, utiliser la commande suivante :
 $ git config --global http.proxy http://cache-iutl.univ-artois.fr:3128
 ```
 
+Pour éviter de taper trop souvent votre mot de passe :
+
+```bash
+$ git config --global credential.helper cache
+```
+
+Pour pouvoir pusher de "gros" fichiers :
+
+```bash
+$ git config --global http.postBuffer 524288000
+```
+
 ### Partie 2 : de l'intérêt du patron de conception décorateur
 
 Il existe deux implémentations du patron de conception décorateur, pour générer la carte de jeu.
