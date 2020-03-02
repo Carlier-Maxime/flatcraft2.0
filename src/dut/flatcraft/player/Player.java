@@ -26,7 +26,18 @@ public class Player implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * The player.
+	 */
+
 	private static Player player;
+
+	/**
+	 * The actual position of the player.
+	 * 
+	 * @author gregoire delacroix
+	 *
+	 */
 
 	private Coordinate position;
 
@@ -51,7 +62,16 @@ public class Player implements Serializable {
 	 */
 	private Direction currentDirection;
 
+	/**
+	 * The creation of inventory.
+	 */
+
 	private Inventory inventory = new Inventory();
+
+	/**
+	 * Constructor of the player. Set the player at the initial coordonate which are
+	 * the middle of the map. Set the sides of the player.
+	 */
 
 	private Player(GameMap map) {
 		this.position = new Coordinate(0, 0, map.getWidth(), map.getHeight());
@@ -66,9 +86,17 @@ public class Player implements Serializable {
 		currentDirection = lookingRight;
 	}
 
+	/**
+	 * @return the actual object in hand.
+	 */
+
 	public Handable getHand() {
 		return inventory.getElementInTheHand();
 	}
+
+	/**
+	 * @return the next element in hand.
+	 */
 
 	public void nextInHand() {
 		do {
@@ -76,43 +104,83 @@ public class Player implements Serializable {
 		} while (inventory.getElementInTheHand().mustBeChanged());
 	}
 
+	/**
+	 * @return the previous element in hand.
+	 */
+
 	public void previousInHand() {
 		do {
 			inventory.previous();
 		} while (inventory.getElementInTheHand().mustBeChanged());
 	}
 
+	/**
+	 * Add object in inventory.
+	 */
+
 	public void addToInventory(Inventoriable inventoriable) {
 		inventoriable.addTo(inventory);
 	}
+
+	/**
+	 * Set current direction to up.
+	 */
 
 	public void up() {
 		currentDirection = lookingUp;
 	}
 
+	/**
+	 * Set current direction to down.
+	 */
+
 	public void down() {
 		currentDirection = lookingDown;
 	}
+
+	/**
+	 * Set current direction to left.
+	 */
 
 	public void left() {
 		currentDirection = lookingLeft;
 	}
 
+	/**
+	 * Set current direction to rigth.
+	 */
+
 	public void right() {
 		currentDirection = lookingRight;
 	}
+
+	/**
+	 * Set current direction to up right.
+	 */
 
 	public void upRight() {
 		currentDirection = lookingUpRight;
 	}
 
+	/**
+	 * Set current direction to down right.
+	 */
+
 	public void downRight() {
 		currentDirection = lookingDownRight;
 	}
 
+	/**
+	 * Set current direction to up left.
+	 */
+
 	public void upLeft() {
 		currentDirection = lookingUpLeft;
 	}
+
+	/**
+	 * Set current direction to down left.
+	 */
 
 	public void downLeft() {
 		currentDirection = lookingDownLeft;
@@ -120,25 +188,49 @@ public class Player implements Serializable {
 
 	// Start - QD Implementation
 
+	/**
+	 * @return block coordinate at the right to dig
+	 */
+
 	public Coordinate getRight() {
 		return lookingRight.toDig();
 	}
+
+	/**
+	 * @return block coordinate at the left to dig
+	 */
 
 	public Coordinate getLeft() {
 		return lookingLeft.toDig();
 	}
 
+	/**
+	 * @return block coordinate at the top to dig
+	 */
+
 	public Coordinate getTop() {
 		return lookingUp.toDig();
 	}
+
+	/**
+	 * @return block coordinate at the top right to dig
+	 */
 
 	public Coordinate getTopRight() {
 		return lookingUpRight.toDig();
 	}
 
+	/**
+	 * @return block coordinate at the top left to dig
+	 */
+
 	public Coordinate getTopLeft() {
 		return lookingUpLeft.toDig();
 	}
+
+	/**
+	 * move the player right if possible or top right or not
+	 */
 
 	public void moveRight() {
 		if (isEmptyCell(getRight())) {
@@ -148,6 +240,10 @@ public class Player implements Serializable {
 		}
 	}
 
+	/**
+	 * move the player left if possible or top left or not
+	 */
+
 	public void moveLeft() {
 		if (isEmptyCell(getLeft())) {
 			lookingLeft.next();
@@ -156,11 +252,19 @@ public class Player implements Serializable {
 		}
 	}
 
+	/**
+	 * @return boolean if a cell is empty or not
+	 */
+
 	private static boolean isEmptyCell(Coordinate c) {
 		return (MapRegistry.getMap().getAt(c.getY(), c.getX()).getName().equals("empty"));
 	}
 
 	// End - QD Implementation
+
+	/**
+	 * @return the opposite direction
+	 */
 
 	public Direction opposite() {
 		if (currentDirection == lookingUp)
@@ -173,17 +277,35 @@ public class Player implements Serializable {
 		return lookingLeft;
 	}
 
+	/**
+	 * move the player if it's possible
+	 * 
+	 * @return boolean
+	 */
+
 	public boolean next() {
 		return currentDirection.next();
 	}
+
+	/**
+	 * @return the current direction
+	 */
 
 	public Direction getDirection() {
 		return currentDirection;
 	}
 
+	/**
+	 * @return coordinate of element to dig
+	 */
+
 	public Coordinate toDig() {
 		return inventory.getElementInTheHand().toDig(currentDirection);
 	}
+
+	/**
+	 * print the current player object in hand
+	 */
 
 	public void paint(Graphics g) {
 		g.drawImage(inventory.getElementInTheHand().getImage().getImage(), position.getX() * DEFAULT_IMAGE_SIZE,
@@ -193,9 +315,17 @@ public class Player implements Serializable {
 		currentDirection.paint(g);
 	}
 
+	/**
+	 * @return the new position of the player
+	 */
+
 	public Coordinate getPosition() {
 		return new Coordinate(position);
 	}
+
+	/**
+	 * @return all the inventory
+	 */
 
 	public JComponent getInventoryUI() {
 		return inventory.getUI();
