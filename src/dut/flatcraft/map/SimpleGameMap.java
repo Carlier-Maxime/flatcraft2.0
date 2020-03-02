@@ -37,6 +37,7 @@ public class SimpleGameMap implements GameMap {
 		this.height = height;
 	}
 
+	@Override
 	public void setAt(int i, int j, Cell c) {
 		if (width <= j || height <= i) {
 			throw new IllegalArgumentException("Incorrect cell location");
@@ -44,6 +45,7 @@ public class SimpleGameMap implements GameMap {
 		elements[i][j] = c;
 	}
 
+	@Override
 	public Cell getAt(int i, int j) {
 		if (width <= j || height <= i) {
 			throw new IllegalArgumentException("Incorrect cell location");
