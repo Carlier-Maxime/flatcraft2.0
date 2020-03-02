@@ -10,7 +10,7 @@ public interface Direction extends Serializable {
 	/**
 	 * Move the player to the next position
 	 * 
-	 * @return true if the player can move
+	 * @return true iff the player can move
 	 */
 	boolean next();
 
