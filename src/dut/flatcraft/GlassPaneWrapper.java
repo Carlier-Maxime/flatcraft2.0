@@ -86,42 +86,58 @@ public class GlassPaneWrapper extends JLayeredPane {
 
 		if (py > my) { // vers le haut
 			if (px > mx) { // vers le haut gauche
-				if (angle > 3 * Math.PI / 8) {
-					grid.getPlayer().up();
-				} else if (angle < Math.PI / 8) {
-					grid.getPlayer().left();
-				} else {
-					grid.getPlayer().upLeft();
-				}
+				hautGauche(grid, angle);
 			} else { // vers le haut droite
-				if (angle > 3 * Math.PI / 8) {
-					grid.getPlayer().up();
-				} else if (angle < Math.PI / 8) {
-					grid.getPlayer().right();
-				} else {
-					grid.getPlayer().upRight();
-				}
+				hautDroite(grid, angle);
 			}
 		} else { // vers le bas
 			if (px > mx) { // vers le bas gauche
-				if (angle > 3 * Math.PI / 8) {
-					grid.getPlayer().down();
-				} else if (angle < Math.PI / 8) {
-					grid.getPlayer().left();
-				} else {
-					grid.getPlayer().downLeft();
-				}
+				basGauche(grid, angle);
 			} else { // vers le bas droite
-				if (angle > 3 * Math.PI / 8) {
-					grid.getPlayer().down();
-				} else if (angle < Math.PI / 8) {
-					grid.getPlayer().right();
-				} else {
-					grid.getPlayer().downRight();
-				}
+				basDroite(grid, angle);
 			}
 		}
 		grid.repaint();
+	}
+
+	private void basDroite(MyGrid grid, double angle) {
+		if (angle > 3 * Math.PI / 8) {
+			grid.getPlayer().down();
+		} else if (angle < Math.PI / 8) {
+			grid.getPlayer().right();
+		} else {
+			grid.getPlayer().downRight();
+		}
+	}
+
+	private void basGauche(MyGrid grid, double angle) {
+		if (angle > 3 * Math.PI / 8) {
+			grid.getPlayer().down();
+		} else if (angle < Math.PI / 8) {
+			grid.getPlayer().left();
+		} else {
+			grid.getPlayer().downLeft();
+		}
+	}
+
+	private void hautDroite(MyGrid grid, double angle) {
+		if (angle > 3 * Math.PI / 8) {
+			grid.getPlayer().up();
+		} else if (angle < Math.PI / 8) {
+			grid.getPlayer().right();
+		} else {
+			grid.getPlayer().upRight();
+		}
+	}
+
+	private void hautGauche(MyGrid grid, double angle) {
+		if (angle > 3 * Math.PI / 8) {
+			grid.getPlayer().up();
+		} else if (angle < Math.PI / 8) {
+			grid.getPlayer().left();
+		} else {
+			grid.getPlayer().upLeft();
+		}
 	}
 
 	public void activateGlassPane(boolean activate) {
