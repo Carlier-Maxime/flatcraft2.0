@@ -70,6 +70,7 @@ une nouvelle source pour votre dépôt :
 ```bash
 $ git remote add upstream https://gitlab.univ-artois.fr/dlbenseignement/dut2-2019/flatcraft.git
 $ git pull upstream master
+$ git push origin master
 ```
 
 ### Partie 2 : de l'intérêt du patron de conception décorateur
