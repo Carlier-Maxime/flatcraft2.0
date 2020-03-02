@@ -24,21 +24,11 @@ public class Coordinate implements Serializable {
 		this.height = height;
 	}
 
-	public Coordinate area(Coordinate c) {
-		int dx, dy;
-		if (x < c.x) {
-			dx = x;
-		} else {
-			dx = c.x;
-		}
-		if (y < c.y) {
-			dy = y;
-		} else {
-			dy = c.y;
-		}
-		return new Coordinate(dx, dy, width, height);
-	}
-
+	/*
+	 * calculate the hashcode of the current coordinate
+	 * 
+	 * @return the hash code of the position
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -50,6 +40,11 @@ public class Coordinate implements Serializable {
 		return result;
 	}
 
+	/*
+	 * Check if the object is the same as the current
+	 * 
+	 * @return true if the object in parameter equals the current object
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
