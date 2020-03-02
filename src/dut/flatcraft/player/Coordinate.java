@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Coordinate implements Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -63,14 +63,25 @@ public class Coordinate implements Serializable {
 		return (y == other.y);
 	}
 
+	/**
+	 * @return the x coordinate
+	 */
 	public int getX() {
 		return x;
 	}
 
+	/**
+	 * @return the y coordinate
+	 */
 	public int getY() {
 		return y;
 	}
 
+	/**
+	 * Increment the x coordinate
+	 *
+	 * @return true if success, false otherwise
+	 */
 	public boolean incX() {
 		if (x < width - 1) {
 			x++;
@@ -79,6 +90,11 @@ public class Coordinate implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Decrement the x coordinate
+	 *
+	 * @return true if success, false otherwise
+	 */
 	public boolean decX() {
 		if (x > 0) {
 			x--;
@@ -87,6 +103,11 @@ public class Coordinate implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Increment the y coordinate
+	 *
+	 * @return true if success, false otherwise
+	 */
 	public boolean incY() {
 		if (y < height - 1) {
 			y++;
@@ -95,6 +116,11 @@ public class Coordinate implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Decrement the y coordinate
+	 *
+	 * @return true if success, false otherwise
+	 */
 	public boolean decY() {
 		if (y > 0) {
 			y--;
@@ -103,6 +129,11 @@ public class Coordinate implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Increment the x and y coordinate
+	 *
+	 * @return true if success, false otherwise
+	 */
 	public boolean incXincY() {
 		if (x < width - 1 && y < height - 1) {
 			x++;
@@ -112,6 +143,11 @@ public class Coordinate implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Increment the x and decrement the y coordinate
+	 *
+	 * @return true if success, false otherwise
+	 */
 	public boolean incXdecY() {
 		if (x < width - 1 && y > 0) {
 			x++;
@@ -121,6 +157,11 @@ public class Coordinate implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Decrement the x and increment the y coordinate
+	 *
+	 * @return true if success, false otherwise
+	 */
 	public boolean decXincY() {
 		if (x > 0 && y < height - 1) {
 			x--;
@@ -130,6 +171,11 @@ public class Coordinate implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Decrement the X and Y coordinate
+	 *
+	 * @return true if success, false otherwise
+	 */
 	public boolean decXdecY() {
 		if (x > 0 && y > 0) {
 			x--;
@@ -139,6 +185,9 @@ public class Coordinate implements Serializable {
 		return false;
 	}
 
+	/**
+	 * @return the coordinate as a string
+	 */
 	@Override
 	public String toString() {
 		return "Coordinate{" + "x=" + x + ", y=" + y + '}';
