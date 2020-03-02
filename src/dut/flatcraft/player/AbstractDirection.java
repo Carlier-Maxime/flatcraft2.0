@@ -24,8 +24,8 @@ public abstract class AbstractDirection implements Direction {
 
 	/**
 	 * 
-	 * @param c
-	 * @param angle
+	 * @param c a coordinate
+	 * @param angle a double
 	 */
 	public AbstractDirection(Coordinate c, double angle) {
 		this.c = c;
