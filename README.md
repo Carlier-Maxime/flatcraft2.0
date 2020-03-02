@@ -73,6 +73,12 @@ $ git pull upstream master
 $ git push origin master
 ```
 
+En cas de soucis avec le proxy, utiliser la commande suivante :
+
+```bash
+$ git config --global http.proxy http://cache-iutl.univ-artois.fr:3128
+```
+
 ### Partie 2 : de l'intérêt du patron de conception décorateur
 
 Il existe deux implémentations du patron de conception décorateur, pour générer la carte de jeu.
