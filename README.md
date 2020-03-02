@@ -3,6 +3,50 @@
 > Le but du projet flatcraft est de servir de base pour le développement d'une 
 > nouvelle fonctionnalité pour un binôme (éventuellement trinôme) d'étudiants.
 
+## Les fonctionnalités 2020
+
+Pour chaque groupe IPI1, IPI2 et PEL, les fonctionnalités réalisées doivent 
+être différentes. Des projets similaires peuvent être développées par des 
+binômes/trinôme de groupes différents.
+
+### IPI1
+
++ Groupe 20
++ Groupe 21
++ Groupe 22
++ Groupe 23
++ Groupe 24
++ Groupe 25
++ Groupe 26
++ Groupe 27
++ Groupe 28
++ Groupe 29
+
+### IPI2
+
++ Groupe 10
++ Groupe 11
++ Groupe 12
++ Groupe 13
++ Groupe 14
++ Groupe 15
++ Groupe 16
++ Groupe 17
++ Groupe 18
++ Groupe 19
+
+### PEL
+
++ Groupe 1 : #19 illumination locale (torche)
++ Groupe 2 : #16 ajout du son dans le jeu
++ Groupe 3 : mobs (avec attaque du joueur)
++ Groupe 4 : ???
++ Groupe 5 : #15 blocs de lave (gestion de la santé du joueur)
++ Groupe 6 : génération procédurale de terrain (plus changement caméra)
++ Groupe 7 : ???
++ Groupe 8 : 
++ Groupe 9 : briquet + TNT
+
 ## Semaine 8 : coder, c'est bien, coder bien, c'est mieux
 
 Durant cette dernière semaine, le but est de "nettoyer" le code écrit avant de l'intégrer dans le projet de groupe.
@@ -77,6 +121,18 @@ En cas de soucis avec le proxy, utiliser la commande suivante :
 
 ```bash
 $ git config --global http.proxy http://cache-iutl.univ-artois.fr:3128
+```
+
+Pour éviter de taper trop souvent votre mot de passe :
+
+```bash
+$ git config --global credential.helper cache
+```
+
+Pour pouvoir pusher de "gros" fichiers :
+
+```bash
+$ git config --global http.postBuffer 524288000
 ```
 
 ### Partie 2 : de l'intérêt du patron de conception décorateur
