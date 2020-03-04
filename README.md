@@ -17,10 +17,8 @@ binômes/trinôme de groupes différents.
 + Groupe 23
 + Groupe 24
 + Groupe 25
-+ Groupe 26
-+ Groupe 27
-+ Groupe 28
-+ Groupe 29
++ Groupe 26 : #26 Ajout de la vie + dégâts accidentels
+
 
 ### IPI2
 
