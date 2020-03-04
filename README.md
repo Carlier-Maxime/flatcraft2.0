@@ -22,16 +22,14 @@ binômes/trinôme de groupes différents.
 
 ### IPI2
 
-+ Groupe 10
-+ Groupe 11
-+ Groupe 12
-+ Groupe 13
-+ Groupe 14
-+ Groupe 15
-+ Groupe 16
-+ Groupe 17
-+ Groupe 18
-+ Groupe 19
++ Groupe 10 : #43 Ajout de la vie + dégâts
++ Groupe 11 : #35 Ajout de Zombies
++ Groupe 12 : #41 Ajout de cochons
++ Groupe 13 : #38 Ajout TNT et son explosion
++ Groupe 14 : #34 Ajout nether
++ Groupe 15 : #36 Ajout d'animal/d'animaux
++ Groupe 16 : #42 Ajout de blocs soumis à la gravité
++ Groupe 17 : #39 Ajout d'une armure et d'une épée
 
 ### PEL
 
