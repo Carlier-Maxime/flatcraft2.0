@@ -11,12 +11,12 @@ binômes/trinôme de groupes différents.
 
 ### IPI1
 
-+ Groupe 20 : #31 : Ajout de la TNT + explosion
-+ Groupe 21 : #29 : Système de biome
-+ Groupe 22 : #28 : Gestion de la météo
-+ Groupe 23 : #30 : Ajout du Nether
-+ Groupe 24
-+ Groupe 25 : #32 : Ajout nourriture + niveau de faim
++ Groupe 20 : #31 Ajout de la TNT + explosion
++ Groupe 21 : #29 Système de biome
++ Groupe 22 : #28 Gestion de la météo
++ Groupe 23 : #30 Ajout du Nether
++ Groupe 24 : #33 Ajout d'un Monstre : "Creeper"
++ Groupe 25 : #32 Ajout nourriture + niveau de faim
 + Groupe 26 : #26 Ajout de la vie + dégâts accidentels
 
 
