@@ -14,6 +14,11 @@ public interface Direction extends Serializable {
 	 */
 	boolean next();
 
+	/**
+	 * Get the next block in this direction
+	 * 
+	 * @return the Coordinate of the next block
+	 */
 	Coordinate getNext();
 
 	/**

@@ -7,6 +7,11 @@ import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 
+/**
+ * The direction where the player is looking
+ * 
+ * @author leberre
+ */
 public abstract class AbstractDirection implements Direction {
 
 	/**
@@ -17,6 +22,11 @@ public abstract class AbstractDirection implements Direction {
 	protected final Coordinate c;
 	protected final double angle;
 
+	/**
+	 * 
+	 * @param c a coordinate
+	 * @param angle a double
+	 */
 	public AbstractDirection(Coordinate c, double angle) {
 		this.c = c;
 		this.angle = angle;

@@ -3,6 +3,46 @@
 > Le but du projet flatcraft est de servir de base pour le développement d'une 
 > nouvelle fonctionnalité pour un binôme (éventuellement trinôme) d'étudiants.
 
+## Les fonctionnalités 2020
+
+Pour chaque groupe IPI1, IPI2 et PEL, les fonctionnalités réalisées doivent 
+être différentes. Des projets similaires peuvent être développées par des 
+binômes/trinôme de groupes différents.
+
+### IPI1
+
++ Groupe 20 : #31 Ajout de la TNT + explosion
++ Groupe 21 : #29 Système de biome
++ Groupe 22 : #28 Gestion de la météo
++ Groupe 23 : #30 Ajout du Nether
++ Groupe 24 : #33 Ajout d'un Monstre : "Creeper"
++ Groupe 25 : #32 Ajout nourriture + niveau de faim
++ Groupe 26 : #26 Ajout de la vie + dégâts accidentels
+
+
+### IPI2
+
++ Groupe 10 : #43 Ajout de la vie + dégâts
++ Groupe 11 : #35 Ajout de Zombies
++ Groupe 12 : #41 Ajout de cochons
++ Groupe 13 : #38 Ajout TNT et son explosion
++ Groupe 14 : #34 Ajout nether
++ Groupe 15 : #36 Ajout d'animal/d'animaux
++ Groupe 16 : #42 Ajout de blocs soumis à la gravité
++ Groupe 17 : #39 Ajout d'une armure et d'une épée
+
+### PEL
+
++ Groupe 1 : #19 illumination locale (torche)
++ Groupe 2 : #16 ajout du son dans le jeu
++ Groupe 3 : #20 mobs (avec attaque du joueur)
++ Groupe 4 : pluie de météorites
++ Groupe 5 : #15 blocs de lave (gestion de la santé du joueur)
++ Groupe 6 : #21 génération procédurale de terrain (plus changement caméra)
++ Groupe 7 : #24 animation des blocs (eau, flamme, lave, feuilles ?)
++ Groupe 8 : #23 bloc de slime + animation gravité
++ Groupe 9 : #22 briquet + TNT
+
 ## Semaine 8 : coder, c'est bien, coder bien, c'est mieux
 
 Durant cette dernière semaine, le but est de "nettoyer" le code écrit avant de l'intégrer dans le projet de groupe.
@@ -63,6 +103,33 @@ Chaque membre du binôme fait un `git clone` sur sa machine.
 
 Chaque membre du binôme intègre le projet dans son EDI préféré : comme il s'agit d'un projet Eclipse, 
 il peut être facilement intégré en faisant `Import .../Import existing projet into workspace`.
+
+Pour pouvoir facilement MAJ votre projet à partir du dépôt de groupe, vous pouvez définir
+une nouvelle source pour votre dépôt :
+
+```bash
+$ git remote add upstream https://gitlab.univ-artois.fr/dlbenseignement/dut2-2019/flatcraft.git
+$ git pull upstream master
+$ git push origin master
+```
+
+En cas de soucis avec le proxy, utiliser la commande suivante :
+
+```bash
+$ git config --global http.proxy http://cache-iutl.univ-artois.fr:3128
+```
+
+Pour éviter de taper trop souvent votre mot de passe :
+
+```bash
+$ git config --global credential.helper cache
+```
+
+Pour pouvoir pusher de "gros" fichiers :
+
+```bash
+$ git config --global http.postBuffer 524288000
+```
 
 ### Partie 2 : de l'intérêt du patron de conception décorateur
 
