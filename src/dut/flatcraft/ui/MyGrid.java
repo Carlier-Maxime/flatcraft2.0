@@ -131,6 +131,12 @@ public class MyGrid extends JComponent implements KeyListener {
 		case KeyEvent.VK_F1:
 			displayHelp();
 			break;
+		case KeyEvent.VK_M:
+			player.decHealth();
+			break;
+		case KeyEvent.VK_P:
+			player.incHealth();
+			break;
 		default:
 			// do nothing
 		}

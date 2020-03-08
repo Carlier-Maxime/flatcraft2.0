@@ -22,6 +22,7 @@ import dut.flatcraft.map.MapGenerator;
 import dut.flatcraft.map.SimpleGenerator;
 import dut.flatcraft.map.TerrilDecorator;
 import dut.flatcraft.map.TreeDecorator;
+import dut.flatcraft.player.Player;
 import dut.flatcraft.ui.CraftTable;
 import dut.flatcraft.ui.Furnace;
 import dut.flatcraft.ui.MyGrid;
@@ -98,6 +99,7 @@ public class Main {
 		frame.add(BorderLayout.CENTER, scrollpane);
 
 		JPanel south = new JPanel();
+		south.add(Player.instance().getHealthUI());
 		south.add(hourLabel);
 
 		JDialog craft = new JDialog(frame, "Craft Table");

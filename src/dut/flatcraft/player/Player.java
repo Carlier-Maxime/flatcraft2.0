@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.io.Serializable;
 
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 
 import dut.flatcraft.GameMap;
 import dut.flatcraft.MapRegistry;
@@ -63,14 +64,21 @@ public class Player implements Serializable {
 	private Direction currentDirection;
 
 	/**
+	 * The player health (from 0 to 100)
+	 */
+	private char health = 100;
+
+	/**
 	 * The creation of inventory.
 	 */
 
 	private Inventory inventory = new Inventory();
 
+	private JLabel healthui = new JLabel("Health: 100");
+
 	/**
-	 * Constructor of the player. Set the player at the initial coordonate which are
-	 * the middle of the map. Set the sides of the player.
+	 * Constructor of the player. Set the player at the initial coordinate which is
+	 * the top left corner: the physics will put it in the first non empty cell.
 	 */
 
 	private Player(GameMap map) {
@@ -84,6 +92,61 @@ public class Player implements Serializable {
 		lookingUpLeft = new UpLeft(position);
 		lookingDownLeft = new DownLeft(position);
 		currentDirection = lookingRight;
+	}
+
+	/**
+	 * Get the health of the player.
+	 */
+	public char getHealth() {
+		return health;
+	}
+
+	/**
+	 * increase the health of the player.
+	 */
+	public void incHealth() {
+		health += 5;
+		if (health > 100) {
+			health = 100;
+		}
+		updateHealth();
+	}
+
+	/**
+	 * decreases the health of the player.
+	 */
+	public void decHealth() {
+		health -= 5;
+		if (health > 65000) {
+			health = 0;
+		}
+		updateHealth();
+	}
+
+	/**
+	 * set the health of the player.
+	 * 
+	 * @param health the new health, between O and 100
+	 */
+	public void setHealth(char health) {
+		if (health < 0 || health > 100) {
+			throw new IllegalArgumentException();
+		}
+		this.health = health;
+		updateHealth();
+	}
+
+	private void updateHealth() {
+		healthui.setText("Health: " + (int) health);
+	}
+
+	/**
+	 * Get a graphical representation of the UI.
+	 * 
+	 * @return a JComponent representing the health of the player.
+	 */
+	public JComponent getHealthUI() {
+		return healthui;
 	}
 
 	/**
