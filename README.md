@@ -36,7 +36,7 @@ binômes/trinôme de groupes différents.
 + Groupe 1 : #19 illumination locale (torche)
 + Groupe 2 : #16 ajout du son dans le jeu
 + Groupe 3 : #20 mobs (avec attaque du joueur)
-+ Groupe 4 : pluie de météorites
++ Groupe 4 : #25 pluie de météorites
 + Groupe 5 : #15 blocs de lave (gestion de la santé du joueur)
 + Groupe 6 : #21 génération procédurale de terrain (plus changement caméra)
 + Groupe 7 : #24 animation des blocs (eau, flamme, lave, feuilles ?)
