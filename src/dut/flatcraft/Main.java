@@ -98,8 +98,11 @@ public class Main {
 		scrollpane.setDoubleBuffered(true);
 		frame.add(BorderLayout.CENTER, scrollpane);
 
+		JLabel healthui = new JLabel("Health: 100");
+		Player.instance().addListener(p -> healthui.setText("Health: " + p.getHealth()));
+
 		JPanel south = new JPanel();
-		south.add(Player.instance().getHealthUI());
+		south.add(healthui);
 		south.add(hourLabel);
 
 		JDialog craft = new JDialog(frame, "Craft Table");

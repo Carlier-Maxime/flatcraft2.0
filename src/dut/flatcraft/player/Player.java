@@ -4,9 +4,10 @@ import static dut.flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
 
 import java.awt.Graphics;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 
 import dut.flatcraft.GameMap;
 import dut.flatcraft.MapRegistry;
@@ -74,7 +75,10 @@ public class Player implements Serializable {
 
 	private Inventory inventory = new Inventory();
 
-	private JLabel healthui = new JLabel("Health: 100");
+	/**
+	 * The health listeners.
+	 */
+	private List<HealthListener> listeners = new ArrayList<>();
 
 	/**
 	 * Constructor of the player. Set the player at the initial coordinate which is
@@ -92,6 +96,24 @@ public class Player implements Serializable {
 		lookingUpLeft = new UpLeft(position);
 		lookingDownLeft = new DownLeft(position);
 		currentDirection = lookingRight;
+	}
+
+	/**
+	 * Add a new health listener to the player.
+	 * 
+	 * @param hl an health listener
+	 */
+	public void addListener(HealthListener hl) {
+		this.listeners.add(hl);
+	}
+
+	/**
+	 * Remove an health listener to the player.
+	 * 
+	 * @param hl an health listener
+	 */
+	public void removeListener(HealthListener hl) {
+		this.listeners.remove(hl);
 	}
 
 	/**
@@ -137,16 +159,9 @@ public class Player implements Serializable {
 	}
 
 	private void updateHealth() {
-		healthui.setText("Health: " + health);
-	}
-
-	/**
-	 * Get a graphical representation of the UI.
-	 * 
-	 * @return a JComponent representing the health of the player.
-	 */
-	public JComponent getHealthUI() {
-		return healthui;
+		for (HealthListener hl : listeners) {
+			hl.onHealthChange(this);
+		}
 	}
 
 	/**
