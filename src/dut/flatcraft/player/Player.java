@@ -66,7 +66,7 @@ public class Player implements Serializable {
 	/**
 	 * The player health (from 0 to 100)
 	 */
-	private char health = 100;
+	private byte health = 100;
 
 	/**
 	 * The creation of inventory.
@@ -97,7 +97,7 @@ public class Player implements Serializable {
 	/**
 	 * Get the health of the player.
 	 */
-	public char getHealth() {
+	public byte getHealth() {
 		return health;
 	}
 
@@ -117,7 +117,7 @@ public class Player implements Serializable {
 	 */
 	public void decHealth() {
 		health -= 5;
-		if (health > 65000) {
+		if (health < 0) {
 			health = 0;
 		}
 		updateHealth();
@@ -128,7 +128,7 @@ public class Player implements Serializable {
 	 * 
 	 * @param health the new health, between O and 100
 	 */
-	public void setHealth(char health) {
+	public void setHealth(byte health) {
 		if (health < 0 || health > 100) {
 			throw new IllegalArgumentException();
 		}
@@ -137,7 +137,7 @@ public class Player implements Serializable {
 	}
 
 	private void updateHealth() {
-		healthui.setText("Health: " + (int) health);
+		healthui.setText("Health: " + health);
 	}
 
 	/**
