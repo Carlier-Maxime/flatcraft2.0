@@ -2,6 +2,7 @@ package dut.flatcraft;
 
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -68,7 +69,9 @@ public class VaryingImageIcon extends CustomImageIcon {
 	public VaryingImageIcon(Image image) {
 		super(image);
 		instances.add(this);
-		modified.createGraphics().drawImage(image, 0, 0, null);
+		Graphics2D g = modified.createGraphics();
+		g.drawImage(image, 0, 0, null);
+		g.dispose();
 	}
 
 	@Override
@@ -88,7 +91,9 @@ public class VaryingImageIcon extends CustomImageIcon {
 	private void updateImage() {
 		Image original = super.getImage();
 		RescaleOp op = new RescaleOp(lightFactor, 0, null);
-		modified.createGraphics().drawImage(original, 0, 0, null);
+		Graphics2D g = modified.createGraphics();
+		g.drawImage(original, 0, 0, null);
+		g.dispose();
 		op.filter(modified, modified);
 	}
 
