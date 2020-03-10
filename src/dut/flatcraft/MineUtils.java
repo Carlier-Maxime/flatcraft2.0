@@ -40,7 +40,7 @@ public class MineUtils {
 
 	public static final int DEFAULT_IMAGE_SIZE = 40;
 
-	private static final Map<String, VaryingImageIcon> cachedImages = new TreeMap<>();
+	private static final Map<String, CustomImageIcon> cachedImages = new TreeMap<>();
 	private static final Map<String, Resource> cachedResources = new TreeMap<>();
 	private static final Map<String, Tool> cachedTools = new TreeMap<>();
 
@@ -55,8 +55,8 @@ public class MineUtils {
 	 * @return an ImageIcon scaled up to 40x40.
 	 */
 
-	public static VaryingImageIcon getImage(String localName) {
-		VaryingImageIcon cached = cachedImages.get(localName);
+	public static CustomImageIcon getImage(String localName) {
+		CustomImageIcon cached = cachedImages.get(localName);
 		if (cached == null) {
 			String absoluteName = "/textures/default_" + localName + ".png";
 			cached = scaled(absoluteName);
@@ -81,6 +81,23 @@ public class MineUtils {
 	}
 
 	/**
+	 * Create a scaled up version of the original icon, to have a MineCraft effect.
+	 * 
+	 * This image will not be lighted according to a light factor.
+	 * 
+	 * @param imageName the name of the texture file.
+	 * @return an image
+	 */
+	public static CustomImageIcon scaledNotVarying(String imageName) {
+		try {
+			return new CustomImageIcon(ImageIO.read(MineUtils.class.getResource(imageName))
+					.getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, Image.SCALE_DEFAULT));
+		} catch (IOException e) {
+			return new CustomImageIcon();
+		}
+	}
+
+	/**
 	 * Create a new scaled up version of the original icon, over an already scaled
 	 * image (e.g. STONE).
 	 * 
@@ -88,7 +105,7 @@ public class MineUtils {
 	 * @param imageName  the new image to put on top of the background.
 	 * @return an image consisting of imageName with the given background.
 	 */
-	public static ImageIcon overlay(String backgroundName, String foregroundName) {
+	public static CustomImageIcon overlay(String backgroundName, String foregroundName) {
 		Image background = getImage(backgroundName).getOriginalImage();
 		Image foreground = getImage(foregroundName).getOriginalImage();
 		BufferedImage merged = new BufferedImage(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, BufferedImage.TYPE_INT_ARGB);

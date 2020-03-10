@@ -9,7 +9,6 @@ import java.awt.image.RescaleOp;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 /**
@@ -18,7 +17,7 @@ import javax.swing.Timer;
  * @author leberre
  *
  */
-public class VaryingImageIcon extends ImageIcon {
+public class VaryingImageIcon extends CustomImageIcon {
 
 	/**
 	 * 
@@ -91,10 +90,6 @@ public class VaryingImageIcon extends ImageIcon {
 		RescaleOp op = new RescaleOp(lightFactor, 0, null);
 		modified.createGraphics().drawImage(original, 0, 0, null);
 		op.filter(modified, modified);
-	}
-
-	public Image getOriginalImage() {
-		return super.getImage();
 	}
 
 	private void readObject(java.io.ObjectInputStream stream) {
