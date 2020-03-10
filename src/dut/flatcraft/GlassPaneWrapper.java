@@ -15,6 +15,7 @@ import dut.flatcraft.player.Player;
 import dut.flatcraft.ui.MyGrid;
 
 public class GlassPaneWrapper extends JLayeredPane {
+	private static final long serialVersionUID = 1L;
 	private JPanel glassPanel = new JPanel();
 	MouseEvent mouseEvent;
 
@@ -44,11 +45,11 @@ public class GlassPaneWrapper extends JLayeredPane {
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
 				Coordinate old = Player.instance().getPosition();
-				Coordinate next = Player.instance().getDirection().getNext();
+				Coordinate oldNext = Player.instance().getDirection().getNext();
 				grid.digOrFill();
 				grid.checkPhysics();
 				grid.paint(old);
-				grid.paint(next);
+				grid.paint(oldNext);
 				grid.paintPlayer(true);
 			}
 		});
@@ -77,7 +78,7 @@ public class GlassPaneWrapper extends JLayeredPane {
 
 	private void updateDirection(MouseEvent e, MyGrid grid) {
 		Coordinate old = grid.getPlayer().getPosition();
-		Coordinate next = Player.instance().getDirection().getNext();
+		Coordinate oldNext = Player.instance().getDirection().getNext();
 		int px = old.getX() * MineUtils.DEFAULT_IMAGE_SIZE + 20;
 		int py = old.getY() * MineUtils.DEFAULT_IMAGE_SIZE + 20;
 		int mx = e.getX();
@@ -106,7 +107,7 @@ public class GlassPaneWrapper extends JLayeredPane {
 			}
 		}
 		grid.paint(old);
-		grid.paint(next);
+		grid.paint(oldNext);
 		grid.paintPlayer(true);
 	}
 

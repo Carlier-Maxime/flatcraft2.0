@@ -72,6 +72,7 @@ public class MyGrid extends JComponent implements KeyListener {
 		boolean needsUpdate = false;
 		boolean needsToCheckVisible = false;
 		Coordinate old = player.getPosition();
+		Coordinate oldNext = player.getDirection().getNext();
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_KP_UP:
 		case KeyEvent.VK_UP:
@@ -144,6 +145,7 @@ public class MyGrid extends JComponent implements KeyListener {
 			e.consume();
 			checkPhysics();
 			paint(old);
+			paint(oldNext);
 			paintPlayer(needsToCheckVisible);
 		}
 	}
