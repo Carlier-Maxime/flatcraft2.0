@@ -84,10 +84,25 @@ public class Main {
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException,
 			IllegalAccessException, UnsupportedLookAndFeelException {
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		MapGenerator generator = new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5);
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		DisplayMode displayMode = ge.getDefaultScreenDevice().getDisplayMode();
 		Dimension screenSize = new Dimension(displayMode.getWidth(), displayMode.getHeight());
+
+		frame.add(BorderLayout.CENTER, createMap(screenSize, createMapGenerator()));
+		frame.add(BorderLayout.SOUTH, createStatusBar());
+		frame.pack();
+
+		if (frame.getWidth() > screenSize.width) {
+			frame.setSize(screenSize.width, frame.getHeight());
+		}
+
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+
+		VaryingImageIcon.startSimulation(5, Main::updateHour);
+	}
+
+	private static JScrollPane createMap(Dimension screenSize, MapGenerator generator) {
 		MyGrid grid = new MyGrid((screenSize.height * 80 / 100) / 40, 120, new ResourceCellFactory(), generator);
 		GlassPaneWrapper glassPaneWrapper = new GlassPaneWrapper(grid);
 		glassPaneWrapper.activateGlassPane(true);
@@ -96,8 +111,10 @@ public class Main {
 		scrollpane.getVerticalScrollBar().setUnitIncrement(40);
 		scrollpane.getHorizontalScrollBar().setUnitIncrement(40);
 		scrollpane.setDoubleBuffered(true);
-		frame.add(BorderLayout.CENTER, scrollpane);
+		return scrollpane;
+	}
 
+	private static JPanel createStatusBar() {
 		JLabel healthui = new JLabel("Health: 100");
 		Player.instance().addListener(p -> healthui.setText("Health: " + p.getHealth()));
 
@@ -106,11 +123,11 @@ public class Main {
 		south.add(hourLabel);
 
 		JDialog craft = new JDialog(frame, "Craft Table");
-		craft.add(new CraftTable(grid.getPlayer()));
+		craft.add(new CraftTable(Player.instance()));
 		craft.pack();
 
 		JDialog cook = new JDialog(frame, "Furnace");
-		cook.add(new Furnace(grid.getPlayer()));
+		cook.add(new Furnace(Player.instance()));
 		cook.pack();
 
 		JButton cookButton = new JButton(MineUtils.getImage("furnace_front"));
@@ -119,22 +136,17 @@ public class Main {
 		cookButton.setToolTipText("Furnace");
 		south.add(cookButton);
 
-		south.add(grid.getPlayer().getInventoryUI());
+		south.add(Player.instance().getInventoryUI());
 
 		JButton craftButton = new JButton("Craft");
 		craftButton.addActionListener(e -> positionCraftTable(craftButton, craft));
 		craftButton.setFocusable(false);
 		craftButton.setToolTipText("Craft Table");
 		south.add(craftButton);
+		return south;
+	}
 
-		frame.add(BorderLayout.SOUTH, south);
-		frame.pack();
-		if (frame.getWidth() > screenSize.width) {
-			frame.setSize(screenSize.width, frame.getHeight());
-		}
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-
-		VaryingImageIcon.startSimulation(5, Main::updateHour);
+	private static TerrilDecorator createMapGenerator() {
+		return new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5);
 	}
 }
