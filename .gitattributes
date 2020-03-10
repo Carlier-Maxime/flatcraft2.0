@@ -1,2 +1,3 @@
 src/craftrules.txt merge=union
 src/furnacerules.txt merge=union
+src/dut/flatcraft/MineUtils.java merge=union
