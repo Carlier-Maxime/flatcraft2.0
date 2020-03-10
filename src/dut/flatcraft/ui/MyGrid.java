@@ -142,18 +142,9 @@ public class MyGrid extends JComponent implements KeyListener {
 		}
 		if (needsUpdate) {
 			e.consume();
-
 			checkPhysics();
-
-			Coordinate current = player.getPosition();
-
-			map.getAt(old.getY(), old.getX()).getUI().repaint();
-			map.getAt(current.getY(), current.getX()).getUI().repaint();
-
-			if (needsToCheckVisible) {
-				scrollMap(current);
-			}
-
+			paint(old);
+			paintPlayer(needsToCheckVisible);
 		}
 	}
 
@@ -211,6 +202,20 @@ public class MyGrid extends JComponent implements KeyListener {
 		do {
 			down = player.lookingDown.toDig();
 		} while (map.getAt(down.getY(), down.getX()).manage(player));
+
+	}
+
+	public void paint(Coordinate c) {
+		map.getAt(c.getY(), c.getX()).getUI().repaint();
+	}
+
+	public void paintPlayer(boolean needsToCheckVisible) {
+		Coordinate current = player.getPosition();
+
+		map.getAt(current.getY(), current.getX()).getUI().repaint();
+		if (needsToCheckVisible) {
+			scrollMap(current);
+		}
 
 	}
 }

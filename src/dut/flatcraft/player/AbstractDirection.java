@@ -24,7 +24,7 @@ public abstract class AbstractDirection implements Direction {
 
 	/**
 	 * 
-	 * @param c a coordinate
+	 * @param c     a coordinate
 	 * @param angle a double
 	 */
 	public AbstractDirection(Coordinate c, double angle) {
@@ -46,7 +46,7 @@ public abstract class AbstractDirection implements Direction {
 		t.rotate(angle, dx, dy + 3.0);
 		path.transform(t);
 
-		Rectangle nextRect = new Rectangle(getNext().getX() * 40, getNext().getY() * 40, 40, 40);
+		Rectangle nextRect = new Rectangle(getNext().getX() * 40, getNext().getY() * 40, 39, 39);
 
 		Graphics2D g2d = (Graphics2D) g;
 

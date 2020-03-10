@@ -10,6 +10,8 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+import dut.flatcraft.player.Coordinate;
+import dut.flatcraft.player.Player;
 import dut.flatcraft.ui.MyGrid;
 
 public class GlassPaneWrapper extends JLayeredPane {
@@ -30,20 +32,24 @@ public class GlassPaneWrapper extends JLayeredPane {
 
 		glassPanel.addMouseWheelListener(e -> {
 			if (e.getWheelRotation() == 1) {
-				grid.getPlayer().previousInHand();
+				Player.instance().previousInHand();
 			} else {
-				grid.getPlayer().nextInHand();
+				Player.instance().nextInHand();
 			}
-			grid.repaint();
+			grid.paintPlayer(false);
 		});
 
 		glassPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
+				Coordinate old = Player.instance().getPosition();
+				Coordinate next = Player.instance().getDirection().getNext();
 				grid.digOrFill();
 				grid.checkPhysics();
-				grid.repaint();
+				grid.paint(old);
+				grid.paint(next);
+				grid.paintPlayer(true);
 			}
 		});
 
@@ -70,8 +76,10 @@ public class GlassPaneWrapper extends JLayeredPane {
 	}
 
 	private void updateDirection(MouseEvent e, MyGrid grid) {
-		int px = grid.getPlayer().getPosition().getX() * MineUtils.DEFAULT_IMAGE_SIZE + 20;
-		int py = grid.getPlayer().getPosition().getY() * MineUtils.DEFAULT_IMAGE_SIZE + 20;
+		Coordinate old = grid.getPlayer().getPosition();
+		Coordinate next = Player.instance().getDirection().getNext();
+		int px = old.getX() * MineUtils.DEFAULT_IMAGE_SIZE + 20;
+		int py = old.getY() * MineUtils.DEFAULT_IMAGE_SIZE + 20;
 		int mx = e.getX();
 		int my = e.getY();
 
@@ -97,7 +105,9 @@ public class GlassPaneWrapper extends JLayeredPane {
 				basDroite(grid, angle);
 			}
 		}
-		grid.repaint();
+		grid.paint(old);
+		grid.paint(next);
+		grid.paintPlayer(true);
 	}
 
 	private void basDroite(MyGrid grid, double angle) {
