@@ -150,8 +150,6 @@ public class MyGrid extends JComponent implements KeyListener {
 			map.getAt(old.getY(), old.getX()).getUI().repaint();
 			map.getAt(current.getY(), current.getX()).getUI().repaint();
 
-			repaint();
-
 			if (needsToCheckVisible) {
 				scrollMap(current);
 			}
