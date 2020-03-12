@@ -18,9 +18,22 @@ public interface MapGenerator {
 	 * Generates a new map.
 	 * 
 	 * @param width   width in number of cells
-	 * @param heigh   height in number of cells
+	 * @param height  height in number of cells
 	 * @param factory a CellFactory
 	 * @return
 	 */
-	GameMap generate(int width, int heigh, CellFactory factory);
+	GameMap generate(int width, int height, CellFactory factory);
+
+	/**
+	 * Retrieve the grass height for a given x.
+	 * 
+	 * By default, the grass is on the middle of the map.
+	 * 
+	 * @param mapheight the height of the map
+	 * @param x         the x coordinate
+	 * @return a y coordinate
+	 */
+	default int getGrassHeightAt(int mapheight, int x) {
+		return mapheight / 2;
+	}
 }

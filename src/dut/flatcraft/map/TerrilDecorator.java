@@ -33,7 +33,7 @@ public class TerrilDecorator implements MapGenerator {
 		GameMap map = decorated.generate(width, height, factory);
 		int terrilHeight = RAND.nextInt(maxHeight) + 1;
 		int x = RAND.nextInt(width - terrilHeight) + terrilHeight;
-		int y = height / 2;
+		int y = decorated.getGrassHeightAt(height, x);
 		for (int j = 0; j < terrilHeight; j++) {
 			for (int i = 0; i < 2 * j + 1; i++) {
 				int newy = y - terrilHeight + j;

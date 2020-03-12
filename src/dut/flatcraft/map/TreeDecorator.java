@@ -37,7 +37,7 @@ public class TreeDecorator implements MapGenerator {
 		GameMap map = decorated.generate(width, height, factory);
 		for (int i = 0; i < nbTree; i++) {
 			int x = RAND.nextInt(width);
-			int y = height / 2 - 1;
+			int y = decorated.getGrassHeightAt(height, x) - 1;
 			int treeHeight = RAND.nextInt(maxHeight) + 1;
 			for (int j = 0; j < treeHeight; j++) {
 				makeCell(map, y--, x, factory::createTree);
