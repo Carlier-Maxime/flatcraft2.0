@@ -6,6 +6,8 @@ import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -18,6 +20,7 @@ import dut.flatcraft.GameMap;
 import dut.flatcraft.MineUtils;
 import dut.flatcraft.map.MapGenerator;
 import dut.flatcraft.player.Coordinate;
+import dut.flatcraft.player.Paintable;
 import dut.flatcraft.player.Player;
 
 public class MyGrid extends JComponent implements KeyListener {
@@ -29,6 +32,7 @@ public class MyGrid extends JComponent implements KeyListener {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private final Collection<Paintable> paintables = new ArrayList<>();
 	private GameMap map;
 	private Player player;
 
@@ -36,6 +40,7 @@ public class MyGrid extends JComponent implements KeyListener {
 
 		map = generator.generate(width, height, factory);
 		player = Player.createPlayer(map);
+		paintables.add(player);
 		setLayout(new GridLayout(height, width));
 		for (int i = 0; i < map.getHeight(); i++) {
 			for (int j = 0; j < map.getWidth(); j++) {
@@ -51,6 +56,10 @@ public class MyGrid extends JComponent implements KeyListener {
 		return player;
 	}
 
+	public void addPaintable(Paintable paintable) {
+		this.paintables.add(paintable);
+	}
+
 	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(map.getWidth() * CELL_SIZE, map.getHeight() * CELL_SIZE);
@@ -59,7 +68,9 @@ public class MyGrid extends JComponent implements KeyListener {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		player.paint(g);
+		for (Paintable p : paintables) {
+			p.paint(g);
+		}
 	}
 
 	@Override

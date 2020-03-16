@@ -21,7 +21,7 @@ import fr.univartois.migl.utils.DesignPattern;
  * @author leberre
  *
  */
-public class Player implements Serializable {
+public class Player implements Paintable, Serializable {
 
 	/**
 	 * 
@@ -385,6 +385,7 @@ public class Player implements Serializable {
 	 * print the current player object in hand
 	 */
 
+	@Override
 	public void paint(Graphics g) {
 		g.drawImage(inventory.getElementInTheHand().getImage().getImage(), position.getX() * DEFAULT_IMAGE_SIZE,
 				position.getY() * DEFAULT_IMAGE_SIZE, null);
