@@ -60,6 +60,10 @@ public class MyGrid extends JComponent implements KeyListener {
 		this.paintables.add(paintable);
 	}
 
+	public void removePaintable(Paintable paintable) {
+		this.paintables.remove(paintable);
+	}
+
 	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(map.getWidth() * CELL_SIZE, map.getHeight() * CELL_SIZE);
