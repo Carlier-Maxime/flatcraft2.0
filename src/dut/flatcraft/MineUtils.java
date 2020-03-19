@@ -44,8 +44,13 @@ public class MineUtils {
 	private static final Map<String, Resource> cachedResources = new TreeMap<>();
 	private static final Map<String, Tool> cachedTools = new TreeMap<>();
 
-	public static final ImageIcon AIR = scaled("/textures/air.png");
-	public static final ImageIcon PLAYER = scaled("/textures/player.png");
+	public static final CustomImageIcon AIR = scaled("/textures/air.png");
+	public static final CustomImageIcon PLAYER = scaled("/textures/player.png");
+
+	static {
+		cachedImages.put("air", AIR);
+		cachedImages.put("player", PLAYER);
+	}
 
 	/**
 	 * Create a scaled up version of the original icon, to have a MineCraft effect.
