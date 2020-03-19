@@ -173,4 +173,9 @@ public class ResourceContainer implements Transferable, Handable {
 	public void addTo(Inventory inventory) {
 		inventory.add(this);
 	}
+
+	@Override
+	public String getName() {
+		return resource.getName();
+	}
 }

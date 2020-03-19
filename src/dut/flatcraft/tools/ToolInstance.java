@@ -116,4 +116,9 @@ public class ToolInstance implements Transferable, MineElementInstance, Handable
 	public void addTo(Inventory inventory) {
 		inventory.add(this);
 	}
+
+	@Override
+	public String getName() {
+		return toolType.getName();
+	}
 }

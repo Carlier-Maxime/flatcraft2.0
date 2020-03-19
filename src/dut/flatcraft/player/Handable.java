@@ -16,6 +16,8 @@ import dut.flatcraft.ui.Inventoriable;
  */
 public interface Handable extends Serializable, Inventoriable {
 
+	String getName();
+
 	ImageIcon getImage();
 
 	Optional<Cell> action(Player p, Cell c);
