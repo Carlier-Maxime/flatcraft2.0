@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -32,7 +33,7 @@ public class MyGrid extends JComponent implements KeyListener {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private final Collection<Paintable> paintables = new ArrayList<>();
+	private final Collection<Paintable> paintables = Collections.synchronizedCollection(new ArrayList<>());
 	private GameMap map;
 	private Player player;
 
