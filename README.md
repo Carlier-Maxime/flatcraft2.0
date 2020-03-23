@@ -49,8 +49,7 @@ Durant cette dernière semaine, le but est de "nettoyer" le code écrit avant de
  
 1. se connecter sur [sonarqube](http://sonarqube.univ-artois.fr/)
 1. le responsable du projet de groupe crée un token sur [son profil/onglet sécurité](http://sonarqube.univ-artois.fr/account/security/)
-1. intégrer ce token au niveau de la clé `sonar.login` dans le fichier [sonar-project.properties](sonar-project.properties)
-1. remplacer dans [.gitlab-ci.yml](.gitlab-ci.yml) le script `./build.sh` par `./build.sh && sonar-scanner -Dsonar.projectKey=flatcraft_$CI_PROJECT_NAMESPACE`
+1. intégrer ce token comme variable `SONARTOKEN` dans les paramètres de votre projet, `Intégration et livraison continues`, `variables`.
 1. dans quelques minutes, votre projet sera visible sur [sonarqube](http://sonarqube.univ-artois.fr/)
 1. combien de jours de dette technique avez-vous ?
 1. ajouter les autres membres du groupe et l'enseignant dans le projet à l'aide du menu `Administration/Permissions`
