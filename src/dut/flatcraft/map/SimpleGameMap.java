@@ -43,6 +43,7 @@ public class SimpleGameMap implements GameMap {
 			throw new IllegalArgumentException("Incorrect cell location");
 		}
 		elements[i][j] = c;
+		c.getUI().repaint();
 	}
 
 	@Override
