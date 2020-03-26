@@ -50,6 +50,7 @@ Durant cette dernière semaine, le but est de "nettoyer" le code écrit avant de
 1. se connecter sur [sonarqube](http://sonarqube.univ-artois.fr/)
 1. le responsable du projet de groupe crée un token sur [son profil/onglet sécurité](http://sonarqube.univ-artois.fr/account/security/)
 1. intégrer ce token comme variable `SONARTOKEN` dans les paramètres de votre projet, `Intégration et livraison continues`, `variables`.
+1. relancer la dernière build
 1. dans quelques minutes, votre projet sera visible sur [sonarqube](http://sonarqube.univ-artois.fr/)
 1. combien de jours de dette technique avez-vous ?
 1. ajouter les autres membres du groupe et l'enseignant dans le projet à l'aide du menu `Administration/Permissions`
