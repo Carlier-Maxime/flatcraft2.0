@@ -1,6 +1,7 @@
 package dut.flatcraft.player;
 
 import java.awt.Graphics;
+import java.io.Serializable;
 
 /**
  * Something that must be displayed on the map.
@@ -8,7 +9,7 @@ import java.awt.Graphics;
  * @author leberre
  *
  */
-public interface Paintable {
+public interface Paintable extends Serializable {
 
 	void paint(Graphics g);
 }
