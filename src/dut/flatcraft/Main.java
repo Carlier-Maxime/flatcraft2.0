@@ -29,11 +29,11 @@ import dut.flatcraft.ui.MyGrid;
 
 public class Main {
 
-	private static JFrame frame = new JFrame("FLATCRAFT 2020 - Student project - F1 to get help");
+	private static final JFrame frame = new JFrame("FLATCRAFT 2020 - Student project - F1 to get help");
 
 	private static int hourOfTheDay = 12;
 
-	private static JLabel hourLabel = new JLabel(hourString());
+	private static final JLabel hourLabel = new JLabel(hourString());
 
 	private static String hourString() {
 		return String.format("Time: %2d o'clock", hourOfTheDay);
