@@ -31,4 +31,8 @@ public class MapRegistry {
 		}
 		return (T) map;
 	}
+
+	public static void setMap(ExtendedGameMap map) {
+		MapRegistry.map = map;
+	}
 }
