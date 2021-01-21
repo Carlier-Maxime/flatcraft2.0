@@ -29,11 +29,13 @@ import dut.flatcraft.ui.MyGrid;
 
 public class Main {
 
-	private static final JFrame frame = new JFrame("FLATCRAFT 2020 - Student project - F1 to get help");
+	private static final JFrame frame = new JFrame("FLATCRAFT 2021 - Student project - F1 to get help");
 
 	private static int hourOfTheDay = 12;
 
 	private static final JLabel hourLabel = new JLabel(hourString());
+
+    private static MyGrid grid;
 
 	private static String hourString() {
 		return String.format("Time: %2d o'clock", hourOfTheDay);
@@ -98,12 +100,12 @@ public class Main {
 
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-
-		VaryingImageIcon.startSimulation(5, Main::updateHour);
+        grid.displayHelp();
+        VaryingImageIcon.startSimulation(5, Main::updateHour);
 	}
 
 	private static JScrollPane createMap(Dimension screenSize, MapGenerator generator) {
-		MyGrid grid = new MyGrid((screenSize.height * 80 / 100) / 40, 120, new ResourceCellFactory(), generator);
+		grid = new MyGrid((screenSize.height * 80 / 100) / 40, 120, new ResourceCellFactory(), generator);
 		GlassPaneWrapper glassPaneWrapper = new GlassPaneWrapper(grid);
 		glassPaneWrapper.activateGlassPane(true);
 		JScrollPane scrollpane = new JScrollPane(glassPaneWrapper, ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER,

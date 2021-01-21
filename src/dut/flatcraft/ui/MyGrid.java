@@ -178,14 +178,14 @@ public class MyGrid extends JComponent implements KeyListener {
 		}
 	}
 
-	private void displayHelp() {
+	public void displayHelp() {
 		String help = "<html><h1>How to play?</h1>" + "It's simple:<ul>"
 				+ "<li>Change direction using directional arrows</li>"
-				+ "<li>Use a tool or put something on the map using the <pre>CTRL</pre> key</li>"
-				+ "<li>Change the current tool or resource using <pre>SHIFT</pre>+left or right key</li>"
+				+ "<li>Use a tool or put something on the map using the <code>CTRL</code> key</li>"
+				+ "<li>Change the current tool or resource using <code>SHIFT</code>+left or right key</li>"
 				+ "<li>Move resources from or to the inventory, craft table, furnace using drag'n'drop</li>"
-				+ "<li>Move resources on the craft table with (unit) or without (half available) <pre>CTRL</pre> key</li>"
-				+ "<li>Execute an action on the cell in front of you using the <pre>e</pre> key</li>" + "</ul>";
+				+ "<li>Move resources on the craft table with (unit) or without (half available) <code>CTRL</code> key</li>"
+				+ "<li>Execute an action on the cell in front of you using the <code>e</code> key</li>" + "</ul>";
 		JOptionPane.showMessageDialog(null, help);
 	}
 
