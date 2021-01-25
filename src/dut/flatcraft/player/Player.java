@@ -1,14 +1,10 @@
 package dut.flatcraft.player;
 
 import static dut.flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
-
 import java.awt.Graphics;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JComponent;
-
 import dut.flatcraft.GameMap;
 import dut.flatcraft.MapRegistry;
 import dut.flatcraft.ui.Inventoriable;
@@ -21,7 +17,7 @@ import fr.univartois.migl.utils.DesignPattern;
  * @author leberre
  *
  */
-public class Player implements Paintable, Serializable {
+public class Player implements Paintable {
 
 	/**
 	 * 
@@ -353,8 +349,8 @@ public class Player implements Paintable, Serializable {
 			return lookingRight;
 		assert currentDirection == lookingRight;
 		return lookingLeft;
-	}
-
+    }
+    
 	/**
 	 * move the player if it's possible
 	 * 
@@ -362,6 +358,23 @@ public class Player implements Paintable, Serializable {
 	 */
 
 	public boolean next() {
+        if (currentDirection == lookingUpRight) {
+            if (!isEmptyCell(lookingUp.getNext())) {
+                return false;
+            }
+        } else if (currentDirection == lookingDownRight) {
+            if (!isEmptyCell(lookingRight.getNext())) {
+                return false;
+            }
+        } else if (currentDirection == lookingDownLeft) {
+            if (!isEmptyCell(lookingLeft.getNext())) {
+                return false;
+            }
+        } else if (currentDirection == lookingUpLeft) {
+            if (!isEmptyCell(lookingUp.getNext())) {
+                return false;
+            }
+        }
 		return currentDirection.next();
 	}
 
