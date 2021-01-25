@@ -180,8 +180,10 @@ public class MyGrid extends JComponent implements KeyListener {
 
 	public void displayHelp() {
 		String help = "<html><h1>How to play?</h1>" + "It's simple:<ul>"
-				+ "<li>Change direction using directional arrows</li>"
-				+ "<li>Use a tool or put something on the map using the <code>CTRL</code> key</li>"
+                + "<li>Change direction using directional arrows</li>"
+                + "<li>Go left of right using Q and D keys</li>"
+                + "<li>Use a tool or put something on the map using the <code>CTRL</code> key</li>"
+                + "<li>Dig using the left mouse button</li>"
 				+ "<li>Change the current tool or resource using <code>SHIFT</code>+left or right key</li>"
 				+ "<li>Move resources from or to the inventory, craft table, furnace using drag'n'drop</li>"
 				+ "<li>Move resources on the craft table with (unit) or without (half available) <code>CTRL</code> key</li>"
