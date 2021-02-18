@@ -6,7 +6,6 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import dut.flatcraft.MineElement;
 
