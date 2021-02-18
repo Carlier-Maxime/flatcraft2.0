@@ -12,7 +12,6 @@ import javax.swing.ImageIcon;
 
 import dut.flatcraft.Cell;
 import dut.flatcraft.EmptyCell;
-import dut.flatcraft.MineElementInstance;
 import dut.flatcraft.MineUtils;
 import dut.flatcraft.player.Coordinate;
 import dut.flatcraft.player.Direction;
@@ -28,7 +27,7 @@ import dut.flatcraft.ui.Inventory;
  * @author leberre
  *
  */
-public class ToolInstance implements Transferable, MineElementInstance, Handable {
+public class ToolInstance implements Transferable, Handable {
 
 	/**
 	 * 
@@ -55,7 +54,6 @@ public class ToolInstance implements Transferable, MineElementInstance, Handable
 		return currentLife;
 	}
 
-	@Override
 	public Tool getType() {
 		return toolType;
 	}

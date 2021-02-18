@@ -102,7 +102,6 @@ public class Resource implements MineElement {
 	 * 
 	 * @return an instance of ResourceInstance representing that type
 	 */
-	@Override
 	public ResourceInstance newInstance() {
 		return new ResourceInstance(this);
 	}
@@ -114,7 +113,6 @@ public class Resource implements MineElement {
 	 * @param label a JLabel to reuse to display that resource
 	 * @return an instance of ResourceInstance representing that type
 	 */
-	@Override
 	public ResourceInstance newInstance(JLabel label) {
 		return new ResourceInstance(this, label);
 	}

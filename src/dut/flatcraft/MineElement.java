@@ -16,7 +16,6 @@ import fr.univartois.migl.utils.DesignPattern;
  * @author leberre
  *
  */
-@DesignPattern(name = "Type Object")
 public interface MineElement extends Serializable {
 
 	/**
@@ -25,19 +24,4 @@ public interface MineElement extends Serializable {
 	 * @return
 	 */
 	ImageIcon getImage();
-
-	/**
-	 * Create a new instance of this type
-	 * 
-	 * @return a new instance of this type
-	 */
-	MineElementInstance newInstance();
-
-	/**
-	 * Create a new instance of this type using a specific UI element.
-	 * 
-	 * @param label a UI representation of the instance
-	 * @return a new instance of this type
-	 */
-	MineElementInstance newInstance(JLabel label);
 }

@@ -63,7 +63,6 @@ public class Tool implements MineElement, Transferable {
 		return decrement;
 	}
 
-	@Override
 	public ToolInstance newInstance() {
 		return new ToolInstance(this);
 	}
@@ -83,7 +82,6 @@ public class Tool implements MineElement, Transferable {
 		return this;
 	}
 
-	@Override
 	public ToolInstance newInstance(JLabel label) {
 		return newInstance();
 	}
