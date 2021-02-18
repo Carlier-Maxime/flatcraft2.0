@@ -3,9 +3,6 @@ package dut.flatcraft;
 import java.io.Serializable;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
-import fr.univartois.migl.utils.DesignPattern;
 
 /**
  * The most basic element found in the game.

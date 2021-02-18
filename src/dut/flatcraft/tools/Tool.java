@@ -81,8 +81,4 @@ public class Tool implements MineElement, Transferable {
 	public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
 		return this;
 	}
-
-	public ToolInstance newInstance(JLabel label) {
-		return newInstance();
-	}
 }

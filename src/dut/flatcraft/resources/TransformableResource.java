@@ -32,4 +32,17 @@ public class TransformableResource extends Resource {
 	public Resource digBlock() {
 		return this.digBlock;
 	}
+
+    @Override
+	public boolean equals(Object o) {
+		if (o instanceof TransformableResource) {
+			return super.equals(o)&& digBlock.equals(((TransformableResource)o).digBlock);
+		}
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode()/2+ this.digBlock.hashCode()/2;
+	}
 }
