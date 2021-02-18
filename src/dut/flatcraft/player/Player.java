@@ -127,7 +127,7 @@ public class Player implements Paintable {
 		if (health > 100) {
 			health = 100;
 		}
-		updateHealth();
+		fireHealthChange();
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class Player implements Paintable {
 		if (health < 0) {
 			health = 0;
 		}
-		updateHealth();
+		fireHealthChange();
 	}
 
 	/**
@@ -151,10 +151,10 @@ public class Player implements Paintable {
 			throw new IllegalArgumentException();
 		}
 		this.health = health;
-		updateHealth();
+		fireHealthChange();
 	}
 
-	private void updateHealth() {
+	private void fireHealthChange() {
 		for (HealthListener hl : listeners) {
 			hl.onHealthChange(this);
 		}
