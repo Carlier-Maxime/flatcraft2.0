@@ -71,9 +71,4 @@ public class EmptyCell implements Cell {
 	public boolean canBeReplacedBy(Cell c, Player p) {
 		return true;
 	}
-
-	@Override
-	public void addTo(Inventory inventory) {
-		// do nothing
-	}
 }

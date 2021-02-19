@@ -1,6 +1,8 @@
 package dut.flatcraft.ui;
 
-public interface Inventoriable {
+import fr.univartois.migl.utils.DesignPattern;
 
+public interface Inventoriable {
+	@DesignPattern(name = "Double Dispatch")
 	void addTo(Inventory inventory);
 }

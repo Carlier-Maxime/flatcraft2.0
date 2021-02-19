@@ -72,11 +72,6 @@ public class Inventory implements Serializable {
 		}
 	}
 
-	@DesignPattern(name = "Double Dispatch")
-	public void add(Cell cell) {
-		cell.addTo(this);
-	}
-
 	public void add(ResourceInstance instance) {
 		ResourceContainer container = containers.get(instance.getName());
 		if (container == null) {
@@ -105,8 +100,9 @@ public class Inventory implements Serializable {
 		ui.repaint();
 	}
 
-	public void add(Handable handable) {
-		handable.addTo(this);
+    @DesignPattern(name = "Double Dispatch")
+	public void add(Inventoriable inventoriable) {
+		inventoriable.addTo(this);
 	}
 
 	public JComponent getUI() {

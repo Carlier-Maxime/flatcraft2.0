@@ -80,11 +80,4 @@ public interface Cell extends Serializable {
 	 * @return true iff the new cell can replace the current one on the map
 	 */
 	boolean canBeReplacedBy(Cell c, Player p);
-
-	/**
-	 * Ask a cell to add itself to the inventory.
-	 * 
-	 */
-	@DesignPattern(name = "Double Dispatch")
-	void addTo(Inventory inventory);
 }
