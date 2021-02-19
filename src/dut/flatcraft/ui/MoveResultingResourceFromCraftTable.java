@@ -6,6 +6,9 @@ import java.awt.datatransfer.Transferable;
 import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
+/**
+ * 
+ */
 final class MoveResultingResourceFromCraftTable extends TransferHandler {
 	/**
 	 * 

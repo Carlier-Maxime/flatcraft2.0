@@ -3,7 +3,8 @@ package dut.flatcraft.resources;
 import javax.swing.JLabel;
 
 /**
- * Make an executable resource.
+ * An executable resource instance, i.e. a resource which
+ * reacts to the execute key.
  * 
  * @author leberre
  *

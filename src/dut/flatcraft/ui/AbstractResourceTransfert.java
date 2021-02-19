@@ -9,6 +9,9 @@ import javax.swing.TransferHandler;
 import dut.flatcraft.resources.ResourceContainer;
 import fr.univartois.migl.utils.DesignPattern;
 
+/**
+ * Provide all gory machinery for drag and drop of resource containers.
+ */
 abstract class AbstractResourceTransfert extends TransferHandler {
 	/**
 	 * 

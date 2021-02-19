@@ -23,8 +23,9 @@ import dut.flatcraft.player.Player;
 import dut.flatcraft.resources.ResourceContainer;
 
 /**
- * A crafting table.
+ * A furnace.
  * 
+ * Allows to heat lump using combustible to get a lingot.
  * 
  * @author leberre
  *

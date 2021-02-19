@@ -11,6 +11,9 @@ import dut.flatcraft.resources.ResourceContainer;
 import dut.flatcraft.tools.Tool;
 import dut.flatcraft.tools.ToolInstance;
 
+/**
+ * Drag and drop from and to the inventory.
+ */
 final class InventoryTransfert extends TransferHandler {
 	/**
 	 * 

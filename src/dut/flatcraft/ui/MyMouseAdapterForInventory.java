@@ -7,6 +7,9 @@ import java.io.Serializable;
 import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
+/**
+ * Drag and drop gesture for the inventory.
+ */
 public class MyMouseAdapterForInventory extends MouseAdapter implements Serializable {
 
 	/**

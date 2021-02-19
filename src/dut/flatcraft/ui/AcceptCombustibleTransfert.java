@@ -1,5 +1,8 @@
 package dut.flatcraft.ui;
 
+/**
+ * Drag and drop of combustible for the furnace.
+ */
 final class AcceptCombustibleTransfert extends AbstractResourceTransfert {
 
 	/**

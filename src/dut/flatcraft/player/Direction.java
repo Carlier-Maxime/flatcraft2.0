@@ -4,7 +4,10 @@ import java.awt.Graphics;
 import java.io.Serializable;
 
 import fr.univartois.migl.utils.DesignPattern;
-
+/**
+ * The direction on the next move of the player.
+ * 
+ */
 @DesignPattern(name = "State")
 public interface Direction extends Serializable {
 	/**

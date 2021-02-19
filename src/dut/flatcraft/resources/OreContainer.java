@@ -2,6 +2,9 @@ package dut.flatcraft.resources;
 
 import java.awt.datatransfer.DataFlavor;
 
+/**
+ * Ore resources are used in the furnace to create lingots.
+ */
 public class OreContainer extends ResourceContainer {
 
 	/**

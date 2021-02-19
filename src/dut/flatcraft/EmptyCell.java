@@ -5,7 +5,6 @@ import javax.swing.JLabel;
 
 import dut.flatcraft.player.Player;
 import dut.flatcraft.resources.Resource;
-import dut.flatcraft.ui.Inventory;
 
 /**
  * A cell representing the absence of resource on the map.

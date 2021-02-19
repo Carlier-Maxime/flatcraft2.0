@@ -1,5 +1,8 @@
 package dut.flatcraft.ui;
 
+/**
+ * Drap and drop of resources for the craft table.
+ */
 final class AcceptResourceTransfert extends AbstractResourceTransfert {
 	/**
 	 * 

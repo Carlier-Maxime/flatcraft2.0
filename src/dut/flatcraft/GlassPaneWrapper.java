@@ -14,6 +14,10 @@ import dut.flatcraft.player.Coordinate;
 import dut.flatcraft.player.Player;
 import dut.flatcraft.ui.MyGrid;
 
+/**
+ * Manages the direction of the player using the mouse.
+ * 
+ */
 public class GlassPaneWrapper extends JLayeredPane {
 	private static final long serialVersionUID = 1L;
 	private JPanel glassPanel = new JPanel();

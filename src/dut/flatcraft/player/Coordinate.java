@@ -2,6 +2,9 @@ package dut.flatcraft.player;
 
 import java.io.Serializable;
 
+/**
+ * A simple 2-dimension coordinate system.
+ */
 public class Coordinate implements Serializable {
 	/**
 	 *

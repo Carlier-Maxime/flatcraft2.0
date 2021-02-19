@@ -2,6 +2,9 @@ package dut.flatcraft;
 
 import java.util.Random;
 
+/**
+ * A simple and basic way to implement the CellFactory.
+ */
 public class ResourceCellFactory implements CellFactory {
 
 	public static final Random RAND = new Random();

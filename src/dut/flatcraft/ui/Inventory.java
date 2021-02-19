@@ -22,6 +22,11 @@ import dut.flatcraft.resources.ResourceInstance;
 import dut.flatcraft.tools.ToolInstance;
 import fr.univartois.migl.utils.DesignPattern;
 
+/**
+ * The inventory of all things that can be retrieved
+ * from the game (resources, tools, etc.)
+ * 
+ */
 public class Inventory implements Serializable {
 
 	/**

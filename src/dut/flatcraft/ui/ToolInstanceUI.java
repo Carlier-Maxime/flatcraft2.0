@@ -14,6 +14,10 @@ import javax.swing.JComponent;
 import dut.flatcraft.tools.ToolInstance;
 import dut.flatcraft.tools.ToolInstanceListener;
 
+/**
+ * A graphical representation of a tool instance.
+ * It displays the life of the tool on top of the tool itself.
+ */
 public class ToolInstanceUI extends JComponent implements ToolInstanceListener, InventoriableUI {
 
 	/**

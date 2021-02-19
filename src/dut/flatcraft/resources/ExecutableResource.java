@@ -5,6 +5,13 @@ import javax.swing.JLabel;
 
 import dut.flatcraft.tools.ToolType;
 
+/**
+ * An executable resource type, i.e. a resource which
+ * reacts to the execute key.
+ * 
+ * @author leberre
+ *
+ */
 public class ExecutableResource extends Resource {
 
 	/**

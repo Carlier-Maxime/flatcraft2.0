@@ -8,6 +8,9 @@ import javax.swing.TransferHandler;
 
 import dut.flatcraft.resources.ResourceContainer;
 
+/**
+ * Drag and drop of resources from the craftable.
+ */
 final class AllowCopyOrMoveResource extends TransferHandler {
 
 	/**

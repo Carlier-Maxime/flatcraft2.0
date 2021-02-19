@@ -24,6 +24,10 @@ import dut.flatcraft.player.Coordinate;
 import dut.flatcraft.player.Paintable;
 import dut.flatcraft.player.Player;
 
+/**
+ * The graphical component displaying the game map.
+ * The component also takes care of the interaction with the user with the keyboard.
+ */
 public class MyGrid extends JComponent implements KeyListener {
 
 	private static final int CELL_SIZE = MineUtils.DEFAULT_IMAGE_SIZE;

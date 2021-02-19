@@ -4,6 +4,9 @@ import java.awt.datatransfer.DataFlavor;
 
 import dut.flatcraft.resources.OreContainer;
 
+/**
+ * Drag and drop of ore to the furnace.
+ */
 final class AcceptOreTransfert extends AbstractResourceTransfert {
 
 	/**

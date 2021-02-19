@@ -7,6 +7,9 @@ import java.io.Serializable;
 import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
+/**
+ * Default Drag and Drop mouse gesture.
+ */
 public class MyMouseAdapter extends MouseAdapter implements Serializable {
 
 	/**

@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import fr.univartois.migl.utils.DesignPattern;
 
+/**
+ * A listener of changes in a particular tool instance.
+ */
 @DesignPattern(name = "Observer")
 public interface ToolInstanceListener extends Serializable {
 
