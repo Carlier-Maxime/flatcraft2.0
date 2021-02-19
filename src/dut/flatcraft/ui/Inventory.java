@@ -12,7 +12,6 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
-import dut.flatcraft.Cell;
 import dut.flatcraft.MineUtils;
 import dut.flatcraft.player.Handable;
 import dut.flatcraft.resources.CombustibleContainer;
