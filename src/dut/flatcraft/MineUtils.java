@@ -265,7 +265,7 @@ public class MineUtils {
 					ToolType.MEDIUM_TOOL);
 			break;
 		case "copper_lingot":
-			resource = makeResource("copper_lingot", 10, ToolType.HARD_TOOL);
+			resource = makeResource("copper_ingot", 10, ToolType.HARD_TOOL);
 			break;
 		case "chest":
 			resource = new ChestResource("chest", getImage("chest_front"), 100000, ToolType.NO_TOOL);
