@@ -1,5 +1,6 @@
 package dut.flatcraft;
 
+import static dut.flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.DisplayMode;
@@ -105,15 +106,10 @@ public class Main {
 	}
 
 	private static JScrollPane createMap(Dimension screenSize, MapGenerator generator) {
-		grid = new MyGrid((screenSize.height * 80 / 100) / 40, 120, new ResourceCellFactory(), generator);
+		grid = new MyGrid((screenSize.height * 80 / 100) / DEFAULT_IMAGE_SIZE, 120, new ResourceCellFactory(), generator);
 		GlassPaneWrapper glassPaneWrapper = new GlassPaneWrapper(grid);
 		glassPaneWrapper.activateGlassPane(true);
-		JScrollPane scrollpane = new JScrollPane(glassPaneWrapper, ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollpane.getVerticalScrollBar().setUnitIncrement(40);
-		scrollpane.getHorizontalScrollBar().setUnitIncrement(40);
-		scrollpane.setDoubleBuffered(true);
-		return scrollpane;
+		return MineUtils.scrollPane(glassPaneWrapper);
 	}
 
 	private static JPanel createStatusBar() {
@@ -148,7 +144,7 @@ public class Main {
 		return south;
 	}
 
-	private static TerrilDecorator createMapGenerator() {
+	private static MapGenerator createMapGenerator() {
 		return new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5);
 	}
 }

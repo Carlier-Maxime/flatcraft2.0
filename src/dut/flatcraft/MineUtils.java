@@ -121,34 +121,6 @@ public class MineUtils {
 	}
 
 	/**
-	 * Create a JButton without borders, to be used typically in a
-	 * {@see GridLayout}.
-	 * 
-	 * @param icon the ImageIcon to be seen on the button.
-	 * @return a button displaying icon, with no borders.
-	 */
-	public static JButton noBorderButton(ImageIcon icon) {
-		JButton button = new JButton(icon);
-		button.setBorder(BorderFactory.createEmptyBorder());
-		return button;
-	}
-
-	/**
-	 * Create a JToggleButton without borders, to be used typically in a
-	 * {@see GridLayout}.
-	 * 
-	 * @param icon1 the ImageIcon to be seen first on the button.
-	 * @param icon2 the ImageIcon to be seen once the button is pushed.
-	 * @return a button displaying icon, with no borders.
-	 */
-	public static JToggleButton toggleNoBorderButton(ImageIcon icon1, ImageIcon icon2) {
-		JToggleButton button = new JToggleButton(icon1);
-		button.setBorder(BorderFactory.createEmptyBorder());
-		button.setSelectedIcon(icon2);
-		return button;
-	}
-
-	/**
 	 * Create a JScrollPane which is incremented by 1/4 of a tile when scrolling
 	 * once.
 	 * 
@@ -159,6 +131,7 @@ public class MineUtils {
 		JScrollPane scroller = new JScrollPane(comp);
 		scroller.getVerticalScrollBar().setUnitIncrement(DEFAULT_IMAGE_SIZE);
 		scroller.getHorizontalScrollBar().setUnitIncrement(DEFAULT_IMAGE_SIZE);
+        scroller.setDoubleBuffered(true);
 		return scroller;
 	}
 
