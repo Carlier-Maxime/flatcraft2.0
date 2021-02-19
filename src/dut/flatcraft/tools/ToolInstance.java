@@ -17,7 +17,6 @@ import dut.flatcraft.player.Coordinate;
 import dut.flatcraft.player.Direction;
 import dut.flatcraft.player.Handable;
 import dut.flatcraft.player.Player;
-import dut.flatcraft.resources.Resource;
 import dut.flatcraft.ui.Inventory;
 
 /**
@@ -91,7 +90,7 @@ public class ToolInstance implements Transferable, Handable {
 
 	@Override
 	public Optional<Cell> action(Player p, Cell c) {
-		if (((Resource) c.getType()).getToolType().compareTo(this.toolType.getTooltype()) <= 0) {
+		if (c.getType().getToolType().compareTo(this.toolType.getTooltype()) <= 0) {
 			boolean result = c.dig(p);
 			if (result) {
 				return Optional.of(new EmptyCell(MineUtils.getImage("ice"), c.getUI()));

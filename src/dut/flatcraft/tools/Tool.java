@@ -4,10 +4,9 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.swing.ImageIcon;
-
-import dut.flatcraft.MineElement;
 
 /**
  * Define a particular kind of tool.
@@ -15,7 +14,7 @@ import dut.flatcraft.MineElement;
  * @author leberre
  *
  */
-public class Tool implements MineElement, Transferable {
+public class Tool implements Transferable, Serializable {
 
 	/**
 	 * 

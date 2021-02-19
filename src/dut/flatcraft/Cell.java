@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import dut.flatcraft.player.Player;
+import dut.flatcraft.resources.Resource;
 import dut.flatcraft.ui.Inventory;
 import fr.univartois.migl.utils.DesignPattern;
 
@@ -44,7 +45,7 @@ public interface Cell extends Serializable {
 	 * 
 	 * @return
 	 */
-	MineElement getType();
+	Resource getType();
 
 	/**
 	 * Indicate if the cell changed the position of the player.
