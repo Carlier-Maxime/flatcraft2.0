@@ -14,7 +14,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
@@ -101,7 +100,7 @@ public class Main {
 
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setExtendedState(JFrame.MAXIMIZED_HORIZ);
 
 		frame.setVisible(true);
         grid.displayHelp();
