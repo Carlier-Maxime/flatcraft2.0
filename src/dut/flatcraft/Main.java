@@ -100,6 +100,9 @@ public class Main {
 		}
 
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
 		frame.setVisible(true);
         grid.displayHelp();
         VaryingImageIcon.startSimulation(5, Main::updateHour);
