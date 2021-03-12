@@ -77,9 +77,10 @@ public class MineUtils {
             if (url == null) {
                 throw new IllegalArgumentException(imageName+" n'a pas été trouvé");
             }
-			return new VaryingImageIcon(ImageIO.read(url)
+            CustomImageIcon icon = new CustomImageIcon(url);
+			return new VaryingImageIcon(icon.getImage()
 					.getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, Image.SCALE_DEFAULT));
-		} catch (IOException e) {
+		} catch (Exception e) {
 			return new VaryingImageIcon();
 		}
 	}
@@ -94,9 +95,14 @@ public class MineUtils {
 	 */
 	public static CustomImageIcon scaledNotVarying(String imageName) {
 		try {
-			return new CustomImageIcon(ImageIO.read(MineUtils.class.getResource(imageName))
+            URL url = MineUtils.class.getResource(imageName);
+            if (url == null) {
+                throw new IllegalArgumentException(imageName+" n'a pas été trouvé");
+            }
+            CustomImageIcon icon = new CustomImageIcon(url);
+			return new CustomImageIcon(icon.getImage()
 					.getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, Image.SCALE_DEFAULT));
-		} catch (IOException e) {
+		} catch (Exception e) {
 			return new CustomImageIcon();
 		}
 	}

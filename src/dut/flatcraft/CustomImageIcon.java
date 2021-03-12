@@ -1,7 +1,7 @@
 package dut.flatcraft;
 
 import java.awt.Image;
-
+import java.net.URL;
 import javax.swing.ImageIcon;
 
 /**
@@ -18,6 +18,10 @@ public class CustomImageIcon extends ImageIcon {
 
 	public CustomImageIcon(Image image) {
 		super(image);
+	}
+
+    public CustomImageIcon(URL url) {
+		super(url);
 	}
 
 	public Image getOriginalImage() {
