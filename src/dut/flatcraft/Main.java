@@ -22,6 +22,8 @@ import dut.flatcraft.map.MapGenerator;
 import dut.flatcraft.map.SimpleGenerator;
 import dut.flatcraft.map.TerrilDecorator;
 import dut.flatcraft.map.TreeDecorator;
+import dut.flatcraft.player.Level;
+import dut.flatcraft.player.LevelListener;
 import dut.flatcraft.player.Player;
 import dut.flatcraft.ui.CraftTable;
 import dut.flatcraft.ui.Furnace;
@@ -118,9 +120,30 @@ public class Main {
 		JLabel healthui = new JLabel("Health: 100");
 		Player.instance().addListener(p -> healthui.setText("Health: " + p.getHealth()));
 
+		JLabel experienceui = new JLabel("xp: 0/10");
+		JLabel levelui = new JLabel("level: 0");
+
+		LevelListener listener = new LevelListener(){
+			@Override
+			public void onXpChange(Level level) {
+				experienceui.setText("xp: " + level.getXp() + "/" + level.getBound());
+			}
+
+			@Override
+			public void onLevelChange(Level level) {
+				levelui.setText("level: " + level.getLevel());
+				experienceui.setText("xp: " + level.getXp() + "/" + level.getBound());
+			}
+		};
+
+		Player.instance().getLevel().addListener(listener);
+
 		JPanel south = new JPanel();
 		south.add(healthui);
+		south.add(experienceui);
+		south.add(levelui);
 		south.add(hourLabel);
+
 
 		JDialog craft = new JDialog(frame, "Craft Table");
 		craft.add(new CraftTable(Player.instance()));
