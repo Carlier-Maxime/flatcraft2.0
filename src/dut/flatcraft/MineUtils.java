@@ -10,15 +10,9 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
-import javax.swing.JToggleButton;
-
 import dut.flatcraft.resources.ChestResource;
 import dut.flatcraft.resources.Resource;
 import dut.flatcraft.resources.TransformableResource;
@@ -55,7 +49,7 @@ public class MineUtils {
 	/**
 	 * Create a scaled up version of the original icon, to have a MineCraft effect.
 	 * 
-	 * @param imageName the local name of the texture file (from which we can deduce
+	 * @param localName the local name of the texture file (from which we can deduce
 	 *                  the complete file name).
 	 * @return an ImageIcon scaled up to 40x40.
 	 */
@@ -107,7 +101,7 @@ public class MineUtils {
 	 * image (e.g. STONE).
 	 * 
 	 * @param background a scaled up background image
-	 * @param imageName  the new image to put on top of the background.
+	 * @param foregroundName  the new image to put on top of the background.
 	 * @return an image consisting of imageName with the given background.
 	 */
 	public static CustomImageIcon overlay(String backgroundName, String foregroundName) {
@@ -125,7 +119,7 @@ public class MineUtils {
 	 * once.
 	 * 
 	 * @param comp a component to be decorated with scrollbars.
-	 * @return a JScrollPane with scroll speed adaptated to tiles.
+	 * @return a JScrollPane with scroll speed adapted to tiles.
 	 */
 	public static JScrollPane scrollPane(JComponent comp) {
 		JScrollPane scroller = new JScrollPane(comp);
