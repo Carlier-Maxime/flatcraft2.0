@@ -74,7 +74,7 @@ public class MineUtils {
 		try {
             URL url = MineUtils.class.getResource(imageName);
             if (url == null) {
-                throw new IllegalArgumentException(imageName+" n'a pas été trouvé");
+                throw new IllegalArgumentException("Le fichier "+imageName+" n'a pas été trouvé");
             }
             CustomImageIcon icon = new CustomImageIcon(url);
 			return new VaryingImageIcon(icon.getImage()
@@ -96,7 +96,7 @@ public class MineUtils {
 		try {
             URL url = MineUtils.class.getResource(imageName);
             if (url == null) {
-                throw new IllegalArgumentException(imageName+" n'a pas été trouvé");
+                throw new IllegalArgumentException("Le fichier "+imageName+" n'a pas été trouvé");
             }
             CustomImageIcon icon = new CustomImageIcon(url);
 			return new CustomImageIcon(icon.getImage()
