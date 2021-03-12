@@ -66,6 +66,11 @@ public class Player implements Paintable {
     private byte health = 100;
 
     /**
+     * The player experience level
+     */
+    private Level level = new Level();
+
+    /**
      * The creation of inventory.
      */
 
@@ -117,6 +122,13 @@ public class Player implements Paintable {
      */
     public byte getHealth() {
         return health;
+    }
+
+    /**
+     * Get the experience level of the player.
+     */
+    public Level getLevel() {
+        return level;
     }
 
     /**
