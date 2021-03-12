@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Level;
@@ -72,7 +73,11 @@ public class MineUtils {
 	 */
 	public static VaryingImageIcon scaled(String imageName) {
 		try {
-			return new VaryingImageIcon(ImageIO.read(MineUtils.class.getResource(imageName))
+            URL url = MineUtils.class.getResource(imageName);
+            if (url == null) {
+                throw new IllegalArgumentException(imageName+" n'a pas été trouvé");
+            }
+			return new VaryingImageIcon(ImageIO.read(url)
 					.getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, Image.SCALE_DEFAULT));
 		} catch (IOException e) {
 			return new VaryingImageIcon();
