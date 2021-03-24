@@ -1,12 +1,12 @@
 # Flatcraft 2020
 
-> Le but du projet flatcraft est de servir de base pour le développement d'une 
+> Le but du projet flatcraft est de servir de base pour le développement d'une
 > nouvelle fonctionnalité pour un binôme (éventuellement trinôme) d'étudiants.
 
 ## Les fonctionnalités 2020
 
-Pour chaque groupe IPI1, IPI2 et PEL, les fonctionnalités réalisées doivent 
-être différentes. Des projets similaires peuvent être développées par des 
+Pour chaque groupe IPI1, IPI2 et PEL, les fonctionnalités réalisées doivent
+être différentes. Des projets similaires peuvent être développées par des
 binômes/trinôme de groupes différents.
 
 ### IPI1
@@ -46,7 +46,7 @@ binômes/trinôme de groupes différents.
 ## Semaine 8 : coder, c'est bien, coder bien, c'est mieux
 
 Durant cette dernière semaine, le but est de "nettoyer" le code écrit avant de l'intégrer dans le projet de groupe.
- 
+
 1. se connecter sur [sonarqube](http://sonarqube.univ-artois.fr/)
 1. le responsable du projet de groupe crée un token sur [son profil/onglet sécurité](http://sonarqube.univ-artois.fr/account/security/)
 1. intégrer ce token comme variable `SONARTOKEN` dans les paramètres de votre projet, `Intégration et livraison continues`, `variables`.
@@ -62,7 +62,7 @@ Une fois les violations corrigées, il faut intégrer le travail du binôme ou t
 
 1. Créer une merge request du projet du binôme/trinôme vers la branche du groupe
 1. Prendre en compte les commentaires de l'encadrant de TP (seul autorisé à intégrer les MR)
-1. Seules les MR intégrées 
+1. Seules les MR intégrées
 
 ## Semaines 6 et 7 : Ajout d'une fonctionnalité au jeu
 
@@ -83,7 +83,7 @@ vont pouvoir évoluer différemment, selon les projets de chacun.
 ## Semaine 5 : découverte du code du jeu
 
 Le but de la semaine 5 est que de découvrir le code du projet.
-Vous devez pour cela réaliser un certain nombre de modifications dans 
+Vous devez pour cela réaliser un certain nombre de modifications dans
 le code original
 
 Il y a actuellement [3192 lignes de code sans bug ou vulnérabilité détectés par SonarQube](https://sonarqube.univ-artois.fr/dashboard?id=flatcraft_2020_dlbenseignement%2Fdut2-2019).
@@ -91,7 +91,7 @@ Il y a actuellement [3192 lignes de code sans bug ou vulnérabilité détectés 
 
 ### Partie 1 : préparation de l'environnement
 
-Comme pour le projet constructeur, vous devez "forker" le projet. 
+Comme pour le projet constructeur, vous devez "forker" le projet.
 Cependant, cette fois-ci, vous travaillez en binôme.
 **Seul un membre du binôme doit faire un fork du projet.**
 
@@ -101,7 +101,7 @@ Vous devez aussi rajouter l'enseignant de TP comme `reporter`.
 
 Chaque membre du binôme fait un `git clone` sur sa machine.
 
-Chaque membre du binôme intègre le projet dans son EDI préféré : comme il s'agit d'un projet Eclipse, 
+Chaque membre du binôme intègre le projet dans son EDI préféré : comme il s'agit d'un projet Eclipse,
 il peut être facilement intégré en faisant `Import .../Import existing projet into workspace`.
 
 Pour pouvoir facilement MAJ votre projet à partir du dépôt de groupe, vous pouvez définir
@@ -151,7 +151,7 @@ Comment faire pour avoir 3 terrils sur la carte ?
 
 ### Partie 3 : modification du code existant
 
-Le but est maintenant de modifier de manière dirigée le code actuel du jeu 
+Le but est maintenant de modifier de manière dirigée le code actuel du jeu
 pour vous en faire découvrir les mécanismes.
 
 Les classes importantes pour réaliser ces modifications sont :
@@ -170,17 +170,17 @@ ainsi que les fichiers [`craftrules.txt`](src/craftrules.txt) et [`furnacerules.
 1. Ajouter une nouvelle règle à la table de craft ou au fourneau
 1. Ajouter une nouvelle action quand on clique sur une ressource particulière
 
-De nombreuses images sont disponibles dans le répertoire `textures`. 
-Les noms des fichiers sont normalisés, `default_xxxxx.png` ce qui permet de facilement intégrer 
+De nombreuses images sont disponibles dans le répertoire `textures`.
+Les noms des fichiers sont normalisés, `default_xxxxx.png` ce qui permet de facilement intégrer
 ces images dans votre programme en utilisant un nom court (ici `xxxxx`).
 
 Par exemple, pour récupérer l'image correspondant au fichier `textures/default_acacia_tree.png`,
 il suffit d'utiliser la méthode `MineUtils.getImage("acacia_tree")`.
 
 ### Partie 4 : à vous de jouer
- 
+
 Chaque binôme doit décider d'une nouvelle fonctionnalité à ajouter au jeu flatcraft.
-Idéalement, le travail des différents groupes pourra être aggrégé pour obtenir 
+Idéalement, le travail des différents groupes pourra être aggrégé pour obtenir
 un jeu plus complet.
 
 Vous devez déposer votre proposition de fonctionnalité sur Moodle.
@@ -200,7 +200,7 @@ utiliser un outil de gestion de version comme git, et d'un outil de
 gestion de projet comme gitlab.
 
 Différents exercices vont permettre de construire graduellement
-l'application : 
+l'application :
 
 - la création d'un espace de jeu (une grille contenant des images)
 - la réaction à des évènements (patron de conception observateur/écouteur)
@@ -221,7 +221,7 @@ La première étape est de créer l'environnement du jeu : la création des mond
 
 ### Le monde des ressources
 
-Nous allons considérer un monde en 2D, représenté sur un plan : nous disposons d'une grille de blocs, et chaque bloc peut être "détruit, reposé ou transformé". 
+Nous allons considérer un monde en 2D, représenté sur un plan : nous disposons d'une grille de blocs, et chaque bloc peut être "détruit, reposé ou transformé".
 
 On peut imaginer de nombreuses façons de créer un monde flatcraft. Au
 minimum, le jeu proposera une génération aléatoire du monde.
@@ -242,14 +242,14 @@ Le code suivant permet de reconnaître cette combinaison de touches :
 ```java
 public void actionPerformed(ActionEvent ae) {
         ...
-		if ((ae.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
-		    // déposer
-		} else {
-		    // creuser
-		}
-	}
+        if ((ae.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
+        // déposer
+        } else {
+        // creuser
+        }
+        }
 ```
-	
+
 **Bonus :  proposer une génération de monde plus réaliste.****
 
 1. générer le monde de telle sorte que sur la surface, la neige, l'eau et le sable ne soient pas des blocks uniques disposés aléatoirement sur la carte.
@@ -264,7 +264,7 @@ Il existe un patron de conception pour résoudre ce problème : [TypeObject](htt
 
 ![Patron de conception TypeObject](typeobject.png)
 
-Son principe est le suivant : la classe `Type` représente les informations partagées et la classe `Instance` représente les informations spécifiques à l'instance. Une relation unidirectionnelle de `Instance` vers `Type` permet à un objet `Instance` d'avoir accès aux informations communes. De plus, une fabrique dans la classe `Type` contrôle la création des objets de type `Instance`. 
+Son principe est le suivant : la classe `Type` représente les informations partagées et la classe `Instance` représente les informations spécifiques à l'instance. Une relation unidirectionnelle de `Instance` vers `Type` permet à un objet `Instance` d'avoir accès aux informations communes. De plus, une fabrique dans la classe `Type` contrôle la création des objets de type `Instance`.
 
 Dans le cas du jeu flatcraft, nous disposons de deux types d'éléments spécifiques : les outils et les ressources. Il faut appliquer le patron de conception à chaque type d'éléments. On obtient par exemple le diagramme de classes suivant :
 
@@ -293,16 +293,16 @@ Les outils ont généralement une durée de vie, qui sera spécifique à chaque 
 
 ```java
 @Override
-	protected void paintComponent(Graphics g) {
-		if (tool.getCurrentLife() > 0) {
-			super.paintComponent(g);
-			Rectangle rect = g.getClipBounds();
-			g.setColor(Color.GRAY);
-			g.fillRect(rect.x+5, rect.y+70, 70, 3);
-			g.setColor(Color.YELLOW);
-			g.fillRect(rect.x+5, rect.y+70, (int)(tool.getCurrentLife()*70.0)/tool.getType().getInitialLife(), 3);
-		}
-	}
+protected void paintComponent(Graphics g) {
+        if (tool.getCurrentLife() > 0) {
+        super.paintComponent(g);
+        Rectangle rect = g.getClipBounds();
+        g.setColor(Color.GRAY);
+        g.fillRect(rect.x+5, rect.y+70, 70, 3);
+        g.setColor(Color.YELLOW);
+        g.fillRect(rect.x+5, rect.y+70, (int)(tool.getCurrentLife()*70.0)/tool.getType().getInitialLife(), 3);
+        }
+        }
 ```
 
 #### Les conteneurs de ressources
@@ -314,22 +314,22 @@ On supposera simplement que l'on dispose du nombre de ressources disponibles. Le
 
 ```java
 @Override
-	protected void paintComponent(Graphics g) {
-		int qty = container.getQuantity();
-		if (qty > 0) {
-			super.paintComponent(g);
-			Rectangle rect = g.getClipBounds();
-			g.setColor(Color.YELLOW);
-			g.fillOval(rect.x + rect.width - 30, rect.y + rect.height - 30, 30, 30);
-			g.setColor(Color.BLACK);
-			g.setFont(g.getFont().deriveFont(Font.BOLD, g.getFont().getSize()));
-			if (qty < 10) {
-				g.drawString(String.valueOf(qty), rect.x + rect.width - 17, rect.y + rect.height - 10);
-			} else {
-				g.drawString(String.valueOf(qty), rect.x + rect.width - 21, rect.y + rect.height - 10);
-			}
-		}
-	}
+protected void paintComponent(Graphics g) {
+        int qty = container.getQuantity();
+        if (qty > 0) {
+        super.paintComponent(g);
+        Rectangle rect = g.getClipBounds();
+        g.setColor(Color.YELLOW);
+        g.fillOval(rect.x + rect.width - 30, rect.y + rect.height - 30, 30, 30);
+        g.setColor(Color.BLACK);
+        g.setFont(g.getFont().deriveFont(Font.BOLD, g.getFont().getSize()));
+        if (qty < 10) {
+        g.drawString(String.valueOf(qty), rect.x + rect.width - 17, rect.y + rect.height - 10);
+        } else {
+        g.drawString(String.valueOf(qty), rect.x + rect.width - 21, rect.y + rect.height - 10);
+        }
+        }
+        }
 ```
 
 ## Création de ressources : la table de craft
@@ -357,7 +357,7 @@ La réalisation de la table de craft est essentiellement basée sur la gestion d
 1. On utilisera des composants graphiques (`JLabel`, `JButton`, `JToggleButton`) comme source du glissé/déplacé : ils seront associés à des `TransferHandler` de type "From" et à un écouteur de type `MouseListener` pour reconnaître l'action de glissé/déplacé.
 1. On utilisera soit des actions de type `MOVE`(toutes les ressources sont déplacées) soit des actions de type `COPY` (la moitié des ressources sont déplacées). On affectera par exemple un bouton particulier de la souris pour gérer chacune des actions.
 
-Pour permettre de filtrer les objets graphiques selon leur type, et n'accepter que des ressources dans la grille de craft, on définira des "saveurs" particulières pour les ressources et les outils. Ces saveurs seront utilisées dans les objets `TransfertHandler` pour définir le type des objets transportés. 
+Pour permettre de filtrer les objets graphiques selon leur type, et n'accepter que des ressources dans la grille de craft, on définira des "saveurs" particulières pour les ressources et les outils. Ces saveurs seront utilisées dans les objets `TransfertHandler` pour définir le type des objets transportés.
 
 ```java
 public static final DataFlavor RESOURCE_FLAVOR = new DataFlavor(ResourceContainer.class, "resourcecontainer");
