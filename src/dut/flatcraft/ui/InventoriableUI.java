@@ -1,7 +1,8 @@
 package dut.flatcraft.ui;
 
+import javax.swing.JComponent;
 
-@FunctionalInterface
 public interface InventoriableUI {
 	Inventoriable getHandable();
+    JComponent getGraphicalComponent();
 }

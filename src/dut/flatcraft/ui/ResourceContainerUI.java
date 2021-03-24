@@ -85,4 +85,9 @@ public class ResourceContainerUI extends JComponent implements ResourceContainer
 	public Inventoriable getHandable() {
 		return getResourceContainer();
 	}
+
+    @Override
+    public JComponent getGraphicalComponent() {
+        return this;
+    }
 }

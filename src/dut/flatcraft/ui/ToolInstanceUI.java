@@ -74,4 +74,8 @@ public class ToolInstanceUI extends JComponent implements ToolInstanceListener, 
 		return getMineTool();
 	}
 
+    @Override
+    public JComponent getGraphicalComponent() {
+        return this;
+    }
 }
