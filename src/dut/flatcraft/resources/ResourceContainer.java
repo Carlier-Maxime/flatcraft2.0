@@ -144,7 +144,7 @@ public class ResourceContainer implements Transferable, Handable {
 	@Override
 	public Optional<Cell> action(Player p, Cell c) {
 		if (quantity > 0) {
-			ResourceInstance instance = resource.newInstance();
+			ResourceInstance instance = getResource().newInstance();
 			boolean result = c.canBeReplacedBy(instance, p);
 			if (result) {
 				instance.setUI(c.getUI());
