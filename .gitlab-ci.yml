@@ -1,8 +1,19 @@
-sonar:
-    script: ./build.sh && sonar-scanner -Dsonar.login=$SONARTOKEN -Dsonar.projectKey=flatcraft_2020_$CI_PROJECT_NAMESPACE 
-    stage: build
-    tags:
-     - sonar
-    artifacts:
-     paths:
-        - flatcraft.jar
+variables:
+  GIT_STRATEGY: clone
+  GIT_CHECKOUT: "true"
+  GIT_SUBMODULE_STRATEGY: recursive
+  PROXY: "-Dhttp.proxyHost=cache-etu.univ-artois.fr -Dhttp.proxyPort=3128 -Dhttps.proxyHost=cache-etu.univ-artois.fr -Dhttps.proxyPort=3128 -Dhttp.nonProxyHosts=localhost"
+  SONARINFO: "-Dsonar.host.url=http://sonarqube.univ-artois.fr/ -Dsonar.login=$SONARTOKEN -Dsonar.projectName=flatcraft_$CI_PROJECT_NAMESPACE  -Dsonar.projectKey=flatcraft_$CI_PROJECT_NAMESPACE"
+
+gradle:
+  image: gradle:7.3-jdk11
+  stage: build
+  script: 
+      - "gradle --warning-mode all $PROXY jar sonarqube"
+  tags: 
+     - docker2
+  artifacts:
+    when: always
+    paths:
+        - build/libs/flatcraft.jar
+
