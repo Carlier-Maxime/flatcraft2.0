@@ -5,15 +5,25 @@ variables:
   PROXY: "-Dhttp.proxyHost=cache-etu.univ-artois.fr -Dhttp.proxyPort=3128 -Dhttps.proxyHost=cache-etu.univ-artois.fr -Dhttps.proxyPort=3128 -Dhttp.nonProxyHosts=localhost"
   SONARINFO: "-Dsonar.host.url=http://sonarqube.univ-artois.fr/ -Dsonar.login=$SONARTOKEN -Dsonar.projectName=flatcraft_$CI_PROJECT_NAMESPACE  -Dsonar.projectKey=flatcraft_$CI_PROJECT_NAMESPACE"
 
-gradle:
+default:
   image: gradle:7.3-jdk11
-  stage: build
-  script: 
-      - "gradle --warning-mode all $PROXY jar sonarqube"
   tags: 
      - docker2
+
+stages:
+  - build
+  - qa
+
+jar:
+  stage: build
+  script: 
+      - "gradle --warning-mode all $PROXY jar"
   artifacts:
     when: always
     paths:
         - build/libs/flatcraft.jar
 
+sonarqube:
+  stage: qa
+  script: 
+      - "gradle --warning-mode all $PROXY $SONARINFO sonarqube"
