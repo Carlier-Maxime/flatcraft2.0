@@ -22,8 +22,3 @@ jar:
     when: always
     paths:
         - build/libs/flatcraft.jar
-
-sonarqube:
-  stage: qa
-  script: 
-      - "gradle --warning-mode all $PROXY $SONARINFO sonarqube"
