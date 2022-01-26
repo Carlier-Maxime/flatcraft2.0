@@ -31,7 +31,7 @@ import dut.flatcraft.ui.MyGrid;
 
 public class Main {
 
-	private static final JFrame frame = new JFrame("FLATCRAFT 2021 - Student project - F1 to get help");
+	private static final JFrame frame = new JFrame("FLATCRAFT 2022 - Student project - F1 to get help");
 
 	private static int hourOfTheDay = 12;
 
