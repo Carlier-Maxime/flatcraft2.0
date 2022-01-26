@@ -7,7 +7,6 @@
  */
 
 plugins {
-    id 'java-library'
     id 'application'
     id "org.sonarqube" version "3.3"
 }
