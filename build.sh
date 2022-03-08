@@ -8,7 +8,7 @@ find src -name "*.java" -print >javafiles
 if [ ! -d bin ]; then
     mkdir bin
 fi
-javac -d bin -cp lib/dpprocessor.jar -source 8 -target 8 @javafiles
+javac -d bin -cp lib/dpprocessor.jar -source 12 -target 12 @javafiles
 cp -R src/resources/textures bin
 cp src/resources/rules/*.txt bin
 jar -cfm flatcraft.jar manifest.mf -C bin/ .
