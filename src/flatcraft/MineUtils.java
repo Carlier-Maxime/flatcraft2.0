@@ -1,4 +1,4 @@
-package dut.flatcraft;
+package flatcraft;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -13,12 +13,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
-import dut.flatcraft.resources.ChestResource;
-import dut.flatcraft.resources.Resource;
-import dut.flatcraft.resources.TransformableResource;
-import dut.flatcraft.resources.TraversableResource;
-import dut.flatcraft.tools.Tool;
-import dut.flatcraft.tools.ToolType;
+import flatcraft.resources.ChestResource;
+import flatcraft.resources.Resource;
+import flatcraft.resources.TransformableResource;
+import flatcraft.resources.TraversableResource;
+import flatcraft.tools.Tool;
+import flatcraft.tools.ToolType;
 
 /**
  * Utility class to easily access the images to use in the game.

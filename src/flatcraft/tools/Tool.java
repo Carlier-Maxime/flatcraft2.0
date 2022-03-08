@@ -1,4 +1,4 @@
-package dut.flatcraft.tools;
+package flatcraft.tools;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;

@@ -1,6 +1,6 @@
-package dut.flatcraft;
+package flatcraft;
 
-import dut.flatcraft.map.CompleteGameMap;
+import flatcraft.map.CompleteGameMap;
 import fr.univartois.migl.utils.DesignPattern;
 
 /**

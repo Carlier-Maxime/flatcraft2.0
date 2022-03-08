@@ -1,4 +1,4 @@
-package dut.flatcraft.resources;
+package flatcraft.resources;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -10,12 +10,12 @@ import java.util.Optional;
 
 import javax.swing.ImageIcon;
 
-import dut.flatcraft.Cell;
-import dut.flatcraft.player.Coordinate;
-import dut.flatcraft.player.Direction;
-import dut.flatcraft.player.Handable;
-import dut.flatcraft.player.Player;
-import dut.flatcraft.ui.Inventory;
+import flatcraft.Cell;
+import flatcraft.player.Coordinate;
+import flatcraft.player.Direction;
+import flatcraft.player.Handable;
+import flatcraft.player.Player;
+import flatcraft.ui.Inventory;
 import fr.univartois.migl.utils.DesignPattern;
 
 /**

@@ -1,4 +1,4 @@
-package dut.flatcraft.player;
+package flatcraft.player;
 
 import java.awt.Color;
 import java.awt.Graphics;

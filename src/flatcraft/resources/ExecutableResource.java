@@ -1,9 +1,9 @@
-package dut.flatcraft.resources;
+package flatcraft.resources;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import dut.flatcraft.tools.ToolType;
+import flatcraft.tools.ToolType;
 
 /**
  * An executable resource type, i.e. a resource which

@@ -1,12 +1,12 @@
-package dut.flatcraft;
+package flatcraft;
 
 import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import dut.flatcraft.player.Player;
-import dut.flatcraft.resources.Resource;
+import flatcraft.player.Player;
+import flatcraft.resources.Resource;
 
 /**
  * A cell represents a unit space in the map. It can be filled with a resource

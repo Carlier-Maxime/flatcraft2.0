@@ -1,12 +1,12 @@
-package dut.flatcraft.resources;
+package flatcraft.resources;
 
 import java.util.Optional;
 
 import javax.swing.JLabel;
 
-import dut.flatcraft.Cell;
-import dut.flatcraft.ExtendedGameMap;
-import dut.flatcraft.MapRegistry;
+import flatcraft.Cell;
+import flatcraft.ExtendedGameMap;
+import flatcraft.MapRegistry;
 
 /**
  * Specific implementation of a cell allowing to propagate the call to the

@@ -1,4 +1,4 @@
-package dut.flatcraft;
+package flatcraft;
 
 import java.awt.Image;
 import java.net.URL;

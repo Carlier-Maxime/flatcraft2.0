@@ -1,4 +1,4 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
 import java.awt.event.MouseListener;
 import java.io.Serializable;
@@ -12,14 +12,14 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
-import dut.flatcraft.MineUtils;
-import dut.flatcraft.player.Handable;
-import dut.flatcraft.resources.CombustibleContainer;
-import dut.flatcraft.resources.OreContainer;
-import dut.flatcraft.resources.Resource;
-import dut.flatcraft.resources.ResourceContainer;
-import dut.flatcraft.resources.ResourceInstance;
-import dut.flatcraft.tools.ToolInstance;
+import flatcraft.MineUtils;
+import flatcraft.player.Handable;
+import flatcraft.resources.CombustibleContainer;
+import flatcraft.resources.OreContainer;
+import flatcraft.resources.Resource;
+import flatcraft.resources.ResourceContainer;
+import flatcraft.resources.ResourceInstance;
+import flatcraft.tools.ToolInstance;
 import fr.univartois.migl.utils.DesignPattern;
 
 /**

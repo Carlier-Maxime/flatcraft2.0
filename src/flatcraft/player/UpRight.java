@@ -1,4 +1,4 @@
-package dut.flatcraft.player;
+package flatcraft.player;
 
 public class UpRight extends AbstractDirection {
 	/**

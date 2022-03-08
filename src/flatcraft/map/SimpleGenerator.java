@@ -1,8 +1,8 @@
-package dut.flatcraft.map;
+package flatcraft.map;
 
-import dut.flatcraft.CellFactory;
-import dut.flatcraft.GameMap;
-import dut.flatcraft.MapRegistry;
+import flatcraft.CellFactory;
+import flatcraft.GameMap;
+import flatcraft.MapRegistry;
 
 /**
  * Generates a map in three parts:

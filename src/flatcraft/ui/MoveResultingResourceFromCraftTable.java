@@ -1,4 +1,4 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
 import java.awt.Container;
 import java.awt.datatransfer.Transferable;

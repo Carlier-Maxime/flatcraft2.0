@@ -1,12 +1,12 @@
-package dut.flatcraft.player;
+package flatcraft.player;
 
 import java.io.Serializable;
 import java.util.Optional;
 
 import javax.swing.ImageIcon;
 
-import dut.flatcraft.Cell;
-import dut.flatcraft.ui.Inventoriable;
+import flatcraft.Cell;
+import flatcraft.ui.Inventoriable;
 
 /**
  * An abstraction for something that the player can have in its hand.

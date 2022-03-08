@@ -1,4 +1,4 @@
-package dut.flatcraft.map;
+package flatcraft.map;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,9 +8,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import dut.flatcraft.Cell;
-import dut.flatcraft.ExtendedGameMap;
-import dut.flatcraft.player.Coordinate;
+import flatcraft.Cell;
+import flatcraft.ExtendedGameMap;
+import flatcraft.player.Coordinate;
 
 /**
  * A map with easy access to the neighbor of a cell.

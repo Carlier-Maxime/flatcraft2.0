@@ -1,4 +1,4 @@
-package dut.flatcraft.resources;
+package flatcraft.resources;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -6,7 +6,7 @@ import java.util.Objects;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import dut.flatcraft.tools.ToolType;
+import flatcraft.tools.ToolType;
 import fr.univartois.migl.utils.DesignPattern;
 
 /**

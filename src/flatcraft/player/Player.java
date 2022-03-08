@@ -1,14 +1,14 @@
-package dut.flatcraft.player;
+package flatcraft.player;
 
-import static dut.flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
+import static flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComponent;
-import dut.flatcraft.GameMap;
-import dut.flatcraft.MapRegistry;
-import dut.flatcraft.ui.Inventoriable;
-import dut.flatcraft.ui.Inventory;
+import flatcraft.GameMap;
+import flatcraft.MapRegistry;
+import flatcraft.ui.Inventoriable;
+import flatcraft.ui.Inventory;
 import fr.univartois.migl.utils.DesignPattern;
 
 /**

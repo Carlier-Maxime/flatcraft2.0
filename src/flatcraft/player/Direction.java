@@ -1,4 +1,4 @@
-package dut.flatcraft.player;
+package flatcraft.player;
 
 import java.awt.Graphics;
 import java.io.Serializable;

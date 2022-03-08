@@ -1,4 +1,4 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -15,14 +15,14 @@ import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-import dut.flatcraft.Cell;
-import dut.flatcraft.CellFactory;
-import dut.flatcraft.GameMap;
-import dut.flatcraft.MineUtils;
-import dut.flatcraft.map.MapGenerator;
-import dut.flatcraft.player.Coordinate;
-import dut.flatcraft.player.Paintable;
-import dut.flatcraft.player.Player;
+import flatcraft.Cell;
+import flatcraft.CellFactory;
+import flatcraft.GameMap;
+import flatcraft.MineUtils;
+import flatcraft.map.MapGenerator;
+import flatcraft.player.Coordinate;
+import flatcraft.player.Paintable;
+import flatcraft.player.Player;
 
 /**
  * The graphical component displaying the game map.

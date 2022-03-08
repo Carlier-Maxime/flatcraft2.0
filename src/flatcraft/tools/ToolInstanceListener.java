@@ -1,4 +1,4 @@
-package dut.flatcraft.tools;
+package flatcraft.tools;
 
 import java.io.Serializable;
 

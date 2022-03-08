@@ -1,9 +1,9 @@
-package dut.flatcraft.resources;
+package flatcraft.resources;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import dut.flatcraft.tools.ToolType;
+import flatcraft.tools.ToolType;
 
 /**
  * Resource allowing to propagate a call to the execute() method to neighboring

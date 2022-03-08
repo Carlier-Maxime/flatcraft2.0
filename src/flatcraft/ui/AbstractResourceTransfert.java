@@ -1,4 +1,4 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
 import java.awt.datatransfer.DataFlavor;
 import java.util.logging.Logger;
@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
-import dut.flatcraft.resources.ResourceContainer;
+import flatcraft.resources.ResourceContainer;
 import fr.univartois.migl.utils.DesignPattern;
 
 /**

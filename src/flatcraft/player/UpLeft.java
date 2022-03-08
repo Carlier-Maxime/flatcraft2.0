@@ -1,4 +1,4 @@
-package dut.flatcraft.player;
+package flatcraft.player;
 
 public class UpLeft extends AbstractDirection {
 	private static final long serialVersionUID = 1L;

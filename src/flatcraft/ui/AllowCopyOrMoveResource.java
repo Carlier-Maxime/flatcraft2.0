@@ -1,4 +1,4 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
 import java.awt.Container;
 import java.awt.datatransfer.Transferable;
@@ -6,7 +6,7 @@ import java.awt.datatransfer.Transferable;
 import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
-import dut.flatcraft.resources.ResourceContainer;
+import flatcraft.resources.ResourceContainer;
 
 /**
  * Drag and drop of resources from the craftable.

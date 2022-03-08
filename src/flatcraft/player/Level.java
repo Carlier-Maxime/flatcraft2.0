@@ -1,4 +1,4 @@
-package dut.flatcraft.player;
+package flatcraft.player;
 
 import java.util.ArrayList;
 import java.util.List;

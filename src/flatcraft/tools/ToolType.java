@@ -1,4 +1,4 @@
-package dut.flatcraft.tools;
+package flatcraft.tools;
 
 /**
  * Resources require a certain strength

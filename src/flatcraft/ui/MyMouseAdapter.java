@@ -1,4 +1,4 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

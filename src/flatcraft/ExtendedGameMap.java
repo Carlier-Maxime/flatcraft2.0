@@ -1,4 +1,4 @@
-package dut.flatcraft;
+package flatcraft;
 
 import java.util.Iterator;
 import java.util.Optional;

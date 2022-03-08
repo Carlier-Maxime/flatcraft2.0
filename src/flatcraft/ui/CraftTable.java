@@ -1,6 +1,6 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
-import static dut.flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
+import static flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,10 +19,10 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
-import dut.flatcraft.MineUtils;
-import dut.flatcraft.player.Player;
-import dut.flatcraft.resources.Resource;
-import dut.flatcraft.tools.Tool;
+import flatcraft.MineUtils;
+import flatcraft.player.Player;
+import flatcraft.resources.Resource;
+import flatcraft.tools.Tool;
 
 /**
  * A crafting table.

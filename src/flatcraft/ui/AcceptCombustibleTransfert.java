@@ -1,4 +1,4 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
 /**
  * Drag and drop of combustible for the furnace.

@@ -1,4 +1,4 @@
-package dut.flatcraft;
+package flatcraft;
 
 import java.awt.Point;
 import java.awt.event.KeyAdapter;
@@ -10,9 +10,9 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-import dut.flatcraft.player.Coordinate;
-import dut.flatcraft.player.Player;
-import dut.flatcraft.ui.MyGrid;
+import flatcraft.player.Coordinate;
+import flatcraft.player.Player;
+import flatcraft.ui.MyGrid;
 
 /**
  * Manages the direction of the player using the mouse.

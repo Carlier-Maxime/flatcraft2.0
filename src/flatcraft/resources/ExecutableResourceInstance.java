@@ -1,4 +1,4 @@
-package dut.flatcraft.resources;
+package flatcraft.resources;
 
 import javax.swing.JLabel;
 

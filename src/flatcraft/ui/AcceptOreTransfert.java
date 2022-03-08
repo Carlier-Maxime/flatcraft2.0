@@ -1,8 +1,8 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
 import java.awt.datatransfer.DataFlavor;
 
-import dut.flatcraft.resources.OreContainer;
+import flatcraft.resources.OreContainer;
 
 /**
  * Drag and drop of ore to the furnace.

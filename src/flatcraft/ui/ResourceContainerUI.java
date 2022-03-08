@@ -1,4 +1,4 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,10 +9,10 @@ import java.awt.Rectangle;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 
-import dut.flatcraft.MineUtils;
-import dut.flatcraft.resources.Resource;
-import dut.flatcraft.resources.ResourceContainer;
-import dut.flatcraft.resources.ResourceContainerListener;
+import flatcraft.MineUtils;
+import flatcraft.resources.Resource;
+import flatcraft.resources.ResourceContainer;
+import flatcraft.resources.ResourceContainerListener;
 
 /**
  * Graphical representation of a ResourceContainer.

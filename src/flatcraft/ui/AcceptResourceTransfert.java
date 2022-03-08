@@ -1,4 +1,4 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
 /**
  * Drap and drop of resources for the craft table.

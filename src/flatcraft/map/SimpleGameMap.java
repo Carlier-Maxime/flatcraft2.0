@@ -1,10 +1,10 @@
-package dut.flatcraft.map;
+package flatcraft.map;
 
 import java.util.NoSuchElementException;
 
-import dut.flatcraft.Cell;
-import dut.flatcraft.GameMap;
-import dut.flatcraft.player.Coordinate;
+import flatcraft.Cell;
+import flatcraft.GameMap;
+import flatcraft.player.Coordinate;
 
 /**
  * Utility class to store the cells in a two-dimensional array.

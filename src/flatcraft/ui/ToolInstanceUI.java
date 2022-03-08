@@ -1,6 +1,6 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
-import static dut.flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
+import static flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -11,8 +11,8 @@ import java.awt.Rectangle;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 
-import dut.flatcraft.tools.ToolInstance;
-import dut.flatcraft.tools.ToolInstanceListener;
+import flatcraft.tools.ToolInstance;
+import flatcraft.tools.ToolInstanceListener;
 
 /**
  * A graphical representation of a tool instance.

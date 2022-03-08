@@ -1,8 +1,8 @@
-package dut.flatcraft.resources;
+package flatcraft.resources;
 
 import javax.swing.ImageIcon;
 
-import dut.flatcraft.tools.ToolType;
+import flatcraft.tools.ToolType;
 
 /**
  * A transformable resource is a resource found on the map which is transformed

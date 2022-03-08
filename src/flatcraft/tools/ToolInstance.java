@@ -1,4 +1,4 @@
-package dut.flatcraft.tools;
+package flatcraft.tools;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -10,14 +10,14 @@ import java.util.Optional;
 
 import javax.swing.ImageIcon;
 
-import dut.flatcraft.Cell;
-import dut.flatcraft.EmptyCell;
-import dut.flatcraft.MineUtils;
-import dut.flatcraft.player.Coordinate;
-import dut.flatcraft.player.Direction;
-import dut.flatcraft.player.Handable;
-import dut.flatcraft.player.Player;
-import dut.flatcraft.ui.Inventory;
+import flatcraft.Cell;
+import flatcraft.EmptyCell;
+import flatcraft.MineUtils;
+import flatcraft.player.Coordinate;
+import flatcraft.player.Direction;
+import flatcraft.player.Handable;
+import flatcraft.player.Player;
+import flatcraft.ui.Inventory;
 
 /**
  * A particular instance of a tool, i.e. one that will be manipulated in the

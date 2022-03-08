@@ -1,6 +1,6 @@
-package dut.flatcraft;
+package flatcraft;
 
-import static dut.flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
+import static flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.DisplayMode;
@@ -18,16 +18,16 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
-import dut.flatcraft.map.MapGenerator;
-import dut.flatcraft.map.SimpleGenerator;
-import dut.flatcraft.map.TerrilDecorator;
-import dut.flatcraft.map.TreeDecorator;
-import dut.flatcraft.player.Level;
-import dut.flatcraft.player.LevelListener;
-import dut.flatcraft.player.Player;
-import dut.flatcraft.ui.CraftTable;
-import dut.flatcraft.ui.Furnace;
-import dut.flatcraft.ui.MyGrid;
+import flatcraft.map.MapGenerator;
+import flatcraft.map.SimpleGenerator;
+import flatcraft.map.TerrilDecorator;
+import flatcraft.map.TreeDecorator;
+import flatcraft.player.Level;
+import flatcraft.player.LevelListener;
+import flatcraft.player.Player;
+import flatcraft.ui.CraftTable;
+import flatcraft.ui.Furnace;
+import flatcraft.ui.MyGrid;
 
 public class Main {
 
@@ -43,7 +43,7 @@ public class Main {
 		return String.format("Time: %2d o'clock", hourOfTheDay);
 	}
 
-	public static final void updateHour(ActionEvent e) {
+	public static void updateHour(ActionEvent e) {
 		float factor;
 		hourOfTheDay = (hourOfTheDay + 1) % 24;
 		if (hourOfTheDay <= 6 || hourOfTheDay >= 23) {
@@ -58,10 +58,6 @@ public class Main {
 		VaryingImageIcon.setFactor(factor);
 		hourLabel.setText(hourString());
 		frame.repaint();
-	}
-
-	public static JFrame getFrame() {
-		return frame;
 	}
 
 	private static void positionCraftTable(JButton button, JDialog dialog) {

@@ -1,10 +1,10 @@
-package dut.flatcraft.resources;
+package flatcraft.resources;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import dut.flatcraft.tools.ToolType;
+import flatcraft.tools.ToolType;
 
 /**
  * Example of ExecutableResource, i.e. a resource which reacts to an action.

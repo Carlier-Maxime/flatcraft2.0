@@ -1,7 +1,7 @@
-package dut.flatcraft.map;
+package flatcraft.map;
 
-import dut.flatcraft.CellFactory;
-import dut.flatcraft.GameMap;
+import flatcraft.CellFactory;
+import flatcraft.GameMap;
 import fr.univartois.migl.utils.DesignPattern;
 
 /**

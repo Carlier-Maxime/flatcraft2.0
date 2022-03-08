@@ -1,9 +1,9 @@
-package dut.flatcraft.map;
+package flatcraft.map;
 
 import java.util.Random;
 
-import dut.flatcraft.CellFactory;
-import dut.flatcraft.GameMap;
+import flatcraft.CellFactory;
+import flatcraft.GameMap;
 
 /**
  * Generates a GameMap of a given size with a given CellFactory.

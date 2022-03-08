@@ -1,4 +1,4 @@
-package dut.flatcraft;
+package flatcraft;
 
 import fr.univartois.migl.utils.DesignPattern;
 

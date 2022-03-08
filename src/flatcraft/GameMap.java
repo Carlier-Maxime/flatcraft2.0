@@ -1,8 +1,8 @@
-package dut.flatcraft;
+package flatcraft;
 
 import java.io.Serializable;
 
-import dut.flatcraft.player.Coordinate;
+import flatcraft.player.Coordinate;
 
 /**
  * Represents a generic game map.

@@ -1,6 +1,6 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
-import static dut.flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
+import static flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,10 +17,10 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import dut.flatcraft.MineUtils;
-import dut.flatcraft.player.Handable;
-import dut.flatcraft.player.Player;
-import dut.flatcraft.resources.ResourceContainer;
+import flatcraft.MineUtils;
+import flatcraft.player.Handable;
+import flatcraft.player.Player;
+import flatcraft.resources.ResourceContainer;
 
 /**
  * A furnace.

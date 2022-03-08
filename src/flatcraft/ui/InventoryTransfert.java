@@ -1,4 +1,4 @@
-package dut.flatcraft.ui;
+package flatcraft.ui;
 
 import java.awt.datatransfer.Transferable;
 import java.util.logging.Logger;
@@ -6,10 +6,10 @@ import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
-import dut.flatcraft.player.Handable;
-import dut.flatcraft.resources.ResourceContainer;
-import dut.flatcraft.tools.Tool;
-import dut.flatcraft.tools.ToolInstance;
+import flatcraft.player.Handable;
+import flatcraft.resources.ResourceContainer;
+import flatcraft.tools.Tool;
+import flatcraft.tools.ToolInstance;
 
 /**
  * Drag and drop from and to the inventory.

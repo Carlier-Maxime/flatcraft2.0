@@ -1,13 +1,13 @@
-package dut.flatcraft.resources;
+package flatcraft.resources;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import dut.flatcraft.Cell;
-import dut.flatcraft.player.Player;
-import dut.flatcraft.tools.ToolInstance;
-import dut.flatcraft.ui.Inventoriable;
-import dut.flatcraft.ui.Inventory;
+import flatcraft.Cell;
+import flatcraft.player.Player;
+import flatcraft.tools.ToolInstance;
+import flatcraft.ui.Inventoriable;
+import flatcraft.ui.Inventory;
 
 public class ResourceInstance implements Cell, Inventoriable {
 

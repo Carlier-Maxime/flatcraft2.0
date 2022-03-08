@@ -1,10 +1,10 @@
-package dut.flatcraft.map;
+package flatcraft.map;
 
 import java.util.function.Supplier;
 
-import dut.flatcraft.Cell;
-import dut.flatcraft.CellFactory;
-import dut.flatcraft.GameMap;
+import flatcraft.Cell;
+import flatcraft.CellFactory;
+import flatcraft.GameMap;
 import fr.univartois.migl.utils.DesignPattern;
 
 /**
