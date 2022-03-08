@@ -33,20 +33,20 @@ sonarqube {
 }
 
 application {
-    mainClass.set('dut.flatcraft.Main')
+    mainClass.set('flatcraft')
 }
 
 jar {
   manifest {
     attributes(
-      'Main-Class': 'dut.flatcraft.Main'
+      'Main-Class': 'flatcraft'
     )
   }
 }
 
 compileJava {
-    sourceCompatibility = '11'
-    targetCompatibility = '11'
+    sourceCompatibility = '12'
+    targetCompatibility = '12'
 }
 
 
