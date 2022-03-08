@@ -43,6 +43,24 @@ public interface GameMap extends Serializable {
 	void setAt(int i, int j, Cell cell);
 
 	/**
+	 * Retrieve the cell background at a given coordinate.
+	 *
+	 * @param i the y axis (starting from 0)
+	 * @param j the x axis (starting from 0)
+	 * @return the cell background at the (j,i) coordinate
+	 */
+	Cell getBgAt(int i, int j);
+
+	/**
+	 * Set a cell background at a given coordinate
+	 *
+	 * @param i    the y axis (starting from 0)
+	 * @param j    the x axis (starting from 0)
+	 * @param cell a cell Background
+	 */
+	void setBgAt(int i, int j, Cell cell);
+
+	/**
 	 * Find the coordinate of a given cell.
 	 * 
 	 * @param cell a Cell

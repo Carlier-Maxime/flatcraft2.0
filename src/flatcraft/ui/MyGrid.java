@@ -12,8 +12,7 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import javax.swing.JComponent;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 import flatcraft.Cell;
 import flatcraft.CellFactory;
@@ -46,12 +45,22 @@ public class MyGrid extends JComponent implements KeyListener {
 		map = generator.generate(width, height, factory);
 		player = Player.createPlayer(map);
 		paintables.add(player);
-		setLayout(new GridLayout(height, width));
+		JPanel bg = new JPanel();
+		bg.setLayout(new GridLayout(height, width));
 		for (int i = 0; i < map.getHeight(); i++) {
 			for (int j = 0; j < map.getWidth(); j++) {
-				add(map.getAt(i, j).getUI());
+				bg.add(map.getBgAt(i, j).getUI());
 			}
 		}
+		JPanel fg = new JPanel();
+		fg.setLayout(new GridLayout(height, width));
+		for (int i = 0; i < map.getHeight(); i++) {
+			for (int j = 0; j < map.getWidth(); j++) {
+				fg.add(map.getAt(i, j).getUI());
+			}
+		}
+		add(bg);
+		add(fg);
 		checkPhysics();
 		addKeyListener(this);
 		setFocusable(true);
