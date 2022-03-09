@@ -93,7 +93,7 @@ public class ToolInstance implements Transferable, Handable {
 		if (c.getType().getToolType().compareTo(this.toolType.getTooltype()) <= 0) {
 			boolean result = c.dig(p);
 			if (result) {
-				return Optional.of(new EmptyCell(MineUtils.getImage("ice"), c.getUI()));
+				return Optional.of(new EmptyCell(MineUtils.getImage("air"), c.getUI()));
 			}
 		}
 		return Optional.empty();
