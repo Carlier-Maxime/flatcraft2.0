@@ -114,11 +114,11 @@ public class ResourceInstance implements Cell, Inventoriable {
 			}
 			return t;
 		} catch (IOException e){
-			System.err.println("ERROR : lors de la récupération de la texture pour le minage des bloc !");
+			System.err.println("ERROR : when retrieving the texture for block mining !");
 		} catch (RasterFormatException e){
-			System.err.println("ERROR : lors de la récupération de la sous-région de la texture de minage de bloc.");
+			System.err.println("ERROR : when retrieving the block mining texture subregion.");
 		} catch (Exception e){
-			System.err.println("ERROR : erreur inconnue lors de l'initialisation des texture de minage.");
+			System.err.println("ERROR : unknown while initializing mining textures.");
 		}
 		return null;
 	}
