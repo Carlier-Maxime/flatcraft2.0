@@ -14,7 +14,7 @@ public class ResourceCellFactory implements CellFactory {
 		if (RAND.nextInt(10) < 1) {
 			return new EmptyCell(MineUtils.getImage("cloud"));
 		}
-		return new EmptyCell(MineUtils.getImage("ice"));
+		return new EmptyCell(MineUtils.getImage("sky"));
 	}
 
 	@Override
