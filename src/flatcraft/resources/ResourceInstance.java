@@ -1,8 +1,7 @@
 package flatcraft.resources;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 import flatcraft.Cell;
 import flatcraft.player.Player;
@@ -60,7 +59,7 @@ public class ResourceInstance implements Cell, Inventoriable {
 
 	@Override
 	public JLabel getUI() {
-		return label;
+		return getLabelHardnessMode();
 	}
 
 	public void setUI(JLabel label) {
@@ -106,14 +105,12 @@ public class ResourceInstance implements Cell, Inventoriable {
 			BufferedImage img = ImageIO.read(url);
 			BufferedImage[] t = new BufferedImage[(img.getHeight()/ img.getWidth())+1];
 			t[0] = new BufferedImage(img.getWidth(),img.getWidth(),BufferedImage.TYPE_INT_ARGB);
-			ImageIO.write(t[0],"png",new File("crack0.png"));
 			for (int i=1; i< t.length; i++){
 				t[i] = new BufferedImage(img.getWidth(),img.getWidth(),BufferedImage.TYPE_INT_ARGB);
 				Graphics g = t[i].getGraphics();
 				BufferedImage crack = img.getSubimage(0,(i-1)* img.getWidth(),img.getWidth(),img.getWidth());
 				g.drawImage(crack,0,0,img.getWidth(),img.getWidth(),null);
 				g.dispose();
-				ImageIO.write(t[i],"png",new File("crack"+i+".png"));
 			}
 			return t;
 		} catch (IOException e){
@@ -136,5 +133,27 @@ public class ResourceInstance implements Cell, Inventoriable {
 		if (crackAnyLength==null) return null;
 		hardnessIndex = calculHardnessIndex();
 		return crackAnyLength[hardnessIndex];
+	}
+
+	private JLabel getLabelHardnessMode(){
+		if (!isDigBrokenUpdate() || getHardnessImg()==null) return label;
+		Icon icon = label.getIcon();
+		Image h = getHardnessImg().getScaledInstance(icon.getIconWidth(),icon.getIconHeight(),Image.SCALE_SMOOTH);
+		BufferedImage b = new BufferedImage(icon.getIconWidth(),icon.getIconHeight(),BufferedImage.TYPE_INT_ARGB);
+		Graphics gb = b.getGraphics();
+		icon.paintIcon(null,gb,0,0);
+		gb.dispose();
+		BufferedImage f = new BufferedImage(icon.getIconWidth(),icon.getIconHeight(),BufferedImage.TYPE_INT_ARGB);
+		Graphics gf = f.getGraphics();
+		gf.drawImage(b,0,0,null);
+		gf.drawImage(h,0,0,null);
+		gf.dispose();
+		label.setIcon(new ImageIcon(f));
+		return label;
+	}
+
+	private boolean isDigBrokenUpdate(){
+		if (crackAnyLength==null) return false;
+		return calculHardnessIndex() != hardnessIndex;
 	}
 }
