@@ -24,16 +24,19 @@ public class SimpleGenerator implements MapGenerator {
 		int halfHeigh = heigh / 2;
 		for (int i = 0; i < halfHeigh; i++) {
 			for (int j = 0; j < width; j++) {
-				map.setAt(i, j, factory.createSky());
+				map.setBgAt(i, j, factory.createSky());
+				map.setAt(i, j, factory.createEmpty());
 			}
 		}
 		for (int j = 0; j < width; j++) {
-			map.setAt(halfHeigh, j, factory.createGrass());
+			map.setBgAt(halfHeigh, j, factory.createGrass(true));
+			map.setAt(halfHeigh, j, factory.createGrass(false));
 
 		}
 		for (int i = halfHeigh + 1; i < heigh; i++) {
 			for (int j = 0; j < width; j++) {
-				map.setAt(i, j, factory.createSoil());
+				map.setBgAt(i, j, factory.createSoil(true));
+				map.setAt(i, j, factory.createSoil(false));
 			}
 		}
 		return map;

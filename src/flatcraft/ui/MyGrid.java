@@ -41,10 +41,16 @@ public class MyGrid extends JComponent implements KeyListener {
 	private Player player;
 
 	public MyGrid(int height, int width, CellFactory factory, MapGenerator generator) {
-
 		map = generator.generate(width, height, factory);
 		player = Player.createPlayer(map);
 		paintables.add(player);
+		setLayout(new GridLayout(height, width));
+		for (int i = 0; i < map.getHeight(); i++) {
+			for (int j = 0; j < map.getWidth(); j++) {
+				add(map.getAt(i, j).getUI());
+			}
+		}
+		/*
 		JPanel bg = new JPanel();
 		bg.setLayout(new GridLayout(height, width));
 		for (int i = 0; i < map.getHeight(); i++) {
@@ -61,6 +67,7 @@ public class MyGrid extends JComponent implements KeyListener {
 		}
 		add(bg);
 		add(fg);
+		*/
 		checkPhysics();
 		addKeyListener(this);
 		setFocusable(true);

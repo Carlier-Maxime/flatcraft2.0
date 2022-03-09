@@ -31,6 +31,7 @@ public class ResourceInstance implements Cell, Inventoriable {
 		this.label = label;
 		label.setIcon(type.getImage());
 		label.setToolTipText(type.getName());
+		label.setOpaque(false);
 	}
 
 	public Resource getType() {
@@ -56,6 +57,7 @@ public class ResourceInstance implements Cell, Inventoriable {
 		this.label = label;
 		label.setIcon(resourceType.getImage());
 		label.setToolTipText(resourceType.getName());
+		label.setOpaque(false);
 	}
 
 	@Override

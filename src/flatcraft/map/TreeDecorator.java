@@ -61,7 +61,7 @@ public class TreeDecorator implements MapGenerator {
 	 */
 	private void makeCell(GameMap map, int y, int x, Supplier<Cell> creator) {
 		Cell cell = map.getAt(y, x);
-		if ("empty".equals(cell.getName())) {
+		if (cell==null || "empty".equals(cell.getName())) {
 			map.setAt(y, x, creator.get());
 		}
 

@@ -39,7 +39,7 @@ public class TerrilDecorator implements MapGenerator {
 				int newy = y - terrilHeight + j;
 				int newx = x + i;
 				if (newy >= 0 && newy < height && newx < width) {
-					map.setAt(newy, newx, factory.createSoil());
+					map.setAt(newy, newx, factory.createSoil(false));
 				}
 			}
 			x--;

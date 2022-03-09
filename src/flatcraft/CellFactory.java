@@ -20,18 +20,25 @@ public interface CellFactory {
 	Cell createSky();
 
 	/**
+	 * The cell use for fill foreground.
+	 *
+	 * @return
+	 */
+	Cell createEmpty();
+
+	/**
 	 * The separation between the sky and the soil.
 	 * 
 	 * @return
 	 */
-	Cell createGrass();
+	Cell createGrass(boolean empty);
 
 	/**
 	 * The place to dig.
 	 * 
 	 * @return
 	 */
-	Cell createSoil();
+	Cell createSoil(boolean empty);
 
 	/**
 	 * The wood found in the map. Useful to craft. Useful to heat the furnace.
