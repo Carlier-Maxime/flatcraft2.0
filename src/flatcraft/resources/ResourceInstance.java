@@ -28,6 +28,7 @@ public class ResourceInstance implements Cell, Inventoriable {
 	private final Resource resourceType;
 
 	private int hardness;
+	private int hardnessIndex;
 	private JLabel label;
 
 	public ResourceInstance(Resource type) {
@@ -129,5 +130,11 @@ public class ResourceInstance implements Cell, Inventoriable {
 		if (crackAnyLength==null) return 0;
 		if (hardness<0) return crackAnyLength.length-1;
 		return (crackAnyLength.length-1)-((hardness*(crackAnyLength.length-1))/resourceType.getHardness());
+	}
+
+	private BufferedImage getHardnessImg(){
+		if (crackAnyLength==null) return null;
+		hardnessIndex = calculHardnessIndex();
+		return crackAnyLength[hardnessIndex];
 	}
 }
