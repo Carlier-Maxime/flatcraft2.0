@@ -1,9 +1,6 @@
 package flatcraft.ui;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -59,8 +56,9 @@ public class MyGrid extends JComponent implements KeyListener {
 				fg.add(map.getAt(i, j).getUI());
 			}
 		}
-		add(bg);
+		fg.setOpaque(false);
 		add(fg);
+		add(bg);
 		checkPhysics();
 		addKeyListener(this);
 		setFocusable(true);
