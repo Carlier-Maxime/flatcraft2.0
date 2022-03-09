@@ -44,13 +44,7 @@ public class MyGrid extends JComponent implements KeyListener {
 		map = generator.generate(width, height, factory);
 		player = Player.createPlayer(map);
 		paintables.add(player);
-		setLayout(new GridLayout(height, width));
-		for (int i = 0; i < map.getHeight(); i++) {
-			for (int j = 0; j < map.getWidth(); j++) {
-				add(map.getAt(i, j).getUI());
-			}
-		}
-		/*
+		setLayout(new OverlayLayout(this));
 		JPanel bg = new JPanel();
 		bg.setLayout(new GridLayout(height, width));
 		for (int i = 0; i < map.getHeight(); i++) {
@@ -67,7 +61,6 @@ public class MyGrid extends JComponent implements KeyListener {
 		}
 		add(bg);
 		add(fg);
-		*/
 		checkPhysics();
 		addKeyListener(this);
 		setFocusable(true);
@@ -246,6 +239,7 @@ public class MyGrid extends JComponent implements KeyListener {
 	}
 
 	public void paint(Coordinate c) {
+		map.getBgAt(c.getY(), c.getX()).getUI().repaint();
 		map.getAt(c.getY(), c.getX()).getUI().repaint();
 	}
 
