@@ -29,44 +29,44 @@ public class ResourceCellFactory implements CellFactory {
 			return createCell("junglegrass");
 		}
 		if (RAND.nextInt(10) < 2) {
-			if (empty) return new EmptyCell(MineUtils.getImage("grass"));
+			if (empty) return new EmptyCell(MineUtils.getImage("grass",true));
 			return createCell("water");
 		}
-		if (empty) return new EmptyCell(MineUtils.getImage("grass"));
+		if (empty) return new EmptyCell(MineUtils.getImage("grass",true));
 		return createCell("grass");
 	}
 
 	@Override
 	public Cell createSoil(boolean empty) {
 		if (RAND.nextInt(10) < 7) {
-			if (empty) return new EmptyCell(MineUtils.getImage("dirt"));
+			if (empty) return new EmptyCell(MineUtils.getImage("dirt",true));
 			return createCell("dirt");
 		}
 		if (RAND.nextInt(100) < 10) {
-			if (empty) return new EmptyCell(MineUtils.getImage("stone"));
+			if (empty) return new EmptyCell(MineUtils.getImage("stone",true));
 			return createCell("coal");
 		}
 		if (RAND.nextInt(100) < 5) {
-			if (empty) return new EmptyCell(MineUtils.getImage("stone"));
+			if (empty) return new EmptyCell(MineUtils.getImage("stone",true));
 			return createCell("gold");
 		}
 		if (RAND.nextInt(100) < 5) {
-			if (empty) return new EmptyCell(MineUtils.getImage("stone"));
+			if (empty) return new EmptyCell(MineUtils.getImage("stone",true));
 			return createCell("iron");
 		}
 		if (RAND.nextInt(100) < 5) {
-			if (empty) return new EmptyCell(MineUtils.getImage("stone"));
+			if (empty) return new EmptyCell(MineUtils.getImage("stone",true));
 			return createCell("copper");
 		}
 		if (RAND.nextInt(100) < 3) {
-			if (empty) return new EmptyCell(MineUtils.getImage("stone"));
+			if (empty) return new EmptyCell(MineUtils.getImage("stone",true));
 			return createCell("ladder");
 		}
 		if (RAND.nextInt(100) < 1) {
-			if (empty) return new EmptyCell(MineUtils.getImage("stone"));
+			if (empty) return new EmptyCell(MineUtils.getImage("stone",true));
 			return createCell("chest");
 		}
-		if (empty) return new EmptyCell(MineUtils.getImage("stone"));
+		if (empty) return new EmptyCell(MineUtils.getImage("stone",true));
 		return createCell("stone");
 	}
 

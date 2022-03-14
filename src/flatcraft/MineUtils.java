@@ -1,9 +1,9 @@
 package flatcraft;
 
-import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import flatcraft.resources.ChestResource;
@@ -54,15 +55,20 @@ public class MineUtils {
 	 * @return an ImageIcon scaled up to 40x40.
 	 */
 
-	public static CustomImageIcon getImage(String localName) {
-		CustomImageIcon cached = cachedImages.get(localName);
+	public static CustomImageIcon getImage(String localName, boolean bg) {
+		CustomImageIcon cached;
+		if (bg) cached = cachedImages.get(localName+"_bg");
+		else cached = cachedImages.get(localName);
 		if (cached == null) {
 			String absoluteName = "/textures/default_" + localName + ".png";
-			cached = scaled(absoluteName);
-			cachedImages.put(localName, cached);
+			cached = scaled(absoluteName, bg);
+			if (bg) cachedImages.put(localName+"_bg", cached);
+			else cachedImages.put(localName, cached);
 		}
 		return cached;
 	}
+
+	public static CustomImageIcon getImage(String localName) {return getImage(localName, false);}
 
 	/**
 	 * Create a scaled up version of the original icon, to have a MineCraft effect.
@@ -70,19 +76,22 @@ public class MineUtils {
 	 * @param imageName the name of the texture file.
 	 * @return an ImageIcon scaled up to 40x40.
 	 */
-	public static VaryingImageIcon scaled(String imageName) {
+	public static VaryingImageIcon scaled(String imageName, boolean bg) {
 		try {
             URL url = MineUtils.class.getResource(imageName);
             if (url == null) {
                 throw new IllegalArgumentException("Le fichier "+imageName+" n'a pas été trouvé");
             }
             CustomImageIcon icon = new CustomImageIcon(url);
-			return new VaryingImageIcon(icon.getImage()
-					.getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, Image.SCALE_DEFAULT));
+            Image img = icon.getImage();
+			if (bg) img = darken(img);
+            return new VaryingImageIcon(img.getScaledInstance(DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_SIZE, Image.SCALE_DEFAULT));
 		} catch (Exception e) {
 			return new VaryingImageIcon();
 		}
 	}
+
+	public static VaryingImageIcon scaled(String imageName) {return scaled(imageName, false);}
 
 	/**
 	 * Create a scaled up version of the original icon, to have a MineCraft effect.
@@ -110,7 +119,7 @@ public class MineUtils {
 	 * Create a new scaled up version of the original icon, over an already scaled
 	 * image (e.g. STONE).
 	 * 
-	 * @param background a scaled up background image
+	 * @param backgroundName a scaled up background image
 	 * @param foregroundName  the new image to put on top of the background.
 	 * @return an image consisting of imageName with the given background.
 	 */
@@ -314,5 +323,26 @@ public class MineUtils {
 		} catch (IOException ioe) {
 			Logger.getAnonymousLogger().log(Level.INFO, "Rules file " + filename + " not found", ioe);
 		}
+	}
+
+	private static Image darken(Image image){
+		if (image.getWidth(null)<0 || image.getHeight(null)<0) return image;
+		BufferedImage img = new BufferedImage(image.getWidth(null),image.getHeight(null),BufferedImage.TYPE_INT_ARGB);
+		Graphics gr = img.createGraphics();
+		gr.drawImage(image,0,0,null);
+		gr.dispose();
+		for (int i=0; i<img.getWidth(); i++){
+			for (int j=0; j<img.getHeight(); j++){
+				Color c = new Color(img.getRGB(i,j),true);
+				int r = c.getRed()/2;
+				int g = c.getGreen()/2;
+				int b = c.getBlue()/2;
+				img.setRGB(i,j,new Color(r,g,b,c.getAlpha()).getRGB());
+			}
+		}
+		try {
+			ImageIO.write(img,"png",new File("test/test.png"));
+		} catch (Exception ignored) {}
+		return img;
 	}
 }
