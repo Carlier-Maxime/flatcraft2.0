@@ -29,13 +29,13 @@ public class SimpleGenerator implements MapGenerator {
 			}
 		}
 		for (int j = 0; j < width; j++) {
-			map.setBgAt(halfHeigh, j, factory.createSky());
+			map.setBgAt(halfHeigh, j, factory.createGrass(true));
 			map.setAt(halfHeigh, j, factory.createGrass(false));
 
 		}
 		for (int i = halfHeigh + 1; i < heigh; i++) {
 			for (int j = 0; j < width; j++) {
-				map.setBgAt(i, j, factory.createSky());
+				map.setBgAt(i, j, factory.createSoil(true));
 				map.setAt(i, j, factory.createSoil(false));
 			}
 		}

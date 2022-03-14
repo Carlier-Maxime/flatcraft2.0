@@ -25,11 +25,11 @@ public class ResourceCellFactory implements CellFactory {
 	@Override
 	public Cell createGrass(boolean empty) {
 		if (RAND.nextInt(10) < 1) {
-			if (empty) return new EmptyCell(MineUtils.getImage("junglegrass"));
+			if (empty) return createSky();
 			return createCell("junglegrass");
 		}
 		if (RAND.nextInt(10) < 2) {
-			if (empty) return new EmptyCell(MineUtils.getImage("water"));
+			if (empty) return new EmptyCell(MineUtils.getImage("grass"));
 			return createCell("water");
 		}
 		if (empty) return new EmptyCell(MineUtils.getImage("grass"));
@@ -43,27 +43,27 @@ public class ResourceCellFactory implements CellFactory {
 			return createCell("dirt");
 		}
 		if (RAND.nextInt(100) < 10) {
-			if (empty) return new EmptyCell(MineUtils.getImage("coal"));
+			if (empty) return new EmptyCell(MineUtils.getImage("stone"));
 			return createCell("coal");
 		}
 		if (RAND.nextInt(100) < 5) {
-			if (empty) return new EmptyCell(MineUtils.getImage("gold"));
+			if (empty) return new EmptyCell(MineUtils.getImage("stone"));
 			return createCell("gold");
 		}
 		if (RAND.nextInt(100) < 5) {
-			if (empty) return new EmptyCell(MineUtils.getImage("iron"));
+			if (empty) return new EmptyCell(MineUtils.getImage("stone"));
 			return createCell("iron");
 		}
 		if (RAND.nextInt(100) < 5) {
-			if (empty) return new EmptyCell(MineUtils.getImage("copper"));
+			if (empty) return new EmptyCell(MineUtils.getImage("stone"));
 			return createCell("copper");
 		}
 		if (RAND.nextInt(100) < 3) {
-			if (empty) return new EmptyCell(MineUtils.getImage("ladder"));
+			if (empty) return new EmptyCell(MineUtils.getImage("stone"));
 			return createCell("ladder");
 		}
 		if (RAND.nextInt(100) < 1) {
-			if (empty) return new EmptyCell(MineUtils.getImage("chest"));
+			if (empty) return new EmptyCell(MineUtils.getImage("stone"));
 			return createCell("chest");
 		}
 		if (empty) return new EmptyCell(MineUtils.getImage("stone"));
