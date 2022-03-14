@@ -54,6 +54,12 @@ public interface CellFactory {
 	 */
 	Cell createLeaves();
 
+	Cell createTallGrass();
+
+	Cell createDirt(boolean empty);
+
+	Cell createUnderground(boolean empty);
+
 	/**
 	 * Create a cell object using its name.
 	 * 

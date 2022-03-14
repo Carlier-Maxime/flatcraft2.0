@@ -24,10 +24,6 @@ public class ResourceCellFactory implements CellFactory {
 
 	@Override
 	public Cell createGrass(boolean empty) {
-		if (RAND.nextInt(10) < 1) {
-			if (empty) return createSky();
-			return createCell("junglegrass");
-		}
 		if (RAND.nextInt(10) < 2) {
 			if (empty) return new EmptyCell(MineUtils.getImage("grass",true));
 			return createCell("water");
@@ -42,6 +38,45 @@ public class ResourceCellFactory implements CellFactory {
 			if (empty) return new EmptyCell(MineUtils.getImage("dirt",true));
 			return createCell("dirt");
 		}
+		return createUnderground(empty);
+	}
+
+	@Override
+	public Cell createTree() {
+		//if (empty) return new EmptyCell(MineUtils.getImage("tree"));
+		return createCell("tree");
+	}
+
+	@Override
+	public Cell createLeaves() {
+		//if (empty) return new EmptyCell(MineUtils.getImage("leaves"));
+		return createCell("leaves");
+	}
+
+	@Override
+	public Cell createTallGrass() {
+		if (RAND.nextInt(10) < 1) {
+			return createCell("junglegrass");
+		}
+		return createEmpty();
+	}
+
+	@Override
+	public Cell createDirt(boolean empty) {
+		if (RAND.nextInt(100) < 1) {
+			if (empty) return new EmptyCell(MineUtils.getImage("dirt",true));
+			return createCell("chest");
+		}
+		if (RAND.nextInt(100) < 3) {
+			if (empty) return new EmptyCell(MineUtils.getImage("dirt",true));
+			return createCell("ladder");
+		}
+		if (empty) return new EmptyCell(MineUtils.getImage("dirt",true));
+		return createCell("dirt");
+	}
+
+	@Override
+	public Cell createUnderground(boolean empty) {
 		if (RAND.nextInt(100) < 10) {
 			if (empty) return new EmptyCell(MineUtils.getImage("stone",true));
 			return createCell("coal");
@@ -68,18 +103,6 @@ public class ResourceCellFactory implements CellFactory {
 		}
 		if (empty) return new EmptyCell(MineUtils.getImage("stone",true));
 		return createCell("stone");
-	}
-
-	@Override
-	public Cell createTree() {
-		//if (empty) return new EmptyCell(MineUtils.getImage("tree"));
-		return createCell("tree");
-	}
-
-	@Override
-	public Cell createLeaves() {
-		//if (empty) return new EmptyCell(MineUtils.getImage("leaves"));
-		return createCell("leaves");
 	}
 
 }
