@@ -24,14 +24,6 @@ public class ChestResource extends ExecutableResource {
 	}
 
 	@Override
-	public ExecutableResourceInstance newInstance() {
-		ExecutableResourceInstance instance = super.newInstance();
-		instance.setRunnable(() -> JOptionPane.showMessageDialog(null, new JLabel("Le beau coffre"), "Attention",
-				JOptionPane.PLAIN_MESSAGE));
-		return instance;
-	}
-
-	@Override
 	public ExecutableResourceInstance newInstance(JLabel label) {
 		ExecutableResourceInstance instance = super.newInstance(label);
 		instance.setRunnable(() -> JOptionPane.showMessageDialog(null, new JLabel("Le beau coffre"), "Attention",
@@ -39,4 +31,8 @@ public class ChestResource extends ExecutableResource {
 		return instance;
 	}
 
+	@Override
+	public ExecutableResourceInstance newInstance() {
+		return newInstance(new JLabel());
+	}
 }
