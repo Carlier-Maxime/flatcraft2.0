@@ -8,7 +8,7 @@ import flatcraft.ui.Furnace;
 import javax.swing.*;
 
 public class FurnaceResource extends ExecutableResource{
-    private static JDialog dialog = initDialog();
+    private static final JDialog dialog = initDialog();
 
     public FurnaceResource(String name, ImageIcon appearance, int hardness, ToolType toolType) {
         super(name, appearance, hardness, toolType);

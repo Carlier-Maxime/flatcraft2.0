@@ -1,23 +1,5 @@
 package flatcraft;
 
-import static flatcraft.MineUtils.DEFAULT_IMAGE_SIZE;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.DisplayMode;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.WindowConstants;
-
 import flatcraft.map.MapGenerator;
 import flatcraft.map.SimpleGenerator;
 import flatcraft.map.TerrilDecorator;
@@ -26,8 +8,11 @@ import flatcraft.player.Level;
 import flatcraft.player.LevelListener;
 import flatcraft.player.Player;
 import flatcraft.ui.CraftTable;
-import flatcraft.ui.Furnace;
 import flatcraft.ui.MyGrid;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class Main {
 
@@ -67,16 +52,6 @@ public class Main {
 			Point pos = button.getLocation();
 			dialog.setLocation(pos.x + button.getWidth() - dialog.getWidth(),
 					frame.getHeight() - 70 - dialog.getHeight());
-			dialog.setVisible(true);
-		}
-	}
-
-	private static void positionFurnace(JButton button, JDialog dialog) {
-		if (dialog.isVisible()) {
-			dialog.setVisible(false);
-		} else {
-			Point pos = button.getLocation();
-			dialog.setLocation(pos.x, frame.getHeight() - 70 - dialog.getHeight());
 			dialog.setVisible(true);
 		}
 	}
@@ -144,16 +119,6 @@ public class Main {
 		JDialog craft = new JDialog(frame, "Craft Table");
 		craft.add(new CraftTable(Player.instance()));
 		craft.pack();
-
-		JDialog cook = new JDialog(frame, "Furnace");
-		cook.add(new Furnace(Player.instance()));
-		cook.pack();
-
-		JButton cookButton = new JButton(MineUtils.getImage("furnace_front"));
-		cookButton.addActionListener(e -> positionFurnace(cookButton, cook));
-		cookButton.setFocusable(false);
-		cookButton.setToolTipText("Furnace");
-		south.add(cookButton);
 
 		south.add(Player.instance().getInventoryUI());
 
