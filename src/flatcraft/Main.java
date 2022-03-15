@@ -168,4 +168,8 @@ public class Main {
 	private static MapGenerator createMapGenerator() {
 		return new TerrilDecorator(new TreeDecorator(new SimpleGenerator(), 10, 5), 5);
 	}
+
+	public static JFrame getFrame() {
+		return frame;
+	}
 }
