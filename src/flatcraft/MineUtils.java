@@ -14,10 +14,8 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
-import flatcraft.resources.ChestResource;
-import flatcraft.resources.Resource;
-import flatcraft.resources.TransformableResource;
-import flatcraft.resources.TraversableResource;
+
+import flatcraft.resources.*;
 import flatcraft.tools.Tool;
 import flatcraft.tools.ToolType;
 
@@ -258,6 +256,9 @@ public class MineUtils {
 			break;
 		case "ladder":
 			resource = new TraversableResource("ladder", getImage("ladder"), 5, ToolType.NO_TOOL);
+			break;
+		case "furnace":
+			resource = new FurnaceResource("furnace", getImage("furnace_front"), 100000, ToolType.NO_TOOL);
 			break;
 		default:
 			throw new IllegalArgumentException(resourceName + " is not a correct resource name");
