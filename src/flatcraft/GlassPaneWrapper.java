@@ -47,14 +47,16 @@ public class GlassPaneWrapper extends JLayeredPane {
 		glassPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				super.mouseClicked(e);
-				Coordinate old = Player.instance().getPosition();
-				Coordinate oldNext = Player.instance().getDirection().getNext();
-				grid.digOrFill();
-				grid.checkPhysics();
-				grid.paint(old);
-				grid.paint(oldNext);
-				grid.paintPlayer(true);
+				if (e.getButton()==1 || e.getButton()==3){
+					super.mouseClicked(e);
+					Coordinate old = Player.instance().getPosition();
+					Coordinate oldNext = Player.instance().getDirection().getNext();
+					grid.digOrFill();
+					grid.checkPhysics();
+					grid.paint(old);
+					grid.paint(oldNext);
+					grid.paintPlayer(true);
+				}
 			}
 		});
 
