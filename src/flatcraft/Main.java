@@ -88,7 +88,7 @@ public class Main {
 		DisplayMode displayMode = ge.getDefaultScreenDevice().getDisplayMode();
 		Dimension screenSize = new Dimension(displayMode.getWidth(), displayMode.getHeight());
 
-		frame.add(BorderLayout.CENTER, createMap(createMapGenerator()));
+		frame.add(BorderLayout.CENTER, createMap(screenSize ,createMapGenerator()));
 		frame.add(BorderLayout.SOUTH, createStatusBar());
 		frame.pack();
 
@@ -105,7 +105,7 @@ public class Main {
         VaryingImageIcon.startSimulation(5, Main::updateHour);
 	}
 
-	private static JScrollPane createMap(MapGenerator generator) {
+	private static JScrollPane createMap(Dimension screenSize, MapGenerator generator) {
 		grid = new MyGrid(32, 120, new ResourceCellFactory(), generator);
 		GlassPaneWrapper glassPaneWrapper = new GlassPaneWrapper(grid);
 		glassPaneWrapper.activateGlassPane(true);

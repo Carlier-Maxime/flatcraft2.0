@@ -20,7 +20,7 @@ public interface MapGenerator {
 	 * @param width   width in number of cells
 	 * @param height  height in number of cells
 	 * @param factory a CellFactory
-	 * @return
+	 * @return game map
 	 */
 	GameMap generate(int width, int height, CellFactory factory);
 
@@ -34,6 +34,6 @@ public interface MapGenerator {
 	 * @return a y coordinate
 	 */
 	default int getGrassHeightAt(int mapheight, int x) {
-		return mapheight / 2;
+		return mapheight < 20 ? mapheight/2 : 12;
 	}
 }
