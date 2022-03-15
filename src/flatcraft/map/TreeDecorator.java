@@ -40,7 +40,10 @@ public class TreeDecorator implements MapGenerator {
 			int y = decorated.getGrassHeightAt(height, x) - 1;
 			int treeHeight = RAND.nextInt(maxHeight) + 1;
 			for (int j = 0; j < treeHeight; j++) {
-				makeCell(map, y--, x, factory::createTree);
+				if (!makeCell(map, y--, x, factory::createTree)) {
+					y++;
+					break;
+				}
 			}
 			if (x > 0) {
 				makeCell(map, y + 1, x - 1, factory::createLeaves);
@@ -59,11 +62,13 @@ public class TreeDecorator implements MapGenerator {
 	/*
 	 * That utility method makes sure that trees are only rendered on empty cells.
 	 */
-	private void makeCell(GameMap map, int y, int x, Supplier<Cell> creator) {
+	private boolean makeCell(GameMap map, int y, int x, Supplier<Cell> creator) {
 		Cell cell = map.getAt(y, x);
 		if (cell==null || "empty".equals(cell.getName())) {
 			map.setAt(y, x, creator.get());
+			return true;
 		}
+		return false;
 
 	}
 
