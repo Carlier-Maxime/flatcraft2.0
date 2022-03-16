@@ -68,7 +68,6 @@ public class EmptyCell implements Cell {
 
 	@Override
 	public boolean dig(Player p) {
-		p.next();
 		return false;
 	}
 
