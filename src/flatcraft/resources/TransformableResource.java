@@ -22,10 +22,21 @@ public class TransformableResource extends Resource {
 
 	private final Resource digBlock;
 
-	public TransformableResource(String name, ImageIcon blockAppearance, Resource digBlock, int hardness,
-			ToolType toolType) {
-		super(name, blockAppearance, hardness, toolType);
+	public TransformableResource(String name, ImageIcon appearance, Resource digBlock, int hardness, int hardnessLevel, ToolType toolType, boolean needToolType) {
+		super(name, appearance, hardness, (byte) hardnessLevel, toolType, needToolType);
 		this.digBlock = digBlock;
+	}
+
+	public TransformableResource(String name, ImageIcon blockAppearance, Resource digBlock, int hardness, ToolType toolType) {
+		this(name, blockAppearance, digBlock, hardness, 0, toolType, false);
+	}
+
+	public TransformableResource(String name, ImageIcon appearance, Resource digBlock, int hardness, int hardnessLevel, ToolType toolType) {
+		this(name, appearance, digBlock, hardness, hardnessLevel, toolType, false);
+	}
+
+	public TransformableResource(String name, ImageIcon appearance,  Resource digBlock, int hardness, ToolType toolType, boolean needToolType) {
+		this(name, appearance, digBlock, hardness, 0, toolType, needToolType);
 	}
 
 	@Override

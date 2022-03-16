@@ -84,7 +84,9 @@ public class ResourceInstance implements Cell, Inventoriable {
 		ToolInstance tool = (ToolInstance) p.getHand();
 		if (dig(tool)) {
 			if (resourceType.isNeedToolType()){
-				if (resourceType.getToolType()==tool.getType().getTooltype() || resourceType.getHardnessLevel()<=tool.getType().getLevel()) p.addToInventory(resourceType.digBlock().newInstance());
+				if (resourceType.getToolType().name().equals(tool.getType().getTooltype().name()) && resourceType.getHardnessLevel()<=tool.getType().getLevel()) {
+					p.addToInventory(resourceType.digBlock().newInstance());
+				}
 			} else p.addToInventory(resourceType.digBlock().newInstance());
 			return true;
 		}

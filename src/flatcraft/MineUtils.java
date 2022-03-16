@@ -159,6 +159,18 @@ public class MineUtils {
 		return new Resource(localName, getImage(localName), hardness, toolType);
 	}
 
+	private static final Resource makeResource(String localName, int hardness, ToolType toolType, boolean needToolType) {
+		return new Resource(localName, getImage(localName), hardness, toolType, needToolType);
+	}
+
+	private static final Resource makeResource(String localName, int hardness, int hardnessLevel, ToolType toolType) {
+		return new Resource(localName, getImage(localName), hardness, (byte) hardnessLevel, toolType);
+	}
+
+	private static final Resource makeResource(String localName, int hardness, int hardnessLevel, ToolType toolType, boolean needToolType) {
+		return new Resource(localName, getImage(localName), hardness, (byte) hardnessLevel, toolType, needToolType);
+	}
+
 	public static final synchronized Resource getResourceByName(String resourceName) {
 		String key = resourceName.toLowerCase();
 		Resource resource = cachedResources.get(key);
@@ -192,7 +204,7 @@ public class MineUtils {
 			resource = makeResource("dirt", 1, ToolType.SHOVEL);
 			break;
 		case "brick":
-			resource = makeResource("brick", 3, ToolType.PICKAXE);
+			resource = makeResource("brick", 3, ToolType.PICKAXE, true);
 			break;
 		case "wood":
 			resource = new Resource("wood", getImage("pine_wood"), 1, ToolType.AXE);
@@ -208,31 +220,28 @@ public class MineUtils {
 			break;
 		case "coal":
 			Resource lump = getResourceByName("coal_lump");
-			resource = new TransformableResource("coal", overlay("stone", "mineral_coal"), lump, 20,
-					ToolType.PICKAXE);
+			resource = new TransformableResource("coal", overlay("stone", "mineral_coal"), lump, 20, 1, ToolType.PICKAXE, true);
 			break;
 		case "iron_lump":
 			resource = makeResource("iron_lump", 30, ToolType.NONE);
 			break;
 		case "iron":
 			lump = getResourceByName("iron_lump");
-			resource = new TransformableResource("iron", overlay("stone", "mineral_iron"), lump, 30,
-					ToolType.PICKAXE);
+			resource = new TransformableResource("iron", overlay("stone", "mineral_iron"), lump, 30, 2, ToolType.PICKAXE, true);
 			break;
 		case "gold_lump":
 			resource = makeResource("gold_lump", 40, ToolType.NONE);
 			break;
 		case "gold":
 			lump = getResourceByName("gold_lump");
-			resource = new TransformableResource("gold", overlay("stone", "mineral_gold"), lump, 40,
-					ToolType.PICKAXE);
+			resource = new TransformableResource("gold", overlay("stone", "mineral_gold"), lump, 40, 3, ToolType.PICKAXE, true);
 			break;
 		case "stone":
 			Resource cobble = getResourceByName("cobble");
-			resource = new TransformableResource("stone", getImage("stone"), cobble, 10, ToolType.PICKAXE);
+			resource = new TransformableResource("stone", getImage("stone"), cobble, 10, 1, ToolType.PICKAXE, true);
 			break;
 		case "cobble":
-			resource = makeResource("cobble", 10, ToolType.PICKAXE);
+			resource = makeResource("cobble", 10, ToolType.PICKAXE, true);
 			break;
 		case "steel_lingot":
 			resource = makeResource("steel_ingot", 10, ToolType.NONE);
@@ -245,8 +254,7 @@ public class MineUtils {
 			break;
 		case "copper":
 			lump = getResourceByName("copper_lump");
-			resource = new TransformableResource("copper", overlay("stone", "mineral_copper"), lump, 30,
-					ToolType.PICKAXE);
+			resource = new TransformableResource("copper", overlay("stone", "mineral_copper"), lump, 30, 2, ToolType.PICKAXE, true);
 			break;
 		case "copper_lingot":
 			resource = makeResource("copper_ingot", 10, ToolType.NONE);
