@@ -133,11 +133,6 @@ public class MyGrid extends JComponent implements KeyListener {
 			needsUpdate = player.next();
 			needsToCheckVisible = true;
 			break;
-		case KeyEvent.VK_CONTROL:
-			digOrFill();
-			needsUpdate = true;
-			needsToCheckVisible = true;
-			break;
 		case KeyEvent.VK_E:
 			if (execute()) {
 				needsUpdate = true;
