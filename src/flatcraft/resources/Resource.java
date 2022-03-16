@@ -29,8 +29,9 @@ public class Resource implements Serializable {
     private final byte hardnessLevel;
     private final ToolType toolType;
     private final String name;
+    private final boolean needToolType;
 
-    public Resource(String name, ImageIcon appearance, int hardness, byte hardnessLevel, ToolType toolType) {
+    public Resource(String name, ImageIcon appearance, int hardness, byte hardnessLevel, ToolType toolType, boolean needToolType) {
         this.name = name;
         this.blockAppearance = appearance;
         if (hardness < 0) {
@@ -39,10 +40,19 @@ public class Resource implements Serializable {
         this.hardness = hardness;
         this.hardnessLevel = hardnessLevel;
         this.toolType = toolType;
+        this.needToolType = needToolType;
+    }
+
+    public Resource(String name, ImageIcon appearance, int hardness, byte hardnessLevel, ToolType toolType) {
+        this(name, appearance, hardness, hardnessLevel, toolType, false);
+    }
+
+    public Resource(String name, ImageIcon appearance, int hardness, ToolType toolType, boolean needToolType) {
+        this(name,appearance,hardness,(byte) 0,toolType, needToolType);
     }
 
     public Resource(String name, ImageIcon appearance, int hardness, ToolType toolType) {
-        this(name,appearance,hardness,(byte) 0,toolType);
+        this(name,appearance,hardness,(byte) 0,toolType,false);
     }
 
     /**
@@ -133,5 +143,13 @@ public class Resource implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    public boolean isNeedToolType() {
+        return needToolType;
+    }
+
+    public byte getHardnessLevel() {
+        return hardnessLevel;
     }
 }
