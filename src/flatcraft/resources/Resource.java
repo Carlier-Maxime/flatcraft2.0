@@ -26,17 +26,23 @@ public class Resource implements Serializable {
 
     private final ImageIcon blockAppearance;
     private int hardness;
+    private final byte hardnessLevel;
     private final ToolType toolType;
     private final String name;
 
-    public Resource(String name, ImageIcon appearance, int hardness, ToolType toolType) {
+    public Resource(String name, ImageIcon appearance, int hardness, byte hardnessLevel, ToolType toolType) {
         this.name = name;
         this.blockAppearance = appearance;
         if (hardness < 0) {
             throw new IllegalArgumentException("hardness should be non negative");
         }
         this.hardness = hardness;
+        this.hardnessLevel = hardnessLevel;
         this.toolType = toolType;
+    }
+
+    public Resource(String name, ImageIcon appearance, int hardness, ToolType toolType) {
+        this(name,appearance,hardness,(byte) 0,toolType);
     }
 
     /**

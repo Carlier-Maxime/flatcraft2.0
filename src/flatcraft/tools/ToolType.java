@@ -5,5 +5,5 @@ package flatcraft.tools;
  * of tools to be taken from the map.
  */
 public enum ToolType {
-	NO_TOOL, MEDIUM_TOOL, HARD_TOOL
+	NONE, PICKAXE, AXE, SHOVEL
 }

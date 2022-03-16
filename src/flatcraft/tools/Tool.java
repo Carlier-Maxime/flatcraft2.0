@@ -33,11 +33,14 @@ public class Tool implements Transferable, Serializable {
 
 	private final String name;
 
-	public Tool(String name, ImageIcon image, int life, ToolType toolType, int decrement) {
+	private final byte level;
+
+	public Tool(String name, ImageIcon image, int life, ToolType toolType, byte level, int decrement) {
 		this.name = name;
 		this.image = image;
 		this.initialLife = life;
 		this.tooltype = toolType;
+		this.level = level;
 		this.decrement = decrement;
 	}
 

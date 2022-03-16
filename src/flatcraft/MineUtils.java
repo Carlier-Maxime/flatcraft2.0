@@ -167,98 +167,98 @@ public class MineUtils {
 		}
 		switch (key) {
 		case "air":
-			resource = new Resource("air", MineUtils.AIR, 10, ToolType.NO_TOOL);
+			resource = new Resource("air", MineUtils.AIR, 10, ToolType.NONE);
 			break;
 		case "tree":
-			resource = makeResource("tree", 10, ToolType.NO_TOOL);
+			resource = makeResource("tree", 10, ToolType.AXE);
 			break;
 		case "leaves":
-			resource = new Resource("leaves", getImage("leaves_simple"), 1, ToolType.NO_TOOL);
+			resource = new Resource("leaves", getImage("leaves_simple"), 1, ToolType.NONE);
 			break;
 		case "treetop":
 			Resource digTree = getResourceByName("tree");
-			resource = new TransformableResource("treetop", getImage("tree_top"), digTree, 10, ToolType.NO_TOOL);
+			resource = new TransformableResource("treetop", getImage("tree_top"), digTree, 10, ToolType.AXE);
 			break;
 		case "water":
-			resource = makeResource("water", 1, ToolType.NO_TOOL);
+			resource = makeResource("water", 1, ToolType.NONE);
 			break;
 		case "junglegrass":
-			resource = makeResource("junglegrass", 1, ToolType.NO_TOOL);
+			resource = makeResource("junglegrass", 1, ToolType.NONE);
 			break;
 		case "grass":
-			resource = makeResource("grass", 1, ToolType.NO_TOOL);
+			resource = makeResource("grass", 1, ToolType.SHOVEL);
 			break;
 		case "dirt":
-			resource = makeResource("dirt", 1, ToolType.NO_TOOL);
+			resource = makeResource("dirt", 1, ToolType.SHOVEL);
 			break;
 		case "brick":
-			resource = makeResource("brick", 3, ToolType.MEDIUM_TOOL);
+			resource = makeResource("brick", 3, ToolType.PICKAXE);
 			break;
 		case "wood":
-			resource = new Resource("wood", getImage("pine_wood"), 1, ToolType.NO_TOOL);
+			resource = new Resource("wood", getImage("pine_wood"), 1, ToolType.AXE);
 			break;
 		case "stick":
-			resource = makeResource("stick", 1, ToolType.NO_TOOL);
+			resource = makeResource("stick", 1, ToolType.NONE);
 			break;
 		case "lava":
-			resource = makeResource("lava", 100000, ToolType.HARD_TOOL);
+			resource = makeResource("lava", 100000, ToolType.NONE);
 			break;
 		case "coal_lump":
-			resource = makeResource("coal_lump", 20, ToolType.MEDIUM_TOOL);
+			resource = makeResource("coal_lump", 20, ToolType.NONE);
 			break;
 		case "coal":
 			Resource lump = getResourceByName("coal_lump");
 			resource = new TransformableResource("coal", overlay("stone", "mineral_coal"), lump, 20,
-					ToolType.MEDIUM_TOOL);
+					ToolType.PICKAXE);
 			break;
 		case "iron_lump":
-			resource = makeResource("iron_lump", 30, ToolType.MEDIUM_TOOL);
+			resource = makeResource("iron_lump", 30, ToolType.NONE);
 			break;
 		case "iron":
 			lump = getResourceByName("iron_lump");
 			resource = new TransformableResource("iron", overlay("stone", "mineral_iron"), lump, 30,
-					ToolType.MEDIUM_TOOL);
+					ToolType.PICKAXE);
 			break;
 		case "gold_lump":
-			resource = makeResource("gold_lump", 40, ToolType.HARD_TOOL);
+			resource = makeResource("gold_lump", 40, ToolType.NONE);
 			break;
 		case "gold":
 			lump = getResourceByName("gold_lump");
 			resource = new TransformableResource("gold", overlay("stone", "mineral_gold"), lump, 40,
-					ToolType.HARD_TOOL);
+					ToolType.PICKAXE);
 			break;
 		case "stone":
 			Resource cobble = getResourceByName("cobble");
-			resource = new TransformableResource("stone", getImage("stone"), cobble, 10, ToolType.MEDIUM_TOOL);
+			resource = new TransformableResource("stone", getImage("stone"), cobble, 10, ToolType.PICKAXE);
 			break;
 		case "cobble":
-			resource = makeResource("cobble", 10, ToolType.MEDIUM_TOOL);
+			resource = makeResource("cobble", 10, ToolType.PICKAXE);
 			break;
 		case "steel_lingot":
-			resource = makeResource("steel_ingot", 10, ToolType.MEDIUM_TOOL);
+			resource = makeResource("steel_ingot", 10, ToolType.NONE);
 			break;
 		case "gold_lingot":
-			resource = makeResource("gold_ingot", 10, ToolType.HARD_TOOL);
+			resource = makeResource("gold_ingot", 10, ToolType.NONE);
 			break;
 		case "copper_lump":
-			resource = makeResource("copper_lump", 30, ToolType.MEDIUM_TOOL);
+			resource = makeResource("copper_lump", 30, ToolType.NONE);
 			break;
 		case "copper":
 			lump = getResourceByName("copper_lump");
 			resource = new TransformableResource("copper", overlay("stone", "mineral_copper"), lump, 30,
-					ToolType.MEDIUM_TOOL);
+					ToolType.PICKAXE);
 			break;
 		case "copper_lingot":
-			resource = makeResource("copper_ingot", 10, ToolType.HARD_TOOL);
+			resource = makeResource("copper_ingot", 10, ToolType.NONE);
 			break;
 		case "chest":
-			resource = new ChestResource("chest", getImage("chest_front"), 100000, ToolType.NO_TOOL);
+			resource = new ChestResource("chest", getImage("chest_front"), 100000, ToolType.AXE);
 			break;
 		case "ladder":
-			resource = new TraversableResource("ladder", getImage("ladder"), 5, ToolType.NO_TOOL);
+			resource = new TraversableResource("ladder", getImage("ladder"), 5, ToolType.AXE);
 			break;
 		case "furnace":
-			resource = new FurnaceResource("furnace", getImage("furnace_front"), 100000, ToolType.NO_TOOL);
+			resource = new FurnaceResource("furnace", getImage("furnace_front"), 100000, ToolType.PICKAXE);
 			break;
 		default:
 			throw new IllegalArgumentException(resourceName + " is not a correct resource name");
@@ -277,8 +277,8 @@ public class MineUtils {
 	 *                  used
 	 * @return a new tool
 	 */
-	private static final Tool makeTool(String localName, int life, ToolType toolType, int decrement) {
-		return new Tool(localName, getImage("tool_" + localName), life, toolType, decrement);
+	private static final Tool makeTool(String localName, int life, ToolType toolType, int level, int decrement) {
+		return new Tool(localName, getImage("tool_" + localName), life, toolType, (byte) level, decrement);
 	}
 
 	public static final synchronized Tool createToolByName(String toolName) {
@@ -289,22 +289,22 @@ public class MineUtils {
 		}
 		switch (key) {
 		case "woodpick":
-			tool = makeTool("woodpick", 100, ToolType.MEDIUM_TOOL, 5);
+			tool = makeTool("woodpick", 100, ToolType.PICKAXE, 1,5);
 			break;
 		case "stonepick":
-			tool = makeTool("stonepick", 100, ToolType.MEDIUM_TOOL, 10);
+			tool = makeTool("stonepick", 100, ToolType.PICKAXE, 2, 10);
 			break;
 		case "steelpick":
-			tool = makeTool("steelpick", 100, ToolType.HARD_TOOL, 20);
+			tool = makeTool("steelpick", 100, ToolType.PICKAXE, 3,20);
 			break;
 		case "woodaxe":
-			tool = makeTool("woodaxe", 100, ToolType.NO_TOOL, 1);
+			tool = makeTool("woodaxe", 100, ToolType.AXE, 1, 2);
 			break;
 		case "stoneaxe":
-			tool = makeTool("stoneaxe", 100, ToolType.NO_TOOL, 2);
+			tool = makeTool("stoneaxe", 100, ToolType.AXE, 2,4);
 			break;
 		case "steelaxe":
-			tool = makeTool("steelaxe", 100, ToolType.NO_TOOL, 2);
+			tool = makeTool("steelaxe", 100, ToolType.AXE, 3, 8);
 			break;
 		default:
 			throw new IllegalArgumentException(toolName + " is not a correct tool name");

@@ -37,12 +37,14 @@ public class ToolInstance implements Transferable, Handable {
 
 	private int currentLife;
 
+	private int impact;
+
 	private List<ToolInstanceListener> listeners = new ArrayList<>();
 
 	public ToolInstance(Tool toolType) {
 		this.toolType = toolType;
 		this.currentLife = toolType.getInitialLife();
-
+		impact = toolType.getDecrement();
 	}
 
 	public ImageIcon getImage() {
@@ -60,7 +62,7 @@ public class ToolInstance implements Transferable, Handable {
 	public int getImpactWithBlock() {
 		currentLife--;
 		notifyListeners();
-		return toolType.getDecrement();
+		return impact;
 	}
 
 	public void addListener(ToolInstanceListener listener) {
@@ -90,11 +92,12 @@ public class ToolInstance implements Transferable, Handable {
 
 	@Override
 	public Optional<Cell> action(Player p, Cell c) {
-		if (c.getType().getToolType().compareTo(this.toolType.getTooltype()) <= 0) {
-			boolean result = c.dig(p);
-			if (result) {
-				return Optional.of(new EmptyCell(MineUtils.getImage("air"), c.getUI()));
-			}
+		if (c.getType().getToolType()==this.toolType.getTooltype() || c.getType().getToolType()==ToolType.NONE) {
+			impact = toolType.getDecrement();
+		} else impact=1;
+		boolean result = c.dig(p);
+		if (result) {
+			return Optional.of(new EmptyCell(MineUtils.getImage("air"), c.getUI()));
 		}
 		return Optional.empty();
 	}
