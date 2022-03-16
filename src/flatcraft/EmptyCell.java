@@ -1,16 +1,9 @@
 package flatcraft;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import flatcraft.player.Player;
 import flatcraft.resources.Resource;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import javax.swing.*;
 
 /**
  * A cell representing the absence of resource on the map.
@@ -25,8 +18,8 @@ public class EmptyCell implements Cell {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private ImageIcon image;
-	private JLabel label;
+	private final ImageIcon image;
+	private final JLabel label;
 
 	private static final Resource TYPE = MineUtils.getResourceByName("air");
 
