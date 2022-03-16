@@ -81,8 +81,11 @@ public class ResourceInstance implements Cell, Inventoriable {
 
 	@Override
 	public boolean dig(Player p) {
-		if (dig((ToolInstance) p.getHand())) {
-			p.addToInventory(resourceType.digBlock().newInstance());
+		ToolInstance tool = (ToolInstance) p.getHand();
+		if (dig(tool)) {
+			if (resourceType.isNeedToolType()){
+				if (resourceType.getToolType()==tool.getType().getTooltype() || resourceType.getHardnessLevel()<=tool.getType().getLevel()) p.addToInventory(resourceType.digBlock().newInstance());
+			} else p.addToInventory(resourceType.digBlock().newInstance());
 			return true;
 		}
 		return false;

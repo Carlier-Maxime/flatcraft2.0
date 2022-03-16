@@ -82,4 +82,8 @@ public class Tool implements Transferable, Serializable {
 	public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
 		return this;
 	}
+
+	public byte getLevel() {
+		return level;
+	}
 }
