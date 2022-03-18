@@ -155,23 +155,23 @@ public class MineUtils {
 	 * @param toolType  the type of tool required to dig it
 	 * @return
 	 */
-	private static final Resource makeResource(String localName, int hardness, ToolType toolType) {
+	private static Resource makeResource(String localName, int hardness, ToolType toolType) {
 		return new Resource(localName, getImage(localName), hardness, toolType);
 	}
 
-	private static final Resource makeResource(String localName, int hardness, ToolType toolType, boolean needToolType) {
+	private static Resource makeResource(String localName, int hardness, ToolType toolType, boolean needToolType) {
 		return new Resource(localName, getImage(localName), hardness, toolType, needToolType);
 	}
 
-	private static final Resource makeResource(String localName, int hardness, int hardnessLevel, ToolType toolType) {
+	private static Resource makeResource(String localName, int hardness, int hardnessLevel, ToolType toolType) {
 		return new Resource(localName, getImage(localName), hardness, (byte) hardnessLevel, toolType);
 	}
 
-	private static final Resource makeResource(String localName, int hardness, int hardnessLevel, ToolType toolType, boolean needToolType) {
+	private static Resource makeResource(String localName, int hardness, int hardnessLevel, ToolType toolType, boolean needToolType) {
 		return new Resource(localName, getImage(localName), hardness, (byte) hardnessLevel, toolType, needToolType);
 	}
 
-	public static final synchronized Resource getResourceByName(String resourceName) {
+	public static synchronized Resource getResourceByName(String resourceName) {
 		String key = resourceName.toLowerCase();
 		Resource resource = cachedResources.get(key);
 		if (resource != null) {
@@ -285,11 +285,11 @@ public class MineUtils {
 	 *                  used
 	 * @return a new tool
 	 */
-	private static final Tool makeTool(String localName, int life, ToolType toolType, int level, int decrement) {
+	private static Tool makeTool(String localName, int life, ToolType toolType, int level, int decrement) {
 		return new Tool(localName, getImage("tool_" + localName), life, toolType, (byte) level, decrement);
 	}
 
-	public static final synchronized Tool createToolByName(String toolName) {
+	public static synchronized Tool createToolByName(String toolName) {
 		String key = toolName.toLowerCase();
 		Tool tool = cachedTools.get(key);
 		if (tool != null) {
