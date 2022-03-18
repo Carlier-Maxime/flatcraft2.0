@@ -314,6 +314,15 @@ public class MineUtils {
 		case "steelaxe":
 			tool = makeTool("steelaxe", 150, ToolType.AXE, 3, 8);
 			break;
+		case "woodshovel":
+			tool = makeTool("woodshovel", 50, ToolType.SHOVEL, 1, 2);
+			break;
+		case "stoneshovel":
+			tool = makeTool("stoneshovel", 100, ToolType.SHOVEL, 2, 4);
+			break;
+		case "steelshovel":
+			tool = makeTool("steelshovel", 150, ToolType.SHOVEL, 3, 8);
+			break;
 		default:
 			throw new IllegalArgumentException(toolName + " is not a correct tool name");
 		}
