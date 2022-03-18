@@ -297,22 +297,22 @@ public class MineUtils {
 		}
 		switch (key) {
 		case "woodpick":
-			tool = makeTool("woodpick", 100, ToolType.PICKAXE, 1,5);
+			tool = makeTool("woodpick", 50, ToolType.PICKAXE, 1,5);
 			break;
 		case "stonepick":
 			tool = makeTool("stonepick", 100, ToolType.PICKAXE, 2, 10);
 			break;
 		case "steelpick":
-			tool = makeTool("steelpick", 100, ToolType.PICKAXE, 3,20);
+			tool = makeTool("steelpick", 150, ToolType.PICKAXE, 3,20);
 			break;
 		case "woodaxe":
-			tool = makeTool("woodaxe", 100, ToolType.AXE, 1, 2);
+			tool = makeTool("woodaxe", 50, ToolType.AXE, 1, 2);
 			break;
 		case "stoneaxe":
 			tool = makeTool("stoneaxe", 100, ToolType.AXE, 2,4);
 			break;
 		case "steelaxe":
-			tool = makeTool("steelaxe", 100, ToolType.AXE, 3, 8);
+			tool = makeTool("steelaxe", 150, ToolType.AXE, 3, 8);
 			break;
 		default:
 			throw new IllegalArgumentException(toolName + " is not a correct tool name");
