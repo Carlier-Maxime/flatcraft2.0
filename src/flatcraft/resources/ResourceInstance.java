@@ -1,18 +1,17 @@
 package flatcraft.resources;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-
 import flatcraft.Cell;
+import flatcraft.VaryingImageIcon;
 import flatcraft.player.Player;
 import flatcraft.tools.ToolInstance;
 import flatcraft.ui.Inventoriable;
 import flatcraft.ui.Inventory;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.RasterFormatException;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -153,7 +152,7 @@ public class ResourceInstance implements Cell, Inventoriable {
 		gf.drawImage(b,0,0,null);
 		gf.drawImage(h,0,0,null);
 		gf.dispose();
-		label.setIcon(new ImageIcon(f));
+		label.setIcon(new VaryingImageIcon(f));
 		return label;
 	}
 
